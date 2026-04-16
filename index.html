@@ -66,9 +66,36 @@
     .footer-links { display:flex; gap:1.5rem; }
     .footer-links a { font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; text-decoration:none; color:var(--stone); }
     .footer-links a:hover { color:var(--gold); }
+
+    /* PASSWORD GATE */
+    .gate { display:none; position:fixed; inset:0; background:var(--parchment); z-index:9000; align-items:center; justify-content:center; flex-direction:column; gap:1.5rem; }
+    .gate.show { display:flex; }
+    .gate-inner { max-width:380px; width:100%; padding:2.5rem; border:2px solid var(--ink); background:var(--parchment); text-align:center; }
+    .gate-eyebrow { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--stone); margin-bottom:1rem; }
+    .gate-title { font-family:'Playfair Display',serif; font-size:1.6rem; font-weight:900; color:var(--ink); margin-bottom:0.5rem; }
+    .gate-sub { font-size:0.82rem; color:var(--stone); margin-bottom:1.75rem; line-height:1.7; font-style:italic; }
+    .gate-input { width:100%; border:1px solid var(--mist); background:var(--cream); padding:0.75rem 1rem; font-family:'DM Mono',monospace; font-size:0.9rem; color:var(--ink); outline:none; text-align:center; letter-spacing:0.1em; margin-bottom:0.75rem; }
+    .gate-input:focus { border-color:var(--gold); }
+    .gate-btn { width:100%; background:var(--ink); color:var(--white); border:none; padding:0.75rem; font-family:'DM Mono',monospace; font-size:0.68rem; letter-spacing:0.14em; text-transform:uppercase; cursor:pointer; transition:background 0.2s; }
+    .gate-btn:hover { background:var(--rust); }
+    .gate-error { font-family:'DM Mono',monospace; font-size:0.62rem; color:var(--rust); letter-spacing:0.08em; min-height:1rem; }
+    .gate-back { font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--stone); text-decoration:none; margin-top:0.5rem; display:inline-block; }
+    .gate-back:hover { color:var(--rust); }
   </style>
 </head>
 <body>
+
+<div class="gate show" id="gate">
+  <div class="gate-inner">
+    <p class="gate-eyebrow">Brooks Groves · Memoir</p>
+    <h1 class="gate-title">Private Archive</h1>
+    <p class="gate-sub">These are personal essays — still being written, still being figured out. Password required.</p>
+    <input type="password" class="gate-input" id="gate-input" placeholder="password" autocomplete="off">
+    <button class="gate-btn" onclick="checkPassword()">Enter</button>
+    <p class="gate-error" id="gate-error"></p>
+    <a href="https://brooksgroves.com" class="gate-back">← brooksgroves.com</a>
+  </div>
+</div>
 <div class="topline"></div>
 <header>
   <div class="masthead-inner">
@@ -144,5 +171,32 @@
     </div>
   </div>
 </footer>
+
+<script>
+  const MEMOIR_KEY = 'memoir_auth';
+  const MEMOIR_PW  = 'memory';
+
+  function checkPassword() {
+    const val = document.getElementById('gate-input').value.trim().toLowerCase();
+    if (val === MEMOIR_PW) {
+      sessionStorage.setItem(MEMOIR_KEY, '1');
+      document.getElementById('gate').classList.remove('show');
+      document.getElementById('gate-error').textContent = '';
+    } else {
+      document.getElementById('gate-error').textContent = 'incorrect password';
+      document.getElementById('gate-input').value = '';
+      document.getElementById('gate-input').focus();
+    }
+  }
+
+  document.getElementById('gate-input').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') checkPassword();
+  });
+
+  // Check session on load
+  if (sessionStorage.getItem(MEMOIR_KEY) === '1') {
+    document.getElementById('gate').classList.remove('show');
+  }
+</script>
 </body>
 </html>
