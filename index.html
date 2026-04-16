@@ -21,38 +21,40 @@
     .topline { height:4px; background:linear-gradient(90deg,var(--rust) 0%,var(--gold) 50%,var(--sage) 100%); }
 
     header { border-bottom:2px solid var(--ink); padding:0 clamp(1.5rem,5vw,4rem); position:sticky; top:0; background:var(--parchment); z-index:100; }
-    .masthead-inner { display:flex; align-items:center; justify-content:space-between; max-width:860px; margin:0 auto; padding:0.75rem 0; }
-    .site-name { font-family:'Playfair Display',serif; font-size:1.3rem; font-weight:900; text-decoration:none; color:var(--ink); }
-    .back-link { font-family:'DM Mono',monospace; font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; text-decoration:none; color:var(--stone); }
-    .back-link:hover { color:var(--rust); }
+    .masthead-inner { display:flex; align-items:center; justify-content:space-between; gap:1rem; max-width:860px; margin:0 auto; padding:0.75rem 0; }
+    .site-name { font-family:'Playfair Display',serif; font-size:clamp(1.1rem,2.5vw,1.5rem); font-weight:900; text-decoration:none; color:var(--ink); }
+    nav { display:flex; gap:1.5rem; align-items:center; }
+    nav a { font-family:'DM Mono',monospace; font-size:0.68rem; letter-spacing:0.12em; text-transform:uppercase; text-decoration:none; color:var(--stone); }
+    nav a:hover { color:var(--rust); }
 
     .page-header { max-width:860px; margin:0 auto; padding:clamp(3rem,6vw,5rem) clamp(1.5rem,5vw,4rem) 2rem; border-bottom:1px solid var(--mist); }
-    .page-eyebrow { font-family:'DM Mono',monospace; font-size:0.65rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--stone); margin-bottom:0.75rem; }
+    .page-eyebrow { font-family:'DM Mono',monospace; font-size:0.68rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--stone); margin-bottom:0.75rem; }
+    .page-eyebrow a { color:var(--stone); text-decoration:none; }
+    .page-eyebrow a:hover { color:var(--rust); }
     .page-title { font-family:'Playfair Display',serif; font-size:clamp(2rem,5vw,3.5rem); font-weight:900; line-height:1.05; letter-spacing:-0.02em; margin-bottom:0.75rem; }
     .page-title em { font-style:italic; color:var(--rust); }
     .page-sub { font-size:0.95rem; color:var(--stone); max-width:580px; line-height:1.8; }
 
     .page-content { max-width:860px; margin:0 auto; padding:clamp(2rem,5vw,4rem) clamp(1.5rem,5vw,4rem); }
-    .section-label { font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--stone); padding-bottom:0.75rem; border-bottom:2px solid var(--ink); margin-bottom:0; }
 
-    /* MEMOIR ROWS */
-    .memoir-list { display:flex; flex-direction:column; }
-    .memoir-item { padding:1.5rem 0; border-bottom:1px solid var(--mist); }
-    .memoir-item:last-child { border-bottom:none; }
+    .section-label { font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--stone); padding-bottom:0.75rem; border-bottom:2px solid var(--ink); margin-bottom:0; display:flex; justify-content:space-between; align-items:baseline; }
 
-    .memoir-tags { display:flex; gap:0.4rem; flex-wrap:wrap; margin-bottom:0.5rem; }
-    .memoir-tag { font-family:'DM Mono',monospace; font-size:0.52rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--stone); background:var(--cream); border:1px solid var(--mist); padding:0.2rem 0.55rem; border-radius:4px; text-decoration:none; display:inline-block; transition:background 0.15s,border-color 0.15s,color 0.15s; }
-    .memoir-tag:hover { background:var(--gold); border-color:var(--gold); color:var(--white); }
+    .writing-list { display:flex; flex-direction:column; }
+    .writing-item { padding:1.5rem 0; border-bottom:1px solid var(--mist); }
+    .writing-item:last-child { border-bottom:none; }
 
-    .memoir-kicker { font-family:'DM Mono',monospace; font-size:0.55rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--stone); margin-bottom:0.35rem; }
-    .memoir-title-link { text-decoration:none; color:inherit; display:block; margin-bottom:0.35rem; }
-    .memoir-hed { font-family:'Playfair Display',serif; font-size:1.2rem; font-weight:700; line-height:1.25; color:var(--ink); transition:color 0.15s; }
-    .memoir-title-link:hover .memoir-hed { color:var(--rust); }
-    .memoir-dek { font-size:0.875rem; color:var(--stone); line-height:1.65; margin-bottom:0.5rem; font-style:italic; }
-    .memoir-read { font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--gold); text-decoration:none; display:inline-block; }
-    .memoir-read:hover { color:var(--rust); }
+    .writing-tags { display:flex; gap:0.4rem; flex-wrap:wrap; margin-bottom:0.5rem; }
+    .writing-tag { font-family:'DM Mono',monospace; font-size:0.52rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--stone); background:var(--cream); border:1px solid var(--mist); padding:0.2rem 0.55rem; border-radius:4px; text-decoration:none; display:inline-block; transition:background 0.15s,border-color 0.15s,color 0.15s; }
+    .writing-tag:hover { background:var(--gold); border-color:var(--gold); color:var(--white); }
 
-    /* NOTE */
+    .writing-kicker { font-family:'DM Mono',monospace; font-size:0.55rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--stone); margin-bottom:0.35rem; }
+    .writing-title-link { text-decoration:none; color:inherit; display:block; margin-bottom:0.35rem; }
+    .writing-hed { font-family:'Playfair Display',serif; font-size:1.2rem; font-weight:700; line-height:1.25; color:var(--ink); transition:color 0.15s; }
+    .writing-title-link:hover .writing-hed { color:var(--rust); }
+    .writing-dek { font-size:0.875rem; color:var(--stone); line-height:1.65; margin-bottom:0.5rem; font-style:italic; }
+    .writing-read { font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--gold); text-decoration:none; display:inline-block; }
+    .writing-read:hover { color:var(--rust); }
+
     .memoir-note { border-left:3px solid var(--mist); padding:1.25rem 1.5rem; margin-top:3rem; background:var(--cream); }
     .memoir-note-label { font-family:'DM Mono',monospace; font-size:0.55rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--stone); margin-bottom:0.5rem; }
     .memoir-note p { font-size:0.82rem; color:var(--stone); line-height:1.7; font-style:italic; }
@@ -61,16 +63,20 @@
     .footer-inner { max-width:860px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:2rem; flex-wrap:wrap; }
     .footer-name { font-family:'Playfair Display',serif; font-size:0.95rem; font-weight:700; color:var(--white); }
     .footer-tagline { font-family:'DM Mono',monospace; font-size:0.52rem; color:var(--stone); margin-top:0.2rem; }
-    .footer-link { font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; text-decoration:none; color:var(--stone); }
-    .footer-link:hover { color:var(--gold); }
+    .footer-links { display:flex; gap:1.5rem; }
+    .footer-links a { font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; text-decoration:none; color:var(--stone); }
+    .footer-links a:hover { color:var(--gold); }
   </style>
 </head>
 <body>
 <div class="topline"></div>
 <header>
   <div class="masthead-inner">
-    <a href="/" class="site-name">Brooks Groves · Memoir</a>
-    <a href="https://brooksgroves.com" class="back-link">← brooksgroves.com</a>
+    <a href="https://brooksgroves.com" class="site-name">Brooks Groves</a>
+    <nav>
+      <a href="https://brooksgroves.com/writing/">Writing</a>
+      <a href="https://brooksgroves.com">Home</a>
+    </nav>
   </div>
 </header>
 
@@ -81,44 +87,46 @@
 </div>
 
 <div class="page-content">
-  <div class="section-label">All Pieces</div>
-  <div class="memoir-list">
+  <div class="section-label"><span>All Pieces</span><span>memoir.brooksgroves.com</span></div>
+  <div class="writing-list">
 
-    <div class="memoir-item">
-      <div class="memoir-tags">
-        <a href="https://brooksgroves.com/tags.html#Memoir" class="memoir-tag">Memoir</a>
-        <a href="https://brooksgroves.com/tags.html#Concerts" class="memoir-tag">Concerts</a>
-        <a href="https://brooksgroves.com/tags.html#1990s" class="memoir-tag">1990s</a>
-        <a href="https://brooksgroves.com/tags.html#San%20Francisco" class="memoir-tag">San Francisco</a>
+    <div class="writing-item">
+      <div class="writing-tags">
+        <a href="https://brooksgroves.com/tags.html#Memoir" class="writing-tag">Memoir</a>
+        <a href="https://brooksgroves.com/tags.html#San%20Francisco" class="writing-tag">San Francisco</a>
+        <a href="https://brooksgroves.com/tags.html#1990s" class="writing-tag">1990s</a>
+        <a href="https://brooksgroves.com/tags.html#Groveland" class="writing-tag">Groveland</a>
+        <a href="https://brooksgroves.com/tags.html#Star%20Wars" class="writing-tag">Star Wars</a>
       </div>
-      <div class="memoir-kicker">Concert memoir · New Year's Eve 1991 · ~12 min read</div>
-      <a href="/cow-palace-nye-1991.html" class="memoir-title-link">
-        <h2 class="memoir-hed">The Night the Cow Palace Changed Everything</h2>
+      <div class="writing-kicker">Lower Haight · Early 1990s · ~1,200 words</div>
+      <a href="/the-midtown.html" class="writing-title-link">
+        <h2 class="writing-hed">The Midtown</h2>
       </a>
-      <p class="memoir-dek">New Year's Eve, 1991. Four guys drove over Donner Pass in a snowstorm to see the Chili Peppers. Pearl Jam and Nirvana were opening. Nobody knew it yet, but the world was about to change.</p>
-      <a href="/cow-palace-nye-1991.html" class="memoir-read">Read →</a>
+      <p class="writing-dek">A dark bar in the Lower Haight, a best friend from Groveland, cheap beer, the aspiring Lucasfilm creature designer, and the most unresolvable argument in the galaxy.</p>
+      <a href="/the-midtown.html" class="writing-read">Read →</a>
     </div>
 
-    <div class="memoir-item">
-      <div class="memoir-tags">
-        <a href="https://brooksgroves.com/tags.html#Memoir" class="memoir-tag">Memoir</a>
-        <a href="https://brooksgroves.com/tags.html#San%20Francisco" class="memoir-tag">San Francisco</a>
-        <a href="https://brooksgroves.com/tags.html#1990s" class="memoir-tag">1990s</a>
-        <a href="https://brooksgroves.com/tags.html#Groveland" class="memoir-tag">Groveland</a>
+    <div class="writing-item">
+      <div class="writing-tags">
+        <a href="https://brooksgroves.com/tags.html#Memoir" class="writing-tag">Memoir</a>
+        <a href="https://brooksgroves.com/tags.html#Concerts" class="writing-tag">Concerts</a>
+        <a href="https://brooksgroves.com/tags.html#1990s" class="writing-tag">1990s</a>
+        <a href="https://brooksgroves.com/tags.html#San%20Francisco" class="writing-tag">San Francisco</a>
+        <a href="https://brooksgroves.com/tags.html#Music" class="writing-tag">Music</a>
       </div>
-      <div class="memoir-kicker">Lower Haight · Early 1990s · ~1,200 words</div>
-      <a href="/the-midtown.html" class="memoir-title-link">
-        <h2 class="memoir-hed">The Midtown</h2>
+      <div class="writing-kicker">Concert Memoir · New Years Eve 1991 · ~12 min read</div>
+      <a href="/cow-palace-nye-1991.html" class="writing-title-link">
+        <h2 class="writing-hed">The Night the Cow Palace Changed Everything</h2>
       </a>
-      <p class="memoir-dek">A dark bar in the Lower Haight, a best friend from Groveland, cheap beer, the aspiring Lucasfilm creature designer, and the most unresolvable argument in the galaxy.</p>
-      <a href="/the-midtown.html" class="memoir-read">Read →</a>
+      <p class="writing-dek">New Years Eve, 1991. Four guys drove over Donner Pass in a snowstorm to see the Chili Peppers. Pearl Jam and Nirvana were opening. Nobody knew it yet, but the world was about to change.</p>
+      <a href="/cow-palace-nye-1991.html" class="writing-read">Read →</a>
     </div>
 
   </div>
 
   <div class="memoir-note">
     <div class="memoir-note-label">A note on these pieces</div>
-    <p>These are personal essays drawn from memory. Some details are exact. Some are approximate. Composite characters appear where real ones have been compressed. The feeling is true. These stories are not affiliated with any institution or individual mentioned, and reflect only the author's own recollections.</p>
+    <p>These are personal essays drawn from memory. Some details are exact. Some are approximate. The feeling is true.</p>
   </div>
 
 </div>
@@ -129,7 +137,11 @@
       <p class="footer-name">Brooks Groves</p>
       <p class="footer-tagline">memoir.brooksgroves.com</p>
     </div>
-    <a href="https://brooksgroves.com" class="footer-link">brooksgroves.com</a>
+    <div class="footer-links">
+      <a href="https://brooksgroves.com/writing/">Writing</a>
+      <a href="https://brooksgroves.com/tags.html">Tags</a>
+      <a href="https://brooksgroves.com">brooksgroves.com</a>
+    </div>
   </div>
 </footer>
 </body>
