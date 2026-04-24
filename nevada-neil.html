@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nevada Neil — Brooks Groves</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌲</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,900;1,400;1,600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink:#1c1a16; --parchment:#f5f0e8; --cream:#ede8dc;
+      --sage:#4a5c45; --rust:#8b3a2a; --stone:#7a7268;
+      --gold:#c8922a; --mist:#d6d0c4; --white:#fdfaf4;
+      --reno:#2a4a6b; --reno-light:#4a7ab5;
+    }
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    body { background:var(--parchment); color:var(--ink); font-family:'Libre Baskerville',Georgia,serif; font-size:16px; line-height:1.7; overflow-x:hidden; }
+    body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E"); pointer-events:none; z-index:9999; opacity:0.5; }
+    .topline { height:4px; background:linear-gradient(90deg,var(--reno) 0%,var(--gold) 50%,var(--rust) 100%); }
+
+    header { border-bottom:2px solid var(--ink); padding:0 clamp(1.5rem,5vw,4rem); background:var(--parchment); }
+    .masthead-inner { display:flex; align-items:center; justify-content:space-between; gap:1rem; max-width:860px; margin:0 auto; padding:0.75rem 0; }
+    .site-name { font-family:'Playfair Display',serif; font-size:clamp(1.1rem,2.5vw,1.4rem); font-weight:900; text-decoration:none; color:var(--ink); }
+    .header-link { font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; text-decoration:none; color:var(--stone); }
+    .header-link:hover { color:var(--reno); }
+
+    .article-wrap { max-width:720px; margin:0 auto; padding:clamp(3rem,6vw,5rem) clamp(1.5rem,5vw,2rem) clamp(3rem,6vw,5rem); }
+    .article-back { font-family:'DM Mono',monospace; font-size:0.63rem; letter-spacing:0.12em; text-transform:uppercase; text-decoration:none; color:var(--stone); display:inline-block; margin-bottom:2rem; }
+    .article-back:hover { color:var(--reno); }
+    .article-num { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--reno); margin-bottom:0.4rem; }
+    .article-kicker { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--gold); margin-bottom:0.75rem; }
+    .article-title { font-family:'Playfair Display',serif; font-size:clamp(2rem,5vw,3.2rem); font-weight:900; line-height:1.08; letter-spacing:-0.02em; margin-bottom:1rem; }
+    .article-meta { font-family:'DM Mono',monospace; font-size:0.62rem; color:var(--stone); letter-spacing:0.1em; margin-bottom:1rem; display:flex; gap:1.5rem; flex-wrap:wrap; }
+    .article-tags { display:flex; gap:0.5rem; flex-wrap:wrap; padding-bottom:2rem; border-bottom:1px solid var(--mist); margin-bottom:2.5rem; }
+    .article-tag-pill { font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--stone); border:1px solid var(--mist); padding:0.3rem 0.7rem; }
+
+    .article-body { font-size:1.05rem; line-height:1.85; }
+    .article-body p { margin-bottom:1.5rem; }
+    .article-body p:first-of-type::first-letter { font-family:'Playfair Display',serif; font-size:3.5rem; font-weight:900; float:left; line-height:0.85; margin:0.1em 0.08em 0 0; color:var(--rust); }
+    .article-body h2 { font-family:'Playfair Display',serif; font-size:1.25rem; font-weight:700; margin:2.5rem 0 1rem; padding-top:2rem; border-top:1px solid var(--mist); color:var(--reno); }
+    .article-body hr { border:none; border-top:2px solid var(--mist); margin:2.5rem 0; }
+    .article-body blockquote { border-left:3px solid var(--gold); padding:0.5rem 0 0.5rem 1.25rem; margin:1.5rem 0; font-style:italic; color:var(--stone); }
+    .article-body em { font-style:italic; }
+    .article-body strong { font-weight:700; }
+
+    .pullquote { border-left:3px solid var(--gold); padding:1rem 1.5rem; margin:2rem 0; background:var(--cream); }
+    .pullquote p { font-family:'Playfair Display',serif; font-size:1.05rem; font-style:italic; line-height:1.65; color:var(--ink); margin:0; }
+
+    .scene-break { text-align:center; color:var(--mist); margin:2.5rem 0; font-size:1.2rem; letter-spacing:0.5rem; }
+
+    .article-footer { margin-top:3rem; padding-top:2rem; border-top:2px solid var(--ink); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
+    .article-footer-author { font-family:'DM Mono',monospace; font-size:0.62rem; color:var(--stone); letter-spacing:0.1em; }
+    .article-footer-nav { display:flex; gap:1.5rem; }
+    .article-footer-nav a { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.12em; text-transform:uppercase; text-decoration:none; color:var(--stone); }
+    .article-footer-nav a:hover { color:var(--reno); }
+
+    footer { background:var(--ink); color:var(--stone); padding:2rem clamp(1.5rem,5vw,4rem); margin-top:4rem; }
+    .footer-inner { max-width:860px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:2rem; flex-wrap:wrap; }
+    .footer-name { font-family:'Playfair Display',serif; font-size:0.95rem; font-weight:700; color:var(--white); }
+    .footer-tagline { font-family:'DM Mono',monospace; font-size:0.52rem; color:var(--stone); margin-top:0.2rem; }
+    .footer-link { font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; text-decoration:none; color:var(--stone); }
+    .footer-link:hover { color:var(--gold); }
+  </style>
+</head>
+<body>
+
+<div class="topline"></div>
+
+<header>
+  <div class="masthead-inner">
+    <a href="https://memoir.brooksgroves.com" class="site-name">Brooks Groves</a>
+    <a href="https://memoir.brooksgroves.com" class="header-link">← Memoir</a>
+  </div>
+</header>
+
+<div class="article-wrap">
+
+  <a href="https://memoir.brooksgroves.com" class="article-back">← All Pieces</a>
+
+  <div class="article-num">Memoir · Reno · 1990s</div>
+  <p class="article-kicker">UNR · The Sundowners · Ominous Pinnipeds · The Westin Seattle</p>
+  <h1 class="article-title">Nevada Neil</h1>
+  <div class="article-meta">
+    <span>Reno, NV · 1990–1997</span>
+    <span>Brooks Groves</span>
+  </div>
+
+  <div class="article-tags">
+    <span class="article-tag-pill">Reno</span>
+    <span class="article-tag-pill">UNR</span>
+    <span class="article-tag-pill">1990s</span>
+    <span class="article-tag-pill">Memoir</span>
+    <span class="article-tag-pill">Music</span>
+    <span class="article-tag-pill">Westin Stories</span>
+  </div>
+
+  <div class="article-body">
+
+    <p>I met Neil in Reno in the early 1990s, back when Reno was still very much Reno — before everything got polished, before the internet flattened personalities, before you could fact-check a story before it even finished being told.</p>
+
+    <p>I had just landed at UNR, trying to figure things out, same as everyone else. My friend Todd — who I'd grown up with in Tuolumne County, same foothill towns, same Sierra Nevada backdrop — was already there, having come out for the ski team. That helped. It gave me an anchor. We were college kids doing college things, figuring out where the edges were and how close we wanted to get to them.</p>
+
+    <p>Todd had gotten involved with Sigma Nu for a while. I considered it briefly, but it felt like too much — too expensive, too much of a pull away from what I thought I was there to do. I had my sights on the tennis team anyway, which didn't pan out the way I hoped. But that's another story.</p>
+
+    <p>Somewhere along Todd's Sigma Nu orbit, he met Neil. And eventually, so did I.</p>
+
+    <hr>
+
+    <h2>The Terrain</h2>
+
+    <p>Neil was different right away. Todd and I were foothill kids — preppy in that Sierra Nevada way. Neil was a Reno kid. Homegrown. He knew the terrain — not just the geography, but the people, the layers, the way things actually worked when the tourists weren't looking.</p>
+
+    <p>He'd left Sigma Nu himself by the time we connected — grades, from what I understood. It was the '90s. That kind of thing happened. But what he left behind there, he picked up somewhere else.</p>
+
+    <p>Neil was part of an underground thing called the Sundowners. Not a fraternity in any official sense — more like a proving ground. A drinking fraternity, if you want to call it that, but that doesn't quite capture it. It was more like a test of limits, of endurance, of how far you could go and still show up the next day with a story worth telling.</p>
+
+    <p>He was proud of it. And at that age, so were we.</p>
+
+    <div class="pullquote"><p>Eventually, I found my way into that orbit. There was no formal initiation — just a moment where you realized you'd crossed some invisible line. For me, it was at a house party, somewhere deep into what could only be described as proper Nevada-style excess. The kind where the night stops having chapters and just becomes one long, continuous event.</p></div>
+
+    <p>After that, you were in.</p>
+
+    <p>Neil was already deep in it. Fully committed. The kind of guy who didn't just go to the edge, but leaned over it, waved back, and then figured out how to make it entertaining for everyone else.</p>
+
+    <hr>
+
+    <h2>The Ominous Pinnipeds</h2>
+
+    <p>He had a Honda Civic that, in retrospect, had no business doing the things we asked it to do. But it did.</p>
+
+    <p>We took it everywhere — up into Tahoe, out into the Sierra, down dirt roads that weren't really roads. Desert runs, snowstorms, half-baked camping trips where we were still figuring out what "prepared" even meant. We had rough nights — cold, under-equipped, occasionally questioning our decisions — but they always turned into stories.</p>
+
+    <p>At some point, I ended up with this poster of pinnipeds — seals — and through some late-night misread or inside joke that made perfect sense at the time, they became "ominous pinnipeds." That became the moniker for those trips. No real reason. Just one of those things that sticks, that means something specific to a specific group of people at a specific moment in their lives.</p>
+
+    <p>Those were the Ominous Pinniped expeditions.</p>
+
+    <p>Neil was the engine of most of it. Always up for it. Always pushing things a little further than necessary, which is a quality that gets you into trouble and also makes you worth knowing.</p>
+
+    <hr>
+
+    <h2>Clean-Cut</h2>
+
+    <p>He had this way about him — looked like a clean-cut, preppy kid. The kind of guy you'd expect to be completely squared away. Collar pressed, hair right, nothing out of place.</p>
+
+    <p>Which made it even better, because he absolutely was not.</p>
+
+    <p>He was the guy people talked about the next day.</p>
+
+    <p><em>Did you see what Neil did?</em></p>
+
+    <p><em>Did you hear what happened to Neil?</em></p>
+
+    <p>There was always something. One time at Lawlor Events Center, he decided it was a good idea to start swinging on the ropes attached to the massive flagpoles outside. Not just casually — he got momentum. Higher and higher, really committing to it, until eventually physics caught up with him and he slammed into the pole and slid down it like something out of a cartoon. He took a little break from things after that. Not long, but enough.</p>
+
+    <hr>
+
+    <h2>The Circuit</h2>
+
+    <p>We did the whole thing — Pyramid Lake parties that turned into full-on ragers, backpacking trips that somehow ended at random shoreline parties with total strangers, concerts that blurred together into one long, loud, chaotic memory.</p>
+
+    <p>There was one Tahoe trip — days out in the backcountry — where we came out at the lake and walked straight into a massive party. Didn't know anyone. Didn't matter. We blended in like we belonged there all along, because in a sense we did.</p>
+
+    <p>Eventually it got out of hand — noise, chaos, someone called it in — and the police showed up. That one didn't go great for Neil. But weirdly, that was around the time things started to shift for him, just slightly. Not overnight. But you could see the dial start to turn, just a little.</p>
+
+    <hr>
+
+    <h2>The Shows</h2>
+
+    <p>The concerts — that was peak Neil.</p>
+
+    <p>Punk, hardcore, grunge — whatever was loud and fast and just a little dangerous. He didn't just go to shows. He <em>participated</em>. Climbing on stage. Stage diving. Sometimes the crowd caught him. Sometimes they didn't.</p>
+
+    <p>One time in a pit at a 7 Seconds show — they were from Reno, hometown band, which added a certain energy — there was, for reasons no one ever fully understood, a giant metal girder right in the middle of the floor. Neil found it at full speed. Hard. Down, up, back at it again. On stage again. There was no off switch.</p>
+
+    <p>And yeah — we made it to that show at the Cow Palace. New Year's Eve 1991. The Red Hot Chili Peppers headlining, with Nirvana and Pearl Jam as support. The kind of night that feels bigger in memory than it probably was at the time, but that's how you know it mattered — when the memory keeps growing instead of shrinking. We drove over Donner Pass in a snowstorm to get there. All of us. Because that's what you did.</p>
+
+    <p>Three months later, Nevermind knocked Michael Jackson off the number one spot. A year after that, Pearl Jam was outselling everyone. The bands we watched that night as openers would define the next decade. We didn't know that yet. We were just in the room, which turned out to be enough.</p>
+
+    <hr>
+
+    <h2>Beers of the World</h2>
+
+    <p>Not everything was chaos. Well — most things were, but in different ways.</p>
+
+    <p>One time I ended up with what had to be close to a thousand drink tickets from a guy at work. No expiration, no real oversight. So naturally, we decided to drink our way around the world at the Eldorado's "Beers of the World" bar. Twice. I'm fairly certain our photos are still somewhere in that building, quietly warning future generations.</p>
+
+    <p>Neil had his crew too — Steve Aramini, Earl, good guys with different energies, all of us orbiting the same chaotic center. It was one of those times in life where everyone is different, everyone is becoming something, and somehow it all works. Because it's Reno. Because it's the '90s. Because that's what you do when you're twenty-something and the city is wide open and nobody's asking you to be anything yet.</p>
+
+    <hr>
+
+    <h2>Different Directions</h2>
+
+    <p>Eventually, life started pulling things in different directions. That's not a complaint. That's just what life does.</p>
+
+    <p>I moved up to Seattle. Neil stayed Neil — but he also started finding lanes that worked. He ended up working for Nevada Senator Richard Bryan for a few years, which suited him more than you might expect. There was something about it — the pace, the people, the behind-the-scenes energy of a Senate office — that he could plug into. Same guy, completely different arena.</p>
+
+    <p>Later, Microsoft. A different kind of stage entirely, but he adapted the same way he always had — figured out the system, found his angle, made it work.</p>
+
+    <p>Somewhere along the way, he met someone, settled down, built a life. North Carolina now. Family. A kid who's probably in college by this point.</p>
+
+    <p>The edges softened. But they didn't disappear.</p>
+
+    <hr>
+
+    <h2>The Westin</h2>
+
+    <p>Because there was that one time in Seattle.</p>
+
+    <p>Neil was in town for a Microsoft conference, staying at the Westin Seattle. I was working bell desk. He and Earl were already getting warmed up by the time I got there.</p>
+
+    <p>Neil had found a bartender — and, more importantly, a conversation about how "metal" he was. This escalated quickly, the way things always did with Neil. The bartender started pouring. Double. Triple. Then just more. A test. <em>You that metal?</em> Neil said yes. And then proved it.</p>
+
+    <p>All of it. Gone.</p>
+
+    <p>He stood up — and immediately passed out. Took out a line of bar stools on the way down. Middle of the afternoon. Middle of the week. There was a lawyers' conference in full swing in the adjacent ballroom. Blood. Missing tooth. Absolute scene.</p>
+
+    <p>I wasn't even there for the main event. I showed up to the aftermath, which is honestly the correct way to experience a Neil story. Got him out of there, somehow. Back to my place. Cleaned him up with my hiking first aid kit, which up until that point had never seen anything more serious than a blister.</p>
+
+    <p>This was different.</p>
+
+    <p>He woke up. Looked like hell. Missing a tooth.</p>
+
+    <p>And said: <em>"Let's go to the Slayer show."</em></p>
+
+    <div class="pullquote"><p>So we did. And he went just as hard as if it had been the best, most uneventful day of his life.</p></div>
+
+    <p>That was Neil.</p>
+
+    <hr>
+
+    <h2>Now and Then</h2>
+
+    <p>Eventually, the teeth got fixed. The pace slowed. I'd see him now and then back in Reno — River Festival, random meetups, a few beers over a table somewhere. He got into BBQ for a while. I was vegan at the time, which made for its own kind of contrast at the table.</p>
+
+    <p>Different paths, still intersecting for a while.</p>
+
+    <p>Then fewer intersections. Then mostly just updates — photos, glimpses of a life that looks solid, grounded, genuinely good.</p>
+
+    <hr>
+
+    <p>But if you go back — if you drop yourself into Reno in the 1990s, into those nights, those trips, those shows, those moments where things could have gone sideways but somehow didn't — and you ask whether he was metal enough, whether he was all the way in, whether he was the kind of person who made a place and a time worth remembering —</p>
+
+    <p>There's really only one answer.</p>
+
+    <p>He was all that and more.</p>
+
+    <p>He was Nevada Neil.</p>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-footer-author">Brooks Groves · Reno, NV · 1990s</div>
+    <div class="article-footer-nav">
+      <a href="https://memoir.brooksgroves.com">← All Pieces</a>
+      <a href="https://brooksgroves.com/writing/">Writing ↗</a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <p class="footer-name">Brooks Groves</p>
+      <p class="footer-tagline">memoir.brooksgroves.com</p>
+    </div>
+    <a href="https://brooksgroves.com" class="footer-link">brooksgroves.com ↗</a>
+  </div>
+</footer>
+
+</body>
+</html>
