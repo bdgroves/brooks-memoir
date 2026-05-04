@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Purple Octopus / Rainbow Pools — Brooks Groves</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌲</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,900;1,400;1,600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink:#1c1a16; --parchment:#f5f0e8; --cream:#ede8dc;
+      --sage:#4a5c45; --rust:#8b3a2a; --stone:#7a7268;
+      --gold:#c8922a; --mist:#d6d0c4; --white:#fdfaf4;
+      --sierra:#4a6b3a; --foothills:#8b6914;
+    }
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    body { background:var(--parchment); color:var(--ink); font-family:'Libre Baskerville',Georgia,serif; font-size:16px; line-height:1.7; overflow-x:hidden; }
+    body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E"); pointer-events:none; z-index:9999; opacity:0.5; }
+    .topline { height:4px; background:linear-gradient(90deg,var(--sierra) 0%,var(--foothills) 50%,var(--rust) 100%); }
+    header { border-bottom:2px solid var(--ink); padding:0 clamp(1.5rem,5vw,4rem); background:var(--parchment); }
+    .masthead-inner { display:flex; align-items:center; justify-content:space-between; gap:1rem; max-width:860px; margin:0 auto; padding:0.75rem 0; }
+    .site-name { font-family:'Playfair Display',serif; font-size:clamp(1.1rem,2.5vw,1.4rem); font-weight:900; text-decoration:none; color:var(--ink); }
+    .header-link { font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; text-decoration:none; color:var(--stone); }
+    .header-link:hover { color:var(--sierra); }
+    .article-wrap { max-width:720px; margin:0 auto; padding:clamp(3rem,6vw,5rem) clamp(1.5rem,5vw,2rem) clamp(3rem,6vw,5rem); }
+    .article-back { font-family:'DM Mono',monospace; font-size:0.63rem; letter-spacing:0.12em; text-transform:uppercase; text-decoration:none; color:var(--stone); display:inline-block; margin-bottom:2rem; }
+    .article-back:hover { color:var(--sierra); }
+    .article-num { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--sierra); margin-bottom:0.4rem; }
+    .article-kicker { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--foothills); margin-bottom:0.75rem; }
+    .article-title { font-family:'Playfair Display',serif; font-size:clamp(2rem,5vw,3.2rem); font-weight:900; line-height:1.08; letter-spacing:-0.02em; margin-bottom:1rem; }
+    .article-meta { font-family:'DM Mono',monospace; font-size:0.62rem; color:var(--stone); letter-spacing:0.1em; margin-bottom:1rem; display:flex; gap:1.5rem; flex-wrap:wrap; }
+    .article-tags { display:flex; gap:0.5rem; flex-wrap:wrap; padding-bottom:2rem; border-bottom:1px solid var(--mist); margin-bottom:2.5rem; }
+    .article-tag-pill { font-family:'DM Mono',monospace; font-size:0.58rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--stone); background:var(--cream); border:1px solid var(--mist); padding:0.25rem 0.65rem; border-radius:4px; text-decoration:none; display:inline-block; transition:background 0.15s,border-color 0.15s,color 0.15s; }
+    .article-tag-pill:hover { background:var(--gold); border-color:var(--gold); color:var(--white); }
+    .disclaimer { background:var(--cream); border-left:3px solid var(--stone); padding:1rem 1.5rem; margin-bottom:2.5rem; }
+    .disclaimer p { font-size:0.82rem; color:var(--stone); line-height:1.7; font-style:italic; }
+    .article-body { font-size:1.05rem; line-height:1.85; }
+    .article-body p { margin-bottom:1.5rem; }
+    .article-body p:first-of-type::first-letter { font-family:'Playfair Display',serif; font-size:3.5rem; font-weight:900; float:left; line-height:0.85; margin:0.1em 0.08em 0 0; color:var(--sierra); }
+    .article-body hr { border:none; border-top:2px solid var(--mist); margin:2.5rem 0; }
+    .article-body em { font-style:italic; }
+    .article-body strong { font-weight:700; }
+    .pullquote { border-left:3px solid var(--foothills); padding:1rem 1.5rem; margin:2rem 0; background:var(--cream); }
+    .pullquote p { font-family:'Playfair Display',serif; font-size:1.05rem; font-style:italic; line-height:1.65; color:var(--ink); margin:0; }
+    .series-box { background:var(--cream); border:1px solid var(--mist); border-left:3px solid var(--sierra); padding:1.25rem 1.5rem; margin:2.5rem 0; }
+    .series-label { font-family:'DM Mono',monospace; font-size:0.55rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--sierra); margin-bottom:0.5rem; }
+    .series-links { display:flex; flex-direction:column; gap:0.4rem; margin-top:0.5rem; }
+    .series-links a { font-size:0.85rem; color:var(--rust); text-decoration:none; }
+    .series-links a:hover { text-decoration:underline; }
+    .article-footer { margin-top:3rem; padding-top:2rem; border-top:2px solid var(--ink); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
+    .article-footer-author { font-family:'DM Mono',monospace; font-size:0.62rem; color:var(--stone); letter-spacing:0.1em; }
+    .article-footer-nav { display:flex; gap:1.5rem; }
+    .article-footer-nav a { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.12em; text-transform:uppercase; text-decoration:none; color:var(--stone); }
+    .article-footer-nav a:hover { color:var(--sierra); }
+    footer { background:var(--ink); color:var(--stone); padding:2rem clamp(1.5rem,5vw,4rem); margin-top:4rem; }
+    .footer-inner { max-width:860px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:2rem; flex-wrap:wrap; }
+    .footer-name { font-family:'Playfair Display',serif; font-size:0.95rem; font-weight:700; color:var(--white); }
+    .footer-tagline { font-family:'DM Mono',monospace; font-size:0.52rem; color:var(--stone); margin-top:0.2rem; }
+    .footer-link { font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; text-decoration:none; color:var(--stone); }
+    .footer-link:hover { color:var(--gold); }
+  </style>
+  <script>
+  (function(){
+    const KEY = 'memoir_auth', PW = 'memory';
+    if (sessionStorage.getItem(KEY) === '1') return;
+    document.documentElement.style.visibility = 'hidden';
+    function buildGate() {
+      var o = document.createElement('div');
+      o.id = 'gate-overlay';
+      o.style.cssText = 'position:fixed;inset:0;background:#f5f0e8;display:flex;align-items:center;justify-content:center;z-index:99999;font-family:Georgia,serif;';
+      o.innerHTML = '<div style="text-align:center;padding:3rem;max-width:380px;width:90%;border:2px solid #1c1a16;background:#f5f0e8;">'
+        + '<div style="font-family:monospace;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:#7a7268;margin-bottom:1rem;">Brooks Groves · Memoir</div>'
+        + '<div style="font-family:Georgia,serif;font-size:1.6rem;font-weight:700;color:#1c1a16;margin-bottom:0.5rem;">Private Archive</div>'
+        + '<div style="font-size:0.85rem;color:#7a7268;margin-bottom:2rem;font-style:italic;">Password required</div>'
+        + '<input id="gate-pw" type="password" placeholder="password" style="width:100%;padding:0.75rem 1rem;background:#ede8dc;border:1px solid #d6d0c4;color:#1c1a16;font-size:1rem;outline:none;margin-bottom:0.75rem;box-sizing:border-box;text-align:center;letter-spacing:0.1em;"/>'
+        + '<div id="gate-err" style="color:#8b3a2a;font-size:0.75rem;margin-bottom:0.75rem;min-height:1rem;"></div>'
+        + '<button id="gate-btn" style="width:100%;padding:0.75rem;background:#1c1a16;border:none;color:#fdfaf4;font-size:0.85rem;cursor:pointer;letter-spacing:0.1em;font-family:monospace;text-transform:uppercase;">Enter</button>'
+        + '<div style="margin-top:1rem;"><a href="https://memoir.brooksgroves.com" style="font-family:monospace;font-size:0.6rem;color:#7a7268;text-transform:uppercase;letter-spacing:0.1em;text-decoration:none;">← All Pieces</a></div>'
+        + '</div>';
+      document.body.appendChild(o);
+      document.documentElement.style.visibility = 'visible';
+      var inp = document.getElementById('gate-pw');
+      inp.focus();
+      function tryPw() {
+        var pw = inp.value.trim().toLowerCase();
+        if (!pw) { document.getElementById('gate-err').textContent = 'Please enter the password.'; return; }
+        if (pw === PW) {
+          sessionStorage.setItem(KEY, '1');
+          document.getElementById('gate-overlay').remove();
+        } else {
+          document.getElementById('gate-err').textContent = 'Incorrect password.';
+          inp.value = ''; inp.focus();
+        }
+      }
+      document.getElementById('gate-btn').addEventListener('click', tryPw);
+      inp.addEventListener('keydown', function(e){ if(e.key==='Enter') tryPw(); });
+    }
+    if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', buildGate); } else { buildGate(); }
+  })();
+  </script>
+</head>
+<body>
+<div class="topline"></div>
+<header>
+  <div class="masthead-inner">
+    <a href="https://brooksgroves.com" class="site-name">Brooks Groves</a>
+    <a href="https://memoir.brooksgroves.com" class="header-link">← Memoir</a>
+  </div>
+</header>
+
+<div class="article-wrap">
+  <a href="https://memoir.brooksgroves.com" class="article-back">← All Pieces</a>
+  <div class="article-num">Sierra Foothills · Fall 1987</div>
+  <p class="article-kicker">Old Priest Grade · Coulterville · The Tuolumne River</p>
+  <h1 class="article-title">Purple Octopus / Rainbow Pools</h1>
+  <div class="article-meta">
+    <span>Tuolumne County, CA · Fall 1987</span>
+    <span>Brooks Groves</span>
+  </div>
+  <div class="article-tags">
+    <a href="https://brooksgroves.com/tags.html#Memoir" class="article-tag-pill">Memoir</a>
+    <a href="https://brooksgroves.com/tags.html#Sierra%20Nevada" class="article-tag-pill">Sierra Nevada</a>
+    <a href="https://brooksgroves.com/tags.html#Groveland" class="article-tag-pill">Groveland</a>
+    <a href="https://brooksgroves.com/tags.html#1980s" class="article-tag-pill">1980s</a>
+    <a href="https://brooksgroves.com/tags.html#Sierra%20Foothills" class="article-tag-pill">Sierra Foothills</a>
+  </div>
+
+  <div class="disclaimer">
+    <p>These stories come from a specific time and place — the Sierra Nevada foothills, the mid-1980s, a particular brand of teenage freedom that doesn't exist anymore and probably shouldn't. They involve substances that were illegal then and mostly still are. I'm not recommending anything. I'm just telling you what happened, as honestly as I can, because some things are too strange and too true to leave unwritten. The names have been changed. The places haven't.</p>
+  </div>
+
+  <div class="article-body">
+
+    <p>It was mid-fall 1987 — Indian Summer in the Sierra Nevada foothills. The days still held warmth but the light had softened, turning everything golden. The hills rolled in waves of dry grass and live oak, the air scented with dust and baked earth. That particular quality of October light you only get at elevation, when summer hasn't quite let go.</p>
+
+    <p>That's when Jake, Mick, and I decided to drop some Purple Octopus.</p>
+
+    <p>We got the blotter from a guy we knew in Sonora, just back from Santa Cruz — the kind of drifter who orbited surf towns and music scenes and various couches and always seemed to materialize when something was about to happen. He handed it over with a wink. <em>From the Bay. Real stuff.</em> The blotter showed a cartoonish cephalopod, arms unfurled and dancing. It came with stories. That was enough.</p>
+
+    <p>I didn't exactly fit in with Jake and Mick visually — they had towering mohawks and full punk flair, and I looked like a preppy kid fresh from tennis lessons. But that was the Bay fringe in the foothills — blended, weird, and fluid. Nobody much cared what you looked like as long as you showed up.</p>
+
+    <hr>
+
+    <p>We started at Mick's old house — now his aunt's. She had this massive vintage shortwave radio console in the living room, a Cold War relic the size of a small refrigerator, all glowing dials and polished walnut. As the acid began to come on we clustered around it, spinning the dial through static and fragments of distant broadcast.</p>
+
+    <p>Then something clicked.</p>
+
+    <p>We tuned into something alive. Not random — <em>intentional</em>. A jittering signal like metal insects tapping out Morse code in a language that had never been a language. High-frequency squeals rising and falling. Chirping pulses looping and warping like digitized birdsong folded through time. Satellites. Military chatter. HBO refracted through the ionosphere. Or something else entirely — something that felt too deliberate, like the universe had found a channel and we had accidentally found it first.</p>
+
+    <p><em>Do you hear that?</em> I asked. My voice sounded underwater.</p>
+
+    <p>Mick leaned close to the console. <em>It's like it's talking back.</em></p>
+
+    <p>Jake was hunched over a notepad, scribbling. <em>What if this is the real signal? Not radio. Not music. But something that was always here, just out of reach.</em></p>
+
+    <div class="pullquote"><p>The room pulsed with meaning. We weren't high. We were initiated into something we couldn't name and couldn't walk back from.</p></div>
+
+    <p>When it got too intense we bolted into the air. We piled into Jake's mom's new Honda Civic — it still smelled new, that particular smell of a car that hasn't had anything happen in it yet — and hit the road.</p>
+
+    <hr>
+
+    <p>Down Old Priest Grade we went.</p>
+
+    <p>If you've never driven Old Priest Grade at night, it's two lanes of steep switchbacks dropping into the valley below Groveland — a plunge that feels, under ordinary circumstances, like falling in slow motion. Under other circumstances it feels like a portal. We went down it with the windows open and the cassette deck running, and I lay in the backseat staring up through the rear window at stars that were too bright and too close, satellites moving silently overhead, and I had the distinct feeling that something had shifted — that we were past some membrane we hadn't known was there.</p>
+
+    <p>The soundtrack: Butthole Surfers' <em>Locust Abortion Technician</em> — chaotic noise loops that matched exactly what was happening inside my skull. Then Dagnasty, Agent Orange, some early hip-hop Mick had found somewhere, lo-fi punk mixes with hand-labeled cassette cases. A swirl of feedback and distortion and breakbeats that felt less like music and more like evidence.</p>
+
+    <hr>
+
+    <p>We rolled into Coulterville — Gold Rush town, frozen in amber. Sidewalks that creaked. The Hotel Jeffery at the center with its saloon doors and its century of accumulated strangeness. We ducked into the small museum beside it.</p>
+
+    <p>The room was dim and crowded with mining relics — gold pans, dynamite boxes, the detritus of the 1849 rush. But it was the taxidermy that stopped me cold. Bears mid-roar. Birds mid-flight. A wall of tarantulas under glass, each one preserved in mid-crawl. On the acid they seemed to breathe. I could almost hear their legs tapping — a dry rhythmic signal that echoed the shortwave sounds from the radio.</p>
+
+    <p>Jake had gone into the saloon. He burst back out moments later, breathless and laughing.</p>
+
+    <p><em>Dude. I walked in like I owned the place. Said 'Hail the comet' or something. Everyone just stared.</em></p>
+
+    <p>Mick cackled. <em>You probably summoned a cowboy ghost.</em></p>
+
+    <p><em>We have to go,</em> Jake added. <em>Like, now.</em></p>
+
+    <p>No argument from anyone.</p>
+
+    <hr>
+
+    <p>Back on Highway 49, then 120. Indian Summer still in the air, pine and dust and the particular smell of Sierra Nevada nights when the temperature drops just enough to wake everything up. The stars didn't blink — they burned.</p>
+
+    <p>Rainbow Pools.</p>
+
+    <p>Our spot. We'd spent countless days there over the years — we knew every echo, every rock, where the current ran fast and where it went still. Rainbow Pools is carved from the Tuolumne River below a waterfall, the water cold and clear and deep. There's a cliff we called the Cliff House — thirty feet or so, maybe more — where an old hotel had stood before the river reclaimed the land. Enough height to make you pause even on an ordinary day.</p>
+
+    <p>It was pitch black by the time we got there. Who knew what time. We climbed by feel and by the sound of the water, hearts going, heads full of light. The air buzzed with insects and the river's low murmur seemed to echo from everywhere at once. Time had gone elastic — oil paint dripping down stone.</p>
+
+    <p>We sat at the top and talked.</p>
+
+    <p>Not just talked. <em>Communed</em> is the right word, embarrassing as it is to write. Everything felt connected. High school was a distant orbit. The future was both infinite and microscopic. The stars hung so close you felt like you could touch them if you just reached a little further than seemed reasonable.</p>
+
+    <p><em>I feel like we're on the edge of something,</em> Mick said. <em>Like existence is one thin membrane and we're pressing through.</em></p>
+
+    <p>Jake picked up a rock and tossed it over the edge. <em>Or maybe we're already through. Just don't know it yet.</em></p>
+
+    <p>We agreed: one jump. In, out. No games.</p>
+
+    <hr>
+
+    <p>Jake went first — he'd jumped it a hundred times in daylight. He twisted through the air and disappeared. Then up again. Surfacing clean.</p>
+
+    <p>Mick went. His tie-dye seemed to ignite in the dark. The pool exploded in what looked like paisley. Maybe that's why they called it Rainbow Pools. He hit and swam to shore. The ripples kept going long after he was out.</p>
+
+    <p>My turn.</p>
+
+    <p>I didn't think. You can't think at that moment — there's no version of that decision that survives being thought about. You just go.</p>
+
+    <p>The air came apart around me in ribbons. The stars rotated. Gravity gave way to something else entirely.</p>
+
+    <p>I hit the water and entered a different state entirely — underwater, silent, cold, suddenly sacred. The Tuolumne at night is its own universe. I floated in it for what felt like a long time, watching something luminous move past me — a jellyfish of light, or a memory, or just what water looks like when your eyes are like that. It didn't matter what it was. It was perfect.</p>
+
+    <p>I surfaced. Jake and Mick were watching from the rocks.</p>
+
+    <p><em>Did you see that?</em> I asked.</p>
+
+    <p>They nodded. They'd seen something too, though none of us could have said exactly what.</p>
+
+    <hr>
+
+    <p>The cold Tuolumne sobered us — not completely, but enough. We dried on the rocks and watched the sky go through its paces. Their mohawks had drooped. We didn't talk much. There wasn't much left to say.</p>
+
+    <p>Then it was time to go home.</p>
+
+    <p>Jake dropped us off in Groveland. Back through the golden hills, silvered now by moonlight, still slightly Van Gogh at the edges. I slipped inside quiet. Slept hard. In the morning it was school again.</p>
+
+    <p>But we had this story now.</p>
+
+    <p>A thread of color stitched into the fabric of ordinary days — still glowing, even now. Sometimes when the world goes flat I close my eyes and hear that signal again from the shortwave, those tapping tones. I feel the freefall off the Cliff House and the cold hush of the Tuolumne underneath. And for a moment it's all still there. The stars too bright. The hills rolling gold and mad. Everything alive and talking, if you knew how to listen.</p>
+
+  </div>
+
+  <div class="series-box">
+    <div class="series-label">Sierra Foothills — More from this collection</div>
+    <div class="series-links">
+      <a href="/windowpane.html">← Windowpane</a>
+    </div>
+  </div>
+
+  <div class="article-footer">
+    <div class="article-footer-author">Brooks Groves · Tuolumne County, CA · Fall 1987</div>
+    <div class="article-footer-nav">
+      <a href="https://memoir.brooksgroves.com">← All Pieces</a>
+      <a href="https://brooksgroves.com/writing/">Writing ↗</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <p class="footer-name">Brooks Groves</p>
+      <p class="footer-tagline">memoir.brooksgroves.com</p>
+    </div>
+    <a href="https://brooksgroves.com" class="footer-link">brooksgroves.com ↗</a>
+  </div>
+</footer>
+</body>
+</html>

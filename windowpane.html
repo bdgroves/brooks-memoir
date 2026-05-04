@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Windowpane — Brooks Groves</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌲</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,900;1,400;1,600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink:#1c1a16; --parchment:#f5f0e8; --cream:#ede8dc;
+      --sage:#4a5c45; --rust:#8b3a2a; --stone:#7a7268;
+      --gold:#c8922a; --mist:#d6d0c4; --white:#fdfaf4;
+      --sierra:#4a6b3a; --foothills:#8b6914;
+    }
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    body { background:var(--parchment); color:var(--ink); font-family:'Libre Baskerville',Georgia,serif; font-size:16px; line-height:1.7; overflow-x:hidden; }
+    body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E"); pointer-events:none; z-index:9999; opacity:0.5; }
+    .topline { height:4px; background:linear-gradient(90deg,var(--sierra) 0%,var(--foothills) 50%,var(--rust) 100%); }
+    header { border-bottom:2px solid var(--ink); padding:0 clamp(1.5rem,5vw,4rem); background:var(--parchment); }
+    .masthead-inner { display:flex; align-items:center; justify-content:space-between; gap:1rem; max-width:860px; margin:0 auto; padding:0.75rem 0; }
+    .site-name { font-family:'Playfair Display',serif; font-size:clamp(1.1rem,2.5vw,1.4rem); font-weight:900; text-decoration:none; color:var(--ink); }
+    .header-link { font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; text-decoration:none; color:var(--stone); }
+    .header-link:hover { color:var(--sierra); }
+    .article-wrap { max-width:720px; margin:0 auto; padding:clamp(3rem,6vw,5rem) clamp(1.5rem,5vw,2rem) clamp(3rem,6vw,5rem); }
+    .article-back { font-family:'DM Mono',monospace; font-size:0.63rem; letter-spacing:0.12em; text-transform:uppercase; text-decoration:none; color:var(--stone); display:inline-block; margin-bottom:2rem; }
+    .article-back:hover { color:var(--sierra); }
+    .article-num { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--sierra); margin-bottom:0.4rem; }
+    .article-kicker { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--foothills); margin-bottom:0.75rem; }
+    .article-title { font-family:'Playfair Display',serif; font-size:clamp(2rem,5vw,3.2rem); font-weight:900; line-height:1.08; letter-spacing:-0.02em; margin-bottom:1rem; }
+    .article-meta { font-family:'DM Mono',monospace; font-size:0.62rem; color:var(--stone); letter-spacing:0.1em; margin-bottom:1rem; display:flex; gap:1.5rem; flex-wrap:wrap; }
+    .article-tags { display:flex; gap:0.5rem; flex-wrap:wrap; padding-bottom:2rem; border-bottom:1px solid var(--mist); margin-bottom:2.5rem; }
+    .article-tag-pill { font-family:'DM Mono',monospace; font-size:0.58rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--stone); background:var(--cream); border:1px solid var(--mist); padding:0.25rem 0.65rem; border-radius:4px; text-decoration:none; display:inline-block; transition:background 0.15s,border-color 0.15s,color 0.15s; }
+    .article-tag-pill:hover { background:var(--gold); border-color:var(--gold); color:var(--white); }
+    .disclaimer { background:var(--cream); border-left:3px solid var(--stone); padding:1rem 1.5rem; margin-bottom:2.5rem; }
+    .disclaimer p { font-size:0.82rem; color:var(--stone); line-height:1.7; font-style:italic; }
+    .article-body { font-size:1.05rem; line-height:1.85; }
+    .article-body p { margin-bottom:1.5rem; }
+    .article-body p:first-of-type::first-letter { font-family:'Playfair Display',serif; font-size:3.5rem; font-weight:900; float:left; line-height:0.85; margin:0.1em 0.08em 0 0; color:var(--sierra); }
+    .article-body hr { border:none; border-top:2px solid var(--mist); margin:2.5rem 0; }
+    .article-body em { font-style:italic; }
+    .article-body strong { font-weight:700; }
+    .pullquote { border-left:3px solid var(--foothills); padding:1rem 1.5rem; margin:2rem 0; background:var(--cream); }
+    .pullquote p { font-family:'Playfair Display',serif; font-size:1.05rem; font-style:italic; line-height:1.65; color:var(--ink); margin:0; }
+    .series-box { background:var(--cream); border:1px solid var(--mist); border-left:3px solid var(--sierra); padding:1.25rem 1.5rem; margin:2.5rem 0; }
+    .series-label { font-family:'DM Mono',monospace; font-size:0.55rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--sierra); margin-bottom:0.5rem; }
+    .series-links { display:flex; flex-direction:column; gap:0.4rem; margin-top:0.5rem; }
+    .series-links a { font-size:0.85rem; color:var(--rust); text-decoration:none; }
+    .series-links a:hover { text-decoration:underline; }
+    .article-footer { margin-top:3rem; padding-top:2rem; border-top:2px solid var(--ink); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
+    .article-footer-author { font-family:'DM Mono',monospace; font-size:0.62rem; color:var(--stone); letter-spacing:0.1em; }
+    .article-footer-nav { display:flex; gap:1.5rem; }
+    .article-footer-nav a { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.12em; text-transform:uppercase; text-decoration:none; color:var(--stone); }
+    .article-footer-nav a:hover { color:var(--sierra); }
+    footer { background:var(--ink); color:var(--stone); padding:2rem clamp(1.5rem,5vw,4rem); margin-top:4rem; }
+    .footer-inner { max-width:860px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:2rem; flex-wrap:wrap; }
+    .footer-name { font-family:'Playfair Display',serif; font-size:0.95rem; font-weight:700; color:var(--white); }
+    .footer-tagline { font-family:'DM Mono',monospace; font-size:0.52rem; color:var(--stone); margin-top:0.2rem; }
+    .footer-link { font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; text-decoration:none; color:var(--stone); }
+    .footer-link:hover { color:var(--gold); }
+  </style>
+  <script>
+  (function(){
+    const KEY = 'memoir_auth', PW = 'memory';
+    if (sessionStorage.getItem(KEY) === '1') return;
+    document.documentElement.style.visibility = 'hidden';
+    function buildGate() {
+      var o = document.createElement('div');
+      o.id = 'gate-overlay';
+      o.style.cssText = 'position:fixed;inset:0;background:#f5f0e8;display:flex;align-items:center;justify-content:center;z-index:99999;font-family:Georgia,serif;';
+      o.innerHTML = '<div style="text-align:center;padding:3rem;max-width:380px;width:90%;border:2px solid #1c1a16;background:#f5f0e8;">'
+        + '<div style="font-family:monospace;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:#7a7268;margin-bottom:1rem;">Brooks Groves · Memoir</div>'
+        + '<div style="font-family:Georgia,serif;font-size:1.6rem;font-weight:700;color:#1c1a16;margin-bottom:0.5rem;">Private Archive</div>'
+        + '<div style="font-size:0.85rem;color:#7a7268;margin-bottom:2rem;font-style:italic;">Password required</div>'
+        + '<input id="gate-pw" type="password" placeholder="password" style="width:100%;padding:0.75rem 1rem;background:#ede8dc;border:1px solid #d6d0c4;color:#1c1a16;font-size:1rem;outline:none;margin-bottom:0.75rem;box-sizing:border-box;text-align:center;letter-spacing:0.1em;"/>'
+        + '<div id="gate-err" style="color:#8b3a2a;font-size:0.75rem;margin-bottom:0.75rem;min-height:1rem;"></div>'
+        + '<button id="gate-btn" style="width:100%;padding:0.75rem;background:#1c1a16;border:none;color:#fdfaf4;font-size:0.85rem;cursor:pointer;letter-spacing:0.1em;font-family:monospace;text-transform:uppercase;">Enter</button>'
+        + '<div style="margin-top:1rem;"><a href="https://memoir.brooksgroves.com" style="font-family:monospace;font-size:0.6rem;color:#7a7268;text-transform:uppercase;letter-spacing:0.1em;text-decoration:none;">← All Pieces</a></div>'
+        + '</div>';
+      document.body.appendChild(o);
+      document.documentElement.style.visibility = 'visible';
+      var inp = document.getElementById('gate-pw');
+      inp.focus();
+      function tryPw() {
+        var pw = inp.value.trim().toLowerCase();
+        if (!pw) { document.getElementById('gate-err').textContent = 'Please enter the password.'; return; }
+        if (pw === PW) {
+          sessionStorage.setItem(KEY, '1');
+          document.getElementById('gate-overlay').remove();
+        } else {
+          document.getElementById('gate-err').textContent = 'Incorrect password.';
+          inp.value = ''; inp.focus();
+        }
+      }
+      document.getElementById('gate-btn').addEventListener('click', tryPw);
+      inp.addEventListener('keydown', function(e){ if(e.key==='Enter') tryPw(); });
+    }
+    if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', buildGate); } else { buildGate(); }
+  })();
+  </script>
+</head>
+<body>
+<div class="topline"></div>
+<header>
+  <div class="masthead-inner">
+    <a href="https://brooksgroves.com" class="site-name">Brooks Groves</a>
+    <a href="https://memoir.brooksgroves.com" class="header-link">← Memoir</a>
+  </div>
+</header>
+
+<div class="article-wrap">
+  <a href="https://memoir.brooksgroves.com" class="article-back">← All Pieces</a>
+  <div class="article-num">Sierra Foothills · Sonora · Mid-1980s</div>
+  <p class="article-kicker">Tuolumne County · Benjamin Figs · The Creek Tunnels</p>
+  <h1 class="article-title">Windowpane</h1>
+  <div class="article-meta">
+    <span>Sonora, CA · Mid-1980s</span>
+    <span>Brooks Groves</span>
+  </div>
+  <div class="article-tags">
+    <a href="https://brooksgroves.com/tags.html#Memoir" class="article-tag-pill">Memoir</a>
+    <a href="https://brooksgroves.com/tags.html#Sierra%20Nevada" class="article-tag-pill">Sierra Nevada</a>
+    <a href="https://brooksgroves.com/tags.html#Groveland" class="article-tag-pill">Groveland</a>
+    <a href="https://brooksgroves.com/tags.html#1980s" class="article-tag-pill">1980s</a>
+    <a href="https://brooksgroves.com/tags.html#Sierra%20Foothills" class="article-tag-pill">Sierra Foothills</a>
+  </div>
+
+  <div class="disclaimer">
+    <p>These stories come from a specific time and place — the Sierra Nevada foothills, the mid-1980s, a particular brand of teenage freedom that doesn't exist anymore and probably shouldn't. They involve substances that were illegal then and mostly still are. I'm not recommending anything. I'm just telling you what happened, as honestly as I can, because some things are too strange and too true to leave unwritten. The names have been changed. The places haven't.</p>
+  </div>
+
+  <div class="article-body">
+
+    <p>Scott said it came from a Dead show down in the Bay Area. <em>Good mellow stuff.</em> At the time those words didn't mean much — but they carried a weight. Like a secret language we were just learning to speak. The kind of thing passed hand-to-hand in parking lots and basements and the back of old buses with foggy windows.</p>
+
+    <p>Windowpane was LSD in clear gelatin squares — small, translucent, slightly flexible, like candy made of stained glass. It didn't look like much. But it had a reputation. Gel tabs were more stable, more potent, less likely to degrade than blotter or sugar cubes. In certain circles they were considered the purest form available. Some people called them clears. Whatever their origin, we were hooked by the name alone. <em>Windowpane</em>. Like it wasn't a drug at all but a portal — some thin, glassy surface you could step through and come out somewhere else entirely.</p>
+
+    <p>We were already smoking weed at school. Beer can as a pipe, up the hill or under the bridge, the usual spots. Hiding in plain sight. Teenage ghosts moving through the day. I lived about an hour out of Sonora, so I was always on the late bus home — which meant afternoons were mine in a way they weren't for anyone who had a ride.</p>
+
+    <hr>
+
+    <p>Scott had a Proto Pipe — this polished metal thing that looked like it came from a prop shop or a spacecraft. He got it at Benjamin Figs, the hippie store on Washington Street. That place was something else. It smelled like patchouli and old wood and whatever the 1960s left behind. Ornate bongs, hand-carved pipes, psychedelic posters behind glass, incense burning in the corner. It wasn't really a head shop — it was more like an initiation into a certain way of seeing the world. You walked in one kind of person and came out slightly different, even if you only bought a pack of rolling papers.</p>
+
+    <p>We dropped the acid after school. Scott said it'd take about 45 minutes. So we wandered.</p>
+
+    <p>There's a creek that runs through Sonora, and part of the town is built directly over it — a kind of underground maze of tunnels and covered walkways left over from the Gold Rush. Old brickwork, rusted iron gates, the sound of water somewhere below your feet. Dangerous, probably. But magical in the way that only places teenagers aren't supposed to be can be magical.</p>
+
+    <div class="pullquote"><p>When it came on, it came on soft. Tracers first. Then that shift in clarity — like everything had been tuned slightly sharper, like someone had adjusted a dial you didn't know existed.</p></div>
+
+    <p>I moved my hand and saw colors follow it. The world wasn't just more alive — it <em>was</em> alive, in some way it had never been before. Grass blades looked like ancient spires. Bottle caps had sacred geometry. The sky above the creek tunnels was a thing I could have stared at for a hundred years.</p>
+
+    <p>We drifted through downtown Sonora trying to pass as normal — trying to hold the baseline long enough to get past adults and classmates without giving ourselves away. Not close friends, just edge-of-orbit kids from woodshop or detention. They looked at us like we were a little off. Maybe we always were.</p>
+
+    <hr>
+
+    <p>We ended up under the bridge near school — our version of sacred ground. The concrete pillars were tagged with anarchist symbols and the Dead Kennedys logo, half-washed away by creek mist and time. The jagged DK. The circle-A. Someone had scratched the Misfits skull into the concrete with a nail or a key. The air smelled like wet moss and rust and old spray paint. Burned-out lighters in the corners. Broken bottles catching what light filtered through the planks above.</p>
+
+    <p>The acid deepened everything. A bottle cap on the ground shimmered with intricate geometry — engineered by some alien or divine hand, every scratch intentional. Trash became treasure. The rusted bolts, the graffiti, even the dark water moving below — it all pulsed with an intelligence I couldn't explain but completely trusted.</p>
+
+    <p>We had a tiny boombox. Pink Floyd, Led Zeppelin — those sprawling sonic landscapes that felt like they understood us better than anyone who had a car and a plan. I could see the sounds. Not a metaphor. Just what was happening.</p>
+
+    <hr>
+
+    <p>Later, when the sun started going down, we waited for the 7 PM sports bus — the jock bus, full of people who had no idea what we were and didn't want to know. I remember watching cows in the fields staring at us through the window as we rolled out of town. I swear they knew. Everything did. Their black eyes looked like they'd seen it all already and were just waiting for the rest of us to catch up.</p>
+
+    <p>Every telephone pole was a totem. Every passing shadow had something in it. My seat had veins of light running through the vinyl. The window showed a world I'd never really looked at before — every fencepost, every oak tree, every dry California hillside lit up with a secret purpose.</p>
+
+    <p>By the time I got home I went straight to my room. Opened a textbook and got lost in the colors in the margins, like the knowledge had been backlit by something I couldn't name. Eventually the music from my little stereo pulled me under and I slept.</p>
+
+    <p>Next day at school, Scott and I compared notes. We were in now. Whatever that meant. We were in.</p>
+
+    <p>And we needed to know more.</p>
+
+  </div>
+
+  <div class="series-box">
+    <div class="series-label">Sierra Foothills — More from this collection</div>
+    <div class="series-links">
+      <a href="/rainbow-pools.html">Purple Octopus / Rainbow Pools →</a>
+    </div>
+  </div>
+
+  <div class="article-footer">
+    <div class="article-footer-author">Brooks Groves · Sonora, CA · Mid-1980s</div>
+    <div class="article-footer-nav">
+      <a href="https://memoir.brooksgroves.com">← All Pieces</a>
+      <a href="https://brooksgroves.com/writing/">Writing ↗</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <p class="footer-name">Brooks Groves</p>
+      <p class="footer-tagline">memoir.brooksgroves.com</p>
+    </div>
+    <a href="https://brooksgroves.com" class="footer-link">brooksgroves.com ↗</a>
+  </div>
+</footer>
+</body>
+</html>
