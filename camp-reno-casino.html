@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Camp Reno: Power Walkers to the Casino — Brooks Groves</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌲</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,900;1,400;1,600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink:#1c1a16; --parchment:#f5f0e8; --cream:#ede8dc;
+      --sage:#4a5c45; --rust:#8b3a2a; --stone:#7a7268;
+      --gold:#c8922a; --mist:#d6d0c4; --white:#fdfaf4;
+      --reno:#2a4a6b;
+    }
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    body { background:var(--parchment); color:var(--ink); font-family:'Libre Baskerville',Georgia,serif; font-size:16px; line-height:1.7; overflow-x:hidden; }
+    body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E"); pointer-events:none; z-index:9999; opacity:0.5; }
+    .topline { height:4px; background:linear-gradient(90deg,var(--reno) 0%,var(--gold) 50%,var(--rust) 100%); }
+
+    header { border-bottom:2px solid var(--ink); padding:0 clamp(1.5rem,5vw,4rem); background:var(--parchment); }
+    .masthead-inner { display:flex; align-items:center; justify-content:space-between; gap:1rem; max-width:860px; margin:0 auto; padding:0.75rem 0; }
+    .site-name { font-family:'Playfair Display',serif; font-size:clamp(1.1rem,2.5vw,1.4rem); font-weight:900; text-decoration:none; color:var(--ink); }
+    .header-link { font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; text-decoration:none; color:var(--stone); }
+    .header-link:hover { color:var(--reno); }
+
+    .article-wrap { max-width:720px; margin:0 auto; padding:clamp(3rem,6vw,5rem) clamp(1.5rem,5vw,2rem) clamp(3rem,6vw,5rem); }
+    .article-back { font-family:'DM Mono',monospace; font-size:0.63rem; letter-spacing:0.12em; text-transform:uppercase; text-decoration:none; color:var(--stone); display:inline-block; margin-bottom:2rem; }
+    .article-back:hover { color:var(--reno); }
+    .article-num { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--reno); margin-bottom:0.4rem; }
+    .article-kicker { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--gold); margin-bottom:0.75rem; }
+    .article-title { font-family:'Playfair Display',serif; font-size:clamp(2rem,5vw,3.2rem); font-weight:900; line-height:1.08; letter-spacing:-0.02em; margin-bottom:1rem; }
+    .article-meta { font-family:'DM Mono',monospace; font-size:0.62rem; color:var(--stone); letter-spacing:0.1em; margin-bottom:1rem; display:flex; gap:1.5rem; flex-wrap:wrap; }
+    .article-tags { display:flex; gap:0.5rem; flex-wrap:wrap; padding-bottom:2rem; border-bottom:1px solid var(--mist); margin-bottom:2.5rem; }
+    .article-tag-pill { font-family:'DM Mono',monospace; font-size:0.58rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--stone); background:var(--cream); border:1px solid var(--mist); padding:0.25rem 0.65rem; border-radius:4px; text-decoration:none; display:inline-block; transition:background 0.15s,border-color 0.15s,color 0.15s; }
+    .article-tag-pill:hover { background:var(--gold); border-color:var(--gold); color:var(--white); }
+
+    .article-body { font-size:1.05rem; line-height:1.85; }
+    .article-body p { margin-bottom:1.5rem; }
+    .article-body p:first-of-type::first-letter { font-family:'Playfair Display',serif; font-size:3.5rem; font-weight:900; float:left; line-height:0.85; margin:0.1em 0.08em 0 0; color:var(--rust); }
+    .article-body hr { border:none; border-top:2px solid var(--mist); margin:2.5rem 0; }
+    .article-body em { font-style:italic; }
+    .article-body strong { font-weight:700; }
+
+    .pullquote { border-left:3px solid var(--gold); padding:1rem 1.5rem; margin:2rem 0; background:var(--cream); }
+    .pullquote p { font-family:'Playfair Display',serif; font-size:1.05rem; font-style:italic; line-height:1.65; color:var(--ink); margin:0; }
+
+    .series-box { background:var(--cream); border:1px solid var(--mist); border-left:3px solid var(--reno); padding:1.25rem 1.5rem; margin:2.5rem 0; }
+    .series-label { font-family:'DM Mono',monospace; font-size:0.55rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--reno); margin-bottom:0.5rem; }
+    .series-links { display:flex; flex-direction:column; gap:0.4rem; margin-top:0.5rem; }
+    .series-links a { font-size:0.85rem; color:var(--rust); text-decoration:none; }
+    .series-links a:hover { text-decoration:underline; }
+
+    .article-footer { margin-top:3rem; padding-top:2rem; border-top:2px solid var(--ink); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
+    .article-footer-author { font-family:'DM Mono',monospace; font-size:0.62rem; color:var(--stone); letter-spacing:0.1em; }
+    .article-footer-nav { display:flex; gap:1.5rem; }
+    .article-footer-nav a { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.12em; text-transform:uppercase; text-decoration:none; color:var(--stone); }
+    .article-footer-nav a:hover { color:var(--reno); }
+
+    footer { background:var(--ink); color:var(--stone); padding:2rem clamp(1.5rem,5vw,4rem); margin-top:4rem; }
+    .footer-inner { max-width:860px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:2rem; flex-wrap:wrap; }
+    .footer-name { font-family:'Playfair Display',serif; font-size:0.95rem; font-weight:700; color:var(--white); }
+    .footer-tagline { font-family:'DM Mono',monospace; font-size:0.52rem; color:var(--stone); margin-top:0.2rem; }
+    .footer-link { font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; text-decoration:none; color:var(--stone); }
+    .footer-link:hover { color:var(--gold); }
+  </style>
+  <script>
+  (function(){
+    const KEY = 'memoir_auth', PW = 'memory';
+    if (sessionStorage.getItem(KEY) === '1') return;
+    document.documentElement.style.visibility = 'hidden';
+    function buildGate() {
+      var o = document.createElement('div');
+      o.id = 'gate-overlay';
+      o.style.cssText = 'position:fixed;inset:0;background:#f5f0e8;display:flex;align-items:center;justify-content:center;z-index:99999;font-family:Georgia,serif;';
+      o.innerHTML = '<div style="text-align:center;padding:3rem;max-width:380px;width:90%;border:2px solid #1c1a16;background:#f5f0e8;">'
+        + '<div style="font-family:monospace;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:#7a7268;margin-bottom:1rem;">Brooks Groves · Memoir</div>'
+        + '<div style="font-family:Georgia,serif;font-size:1.6rem;font-weight:700;color:#1c1a16;margin-bottom:0.5rem;">Private Archive</div>'
+        + '<div style="font-size:0.85rem;color:#7a7268;margin-bottom:2rem;font-style:italic;">Password required</div>'
+        + '<input id="gate-pw" type="password" placeholder="password" style="width:100%;padding:0.75rem 1rem;background:#ede8dc;border:1px solid #d6d0c4;color:#1c1a16;font-size:1rem;outline:none;margin-bottom:0.75rem;box-sizing:border-box;text-align:center;letter-spacing:0.1em;"/>'
+        + '<div id="gate-err" style="color:#8b3a2a;font-size:0.75rem;margin-bottom:0.75rem;min-height:1rem;"></div>'
+        + '<button id="gate-btn" style="width:100%;padding:0.75rem;background:#1c1a16;border:none;color:#fdfaf4;font-size:0.85rem;cursor:pointer;letter-spacing:0.1em;font-family:monospace;text-transform:uppercase;">Enter</button>'
+        + '<div style="margin-top:1rem;"><a href="https://memoir.brooksgroves.com" style="font-family:monospace;font-size:0.6rem;color:#7a7268;text-transform:uppercase;letter-spacing:0.1em;text-decoration:none;">← All Pieces</a></div>'
+        + '</div>';
+      document.body.appendChild(o);
+      document.documentElement.style.visibility = 'visible';
+      var inp = document.getElementById('gate-pw');
+      inp.focus();
+      function tryPw() {
+        var pw = inp.value.trim().toLowerCase();
+        if (!pw) { document.getElementById('gate-err').textContent = 'Please enter the password.'; return; }
+        if (pw === PW) {
+          sessionStorage.setItem(KEY, '1');
+          document.getElementById('gate-overlay').remove();
+        } else {
+          document.getElementById('gate-err').textContent = 'Incorrect password.';
+          inp.value = ''; inp.focus();
+        }
+      }
+      document.getElementById('gate-btn').addEventListener('click', tryPw);
+      inp.addEventListener('keydown', function(e){ if(e.key==='Enter') tryPw(); });
+    }
+    if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', buildGate); } else { buildGate(); }
+  })();
+  </script>
+</head>
+<body>
+
+<div class="topline"></div>
+
+<header>
+  <div class="masthead-inner">
+    <a href="https://brooksgroves.com" class="site-name">Brooks Groves</a>
+    <a href="https://memoir.brooksgroves.com" class="header-link">← Memoir</a>
+  </div>
+</header>
+
+<div class="article-wrap">
+
+  <a href="https://memoir.brooksgroves.com" class="article-back">← All Pieces</a>
+
+  <div class="article-num">Camp Reno · Memoir · Early 1990s</div>
+  <p class="article-kicker">UNR · Reno · Gambling · Jim</p>
+  <h1 class="article-title">Camp Reno: Power Walkers to the Casino</h1>
+  <div class="article-meta">
+    <span>Reno, NV · Early 1990s</span>
+    <span>Brooks Groves</span>
+  </div>
+
+  <div class="article-tags">
+    <a href="https://brooksgroves.com/tags.html#Memoir" class="article-tag-pill">Memoir</a>
+    <a href="https://brooksgroves.com/tags.html#Reno" class="article-tag-pill">Reno</a>
+    <a href="https://brooksgroves.com/tags.html#UNR" class="article-tag-pill">UNR</a>
+    <a href="https://brooksgroves.com/tags.html#1990s" class="article-tag-pill">1990s</a>
+    <a href="https://brooksgroves.com/tags.html#Camp%20Reno" class="article-tag-pill">Camp Reno</a>
+    <a href="https://brooksgroves.com/tags.html#Gambling" class="article-tag-pill">Gambling</a>
+  </div>
+
+  <div class="article-body">
+
+    <p>Reno. Early 90s. My mom's house had quietly turned into this unofficial weekend hub. Not by design — it just happened. A mix of college kids, a few high school stragglers, whoever showed up, stayed. Doors open, music on, something always going on.</p>
+
+    <p>By Saturday night, things had usually escalated.</p>
+
+    <p>That particular night, someone got the idea we should head to the casino. Not drive. Not casually wander over.</p>
+
+    <p>No — power walk.</p>
+
+    <p>Like it was a thing.</p>
+
+    <p>So there we are, a full crew of us, marching through Reno like we're on a mission. Arms swinging, pace aggressive, talking loud, probably thinking we looked way more legit than we actually did. If confidence alone got you into casinos, we were already high rollers.</p>
+
+    <hr>
+
+    <p>We hit the craps table pretty quick.</p>
+
+    <p>Now, none of us really had money. We had just enough to feel like we were doing something, which is usually the most dangerous amount. Somebody throws down a small bet, someone else tosses a dollar tip to the dealer like we've been there before —</p>
+
+    <p><em>"Jäger and Heineken?"</em></p>
+
+    <p>Just like that.</p>
+
+    <p>We look at each other like — wait, is this real? A dollar tip and suddenly drinks are appearing?</p>
+
+    <div class="pullquote"><p>We had cracked the code. Or at least we thought we had.</p></div>
+
+    <p>The strategy — and I use that word generously — was airtight. You'd get a Jägermeister shot — it was Reno, it was ski season, of course it was Jäger — drink it fast, then nurse your beer slowly while you waited for the next round to materialize. Meanwhile your chips just sat there holding the table. Free entertainment. Free drinks. A dollar at a time.</p>
+
+    <p>We genuinely believed we were geniuses. Not just smart — <em>geniuses</em>. Like we had discovered some flaw in the casino's operating system that everyone else had somehow missed. We were twenty-something kids in Reno with maybe thirty bucks between us, and we had cracked it.</p>
+
+    <p>So now we're all in. Dice moving, chips sliding around, drinks in hand, volume rising. The table's got energy and we're feeding off it like we belong there.</p>
+
+    <hr>
+
+    <p>And then Jim steps up.</p>
+
+    <p>Jim was one of those guys. High energy, preppy, already had more stories than most people collect in a lifetime. You never quite knew how he ended up wherever he was, but he was always there. Show up somewhere and Jim's already in the room, already talking to someone, already part of whatever's happening. He didn't need an invitation. He was just — present. And now here we all were, together for this one.</p>
+
+    <p>He starts rolling.</p>
+
+    <p>First 11. Nice. Table wakes up a little.</p>
+
+    <p>Quick craps lesson if you need it: an 11 on the come-out roll is an immediate winner for everyone on the pass line. No point to make, no waiting — just instant payoff. The odds of rolling an 11 with two dice are 2 in 36. About five and a half percent. It happens.</p>
+
+    <p>Second 11. Now people are paying attention.</p>
+
+    <p>Two consecutive 11s is roughly 1-in-324. The table's leaning in.</p>
+
+    <p>Third 11 — in under ten minutes.</p>
+
+    <p>Three in a row is 1-in-5,832. You could play craps every weekend for a hundred years and never see it. The whole table erupted. Strangers high-fiving. The dealer breaking into a grin. And us — standing right there, drinks in hand, like we had somehow summoned this thing.</p>
+
+    <p>Now the whole table's lit. People are cheering, dealers are into it, and we're standing there like we're part of something big. Like this is the beginning of a legendary run. In our heads we're already spending money we don't even have yet.</p>
+
+    <p>And Jim?</p>
+
+    <p>Jim just stops.</p>
+
+    <p>Stacks his chips. Nods. Walks.</p>
+
+    <p>No speech. No hesitation. Just done.</p>
+
+    <p>We watched him leave like — <em>what are you doing? The night's just getting started.</em></p>
+
+    <p>But he knew.</p>
+
+    <p>We did not.</p>
+
+    <hr>
+
+    <p>We stayed. Of course we stayed.</p>
+
+    <p>Because in that moment, we weren't thinking about walking away — we were thinking this was our table now. Our run. Our story.</p>
+
+    <p>It was not.</p>
+
+    <p>Funny how fast the energy shifts when the dice stop listening.</p>
+
+    <p>At some point later — no exact moment, just that slow realization — you look down and things aren't quite where they were. Chips are lighter. Drinks are empty. The vibe's different.</p>
+
+    <p>And just like that, the night starts winding down.</p>
+
+    <p>We made the walk back too. Not nearly as fast. Not nearly as confident. Same group. Same streets. Different energy.</p>
+
+    <hr>
+
+    <p>That was the night we learned something simple, and it sticks with me even now.</p>
+
+    <p>There's a big difference between being lucky —</p>
+
+    <p>— and knowing when to leave.</p>
+
+    <p>Jim knew. He always knew.</p>
+
+  </div>
+
+  <div class="series-box">
+    <div class="series-label">Camp Reno — More from this collection</div>
+    <div class="series-links">
+      <a href="/nevada-neil.html">Nevada Neil →</a>
+      <a href="/cow-palace-nye-1991.html">The Night the Cow Palace Changed Everything →</a>
+    </div>
+  </div>
+
+  <div class="article-footer">
+    <div class="article-footer-author">Brooks Groves · Reno, NV · Early 1990s</div>
+    <div class="article-footer-nav">
+      <a href="https://memoir.brooksgroves.com">← All Pieces</a>
+      <a href="https://brooksgroves.com/writing/">Writing ↗</a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <p class="footer-name">Brooks Groves</p>
+      <p class="footer-tagline">memoir.brooksgroves.com</p>
+    </div>
+    <a href="https://brooksgroves.com" class="footer-link">brooksgroves.com ↗</a>
+  </div>
+</footer>
+
+</body>
+</html>
