@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>
+  (function(){
+    const KEY = 'memoir_auth', PW = 'memory';
+    if (sessionStorage.getItem(KEY) === '1') return;
+    document.documentElement.style.visibility = 'hidden';
+    function buildGate() {
+      var o = document.createElement('div');
+      o.id = 'gate-overlay';
+      o.style.cssText = 'position:fixed;inset:0;background:#f5f0e8;display:flex;align-items:center;justify-content:center;z-index:99999;font-family:Georgia,serif;';
+      o.innerHTML = '<div style="text-align:center;padding:3rem;max-width:380px;width:90%;border:2px solid #1c1a16;background:#f5f0e8;">'
+        + '<div style="font-family:monospace;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:#7a7268;margin-bottom:1rem;">Brooks Groves · Memoir</div>'
+        + '<div style="font-family:Georgia,serif;font-size:1.6rem;font-weight:700;color:#1c1a16;margin-bottom:0.5rem;">Private Archive</div>'
+        + '<div style="font-size:0.85rem;color:#7a7268;margin-bottom:2rem;font-style:italic;">Password required</div>'
+        + '<input id="gate-pw" type="password" placeholder="password" style="width:100%;padding:0.75rem 1rem;background:#ede8dc;border:1px solid #d6d0c4;color:#1c1a16;font-size:1rem;outline:none;margin-bottom:0.75rem;box-sizing:border-box;text-align:center;letter-spacing:0.1em;"/>'
+        + '<div id="gate-err" style="color:#8b3a2a;font-size:0.75rem;margin-bottom:0.75rem;min-height:1rem;"></div>'
+        + '<button id="gate-btn" style="width:100%;padding:0.75rem;background:#1c1a16;border:none;color:#fdfaf4;font-size:0.85rem;cursor:pointer;letter-spacing:0.1em;font-family:monospace;text-transform:uppercase;">Enter</button>'
+        + '<div style="margin-top:1rem;"><a href="https://memoir.brooksgroves.com" style="font-family:monospace;font-size:0.6rem;color:#7a7268;text-transform:uppercase;letter-spacing:0.1em;text-decoration:none;">← All Pieces</a></div>'
+        + '</div>';
+      document.body.appendChild(o);
+      document.documentElement.style.visibility = 'visible';
+      var inp = document.getElementById('gate-pw');
+      inp.focus();
+      function tryPw() {
+        var pw = inp.value.trim().toLowerCase();
+        if (!pw) { document.getElementById('gate-err').textContent = 'Please enter the password.'; return; }
+        if (pw === PW) {
+          sessionStorage.setItem(KEY, '1');
+          document.getElementById('gate-overlay').remove();
+        } else {
+          document.getElementById('gate-err').textContent = 'Incorrect password.';
+          inp.value = ''; inp.focus();
+        }
+      }
+      document.getElementById('gate-btn').addEventListener('click', tryPw);
+      inp.addEventListener('keydown', function(e){ if(e.key==='Enter') tryPw(); });
+    }
+    if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', buildGate); } else { buildGate(); }
+  })();
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>An Island Below an Island — Brooks Groves</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌲</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,900;1,400;1,600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink:#1c1a16; --parchment:#f5f0e8; --cream:#ede8dc;
+      --sage:#4a5c45; --rust:#8b3a2a; --stone:#7a7268;
+      --gold:#c8922a; --mist:#d6d0c4; --white:#fdfaf4;
+      --reno:#2a4a6b; --reno-light:#4a7ab5;
+    }
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    body { background:var(--parchment); color:var(--ink); font-family:'Libre Baskerville',Georgia,serif; font-size:16px; line-height:1.7; overflow-x:hidden; }
+    body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E"); pointer-events:none; z-index:9999; opacity:0.5; }
+    .topline { height:4px; background:linear-gradient(90deg,var(--reno) 0%,var(--gold) 50%,var(--rust) 100%); }
+
+    header { border-bottom:2px solid var(--ink); padding:0 clamp(1.5rem,5vw,4rem); background:var(--parchment); }
+    .masthead-inner { display:flex; align-items:center; justify-content:space-between; gap:1rem; max-width:860px; margin:0 auto; padding:0.75rem 0; }
+    .site-name { font-family:'Playfair Display',serif; font-size:clamp(1.1rem,2.5vw,1.4rem); font-weight:900; text-decoration:none; color:var(--ink); }
+    .header-link { font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; text-decoration:none; color:var(--stone); }
+    .header-link:hover { color:var(--reno); }
+
+    .article-wrap { max-width:720px; margin:0 auto; padding:clamp(3rem,6vw,5rem) clamp(1.5rem,5vw,2rem) clamp(3rem,6vw,5rem); }
+    .article-back { font-family:'DM Mono',monospace; font-size:0.63rem; letter-spacing:0.12em; text-transform:uppercase; text-decoration:none; color:var(--stone); display:inline-block; margin-bottom:2rem; }
+    .article-back:hover { color:var(--reno); }
+    .article-num { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--reno); margin-bottom:0.4rem; }
+    .article-kicker { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--gold); margin-bottom:0.75rem; }
+    .article-title { font-family:'Playfair Display',serif; font-size:clamp(2rem,5vw,3.2rem); font-weight:900; line-height:1.08; letter-spacing:-0.02em; margin-bottom:1rem; }
+    .article-meta { font-family:'DM Mono',monospace; font-size:0.62rem; color:var(--stone); letter-spacing:0.1em; margin-bottom:1rem; display:flex; gap:1.5rem; flex-wrap:wrap; }
+    .article-tags { display:flex; gap:0.5rem; flex-wrap:wrap; padding-bottom:2rem; border-bottom:1px solid var(--mist); margin-bottom:2.5rem; }
+    .article-tag-pill { font-family:'DM Mono',monospace; font-size:0.58rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--stone); background:var(--cream); border:1px solid var(--mist); padding:0.25rem 0.65rem; border-radius:4px; text-decoration:none; display:inline-block; transition:background 0.15s,border-color 0.15s,color 0.15s; }
+    .article-tag-pill:hover { background:var(--gold); border-color:var(--gold); color:var(--white); }
+
+    .article-body { font-size:1.05rem; line-height:1.85; }
+    .article-body p { margin-bottom:1.5rem; }
+    .article-body p:first-of-type::first-letter { font-family:'Playfair Display',serif; font-size:3.5rem; font-weight:900; float:left; line-height:0.85; margin:0.1em 0.08em 0 0; color:var(--rust); }
+    .article-body h2 { font-family:'Playfair Display',serif; font-size:1.25rem; font-weight:700; margin:2.5rem 0 1rem; padding-top:2rem; border-top:1px solid var(--mist); color:var(--reno); }
+    .article-body hr { border:none; border-top:2px solid var(--mist); margin:2.5rem 0; }
+    .article-body blockquote { border-left:3px solid var(--gold); padding:0.5rem 0 0.5rem 1.25rem; margin:1.5rem 0; font-style:italic; color:var(--stone); }
+    .article-body em { font-style:italic; }
+    .article-body strong { font-weight:700; }
+
+    .pullquote { border-left:3px solid var(--gold); padding:1rem 1.5rem; margin:2rem 0; background:var(--cream); }
+    .pullquote p { font-family:'Playfair Display',serif; font-size:1.05rem; font-style:italic; line-height:1.65; color:var(--ink); margin:0; }
+
+    .scene-break { text-align:center; color:var(--mist); margin:2.5rem 0; font-size:1.2rem; letter-spacing:0.5rem; }
+
+    .article-footer { margin-top:3rem; padding-top:2rem; border-top:2px solid var(--ink); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
+    .article-footer-author { font-family:'DM Mono',monospace; font-size:0.62rem; color:var(--stone); letter-spacing:0.1em; }
+    .article-footer-nav { display:flex; gap:1.5rem; }
+    .article-footer-nav a { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.12em; text-transform:uppercase; text-decoration:none; color:var(--stone); }
+    .article-footer-nav a:hover { color:var(--reno); }
+
+    footer { background:var(--ink); color:var(--stone); padding:2rem clamp(1.5rem,5vw,4rem); margin-top:4rem; }
+    .footer-inner { max-width:860px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:2rem; flex-wrap:wrap; }
+    .footer-name { font-family:'Playfair Display',serif; font-size:0.95rem; font-weight:700; color:var(--white); }
+    .footer-tagline { font-family:'DM Mono',monospace; font-size:0.52rem; color:var(--stone); margin-top:0.2rem; }
+    .footer-link { font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; text-decoration:none; color:var(--stone); }
+    .footer-link:hover { color:var(--gold); }
+
+    .sidebar-box { background:var(--cream); border:1px solid var(--mist); border-left:3px solid var(--reno); padding:1.25rem 1.5rem; margin:2.5rem 0; font-size:0.92rem; line-height:1.7; }
+    .sidebar-box p { margin-bottom:0.85rem; }
+    .sidebar-box p:last-child { margin-bottom:0; }
+    .sidebar-box strong { color:var(--reno); letter-spacing:0.02em; }
+    .article-subtitle { font-family:'DM Mono',monospace; font-size:0.7rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--stone); margin-bottom:1.5rem; }
+  </style>
+</head>
+<body>
+
+<div class="topline"></div>
+
+<header>
+  <div class="masthead-inner">
+    <a href="https://memoir.brooksgroves.com" class="site-name">Brooks Groves</a>
+    <a href="https://memoir.brooksgroves.com" class="header-link">← Memoir</a>
+  </div>
+</header>
+
+<div class="article-wrap">
+
+  <a href="https://memoir.brooksgroves.com" class="article-back">← All Pieces</a>
+
+  <div class="article-num">Memoir · Travel · Tasmania</div>
+  <p class="article-kicker">Bass Strait · The Overland Track · Mt Ossa · Cockle Creek · The Franklin</p>
+  <h1 class="article-title">An Island Below an Island</h1>
+  <p class="article-subtitle">A memoir in two crossings</p>
+  <div class="article-meta">
+    <span>Tasmania · 2004 &amp; 2009</span>
+    <span>Brooks Groves</span>
+    <span>~30 min read</span>
+  </div>
+
+  <div class="article-tags">
+    <a href="https://brooksgroves.com/tags.html#Memoir" class="article-tag-pill">Memoir</a>
+    <a href="https://brooksgroves.com/tags.html#Travel" class="article-tag-pill">Travel</a>
+    <a href="https://brooksgroves.com/tags.html#Tasmania" class="article-tag-pill">Tasmania</a>
+    <a href="https://brooksgroves.com/tags.html#Australia" class="article-tag-pill">Australia</a>
+    <a href="https://brooksgroves.com/tags.html#Long%20Read" class="article-tag-pill">Long Read</a>
+    <a href="https://brooksgroves.com/tags.html#Nature%20Writing" class="article-tag-pill">Nature Writing</a>
+    <a href="https://brooksgroves.com/tags.html#Wilderness" class="article-tag-pill">Wilderness</a>
+    <a href="https://brooksgroves.com/tags.html#Hiking" class="article-tag-pill">Hiking</a>
+  </div>
+
+  <div class="article-body">
+
+    <p>There is a recurring feature of maps of the Southern Hemisphere that I have always found quietly unsettling. Australia sits near the bottom of the page, which already feels like the edge of something. And then below it, separated by a narrow channel of blue, there is Tasmania — smaller, darker, shaped like a heart or a shield depending on the projection. An island beneath the island. The text around it, if there is any, tends to thin out. Below Tasmania there is not much until Antarctica.</p>
+
+    <p>Tasmania is physically part of Australia but psychologically feels separate. Bass Strait is only a few hundred kilometres wide, yet crossing it feels like crossing into another country. The climate is cooler, the forests wetter, the wildlife stranger, and the history denser. Even Australians talk about it differently. It is the place at the bottom of the map, and I kept feeling pulled toward it for reasons I didn't fully understand at the time.</p>
+
+    <p>This is the story of two trips to Tasmania — one by accident in 2004, one on purpose in 2009. The first time I came by boat, on a whim, to look. The second time I flew straight in, alone, with permits and gear and five years of intention behind me, to walk. Everything on the second trip pointed further south. The track itself ran north to south. The geology pointed south toward Antarctica. The conservation battles pointed south into the wilderness. Even the weather seemed to arrive from somewhere further down the map.</p>
+
+    <h2>I. The Accident</h2>
+
+    <p>My brother Craig had moved to Sydney. In 2004 he got married, and I flew out for the wedding, which was at Bondi — people doing that Bondi thing, you know, the easy confidence of people who swim in the Pacific before work and treat weekends at the harbour as a constitutional right. Craig had a great little house in Rose Bay. The eastern suburbs have a specific quality: the light off the water, the Norfolk Island pines along the esplanade, the cafes with the good coffee and the people who look like they were designed to be photographed in natural light. It is a beautiful place to be. I always wondered, slightly, whether it was really Australia — or whether it was its own thing, a city within a city, humming along on its own frequency. Not a complaint. Just a question.</p>
+
+    <p>The whole wedding was warm and celebratory and slightly surreal in the way of weddings and I was happy to be there and happy to have time afterward to wander.</p>
+
+    <p>Australia is enormous. You look at the map from Seattle and it seems manageable — another anglophone country, roughly continental in scale. Then you get there and realise that what looked like a short drive is eleven hours, and that most of what the map shows is either desert or more desert, and that the interesting parts are scattered around the edges of an interior that will kill you at pace. Tasmania, however, was an island. Islands have edges. You could get around an island.</p>
+
+    <p>I was standing at Bondi when I saw it — a large white ferry, well offshore, making slow southward progress. Big enough to be something, too far out to read. I asked around and someone told me: that's the <em>Spirit of Tasmania</em>. It goes overnight to the island. Sails from Darling Harbour.</p>
+
+    <p>I was on it the next day.</p>
+
+    <p>I had a dormitory bunk and no car. At boarding, biosecurity quarantined my Swiss Tool pocket knife in a large truck parked at the stern of the vessel — a truck presumably constructed to hold every prohibited item confiscated from every passenger on every sailing, and inside it, alone, my one Swiss Tool. I thought about this for a while. The truck was a comfort, in a way. It suggested an optimism about dangerous pocket tools that I found charming.</p>
+
+    <p>We left Sydney on calm water. I stood on deck and watched the coast unspool behind us — the Heads, then open ocean, then the slow slide into night. My bunk was fine. I slept. Somewhere in the dark the ship crossed from the Tasman Sea into Bass Strait and the weather changed its mind.</p>
+
+    <p>The captain came over the intercom. He had some good news and some bad news. The bad news: we were heading into weather. He explained what to expect — the motion, the duration, the sensible precautions. Everyone should stay in their cabins. Then the good news: the bar was still open. He had found, over the years, that walking around tended to help people during rough weather at sea.</p>
+
+    <p>This is one of the most Australian things anyone has ever said to me.</p>
+
+    <p>We all took him up on it. He was right. The bar was full of people from multiple countries, leaning at various angles against whatever was bolted down, finding that the combination of Bass Strait motion and cold beer produced a state of mind that was something close to equanimity. By the time Tasmania appeared at dawn — the dark shape of it, the colder air, the smell of wet eucalyptus coming off the coast — I was ready for whatever the island wanted to show me.</p>
+
+    <p>It showed me quite a lot. I rented a car in Devonport and went west first, into the wet forest country that faces the Southern Ocean. This is the less-visited side of Tasmania — rawer, rainier, without the famous landmarks. I camped in the forest and wandered. One night, after what may have been a few too many Boag's beers — Boag's is Tasmania's iconic brew, made in Launceston since 1881, as closely associated with the island's north as Cascade is with Hobart — and a considerable amount of Tasmanian cheese, which I was discovering for the first time and which I can confirm is among the finest cheeses I have ever eaten, Tasmania doing dairy the way it does wilderness, seriously and with full commitment — I fell asleep in my tent.</p>
+
+    <p>I was deeply, contentedly asleep when I felt something warm against my legs. Then against my face. Fur. Warm, moving, breathing fur, inside my sleeping bag with me. My first thought, in the confused logic of 3 a.m., was that one of my ferrets had somehow got into the bag — the soft wrongness of it felt that familiar. Then I remembered: no ferrets. Tasmania. Something alive in the darkness that I did not know.</p>
+
+    <p>I opened my eyes. In the beam of my headlamp, inside my sleeping bag, an animal looked back at me from very close range. We regarded each other for a moment. It looked at the cheese, which had apparently also been sharing my sleeping arrangements. It grabbed the cheese, tore through the side of the tent, and was gone.</p>
+
+    <p>I lay still for a long time. The fur on my face. The warm weight of it against my legs still there in the nerve memory. Outside, something moved through the undergrowth and then was quiet.</p>
+
+    <p>I did not sleep again until dawn.</p>
+
+    <p>In the morning I examined the hole in the tent and thought about what kind of animal tears through nylon for cheese and then climbs into a stranger's sleeping bag to warm up. Tasmania has a lot of candidates. I packed up camp and drove east across the island — the interior reminded me of home, the hills and gold country around Tuolumne County, the light through the trees — and I turned the question over as I drove. Whatever it was, it had known something I didn't. It had known exactly where the cheese was.</p>
+
+    <p>I would not get a definitive answer for five years, when I would come back and walk the island properly, and the spotted quolls would come into camp on the first night, and I would think: <em>there you are.</em></p>
+
+    <p>I would later learn that my tent visitor had most likely been a possum or a spotted quoll — <em>Dasyurus maculatus</em>, the tiger quoll, one of the world's largest carnivorous marsupials, spotted white on dark brown, fierce and curious and entirely uninterested in the social contract around other people's cheese. I had imagined worse in the dark. The reality was smaller and more comic. That seemed right for the island.</p>
+
+    <div class="sidebar-box">
+      <p><strong>ON TASMANIAN CHEESE:</strong> Produced in the cool, clean, wet country of the island's dairying regions, Tasmanian cheese has been quietly winning international awards for decades. The combination of clean water, temperate pasture, and the island's general commitment to doing things properly produces something that the mainland has not managed to replicate. I have been a partisan ever since that first night.</p>
+    </div>
+
+    <p>On the east coast I found Freycinet National Park and Wineglass Bay. You hike up to the saddle and there it is below you — a perfect crescent of white sand, the water an impossible blue, the dolerite ridges coming down to the shore on both sides. The kind of image that is almost too composed to be real, like a destination photograph in which you happen to be standing. I camped on the beach and met people the way you do when you camp, which is to say quickly and with unusual candour, because camping has a way of establishing intimacy without ceremony.</p>
+
+    <p>I went south to Port Arthur, on the Tasman Peninsula. The convict settlement operated from 1830 to 1877, the empire's solution to its surplus of people it had decided were criminal: put them at the bottom of the world, on an island below an island, where the geography itself was the punishment. The ruins are quiet in the way of places that held enormous suffering. I walked through them slowly. Near the visitor centre I bought a copy of Marcus Clarke's <em>For the Term of His Natural Life</em>, published in 1874, a novel about the convict system that remains one of the stranger and more harrowing books in Australian literature. I would read it afterward, to understand what the ruins could not say.</p>
+
+    <p>Then Hobart. A short visit — I had a flight back to Sydney. But I drove up Mount Wellington first, the dolerite plateau that stands over the city like a back wall, and looked out over the Derwent estuary and the harbour below, and I said to myself what you say when a place has gotten into you before you were ready: I'll be back. I knew it when I said it.</p>
+
+    <p>I came once on a whim to look. I came back on purpose to walk.</p>
+
+    <h2>II. The Return</h2>
+
+    <p>Five years is a long time and also nothing. I kept going to Australia every year during the North American winter — Sydney's summer, Craig's great little house in Rose Bay, the Bondi routine, the BBQs, the harbour. Sometimes I went north to Queensland or down to Canberra or wherever the year suggested. In 2009 it suggested Tasmania again. More specifically: the Overland Track.</p>
+
+    <p>The Overland Track is 65 kilometres from Cradle Mountain in the north to Lake St Clair in the south, through the Tasmanian Wilderness World Heritage Area. Bert Nichols blazed it in 1931, and by 1935 it was consolidated and walked by independent parties. It passes through terrain that ranges from glacial alpine plateau to cool temperate rainforest, crossing five or six days of wilderness that does not look like anywhere else in the world. More than nine thousand people walk it every year now. In 2009 the number was smaller, the booking system was newer, and the logistics of getting a permit and a hut booking for the season window felt, I will be honest, like the hardest part of the whole enterprise.</p>
+
+    <p>I had done the paperwork in Seattle, weeks before flying. The trail pass, the permits, the hut booking window, the start-date cap. I had spreadsheets. I had confirmation numbers. The mountain was in my head long before I boarded the plane.</p>
+
+    <p>In Craig's backyard in Sydney, the afternoon before flying to Launceston, I unpacked my yellow North Face duffel — I still have it, and I expect I always will. It has been everywhere with me: remote desert ranges in Nevada, the slopes of Kilimanjaro, and now Craig's suburban backyard in the eastern suburbs, open on the lawn. I set up my full kit in the sun and cleaned everything. Boot soles, tent seams, pack straps, trekking poles. Biosecurity is no joke in Tasmania. The island has spent a very long time developing organisms that exist nowhere else on Earth, and it would like to keep it that way. Scrubbing the dirt from the previous mountains off my gear before arriving felt less like a chore than a courtesy. Clean kit. Ready.</p>
+
+    <p>I flew into Launceston.</p>
+
+    <p>The night before the walk, I had a Boag's at a pub near the city centre. The brewery sits on the North Esk River, the same river that cuts through Cataract Gorge, the gorge where the next morning I would find sulphur-crested cockatoos and peacocks and the particular Tasmanian phenomenon of a city that dissolves directly into steep wild terrain within a kilometre of its main street. I found several geocaches in the gorge — <em>Central Park, Stone Park, Red Letter Day, Tiger Dragon Walk, Gorgeous, Where Eagles Dare, Not Another Lookout</em> — and logged them with the same note I kept writing: <em>This place is great. I know I'll be back. I feel like I only just got started.</em> The cache names, I thought later, were already trying to tell me something.</p>
+
+    <p>The next morning I took the bus to Cradle Mountain.</p>
+
+    <p>The road climbs out of the lowlands through eucalypt forest, passing the small town of Sheffield with its painted murals, the tree cover thinning as the altitude rises and the landscape opens into something older and more exposed.</p>
+
+    <p>At Ronny Creek the bus stopped and the walk began.</p>
+
+    <h2>III. The Walk</h2>
+
+    <p>Cradle Mountain from below is dolerite — dark, fractured columns stacked into jagged peaks by 180 million years of Jurassic intrusion and Gondwana tectonics and glacial erosion. The rock was emplaced when Tasmania was still physically attached to Antarctica. When you put your hand on it, you are touching material that once connected this island to the frozen continent at the bottom of the world. I did not know this yet, standing at Ronny Creek looking up at the serrated skyline. I would learn it on the walk.</p>
+
+    <p>The buttongrass plain stretched out ahead of me toward the climb. Buttongrass moorland is unique to Tasmania — vast, slightly bouncy underfoot, the grass growing in low tussocks that catch the light in the morning and turn golden in the afternoon. It looks like nothing else in Australia. The wind came across it in long low waves. I put my head down and started walking.</p>
+
+    <p>Then, near the edge of the plain, a wombat.</p>
+
+    <p><em>Vombatus ursinus</em> — short-legged, barrel-shaped, deeply Pleistocene, marsupial with a backward-facing pouch so that dirt doesn't pack in during the near-constant digging. It was just standing there in the scrub at the edge of the buttongrass, doing whatever wombats do at that hour — which appeared to be standing and existing, with great authority. I had been in Australia before and seen wombats in wildlife parks, but this one was just <em>there</em>, out in the open country, completely indifferent to my opinion of it. I thought: here we go. I thought: what an extraordinary animal. What a thing to see on the first day. The island was already announcing what it was.</p>
+
+    <p>The Overland Track was declared part of the Tasmanian Wilderness World Heritage Area in 1982 — listed by UNESCO in Paris on the same December morning that protestors first chained themselves to bulldozers on the Gordon River, one hundred kilometres to the west, at the beginning of the campaign to stop the Franklin Dam. I did not know this yet either. I would learn it in Hobart, after the walk, piece by piece, the way you learn things about a place when the place has decided you should know them.</p>
+
+    <p>The first day I climbed to Marions Lookout and looked back at Cradle Mountain over Dove Lake and understood that I had left something behind at the trailhead — the particular kind of attention you use in cities, the scanning for cars and people and social cues. In its place was a different kind of attention: slower, wider, more patient. The mountain was there. The lake was there. The dolerite was cold under my hands on the scramble. This was not tourism anymore.</p>
+
+    <p>At the first camp I met Simon.</p>
+
+    <p>Simon was from Manly, in Sydney, and had come to the Overland Track because he needed to leave his scene in the city. He didn't say this in a complicated way. He just said it, with the directness of someone who has decided to stop pretending that the city was working for him. He was cheerful and competent and joined our group periodically over the days that followed, appearing and disappearing the way people do on long trails when the pace doesn't quite match but the company is good. I understood, without asking much about it, why he was there.</p>
+
+    <p>That first evening a pair of spotted quolls came into camp — <em>Dasyurus maculatus</em>, the tiger quoll, the same species that had most likely visited my tent in the west coast forest five years earlier. They moved through the camp with brisk efficiency, assessing the food situation, entirely unimpressed by the humans. A couple on sabbatical from Google watched them with the careful attention of people accustomed to evaluating things quickly. He was from Singapore and was heading there next, and over dinner he talked about the food — the hawker centres, the specific logic of a culture that treats the preparation of meals as a serious civic enterprise, the dishes that required knowing which stall, which hour, which queue. He talked about it with the warmth of someone describing a beloved country, which is what he was doing. I thought about those hawker centres for a long time afterward. I still do.</p>
+
+    <p>The next day I met the people who would become my trail family.</p>
+
+    <p>It had rained overnight and the trail was damp and the leeches were out — looping along the duckboard edges, rising toward warmth, finding boots and gaiters and occasionally, successfully, skin. You dealt with the leeches and you kept walking. At the tent platforms I set up my camp and a short time later three others arrived and set up theirs on the same platform — Jacob, from Arizona, and two Australians, a brother and sister, Bernardo and Johanna.</p>
+
+    <p>We had been passing each other all day without knowing it. Same pace. Same timeline, as it turned out: all four of us needed to catch the ferry out at Lake St Clair on the same day. We got to talking in the way of people who have been walking the same ground all day and have nothing to prove and nowhere else to be.</p>
+
+    <p>Jacob's parents had been National Park rangers at the Grand Canyon. He had applied to become one himself and was waiting to hear back — walking New Zealand and Tasmania on either side of the uncertainty, suspended in the particular kind of patience that is actually the only option available when the thing you want most is out of your hands. He was good at it, or appeared to be. He talked about the canyon the way people talk about the place that made them.</p>
+
+    <p>Bernardo was a special-education teacher in Australia, about to get married, thinking about what came next. He had the quality of someone standing at the exact hinge-point of his own life, when everything that's about to happen is still in front of you and you can still see the shape of it clearly. The walk, I think, was giving him a last clear look.</p>
+
+    <p>Johanna was a nurse from Brisbane who had worked in Malawi and talked about it with warmth and specificity and none of the self-congratulation that can attach to that kind of work. She made Malawi — a country that most conversations never reach — feel real and present and worth thinking about. She had the quality of someone who had been to difficult places and come back kinder.</p>
+
+    <p>We were all, I noticed, between things. Between careers, between versions of ourselves, between the lives we'd been living and the ones coming. Trail families form by pace before personality. You walk the same speed for long enough and you start to understand each other.</p>
+
+    <div class="sidebar-box">
+      <p><strong>ON THE OVERLAND TRACK'S SOCIAL ECOLOGY:</strong> The huts on the track are small — room for 16 to 36 people, depending on the hut — and in 2009 were populated largely by German and French hikers who changed from night to night, their packs enormous, their rain gear impeccable. There was another trail family nearby led informally by a German woman who kept a tighter schedule than we did. We were, by contrast, "the out of towners" — the name given to our group by the hut crowd because we slept in tents on the platforms outside rather than taking bunks inside. We came into the huts occasionally, to use the stoves, to warm up, to look at the trail diary with its accumulating record of international handwriting, but mostly we were outside. The platforms were better for seeing what was moving in the trees at dusk.</p>
+    </div>
+
+    <p>The days accumulated. We covered 25 kilometres some days, on semi-technical terrain — scrambles, mud, the duckboard that ran through the wettest sections like a wooden promise across the bog. The pack settled into your shoulders. The body adapted. By the third day I stopped thinking about anything that wasn't directly in front of me.</p>
+
+    <p>The duckboard itself deserves a sentence. It is split logs embedded in the ground and wired together, running across the buttongrass and the wetlands for long sections of the track. It saves the track from erosion and your boots from the kind of mud that ends ambitions. By 1982 the track was in poor condition — 29% impacted by knee-deep mud. Then came the World Heritage listing and the federal funding for upgrades. The duckboard was part of what followed. It reminded me of the hidden infrastructure throughout the Sierra forests where I grew up — the trails, culverts, and bridges that make wilderness accessible while remaining nearly invisible. Good trail work disappears into the landscape. I walked it without knowing any of this. I walked it because someone had put it there for me to walk on, and I was grateful, though I did not yet know to whom.</p>
+
+    <p>In the huts at night we ate noodles and trail mix and drank tea and talked about the things that long-distance walkers talk about: tomorrow's weather, yesterday's wildlife, the particular muscle that is currently the loudest complaint. Wet socks dried above the stove. Condensation gathered on the windows. Outside it rained, or didn't, and the trees made their sounds in the dark. In the tents on the platforms, headlamps moved against the fabric walls before going out one by one.</p>
+
+    <p>I found geocaches along the way. There was a series called the Lost Scrolls hidden throughout the wilderness — tiny containers placed by geocachers from Germany, Thailand, Singapore, the UAE, Australia. International humanity tucked invisibly into the buttongrass, waiting for someone with a GPS and the specific obsession. I found them and signed the logs and felt, each time, the particular satisfaction of knowing something about a place that is right there but that most people walk past without seeing. Geocaching does this: it makes you slow down, wander sideways, climb small hills for no obvious reason. Tourists see lookouts. I see coordinates. Both are valid. One occasionally finds cheese.</p>
+
+    <h2>IV. Mt Ossa</h2>
+
+    <p>The side trip to Mt Ossa leaves the main track at Pelion Plain, climbing through the scrub and then up into the dolerite. Tasmania's highest point: 1,617 metres. The summit is jumbled columns of the same Jurassic rock that caps every major peak on the track, colonised in the sheltered spots by <em>Richea pandanifolia</em> — the pandani, an alpine endemic that grows in a shape suggesting a Dr. Seuss drawing of a palm tree, with long strappy leaves drooping from a central trunk. It grows nowhere else on Earth.</p>
+
+    <p>The trail family came up together. The weather was grey and moving, cloud coming through fast off the Southern Ocean, the wind unsteady. The view from the summit, between the clouds: the whole interior of Tasmania spread in every direction, the plains and valleys and the dark lines of the ranges, the island laid out below us like a map of itself.</p>
+
+    <p>I thought: this is the highest I have stood since I stopped knowing what was below me.</p>
+
+    <p>The dolerite underfoot, I would learn later, is physically continuous with rock formations in the Transantarctic Mountains — same Jurassic event, same Gondwana origin. Standing on Ossa is, in a geological sense, standing on a fragment of Antarctica. The southward pull I kept feeling was not metaphorical. It was structural. The ground itself was leaning south.</p>
+
+    <p>We came back down.</p>
+
+    <h2>V. The Descent</h2>
+
+    <p>South of Du Cane the track drops from the alpine zone into cool temperate rainforest, and the island changes character. The light goes green. The air thickens with moisture. <em>Nothofagus cunninghamii</em> — myrtle-beech — takes over the canopy, the trunks covered in moss so thick that the bark underneath is a rumour. Pencil pines appear in the wetter spots: <em>Athrotaxis cupressoides</em>, Gondwana relicts, growing slowly in the cold, fire-vulnerable, ancient. Some of the pencil pines on this track are a thousand years old. They predate every European presence on this continent by seven centuries.</p>
+
+    <p>The waterfalls come in sequence — D'Alton, Fergusson, Hartnett — dropping through the green light over red-brown rock into deep clear pools. The track is muddy here, the kind of mud that has opinions. We were soaked most days anyway. It rained on our last full day, a proper Tasmanian rain, and we were out in it for hours, and by the end we had stopped being bothered by wet because we had run out of the capacity to be bothered by wet. We were part of the water cycle.</p>
+
+    <p>The last night we slept in a hut — the only ones there, the weather having cleared everyone else out. We ate noodles and drank tea and talked for a long time. Johanna talked about Malawi. Jacob talked about the canyon. Bernardo was quiet in the way of someone who knows something is ending. I don't know what I talked about. The rain on the roof was very loud and then it stopped and in the silence afterward we could hear everything the forest was doing.</p>
+
+    <h2>VI. Lake St Clair</h2>
+
+    <p>The next morning we had to move — the ferry from Narcissus wouldn't wait. We made tracks in the rain that started again at first light, covering the last kilometres at pace, arriving at Cynthia Bay at the south end of Lake St Clair damp and tired and slightly giddy with the proximity of completion.</p>
+
+    <p>We sat on the deck of the ranger station to wait for the boat.</p>
+
+    <p>There was a tiger snake under the deck.</p>
+
+    <p><em>Notechis scutatus</em> — highly venomous, one of the most dangerous snakes in Australia. We had talked about tiger snakes in the abstract for most of the trip, the way you talk about things that are real but haven't yet appeared. Then someone looked down through the boards and said, very quietly, that there was one directly beneath us. Nobody moved quickly. There was a kind of collective stillness followed by a very gradual redistribution of weight toward the parts of the deck furthest from where it had been spotted. The wilderness, which we had been walking through for six days, was declining to release us cleanly. This seemed fair.</p>
+
+    <p>The weather cleared. Of course it did — this is Tasmania, and the weather here treats drama as a structural requirement.</p>
+
+    <p>And then someone saw the platypus.</p>
+
+    <p>It was in the water below the dock, moving in the late morning light — slow, purposeful, indifferent to observation. <em>Ornithorhynchus anatinus</em>: a mammal that lays eggs, with a duck bill, a beaver body, a venomous spur on the hind ankle of the male, and electroreceptors in the bill capable of detecting the electrical field generated by the muscle contractions of a shrimp through murky water. When the first specimen reached the Natural History Museum in London in 1799, the curator suspected a taxidermy hoax. He tried to pull the bill off with scissors. It was real. It is always real. It surfaced once, paddled, dove, was gone.</p>
+
+    <p>The thylacine had been the morning's absence. The platypus was the afternoon's presence. Equally improbable. One still here.</p>
+
+    <p>In less than a week I had seen quolls, wombats, leeches, tiger snakes, and a platypus. Tasmania sometimes feels like evolution was given an island and told to improvise.</p>
+
+    <p>The ferry came and we crossed Lake St Clair — Australia's deepest lake, glacially carved, the water very dark and cold — and on the other side was the road and the shuttle to Hobart and the end of the walk.</p>
+
+    <h2>VII. Hobart</h2>
+
+    <p>There is a particular quality of re-entering the world after five or six days in the wilderness. The sounds are too many. The floors don't move. Hot water from a tap seems briefly miraculous. Food that hasn't come out of a bag is a religious experience. We checked into our separate hotels, cleaned up, and made plans for that evening.</p>
+
+    <p>The Steve Irwin was in the harbour. It had been there since we arrived, moored among the fishing boats, the Sea Shepherd livery unmistakable — black hull, the Jolly Roger, the aggressive geometry of a ship that does not come to Hobart for the scenery. This was February 2009: Operation Musashi, the fifth Antarctic Whale Defence Campaign. The Steve Irwin was between sorties, having chased the Japanese whaling fleet 3,200 miles across the Southern Ocean that season and disrupted enough operations to save more than three hundred whales. Paul Watson had been shot at in 2007 — a bullet collected as evidence. The ship was resting between rounds.</p>
+
+    <p>A few blocks from the harbour, on Davey Street, the Tasmanian Wilderness Society had maintained its headquarters since the Franklin River campaign. It was on Davey Street that, on 1 July 1983, campaigners had celebrated the High Court decision that stopped the Franklin Dam — the ruling that preserved the rivers, cemented the World Heritage status, and protected the ground we had just spent six days walking through. Watson's fight and the Franklin fight were the same fight in different decades, on different scales, with some of the same people. Hobart is a small city. The conservation memory is dense.</p>
+
+    <p>Cascade has been brewing on the Hobart Rivulet since 1824, making it the oldest continuously operating brewery in Australia. It almost burned down completely in the 1967 bushfires. They rebuilt it in three months. The brewery's label, since 1987, has carried an illustration of the Tasmanian tiger — the thylacine — taken from John Gould's <em>The Mammals of Australia</em>, a nineteenth-century naturalist survey. The animal that went extinct in 1936 is the face of the oldest beer in the country. Tasmania remembers what it lost on the sides of its bottles.</p>
+
+    <div class="sidebar-box">
+      <p><strong>ON BOAG'S AND CASCADE:</strong> Tasmania's two great breweries are divided along geographic lines that Tasmanians take more seriously than visitors. Boag's is the north — Launceston, the North Esk River, brewed since 1881. Cascade is the south — Hobart, the Rivulet, brewed since 1824. Order the wrong one in the wrong city and you will be noticed. I came to the island not knowing any of this, played it neutral, and had many of each. I have no clear winner. This is, I think, the correct answer.</p>
+    </div>
+
+    <div class="sidebar-box">
+      <p><strong>ON SEA SHEPHERD:</strong> Founded by Paul Watson in 1977, Sea Shepherd Conservation Society uses direct action to disrupt illegal whaling, sealing, and fishing operations in international waters. Operation Musashi — the 2008–09 Southern Ocean campaign — was the fifth of what would eventually become eleven Antarctic Whale Defence Campaigns. The <em>Steve Irwin</em> was Watson's flagship, named after the conservationist Steve Irwin with permission from his widow Terri. In the seasons Watson operated out of Hobart, the ship would resupply in the harbour, the crew would recover, and then sail south again toward the ice. The campaigns were documented in the Animal Planet series <em>Whale Wars</em>, which ran for seven seasons. Watson was later ousted from the organisation he founded in a dispute over management. He continued independently. The whaling campaigns continue.</p>
+    </div>
+
+    <div class="sidebar-box">
+      <p><strong>SIDEBAR: MIDNIGHT OIL AND WHAT I DIDN'T KNOW</strong></p>
+      <p>In 1993, when I was twenty-three, Midnight Oil released an album called <em>Earth and Sun and Moon</em> and a single called "Truganini." I loved it immediately — the melody, Peter Garrett's voice doing the thing it does, the driving anxiety of the arrangement. The song was everywhere. It was on American radio, it was on <em>SNL</em>, it peaked at No. 4 on the US Modern Rock chart.</p>
+      <p>I knew the name "Truganini" from the song for fifteen years before I understood what it referred to.</p>
+      <p>The song uses her name — and Albert Namatjira's, the great Arrernte painter from central Australia — to ask a single question against the backdrop of recurring drought: <em>what for?</em> Why did Europeans bother to colonise this harsh place at all? It's an anti-colonial gut-check, not a biography. But the single's liner notes included the claim that Truganini was "the sole surviving Tasmanian Aborigine" when she died in 1876. The Tasmanian Aboriginal Centre, representing more than seven thousand contemporary Tasmanian Aboriginal people, called for a boycott. Peter Garrett issued an apology.</p>
+      <p>Truganini was a Nuenonne woman — the Nuenonne being the original people of Bruny Island and the surrounding south-east Tasmanian coast. She was born around 1812. She lived through the Black War, the forced removal of her people to Flinders Island, the gradual reduction of every world she had known. She died in Hobart in 1876. She was not the last of her people. Her people are still here.</p>
+      <p>Standing in Tasmania, I began to understand what I had heard without knowing for fifteen years. The island teaches this: what sounds like a historical name is often a living wound. The song's own makers acknowledged they had gotten it partly wrong. I had heard it without knowing enough to understand it. This is the condition of arriving somewhere as a beginner, which is the only honest way to arrive anywhere.</p>
+    </div>
+
+    <h2>VIII. Further South</h2>
+
+    <p>That evening all five of us went out — the trail family plus Simon, which is the right number of people for a proper celebration. We had dinner and drinks and Cascade and more drinks and covered a fair amount of the city. We were loud and happy in the way of people who have been rained on together and seen a tiger snake together and stood on the same high point and earned whatever this was.</p>
+
+    <p>At some point we ended up at Salamanca — the open market area along the waterfront, restaurants and bars spilling onto the cobblestones. And there was Paul Watson, the most famous and most polarising ocean environmentalist alive, moving through the crowd in civilian clothes, buying something at a stall, entirely unremarkable except for who he was and what his ship was doing that week and what it had been through to get here. Famous enough that the Japanese government had offered a bounty. Buying a wheel of cheese, or a jar of jam, or whatever it was.</p>
+
+    <p>He seemed friendly and cordial. Like you do when you've been ramming Japanese whaling ships.</p>
+
+    <p>I did not say anything. Some encounters are better as observations than as conversations. I watched him move on through the crowd and thought about where his ship was going next.</p>
+
+    <p>The rest of us eventually ran out of momentum and headed back to our hotels. Simon was not done. He went to the casino.</p>
+
+    <p>The next morning he found us at Salamanca. He looked thoroughly bedraggled, and he was smiling. He had won big — enough to cover the whole trip. He delivered this news with the expression of a man who has reached a satisfying conclusion to a story he knew was going to be good. He had come to Tasmania to leave his scene in the city, walked the wilderness for a week, and ended up funding it at the tables. Simon, I think, was exactly who he was supposed to be.</p>
+
+    <p>Over the following days, everyone found their way out. Jacob got the call he'd been waiting for — he became a ranger at Great Basin National Park in Nevada, deep in the basin-and-range country, another landscape built on deep time. The inheritance came through. Bernardo went back to Australia and then, with his wife, eventually moved to Switzerland to teach. He took geocaching with him — he'd said on the trail he thought he might use it with his students, and he did. Johanna went back to Brisbane and whatever the next difficult place was. Simon went back to Manly, back to his Sydney life, back to the beach — like you do when the thing that needed leaving has been left long enough.</p>
+
+    <p>Then it was just me and a rented car.</p>
+
+    <p>The first thing I wanted to do was see the Tasmanian devils. In the wild they are nocturnal and elusive; the sanctuary was the only realistic way. I went, and I was glad I did. I stayed for a long time — longer than most visitors, I think — watching them move around the enclosures, learning their characters. They are stocky and black and surprisingly fast, with a bite force out of proportion to their size and a reputation for ferocity that turns out to be partly theatrical. Each one was different. Some were bold and immediately curious; others hung back. What I had not expected was how much time I would spend just watching them, learning their personalities, thinking about what it meant that they were here in an enclosure at all.</p>
+
+    <p><em>Sarcophilus harrisii</em> — the largest carnivorous marsupial alive, now that the thylacine is gone. Devil facial tumour disease was first documented in 1996 — a transmissible cancer that passes between animals through biting during feeding, spreading through the population with terrible efficiency. By 2009 it had collapsed numbers by 80% in some areas. The species I was watching was already in serious trouble. The sanctuary existed in part because of this. I stood at the fence for a long time thinking about the thylacine, which nobody had stood at a fence watching since 1936, and about what it meant to be on an island where extinction was not a word for somewhere else.</p>
+
+    <p>I was glad I went. I am always glad I went.</p>
+
+    <p>I drove to the University of Tasmania campus and spent an afternoon wandering it, reading the research boards outside the Institute for Marine and Antarctic Studies. The institute's work covers the Southern Ocean, sea ice dynamics, Antarctic ecology, climate systems, krill, the circulation of the bottom waters of the world. It is serious science conducted from the southernmost university in Australia, aimed at the southernmost ocean and continent on Earth. I read everything I could find. I stayed longer than I had planned. I fell, for a period of months afterward, into a kind of obsession with Antarctic logistics — the icebreakers, the season schedules, the winter-over protocols. It felt like the intellectual version of the same pull I'd been feeling since Bondi.</p>
+
+    <div class="sidebar-box">
+      <p><strong>ON UTAS AND THE SOUTHERN OCEAN:</strong> The University of Tasmania's Institute for Marine and Antarctic Studies is one of the world's serious Antarctic research operations. Based in Hobart — the closest major port to Antarctica, a key staging point for multiple national Antarctic programs — it works on Southern Ocean ecology, sea ice dynamics, climate systems, and the deep-water circulation that regulates global climate. Australia's icebreaker, the <em>Aurora Australis</em>, operated out of Hobart for decades before being retired in 2020 and replaced by the <em>Nuyina</em>. The <em>Nuyina</em> sails from the same harbour where the <em>Steve Irwin</em> was docked. Everything in this city has the same address: south.</p>
+    </div>
+
+    <p>Somewhere in this part of the trip I found my southernmost geocache — at the time, the furthest south I'd placed a find on my list. New Zealand would later push it further, but for a while this one stood as the southernmost evidence of everywhere I'd been. I logged it and noted the coordinates and felt the particular satisfaction of having physically arrived at the edge of something.</p>
+
+    <p>Then I drove to Cockle Creek.</p>
+
+    <p>Cockle Creek is the southernmost point in Australia accessible by road. The road ends. The beach begins. In the park there is a bronze sculpture of a southern right whale — <em>Eubalaena australis</em> — breaching from a concrete sea, the locals having apparently decided that the right response to living at the end of the world is to commemorate the largest animal that passes through. A plaque reads: <em>Thar she blows.</em> The next significant landmass to the south is Macquarie Island, followed by Antarctica.</p>
+
+    <p>I walked the beaches for a long time. The Southern Ocean was very blue and very cold and moving in long swells that had come from somewhere I had not been. I stood at the water's edge and looked south and thought: not yet.</p>
+
+    <p>I walked the beaches until I had to go home.</p>
+
+    <h2>IX. Coda — What the Franklin Made Possible</h2>
+
+    <p>Here is what I did not know when I walked the Overland Track, and learned only afterward.</p>
+
+    <p>In 1982, the Hydro-Electric Commission of Tasmania proposed to dam the Franklin River — a wild river in the southwest wilderness, among the last undammed river systems in temperate Australia. The previous decade had already seen the flooding of Lake Pedder, a beloved glacial lake drowned for a dam despite national protest. The Franklin was next.</p>
+
+    <p>The Tasmanian Wilderness Society had formed in 1976, at a meeting of sixteen people in the living room of Bob Brown, a country doctor in the town of Launceston. Brown had rafted the Franklin in a rubber dinghy and understood, with the clarity that direct physical contact produces, that the river could not be lost. He gave up his medical practice to work against the dam.</p>
+
+    <p>In December 1982, the wilderness area — including the Franklin and the Gordon and the rivers around them — was listed as a World Heritage site by UNESCO, in Paris. On the same day, the blockade began at Warners Landing on the Gordon River. The timing was not coincidental.</p>
+
+    <p>Over the following months, approximately 1,400 people were arrested. Members of parliament. Scientists. Students. People who had simply driven to the end of a road and decided that they were not willing to leave. Bob Brown spent nineteen days in jail and was elected to the Tasmanian Parliament the day after his release. Shane Howard wrote a song — "Let the Franklin Flow" — that became the anthem of the blockade and was sung in the camps and in the cells. The Tasmanian Aboriginal Centre organised a parallel vigil at Kutikina Cave, on the Franklin River, a site with more than twenty thousand years of Aboriginal occupation that the dam would have flooded. TAC spokesperson Michael Mansell was arrested. The conservation campaign and the Aboriginal rights campaign were present on the same river at the same time. They were the same fight.</p>
+
+    <p>Photographer Peter Dombrovskis made an image of the Franklin called <em>Morning Mist, Rock Island Bend</em>. It ran in full-page newspaper advertisements during the 1983 federal election with the words: <em>Could you vote for a party that will destroy this?</em> Bob Hawke won the election. The High Court ruled on 1 July 1983 that the dam could not proceed. Campaigners celebrated at the Wilderness Society headquarters on Davey Street in Hobart — the same street where, twenty-six years later, Paul Watson would be docking his ship and shopping at Salamanca Market.</p>
+
+    <p>Bob Brown became the first federal senator for the Australian Greens in 1996. Peter Garrett — who had spent the years before Midnight Oil's <em>Earth and Sun and Moon</em> working on the Franklin campaign — became Federal Environment Minister in 2007.</p>
+
+    <p>The duckboard I walked on. The World Heritage status that kept the chainsaws out. The track itself, maintained and protected and walked by nine thousand people a year — all of it downstream, in the most literal sense, from what those 1,400 people did in the winter of 1982 and 1983.</p>
+
+    <p>I have been passionate about Tasmanian wilderness and polar science and the places in between for as long as I can remember. Islands under islands, and under again — each one further from the ordinary world, each one wilder for the distance. You can well imagine why a place like this gets into you and doesn't let go.</p>
+
+    <p>Tasmania still feels unfinished. Like a place you could keep walking toward forever.</p>
+
+    <p><em>Brooks Groves walked the Overland Track in February 2009. He is a GIS Analyst and Data Scientist based in the Pacific Northwest.</em></p>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-footer-author">Brooks Groves · Tasmania · February 2009</div>
+    <div class="article-footer-nav">
+      <a href="https://memoir.brooksgroves.com">← All Pieces</a>
+      <a href="https://brooksgroves.com/writing/">Writing ↗</a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <p class="footer-name">Brooks Groves</p>
+      <p class="footer-tagline">memoir.brooksgroves.com</p>
+    </div>
+    <a href="https://brooksgroves.com" class="footer-link">brooksgroves.com ↗</a>
+  </div>
+</footer>
+
+</body>
+</html>
