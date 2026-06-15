@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Long Way Around — Brooks Groves</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌲</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,900;1,400;1,600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink:#1c1a16; --parchment:#f5f0e8; --cream:#ede8dc;
+      --sage:#4a5c45; --rust:#8b3a2a; --stone:#7a7268;
+      --gold:#c8922a; --mist:#d6d0c4; --white:#fdfaf4;
+      --sierra:#4a6b3a; --foothills:#8b6914;
+    }
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    body { background:var(--parchment); color:var(--ink); font-family:'Libre Baskerville',Georgia,serif; font-size:16px; line-height:1.7; overflow-x:hidden; }
+    body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E"); pointer-events:none; z-index:9999; opacity:0.5; }
+    .topline { height:4px; background:linear-gradient(90deg,var(--sierra) 0%,var(--foothills) 50%,var(--rust) 100%); }
+    header { border-bottom:2px solid var(--ink); padding:0 clamp(1.5rem,5vw,4rem); background:var(--parchment); }
+    .masthead-inner { display:flex; align-items:center; justify-content:space-between; gap:1rem; max-width:860px; margin:0 auto; padding:0.75rem 0; }
+    .site-name { font-family:'Playfair Display',serif; font-size:clamp(1.1rem,2.5vw,1.4rem); font-weight:900; text-decoration:none; color:var(--ink); }
+    .header-link { font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; text-decoration:none; color:var(--stone); }
+    .header-link:hover { color:var(--sierra); }
+    .article-wrap { max-width:720px; margin:0 auto; padding:clamp(3rem,6vw,5rem) clamp(1.5rem,5vw,2rem) clamp(3rem,6vw,5rem); }
+    .article-back { font-family:'DM Mono',monospace; font-size:0.63rem; letter-spacing:0.12em; text-transform:uppercase; text-decoration:none; color:var(--stone); display:inline-block; margin-bottom:2rem; }
+    .article-back:hover { color:var(--sierra); }
+    .article-num { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--sierra); margin-bottom:0.4rem; }
+    .article-kicker { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--foothills); margin-bottom:0.75rem; }
+    .article-title { font-family:'Playfair Display',serif; font-size:clamp(2rem,5vw,3.2rem); font-weight:900; line-height:1.08; letter-spacing:-0.02em; margin-bottom:1rem; }
+    .article-meta { font-family:'DM Mono',monospace; font-size:0.62rem; color:var(--stone); letter-spacing:0.1em; margin-bottom:1rem; display:flex; gap:1.5rem; flex-wrap:wrap; }
+    .article-tags { display:flex; gap:0.5rem; flex-wrap:wrap; padding-bottom:2rem; border-bottom:1px solid var(--mist); margin-bottom:2.5rem; }
+    .article-tag-pill { font-family:'DM Mono',monospace; font-size:0.58rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--stone); background:var(--cream); border:1px solid var(--mist); padding:0.25rem 0.65rem; border-radius:4px; text-decoration:none; display:inline-block; transition:background 0.15s,border-color 0.15s,color 0.15s; }
+    .article-tag-pill:hover { background:var(--gold); border-color:var(--gold); color:var(--white); }
+    .disclaimer { background:var(--cream); border-left:3px solid var(--stone); padding:1rem 1.5rem; margin-bottom:2.5rem; }
+    .disclaimer p { font-size:0.82rem; color:var(--stone); line-height:1.7; font-style:italic; }
+    .article-body { font-size:1.05rem; line-height:1.85; }
+    .article-body p { margin-bottom:1.5rem; }
+    .article-body p:first-of-type::first-letter { font-family:'Playfair Display',serif; font-size:3.5rem; font-weight:900; float:left; line-height:0.85; margin:0.1em 0.08em 0 0; color:var(--sierra); }
+    .article-body hr { border:none; border-top:2px solid var(--mist); margin:2.5rem 0; }
+    .article-body em { font-style:italic; }
+    .article-body strong { font-weight:700; }
+    .pullquote { border-left:3px solid var(--foothills); padding:1rem 1.5rem; margin:2rem 0; background:var(--cream); }
+    .pullquote p { font-family:'Playfair Display',serif; font-size:1.05rem; font-style:italic; line-height:1.65; color:var(--ink); margin:0; }
+    .series-box { background:var(--cream); border:1px solid var(--mist); border-left:3px solid var(--sierra); padding:1.25rem 1.5rem; margin:2.5rem 0; }
+    .series-label { font-family:'DM Mono',monospace; font-size:0.55rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--sierra); margin-bottom:0.5rem; }
+    .series-links { display:flex; flex-direction:column; gap:0.4rem; margin-top:0.5rem; }
+    .series-links a { font-size:0.85rem; color:var(--rust); text-decoration:none; }
+    .series-links a:hover { text-decoration:underline; }
+    .article-footer { margin-top:3rem; padding-top:2rem; border-top:2px solid var(--ink); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
+    .article-footer-author { font-family:'DM Mono',monospace; font-size:0.62rem; color:var(--stone); letter-spacing:0.1em; }
+    .article-footer-nav { display:flex; gap:1.5rem; }
+    .article-footer-nav a { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.12em; text-transform:uppercase; text-decoration:none; color:var(--stone); }
+    .article-footer-nav a:hover { color:var(--sierra); }
+    footer { background:var(--ink); color:var(--stone); padding:2rem clamp(1.5rem,5vw,4rem); margin-top:4rem; }
+    .footer-inner { max-width:860px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:2rem; flex-wrap:wrap; }
+    .footer-name { font-family:'Playfair Display',serif; font-size:0.95rem; font-weight:700; color:var(--white); }
+    .footer-tagline { font-family:'DM Mono',monospace; font-size:0.52rem; color:var(--stone); margin-top:0.2rem; }
+    .footer-link { font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; text-decoration:none; color:var(--stone); }
+    .footer-link:hover { color:var(--gold); }
+
+    .article-body .pull-quote { border-left:3px solid var(--foothills); margin:2rem 0; padding:0.5rem 0 0.5rem 1.5rem; font-family:'Playfair Display',serif; font-style:italic; font-size:1.2rem; line-height:1.6; color:var(--stone); }
+    .article-body .scene-break { text-align:center; margin:2.5rem 0; color:var(--mist); letter-spacing:0.8em; font-size:0.9rem; }
+    .sidebar-label { margin:3rem 0 1.5rem; font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--stone); text-align:center; border-top:1px solid var(--mist); padding-top:2rem; }
+    .aside { background:var(--cream); border-top:2px solid var(--foothills); padding:1.3rem 1.5rem; margin:1.5rem 0; }
+    .aside-title { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--foothills); margin-bottom:0.6rem; }
+    .aside p { font-size:0.92rem; line-height:1.75; color:var(--stone); margin-bottom:0.6rem; }
+    .aside p:last-child { margin-bottom:0; }
+  </style>
+  <script>
+  (function(){
+    const KEY = 'memoir_auth', PW = 'memory';
+    if (sessionStorage.getItem(KEY) === '1') return;
+    document.documentElement.style.visibility = 'hidden';
+    function buildGate() {
+      var o = document.createElement('div');
+      o.id = 'gate-overlay';
+      o.style.cssText = 'position:fixed;inset:0;background:#f5f0e8;display:flex;align-items:center;justify-content:center;z-index:99999;font-family:Georgia,serif;';
+      o.innerHTML = '<div style="text-align:center;padding:3rem;max-width:380px;width:90%;border:2px solid #1c1a16;background:#f5f0e8;">'
+        + '<div style="font-family:monospace;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:#7a7268;margin-bottom:1rem;">Brooks Groves · Memoir</div>'
+        + '<div style="font-family:Georgia,serif;font-size:1.6rem;font-weight:700;color:#1c1a16;margin-bottom:0.5rem;">Private Archive</div>'
+        + '<div style="font-size:0.85rem;color:#7a7268;margin-bottom:2rem;font-style:italic;">Password required</div>'
+        + '<input id="gate-pw" type="password" placeholder="password" style="width:100%;padding:0.75rem 1rem;background:#ede8dc;border:1px solid #d6d0c4;color:#1c1a16;font-size:1rem;outline:none;margin-bottom:0.75rem;box-sizing:border-box;text-align:center;letter-spacing:0.1em;"/>'
+        + '<div id="gate-err" style="color:#8b3a2a;font-size:0.75rem;margin-bottom:0.75rem;min-height:1rem;"></div>'
+        + '<button id="gate-btn" style="width:100%;padding:0.75rem;background:#1c1a16;border:none;color:#fdfaf4;font-size:0.85rem;cursor:pointer;letter-spacing:0.1em;font-family:monospace;text-transform:uppercase;">Enter</button>'
+        + '<div style="margin-top:1rem;"><a href="https://memoir.brooksgroves.com" style="font-family:monospace;font-size:0.6rem;color:#7a7268;text-transform:uppercase;letter-spacing:0.1em;text-decoration:none;">← All Pieces</a></div>'
+        + '</div>';
+      document.body.appendChild(o);
+      document.documentElement.style.visibility = 'visible';
+      var inp = document.getElementById('gate-pw');
+      inp.focus();
+      function tryPw() {
+        var pw = inp.value.trim().toLowerCase();
+        if (!pw) { document.getElementById('gate-err').textContent = 'Please enter the password.'; return; }
+        if (pw === PW) {
+          sessionStorage.setItem(KEY, '1');
+          document.getElementById('gate-overlay').remove();
+        } else {
+          document.getElementById('gate-err').textContent = 'Incorrect password.';
+          inp.value = ''; inp.focus();
+        }
+      }
+      document.getElementById('gate-btn').addEventListener('click', tryPw);
+      inp.addEventListener('keydown', function(e){ if(e.key==='Enter') tryPw(); });
+    }
+    if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', buildGate); } else { buildGate(); }
+  })();
+  </script>
+</head>
+<body>
+<div class="topline"></div>
+<header>
+  <div class="masthead-inner">
+    <a href="https://brooksgroves.com" class="site-name">Brooks Groves</a>
+    <a href="https://memoir.brooksgroves.com" class="header-link">← Memoir</a>
+  </div>
+</header>
+
+<div class="article-wrap">
+  <a href="https://memoir.brooksgroves.com" class="article-back">← All Pieces</a>
+  <div class="article-num">Iron Door Irregulars · Death Valley · Spring 1986</div>
+  <p class="article-kicker">Whitney Portal · The Racetrack · Old Priest Grade</p>
+  <h1 class="article-title">The Long Way Around</h1>
+  <div class="article-meta">
+    <span>Death Valley &amp; the Long Road Home · Spring 1986</span>
+    <span>Brooks Groves</span>
+  </div>
+  <div class="article-tags">
+    <a href="https://brooksgroves.com/tags.html#Memoir" class="article-tag-pill">Memoir</a>
+    <a href="https://brooksgroves.com/tags.html#Iron%20Door%20Irregulars" class="article-tag-pill">Iron Door Irregulars</a>
+    <a href="https://brooksgroves.com/tags.html#Hippie%20Bro" class="article-tag-pill">Hippie Bro</a>
+    <a href="https://brooksgroves.com/tags.html#Eastern%20Sierra" class="article-tag-pill">Eastern Sierra</a>
+    <a href="https://brooksgroves.com/tags.html#Death%20Valley" class="article-tag-pill">Death Valley</a>
+    <a href="https://brooksgroves.com/tags.html#Mono%20Lake" class="article-tag-pill">Mono Lake</a>
+    <a href="https://brooksgroves.com/tags.html#Groveland" class="article-tag-pill">Groveland</a>
+    <a href="https://brooksgroves.com/tags.html#1980s" class="article-tag-pill">1980s</a>
+  </div>
+
+  <div class="disclaimer">
+  </div>
+
+  <div class="article-body">
+
+  <p style="font-style:italic; color:var(--stone); font-size:0.95rem; border-left:3px solid var(--mist); padding-left:1.2rem; margin-bottom:2.5rem;">These stories come from a specific time and place — the Sierra, the desert beyond it, the 1980s, a kind of teenage freedom that doesn't quite exist anymore. They involve substances that were part of it. I'm not recommending anything. The places are real. The people are real. The rest is as true as memory allows.</p>
+
+  <p>By the spring of 1986 I had given myself a Mohawk, and it had not gone well.</p>
+
+  <p>I'd cut it myself, or mostly myself, which is why it listed to one side like something that had been in a storm. I had a safety pin through one ear, put there at a party by a method I won't defend, and I wore, over all of it, a heavy wool serape I loved beyond all reason. I told people, or implied, that it was from Mexico. It was not. I'd never been to Mexico. I'd gotten it somewhere in Sonora or Groveland — some shop in town — and I just had it, the way you just have things at that age. That was about the extent of my world right then: a stretch of the Sierra foothills, an hour from anything, and a Mexican blanket that had never been to Mexico. I was a punk skater kid in a Gold Rush town, which is its own particular kind of absurd — there was no scene to be punk *at*. There was me, and the foothills, and a haircut nobody had asked for.</p>
+
+  <p>So when my mom and Hippie Bro said we were driving over the mountains for spring break, I went, because the alternative was staying home and being the only punk in Big Oak Flat, which is not actually a movement.</p>
+
+  <p>I say "we." It was really their trip — my mom's and Wayne's. I was along for the ride. But I liked it more than I would have admitted to anyone at the time, slouched in the back of the Datsun in my serape, pretending to be put out, secretly paying attention to everything.</p>
+
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">Over the Top</div>
+
+  <p>Tioga had opened early that year. That alone made the trip possible — the pass over the crest of the Sierra is closed by snow most of the year, and an early opening was a gift, a door swinging wide in a wall that's usually shut. We went up and over and down the eastern side, out of the green and into the big dry light of the other slope, and the whole eastern Sierra opened up the way it does, enormous, the mountains standing straight up out of the desert floor with nothing in between to soften them.</p>
+
+  <p>We did the hot springs — by then they were old friends, the secret water we'd been visiting for years. I saw Mammoth Lakes for the first time, which felt like a different country again, all that volcanic high-altitude beauty. And we drove the long highway south down the foot of the range, the White Mountains across the valley to the east, the Sierra rising on the west like a wave that never breaks, and somewhere in there we turned up the road to Whitney Portal.</p>
+
+  <p>Whitney Portal left a mark on me I didn't understand at the time. It's the trailhead at the foot of Mount Whitney — the highest peak in the lower forty-eight — where the road runs out and the mountain begins, and we just stood there in the thin cold air and looked up at it. Something about it lodged. I'd go back, years later, and climb that mountain — more than once, as it turned out. But the first time I ever saw it I was a sixteen-year-old in a wool serape with a crooked Mohawk, looking up at the top of the world and not knowing yet that it was calling me. The mountain plants itself in you and waits.</p>
+
+  <p>My mom read all of it to us as we went — she was a rock hound, an amateur geologist of the serious kind, and the eastern Sierra is a textbook standing on end. She'd tell us why the mountains were so abrupt, why the valley dropped so far, what the rocks were and how long they'd been doing what they were doing. I absorbed more of it than I let on. I'd spend my life making maps of the kind of country she taught me to read, but I didn't know that yet either. At sixteen I just knew the rocks were interesting and that admitting it wasn't punk.</p>
+
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">Death Valley</div>
+
+  <p>We dropped over into Death Valley before the heat got bad, which is the only sane way to do it. Spring is the narrow window when the lowest, hottest place in North America is merely warm instead of lethal, and we caught it right.</p>
+
+  <p>We camped near Furnace Creek, car-camping out of the Datsun in the way we always did — no RV, no hookups, just the wagon and a patch of ground and whatever we'd packed. It was hot and it was windy, the particular Death Valley wind that comes across all that open nothing and doesn't stop, pushing grit into everything, flapping the tarps and the awnings of the big rigs parked all around us. Because there was a whole world out there. Death Valley campgrounds are their own society — the RV people with their generators and their lawn chairs and their satellite setups, retirees and travelers and desert rats, a temporary town that assembled itself out of vehicles in the bottom of the hottest valley on the continent. Even for the desert, there was a lot going on.</p>
+
+  <p>So I did what a sixteen-year-old does. By 1986 I was smoking weed — sneaking it, mostly snaking it from Hippie Bro himself when he wasn't looking, smoking it out of a little can I'd made into a pipe. Sometimes when Wayne lit up in the car I'd light up too, under the general cover of it, nowhere near as cleverly as I imagined. At the campground I'd snake a beer or two and grab the can pipe and slip off from our camp and just wander — drift through that whole strange RV society half-stoned in my serape, looking at everything, the satellite dishes and the awnings and the people living their portable lives out in the heat, the dogs and the folding tables and the smell of other people's dinners on the wind. It was the most interesting thing in the world to me. A whole town that drove in and would drive out, parked in a place that wanted nothing alive in it, and me moving through it like a ghost nobody was watching. I was very much not as invisible as I believed. But I felt invisible, and that was the whole point of being sixteen.</p>
+
+  <p>I remember the pupfish, too — these tiny, improbable desert fish that live in the warm water down there, holdovers from an Ice Age when the whole valley was a lake, marooned now in a few springs in the hottest place on the continent, still hanging on. My mom loved them. A whole species the size of your thumbnail, surviving in the last place anything should survive, because the water never quite went away. She could make you feel the deep time in a thing like that — the lake that was, the desert that is, the little fish that bridged the two.</p>
+
+  <p>And we hiked into the canyon where they'd filmed Star Wars.</p>
+
+  <p>This was, to me, close to a religious site. The canyon country right there by Furnace Creek — the golden, eroded, otherworldly badlands — is where they shot the Tatooine scenes, where R2-D2 trundles off alone through the rocks and gets jumped by the Jawas and hauled into the sandcrawler. I'd grown up on that movie. Everybody my age had. To be standing in the actual canyon, the real rock, the real light, the place itself — I kept turning corners half-expecting to see a sandcrawler parked in the distance, or those little hooded shapes with the glowing eyes watching from up in the rocks. I could *feel* the Jawas up there. Logically I knew they were not up there. But the canyon was so exactly the thing, so perfectly the planet I'd watched a hundred times, that some part of me was genuinely scanning the ridgelines for them, half-thrilled, half-spooked, completely sixteen. It was one of the coolest things I'd ever done, and I was way too cool to say so out loud, so I just walked through Tatooine in my Mohawk and my serape and let it happen quietly.</p>
+
+  <p>And then, on the way out, we checked out and ate at the Furnace Creek Inn — which was something else entirely. It's the old grand hotel down there, the elegant green oasis somebody built in the middle of all that lethal nothing, palms and cool stone and white tablecloths in a place that kills the unprepared. After the windy campground and the car and the grit, sitting down to a real meal in that hushed, gracious old room felt like stepping through a door into a different century. The desert outside trying to bake everything, and in here, quiet and cool and nice. I didn't have the words for the contrast then. I just knew it was nice, in a way that landed harder *because* of where it was.</p>
+
+  <p>And then we went out to the Racetrack.</p>
+
+  <p>If you don't know it: the Racetrack is a dry lakebed, a playa, far out a brutal washboard road in the back of beyond, and on its flat cracked floor there are rocks — real rocks, some of them heavy — that *move.* They leave long trails scratched behind them across the mud, as if they'd been dragged by something, and for the longest time nobody could explain it. The rocks just travel, on their own, across a dead flat lake in the middle of the emptiest desert in America, and leave their tracks to prove it.</p>
+
+  <div class="pull-quote">It looked like something out of the Conan movie — that primordial, end-of-the-world country where the rules haven't been written yet. Which Hippie Bro would have appreciated, Conan being more or less his religion. How the Datsun made it out there, I will never know.</div>
+
+  <p>Because that road is a car-killer. It eats tires and rattles vehicles to pieces, and it routinely strands modern trucks built for exactly that kind of abuse. And we drove out it in a baby-blue late-seventies Datsun station wagon held together with duct tape and Hippie Bro's optimism and whatever secret things Frank from the Dam had done to it over the years. It had no business being out there. It made it anyway. The Datsun had a way of making it anyway — right up until it didn't, which I'm getting to.</p>
+
+  <p>We stood out on the playa among the moving rocks, in a silence so total it had a pressure to it, and even the punk kid in the serape shut up and felt it. Some places do that. They turn the volume off in you.</p>
+
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">The Door Shuts</div>
+
+  <p>The plan was to go home the way we'd come — back up over Tioga, the early-open pass, the short way west into the foothills.</p>
+
+  <p>The plan died at a closed gate. Tioga had shut again behind us — late snow up high, the door that had swung open swinging right back closed. The early opening had been a tease. The mountain had let us in and then locked up, and now the short way home didn't exist.</p>
+
+  <p>So we went around. And "around," when Tioga is closed, means *all the way* around — south down the desert, across the bottom of the Sierra, and up the far side, a journey of days where the direct route was hours. The trip cracked open into something longer than anyone had packed for.</p>
+
+  <p>That's how we ended up in Trona.</p>
+
+  <p>Trona is a place I have never forgotten and have never entirely wanted to. It's a chemical-plant town out on the edge of a dry alkali lake — Searles Lake — and it has a smell and a light and a feeling all its own, the great industrial works hissing and steaming out in the desert, the company houses, the sense that something is being extracted from the ground around the clock and has been for a hundred years. It felt post-apocalyptic before I had the word for it. Years and years later a horror movie would come out about mutant desert people in exactly that kind of country, and when I finally saw it the only thing I could think was: *yeah. I've been there. I can see it happening out there.* Trona had that exact menace, decades early. We did not linger in Trona.</p>
+
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">The Datsun Starts to Go</div>
+
+  <p>It was somewhere after that, grinding north up through the bottom of the Central Valley toward home, that the Datsun started to die.</p>
+
+  <p>Not all at once. It began heating up — the needle climbing, the engine running hot, the particular smell of a car that is asking you to please stop. The Central Valley in late spring is its own furnace, flat and hazy and pushing a hundred degrees, and the old wagon could not take the heat and the distance and the years all at the same time anymore. This was new. The Datsun had always made it anyway. Now, for the first time I'd ever felt, it wasn't sure.</p>
+
+  <p>We had to lay up in Madera. I remember it precisely: a hot parking lot beside an auto parts store, the kind of asphalt that radiates heat up through your shoes, the three of us waiting out the worst of the afternoon while the engine cooled and Hippie Bro did whatever could be done. The vibe was tenser than it had been the whole trip. We'd been golden out east — the springs, the mountains, the Racetrack — and now we were three people and a steaming car stuck in a valley parking lot a long way from home, and you could feel everyone doing the math on whether the thing would actually make it back.</p>
+
+  <p>I did in Madera what I'd done the whole trip — slipped off with the can pipe and a sweated, warm Budweiser if I could get one, and waited it out a little apart from the tension. I was an eighties punk skater kid stuck in a hundred-degree parking lot a long way from home. What're you going to do. Hippie Bro almost certainly knew, and almost certainly didn't care, which was the thing about Hippie Bro — and which, looking back, is part of why I keep finding things to say about him.</p>
+
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">The Long Way Around</div>
+
+  <p>Eventually we got it sorted enough to limp on. And here's the last indignity, the one that tells you everything about where the Datsun was in its life: we couldn't take Old Priest Grade.</p>
+
+  <p>If you're from up there you know what that means. Old Priest Grade is the steep shortcut — a wickedly direct mountain road that hauls you straight up out of the valley into the foothills in a fraction of the distance, an epic little stretch of pavement that climbs like it has somewhere to be. It's the way you go. It's the way *everybody* goes. And the Datsun, hot and tired and barely holding together, could not have made that climb. It would have boiled over and quit halfway up, somewhere on that grade in the dark.</p>
+
+  <p>So we took the long way around even at the very end — the gentler, longer road up into the hills, nursing the car the whole way, because the short way home was one more door the Datsun could no longer fit through. We'd started the trip with Tioga closing the short way over the mountains. We ended it with the Datsun itself unable to take the short way up the last hill. The whole trip, going and coming, was the long way around.</p>
+
+  <p>We made it back to Big Oak Flat late at night. Late. The kind of late where the town is dark and the only sound is your own tired car finally shutting off, ticking as it cools, having somehow once again made it anyway.</p>
+
+  <p>And I had school the next morning.</p>
+
+  <p>That's the part I think about. I had been to the bottom of Death Valley and stood among rocks that move themselves across a dead lake. I had looked up at the highest mountain in the country from the foot of it. I had crossed the Sierra twice and the whole desert once, gotten stranded by snow and saved by an auto parts store parking lot, and watched the one car that had carried us through all of it begin, quietly, to die. And then I went to bed for a few hours and got up and went to high school, a sixteen-year-old with a crooked Mohawk and a safety pin in his ear and a serape that smelled like campfire, sitting in a foothill classroom while the whole enormous country I'd just driven through went on being enormous somewhere to the east without me.</p>
+
+  <p>You can't hold both of those at once at that age. The world is too big and Monday is too small and you're somewhere in between, already halfway out the door.</p>
+
+  <p>It was near the end, though I didn't know it. The Datsun didn't have much road left in it. Not long after, it went under wraps — something with the system, licensing or insurance or a thing nobody fully explained to me, the way those things went. The car that ran on duct tape and faith and Frank's secret modifications didn't die out in the country it loved, didn't boil over on some glorious grade. The system just quietly caught up with it, and it got parked, and covered, and that was that. It was still under wraps when I left for college in 1988.</p>
+
+  <p>But that spring it made it. Out the killer road to the Racetrack and back, down to the bottom of Death Valley and up through Trona and the valley heat and around Old Priest Grade in the dark — the long way around, every mile of it — and it got us home in time for me to go to school. I didn't thank it. You don't, at sixteen. But I remember the sound of it shutting off in the dark, ticking and cooling in the foothill night, having made it anyway one more time.</p>
+
+  </div>
+
+  <div class="series-box">
+    <div class="series-label">The Iron Door Irregulars · A Series</div>
+    <p style="font-size:0.9rem; color:var(--stone); line-height:1.7; margin:0 0 0.5rem;">Real and imagined adventures from the Sierra foothills and the desert beyond — Hippie Bro, Crazy Irvin, Frank from the Dam, and the cast of characters who passed through the Iron Door Saloon.</p>
+    <div class="series-links">
+      <a href="/cattle-guard.html">If You Hit the Third Cattle Guard →</a>
+      <a href="/hippie-bro.html">Hippie Bro and the Mashed Potatoes →</a>
+      <a href="/the-long-way-around.html">The Long Way Around →</a>
+    </div>
+  </div>
+
+  <div class="article-footer">
+    <div class="article-footer-author">Brooks Groves · Death Valley &amp; the Long Road Home · Spring 1986</div>
+    <div class="article-footer-nav">
+      <a href="https://memoir.brooksgroves.com">← All Pieces</a>
+      <a href="/cattle-guard.html">If You Hit the Third Cattle Guard →</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <p class="footer-name">Brooks Groves</p>
+      <p class="footer-tagline">memoir.brooksgroves.com</p>
+    </div>
+    <a href="https://brooksgroves.com" class="footer-link">brooksgroves.com ↗</a>
+  </div>
+</footer>
+</body>
+</html>
