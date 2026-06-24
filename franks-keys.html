@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frank's Keys — Brooks Groves</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌲</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,900;1,400;1,600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink:#1c1a16; --parchment:#f5f0e8; --cream:#ede8dc;
+      --sage:#4a5c45; --rust:#8b3a2a; --stone:#7a7268;
+      --gold:#c8922a; --mist:#d6d0c4; --white:#fdfaf4;
+      --sierra:#4a6b3a; --foothills:#8b6914;
+    }
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    body { background:var(--parchment); color:var(--ink); font-family:'Libre Baskerville',Georgia,serif; font-size:16px; line-height:1.7; overflow-x:hidden; }
+    body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E"); pointer-events:none; z-index:9999; opacity:0.5; }
+    .topline { height:4px; background:linear-gradient(90deg,var(--sierra) 0%,var(--foothills) 50%,var(--rust) 100%); }
+    header { border-bottom:2px solid var(--ink); padding:0 clamp(1.5rem,5vw,4rem); background:var(--parchment); }
+    .masthead-inner { display:flex; align-items:center; justify-content:space-between; gap:1rem; max-width:860px; margin:0 auto; padding:0.75rem 0; }
+    .site-name { font-family:'Playfair Display',serif; font-size:clamp(1.1rem,2.5vw,1.4rem); font-weight:900; text-decoration:none; color:var(--ink); }
+    .header-link { font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; text-decoration:none; color:var(--stone); }
+    .header-link:hover { color:var(--sierra); }
+    .article-wrap { max-width:720px; margin:0 auto; padding:clamp(3rem,6vw,5rem) clamp(1.5rem,5vw,2rem) clamp(3rem,6vw,5rem); }
+    .article-back { font-family:'DM Mono',monospace; font-size:0.63rem; letter-spacing:0.12em; text-transform:uppercase; text-decoration:none; color:var(--stone); display:inline-block; margin-bottom:2rem; }
+    .article-back:hover { color:var(--sierra); }
+    .article-num { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--sierra); margin-bottom:0.4rem; }
+    .article-kicker { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--foothills); margin-bottom:0.75rem; }
+    .article-title { font-family:'Playfair Display',serif; font-size:clamp(2rem,5vw,3.2rem); font-weight:900; line-height:1.08; letter-spacing:-0.02em; margin-bottom:1rem; }
+    .article-meta { font-family:'DM Mono',monospace; font-size:0.62rem; color:var(--stone); letter-spacing:0.1em; margin-bottom:1rem; display:flex; gap:1.5rem; flex-wrap:wrap; }
+    .article-tags { display:flex; gap:0.5rem; flex-wrap:wrap; padding-bottom:2rem; border-bottom:1px solid var(--mist); margin-bottom:2.5rem; }
+    .article-tag-pill { font-family:'DM Mono',monospace; font-size:0.58rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--stone); background:var(--cream); border:1px solid var(--mist); padding:0.25rem 0.65rem; border-radius:4px; text-decoration:none; display:inline-block; transition:background 0.15s,border-color 0.15s,color 0.15s; }
+    .article-tag-pill:hover { background:var(--gold); border-color:var(--gold); color:var(--white); }
+    .disclaimer { background:var(--cream); border-left:3px solid var(--stone); padding:1rem 1.5rem; margin-bottom:2.5rem; }
+    .disclaimer p { font-size:0.82rem; color:var(--stone); line-height:1.7; font-style:italic; }
+    .article-body { font-size:1.05rem; line-height:1.85; }
+    .article-body p { margin-bottom:1.5rem; }
+    .article-body p:first-of-type::first-letter { font-family:'Playfair Display',serif; font-size:3.5rem; font-weight:900; float:left; line-height:0.85; margin:0.1em 0.08em 0 0; color:var(--sierra); }
+    .article-body hr { border:none; border-top:2px solid var(--mist); margin:2.5rem 0; }
+    .article-body em { font-style:italic; }
+    .article-body strong { font-weight:700; }
+    .pullquote { border-left:3px solid var(--foothills); padding:1rem 1.5rem; margin:2rem 0; background:var(--cream); }
+    .pullquote p { font-family:'Playfair Display',serif; font-size:1.05rem; font-style:italic; line-height:1.65; color:var(--ink); margin:0; }
+    .series-box { background:var(--cream); border:1px solid var(--mist); border-left:3px solid var(--sierra); padding:1.25rem 1.5rem; margin:2.5rem 0; }
+    .series-label { font-family:'DM Mono',monospace; font-size:0.55rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--sierra); margin-bottom:0.5rem; }
+    .series-links { display:flex; flex-direction:column; gap:0.4rem; margin-top:0.5rem; }
+    .series-links a { font-size:0.85rem; color:var(--rust); text-decoration:none; }
+    .series-links a:hover { text-decoration:underline; }
+    .article-footer { margin-top:3rem; padding-top:2rem; border-top:2px solid var(--ink); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
+    .article-footer-author { font-family:'DM Mono',monospace; font-size:0.62rem; color:var(--stone); letter-spacing:0.1em; }
+    .article-footer-nav { display:flex; gap:1.5rem; }
+    .article-footer-nav a { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.12em; text-transform:uppercase; text-decoration:none; color:var(--stone); }
+    .article-footer-nav a:hover { color:var(--sierra); }
+    footer { background:var(--ink); color:var(--stone); padding:2rem clamp(1.5rem,5vw,4rem); margin-top:4rem; }
+    .footer-inner { max-width:860px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:2rem; flex-wrap:wrap; }
+    .footer-name { font-family:'Playfair Display',serif; font-size:0.95rem; font-weight:700; color:var(--white); }
+    .footer-tagline { font-family:'DM Mono',monospace; font-size:0.52rem; color:var(--stone); margin-top:0.2rem; }
+    .footer-link { font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; text-decoration:none; color:var(--stone); }
+    .footer-link:hover { color:var(--gold); }
+
+    .article-body .pull-quote { border-left:3px solid var(--foothills); margin:2rem 0; padding:0.5rem 0 0.5rem 1.5rem; font-family:'Playfair Display',serif; font-style:italic; font-size:1.2rem; line-height:1.6; color:var(--stone); }
+    .article-body .scene-break { text-align:center; margin:2.5rem 0; color:var(--mist); letter-spacing:0.8em; font-size:0.9rem; }
+    .sidebar-label { margin:3rem 0 1.5rem; font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--stone); text-align:center; border-top:1px solid var(--mist); padding-top:2rem; }
+    .aside { background:var(--cream); border-top:2px solid var(--foothills); padding:1.3rem 1.5rem; margin:1.5rem 0; }
+    .aside-title { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--foothills); margin-bottom:0.6rem; }
+    .aside p { font-size:0.92rem; line-height:1.75; color:var(--stone); margin-bottom:0.6rem; }
+    .aside p:last-child { margin-bottom:0; }
+  </style>
+  <script>
+  (function(){
+    const KEY = 'memoir_auth', PW = 'memory';
+    if (sessionStorage.getItem(KEY) === '1') return;
+    document.documentElement.style.visibility = 'hidden';
+    function buildGate() {
+      var o = document.createElement('div');
+      o.id = 'gate-overlay';
+      o.style.cssText = 'position:fixed;inset:0;background:#f5f0e8;display:flex;align-items:center;justify-content:center;z-index:99999;font-family:Georgia,serif;';
+      o.innerHTML = '<div style="text-align:center;padding:3rem;max-width:380px;width:90%;border:2px solid #1c1a16;background:#f5f0e8;">'
+        + '<div style="font-family:monospace;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:#7a7268;margin-bottom:1rem;">Brooks Groves · Memoir</div>'
+        + '<div style="font-family:Georgia,serif;font-size:1.6rem;font-weight:700;color:#1c1a16;margin-bottom:0.5rem;">Private Archive</div>'
+        + '<div style="font-size:0.85rem;color:#7a7268;margin-bottom:2rem;font-style:italic;">Password required</div>'
+        + '<input id="gate-pw" type="password" placeholder="password" style="width:100%;padding:0.75rem 1rem;background:#ede8dc;border:1px solid #d6d0c4;color:#1c1a16;font-size:1rem;outline:none;margin-bottom:0.75rem;box-sizing:border-box;text-align:center;letter-spacing:0.1em;"/>'
+        + '<div id="gate-err" style="color:#8b3a2a;font-size:0.75rem;margin-bottom:0.75rem;min-height:1rem;"></div>'
+        + '<button id="gate-btn" style="width:100%;padding:0.75rem;background:#1c1a16;border:none;color:#fdfaf4;font-size:0.85rem;cursor:pointer;letter-spacing:0.1em;font-family:monospace;text-transform:uppercase;">Enter</button>'
+        + '<div style="margin-top:1rem;"><a href="https://memoir.brooksgroves.com" style="font-family:monospace;font-size:0.6rem;color:#7a7268;text-transform:uppercase;letter-spacing:0.1em;text-decoration:none;">← All Pieces</a></div>'
+        + '</div>';
+      document.body.appendChild(o);
+      document.documentElement.style.visibility = 'visible';
+      var inp = document.getElementById('gate-pw');
+      inp.focus();
+      function tryPw() {
+        var pw = inp.value.trim().toLowerCase();
+        if (!pw) { document.getElementById('gate-err').textContent = 'Please enter the password.'; return; }
+        if (pw === PW) {
+          sessionStorage.setItem(KEY, '1');
+          document.getElementById('gate-overlay').remove();
+        } else {
+          document.getElementById('gate-err').textContent = 'Incorrect password.';
+          inp.value = ''; inp.focus();
+        }
+      }
+      document.getElementById('gate-btn').addEventListener('click', tryPw);
+      inp.addEventListener('keydown', function(e){ if(e.key==='Enter') tryPw(); });
+    }
+    if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', buildGate); } else { buildGate(); }
+  })();
+  </script>
+</head>
+<body>
+<div class="topline"></div>
+<header>
+  <div class="masthead-inner">
+    <a href="https://brooksgroves.com" class="site-name">Brooks Groves</a>
+    <a href="https://memoir.brooksgroves.com" class="header-link">← Memoir</a>
+  </div>
+</header>
+
+<div class="article-wrap">
+  <a href="https://memoir.brooksgroves.com" class="article-back">← All Pieces</a>
+  <div class="article-num">Iron Door Irregulars · Yosemite · Early Summer 1982</div>
+  <p class="article-kicker">The Back Way to the Dam · A River Crossing · The Evergreen Lodge</p>
+  <h1 class="article-title">Frank's Keys</h1>
+  <div class="article-meta">
+    <span>El Portal to the Evergreen Lodge · The Summer I Was Twelve · 1982</span>
+    <span>Brooks Groves</span>
+  </div>
+  <div class="article-tags">
+    <a href="https://brooksgroves.com/tags.html#Memoir" class="article-tag-pill">Memoir</a>
+    <a href="https://brooksgroves.com/tags.html#Iron%20Door%20Irregulars" class="article-tag-pill">Iron Door Irregulars</a>
+    <a href="https://brooksgroves.com/tags.html#Hippie%20Bro" class="article-tag-pill">Hippie Bro</a>
+    <a href="https://brooksgroves.com/tags.html#Frank%20from%20the%20Dam" class="article-tag-pill">Frank from the Dam</a>
+    <a href="https://brooksgroves.com/tags.html#Yosemite" class="article-tag-pill">Yosemite</a>
+    <a href="https://brooksgroves.com/tags.html#Hetch%20Hetchy" class="article-tag-pill">Hetch Hetchy</a>
+    <a href="https://brooksgroves.com/tags.html#Groveland" class="article-tag-pill">Groveland</a>
+    <a href="https://brooksgroves.com/tags.html#1980s" class="article-tag-pill">1980s</a>
+  </div>
+
+  <div class="disclaimer">
+  </div>
+
+  <div class="article-body">
+
+  <p style="font-style:italic; color:var(--stone); font-size:0.95rem; border-left:3px solid var(--mist); padding-left:1.2rem; margin-bottom:2.5rem;">These stories come from a specific time and place — the Sierra foothills, the 1980s, a kind of freedom that doesn't quite exist anymore. The places are real. The people are real. The rest is as true as memory allows. This one is about Frank from the Dam, and the day a baby-blue Datsun forded a river it had no business fording.</p>
+
+  <p>There were two trips into Yosemite that summer — the summer I turned twelve. The famous one came at the end, when the car died at Daff Dome and stranded us for a week and quietly rerouted the rest of my life. But that's another story. This is the other one, the one from early in the season, before any of that, when the Datsun could still do anything and Frank from the Dam had the keys to the whole kingdom.</p>
+
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">The Cast Assembles</div>
+
+  <p>It was early summer, the cold-nights kind of early summer, when the high country still has winter in it after dark even when the days are warm. I'd just turned twelve in May. And one morning the usual crowd assembled for one of those open-ended expeditions that defined that whole stretch of my childhood — a caravan of hippies, three cars deep, headed into Yosemite for the day with no particular plan beyond going.</p>
+
+  <p>There was my mom, with a couple of her friends. There was Hippie Bro. There was Crazy Irvin and his girlfriend. And there was Frank from the Dam, in his Jeep, which is the detail that turned this from a day trip into the thing I'm still telling people about forty years later. I was the only kid — the lone twelve-year-old orbiting a pack of grown-ups, which is its own particular way to spend a day: half-ignored, half-watched, free to drift, soaking up everything the adults said and did and not understanding the half of it.</p>
+
+  <p>The Datsun, at this point in its life, was magnificent. I know how it ends for that car — I know it's a few weeks from dying at Daff Dome and a few years from going under wraps for good — but in early summer of 1982 the baby-blue wagon was at the absolute peak of its mysterious powers, held together by duct tape and optimism and, more to the point, by whatever Frank had done to it over the years that none of the rest of us could explain. That car could do things. You'll see.</p>
+
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">Down to the Valley, Down to El Portal</div>
+
+  <p>We went in the normal way — the Big Oak Flat entrance, the road dropping down into Yosemite Valley — and we did the valley. Early summer is the valley at full volume: the waterfalls fat and thundering with snowmelt, Yosemite Falls and Bridalveil absolutely roaring, the Merced high and fast, the meadows green, the whole cathedral of the place packed with people craning their necks. We did all of it, the way you do.</p>
+
+  <p>And then we drove down out of the valley to El Portal — the little town strung along the Merced River on the low road, the all-year road, west of the park. My mom and Hippie Bro had friends there, and we settled in for a good long while. That's how it went with that crowd; a visit was never a quick thing. The afternoon stretched out the way summer afternoons do when nobody's in charge of the clock, the adults talking and laughing, more people turning up, me wandering the edges of it drinking in the river and the heat and the hippie sprawl of the whole scene.</p>
+
+  <p>At some point — and this is the hinge of the day — somebody decided we were not going to go home the normal way.</p>
+
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">The Back Way</div>
+
+  <p>The normal way home from El Portal is simple and boring: you stay on the highway and it carries you back up to the foothills in an hour, give or take. We were not going to do that. We were going to take the old roads — the original roads, the back way, the network of rough forest and wagon tracks that web across the north and west side of the park, the way people got in and out of this country before there were highways. Through the Foresta side, up and over the old grades, out near the Carlon ranger station, and onto the Evergreen Road home.</p>
+
+  <p>This was Frank's idea, or Frank's route, or at least Frank's road to lead — because there was a catch, and the catch was the whole point: those old roads are <em>gated.</em> Scattered along them are locked gates, water bars cut across the roadbed, piles of rock and timber, every kind of blocker the Forest Service and the dam people could install to keep folks from doing exactly what we were about to do. You don't just drive the back way. The back way is closed.</p>
+
+  <p>Unless you're Frank from the Dam, and you have the keys.</p>
+
+  <div class="pull-quote">Because Frank had the keys. He opened those locked gates like a man unlocking his own front door — and who has the keys to the gates on the road to the dam? The man who runs the dam, maybe. With Frank you never knew for sure.</div>
+
+  <p>That is the single fact that tells you everything about Frank, and the single fact I will never be able to fully explain. We never knew for sure where the keys came from. We never knew for sure about any of it. That was Frank.</p>
+
+  <p>And there was a quieter understanding running underneath the whole enterprise, which even I picked up on at twelve: the fewer people who saw us doing this, the better. Nobody said it in so many words, but the word <em>rangers</em> drifted through the adult conversation more than once, and the general posture was low-profile, keep-moving, don't-make-a-thing-of-it. We were a caravan of hippies and one kid threading a chain of locked gates on closed roads through a national park and the dam lands beyond it, led by a man with a mysterious set of keys. Less was better. I understood that much.</p>
+
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">Frank from the Dam</div>
+
+  <p>I should stop and tell you about Frank, because this is his story and you need the full picture.</p>
+
+  <p>Frank from the Dam was known from around — you'd see him here and there, he'd turn up, he'd be gone. He looked like the rest of them, another foothills hippie at a glance. But Frank was the one you went to when you needed to know how something <em>worked</em>, because Frank knew how everything worked. The legend was that he was a Stanford or Cal engineer who ran Hetch Hetchy — the dam down the road, the one that drowned the valley John Muir loved, the one that sends San Francisco its water and its power. Whether any of that was true, I genuinely cannot tell you. Nobody could. But Frank could explain the workings of a dam, or a distributor, or the universe, in more detail than you'd ever asked for, and he fixed the Datsun more times than anyone could count, with modifications only he understood — which is the reason that car could do impossible things.</p>
+
+  <p>And here's the part that, looking back, makes the whole man click into place: Frank had built his own computer. This is 1982, in the Sierra foothills, where the height of most people's technology was Hippie Bro's VCR. Frank built a personal computer with his own hands, and he played games on it, sure — but he could also <em>talk to people</em> through it, down the phone line, to strangers somewhere out there in the dark, years before anyone I knew had any concept that such a thing was possible. He was connected to something the rest of us couldn't see. That was Frank all over: the keys to the gates, the secret guts of the car, the dam he maybe ran, and a homemade machine wired into a world that hadn't arrived yet. The man was plugged into the hidden systems underneath everything. If you told me Frank ran the dam, I'd have believed you. If you told me Frank ran a lot of things, I'd have believed that too.</p>
+
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">Water to the Doors</div>
+
+  <p>So we went. Frank in the Jeep at the front, leading, because Frank had the keys and the technical skills and the whole map of this in his head. Hippie Bro and Crazy Irvin and my mom and the rest of us strung out behind in the caravan. Gate after gate — Frank out, unlock, swing it open, everyone through, Frank locking it behind us, on to the next. Over the water bars, around the blockers, up grades so rough and steep the Datsun had no earthly business climbing them in two-wheel drive with a full load of hippies. But it climbed them. The car did 4x4 things it was never built to do — crawled and clawed and dug up those old wagon grades like it had something to prove — and everyone just took it for granted, because that was the Datsun, and Frank had touched it, and it could do things.</p>
+
+  <p>And then we came to the river.</p>
+
+  <p>I don't know which crossing it was anymore — one of the forks, the water high and fast with early-summer snowmelt — but I remember the moment we all got out and looked at it and understood this was the real thing. The water was moving. It was deep. There was no bridge and no question of turning a three-car caravan around on a gated road in the backcountry. We were going across, or we were stuck.</p>
+
+  <p>So everyone went to work. This is the part I remember best — the whole crowd of them out in the river, Frank directing, building a line across: digging, moving rocks, placing stones to firm up the bottom and break the current, reading the water, finding the line a car could take. It took a while. It was a genuine engineering problem and Frank was a genuine engineer and the rest of them were strong and willing and had done versions of this before. Shovels. Rocks. The Jeep positioned and ready. Everyone arranged around the crossing, in the water and on both banks, ready to grab or push or winch if it all went wrong.</p>
+
+  <p>And then the baby-blue Datsun forded the river under its own power.</p>
+
+  <div class="pull-quote">It nosed down into the water and went, slow and steady, the river climbing up the doors — to the doors, I swear — and that little duct-taped wagon just kept going, found the line Frank had built, and climbed up out the far side, streaming water, alive.</div>
+
+  <p>Everyone was shouting and ready, hands out, the Jeep tensed to haul it, my heart somewhere up in my throat from the bank. And it made it. On its own. With the whole tribe arrayed around it ready to save it, and never having to.</p>
+
+  <p>I have thought about that crossing a lot, especially after Daff Dome. Because a few weeks later that same car would die in a turnout and all those same hands would stand around it and not be able to save it. But not this day. This day the Datsun did the impossible thing itself, and we cheered it like it had won something, because it had.</p>
+
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">The Dam Country</div>
+
+  <p>Out the far side we climbed up through the rest of it, out near the Carlon ranger station, and onto the Evergreen Road — which is the road to Hetch Hetchy, Frank's road, the road that runs to the dam he maybe ran. Whether we actually went into the dam that day, or whether that was some other trip, I honestly can't tell you anymore — the trips blur, and Frank's territory all runs together in my memory, the gates and the water and the great reservoir behind the wall. But we were in his country now, and the gates had opened for him the whole way, and that was enough. That was the proof, if you needed proof. The man had the keys.</p>
+
+  <p>It was getting late by then — properly late, the long northern-California summer dusk finally giving it up, the cold coming back into the air the way it does up there at night even in summer. We'd been at this all day. And we still had to get home.</p>
+
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">The Evergreen Lodge</div>
+
+  <p>We rolled into the Evergreen Lodge plenty late — somewhere in the small hours, the kind of late where the day has gone on so long it loops back around into an adventure all its own. And of all the places that caravan could have ended up, this was the one that meant the most to me, though I doubt I said so.</p>
+
+  <p>Because I had lived here. Back in the mid-seventies, after my parents' divorce, my mom and I had landed at the Evergreen Lodge — she'd worked there, and for a stretch it was home, the place we washed up after the family came apart. The Evergreen sits on the Evergreen Road up toward Hetch Hetchy, an old lodge in the woods where everybody knows everybody, and walking back into it in the middle of the night after a day of gated roads and forded rivers was a kind of homecoming I didn't have the words for at twelve. These were my old haunts. I knew this place in my bones.</p>
+
+  <p>There's a bar at the Evergreen Lodge, and the adults went to the bar, the way the adults always went to the bar — to drink to the crossing and the day and each other, the whole damp triumphant crew of them. And me, the lone twelve-year-old, home in the place that had once been home? They loaded me up with a fistful of quarters and a steady supply of sarsaparilla and turned me loose, and I was, in every possible way, content.</p>
+
+  <p>I spent the rest of that very late night feeding quarters into the video games — it was 1982, so it was Pac-Man and the rest of the golden-age machines that lived in places like that — drinking my sarsaparillas, wandering my old haunts, perfectly happy, perfectly at home, while the grown-ups laughed in the bar and the great dark reservoir sat behind its wall down the road and the baby-blue Datsun cooled in the lot outside, dripping river water, having done the impossible one more time.</p>
+
+  <p>We got home after that — plenty late, but it was summer, so it was all fine. And I didn't know, feeding quarters into a Pac-Man machine at the Evergreen Lodge in the small hours of an early-summer night, that I'd be back in this Yosemite country before the summer was out, and that the next time the car wouldn't start, and nothing would be the same after. But that's the other story. This one ends here, with a kid full of sarsaparilla and a car that could still do anything and a man named Frank who had the keys to the whole kingdom and opened every gate.</p>
+
+  <p>And that is my story here.</p>
+
+  </div>
+
+  <div class="series-box">
+    <div class="series-label">The Iron Door Irregulars · A Series</div>
+    <p style="font-size:0.9rem; color:var(--stone); line-height:1.7; margin:0 0 0.5rem;">Real and imagined adventures from the Sierra foothills and the desert beyond — Hippie Bro, Crazy Irvin, Frank from the Dam, and the cast of characters who passed through the Iron Door Saloon.</p>
+    <div class="series-links">
+      <a href="/hippie-bro.html">Hippie Bro and the Mashed Potatoes →</a>
+      <a href="/cattle-guard.html">If You Hit the Third Cattle Guard →</a>
+      <a href="/the-long-way-around.html">The Long Way Around →</a>
+      <a href="/daff-dome.html">Daff Dome →</a>
+      <a href="/franks-keys.html">Frank's Keys →</a>
+    </div>
+  </div>
+
+  <div class="article-footer">
+    <div class="article-footer-author">Brooks Groves · El Portal to the Evergreen Lodge · Early Summer 1982</div>
+    <div class="article-footer-nav">
+      <a href="https://memoir.brooksgroves.com">← All Pieces</a>
+      <a href="/daff-dome.html">Daff Dome →</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <p class="footer-name">Brooks Groves</p>
+      <p class="footer-tagline">memoir.brooksgroves.com</p>
+    </div>
+    <a href="https://brooksgroves.com" class="footer-link">brooksgroves.com ↗</a>
+  </div>
+</footer>
+</body>
+</html>
