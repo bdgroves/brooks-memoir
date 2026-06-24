@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daff Dome — Brooks Groves</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌲</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,900;1,400;1,600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink:#1c1a16; --parchment:#f5f0e8; --cream:#ede8dc;
+      --sage:#4a5c45; --rust:#8b3a2a; --stone:#7a7268;
+      --gold:#c8922a; --mist:#d6d0c4; --white:#fdfaf4;
+      --sierra:#4a6b3a; --foothills:#8b6914;
+    }
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    body { background:var(--parchment); color:var(--ink); font-family:'Libre Baskerville',Georgia,serif; font-size:16px; line-height:1.7; overflow-x:hidden; }
+    body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E"); pointer-events:none; z-index:9999; opacity:0.5; }
+    .topline { height:4px; background:linear-gradient(90deg,var(--sierra) 0%,var(--foothills) 50%,var(--rust) 100%); }
+    header { border-bottom:2px solid var(--ink); padding:0 clamp(1.5rem,5vw,4rem); background:var(--parchment); }
+    .masthead-inner { display:flex; align-items:center; justify-content:space-between; gap:1rem; max-width:860px; margin:0 auto; padding:0.75rem 0; }
+    .site-name { font-family:'Playfair Display',serif; font-size:clamp(1.1rem,2.5vw,1.4rem); font-weight:900; text-decoration:none; color:var(--ink); }
+    .header-link { font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; text-decoration:none; color:var(--stone); }
+    .header-link:hover { color:var(--sierra); }
+    .article-wrap { max-width:720px; margin:0 auto; padding:clamp(3rem,6vw,5rem) clamp(1.5rem,5vw,2rem) clamp(3rem,6vw,5rem); }
+    .article-back { font-family:'DM Mono',monospace; font-size:0.63rem; letter-spacing:0.12em; text-transform:uppercase; text-decoration:none; color:var(--stone); display:inline-block; margin-bottom:2rem; }
+    .article-back:hover { color:var(--sierra); }
+    .article-num { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--sierra); margin-bottom:0.4rem; }
+    .article-kicker { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--foothills); margin-bottom:0.75rem; }
+    .article-title { font-family:'Playfair Display',serif; font-size:clamp(2rem,5vw,3.2rem); font-weight:900; line-height:1.08; letter-spacing:-0.02em; margin-bottom:1rem; }
+    .article-meta { font-family:'DM Mono',monospace; font-size:0.62rem; color:var(--stone); letter-spacing:0.1em; margin-bottom:1rem; display:flex; gap:1.5rem; flex-wrap:wrap; }
+    .article-tags { display:flex; gap:0.5rem; flex-wrap:wrap; padding-bottom:2rem; border-bottom:1px solid var(--mist); margin-bottom:2.5rem; }
+    .article-tag-pill { font-family:'DM Mono',monospace; font-size:0.58rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--stone); background:var(--cream); border:1px solid var(--mist); padding:0.25rem 0.65rem; border-radius:4px; text-decoration:none; display:inline-block; transition:background 0.15s,border-color 0.15s,color 0.15s; }
+    .article-tag-pill:hover { background:var(--gold); border-color:var(--gold); color:var(--white); }
+    .disclaimer { background:var(--cream); border-left:3px solid var(--stone); padding:1rem 1.5rem; margin-bottom:2.5rem; }
+    .disclaimer p { font-size:0.82rem; color:var(--stone); line-height:1.7; font-style:italic; }
+    .article-body { font-size:1.05rem; line-height:1.85; }
+    .article-body p { margin-bottom:1.5rem; }
+    .article-body p:first-of-type::first-letter { font-family:'Playfair Display',serif; font-size:3.5rem; font-weight:900; float:left; line-height:0.85; margin:0.1em 0.08em 0 0; color:var(--sierra); }
+    .article-body hr { border:none; border-top:2px solid var(--mist); margin:2.5rem 0; }
+    .article-body em { font-style:italic; }
+    .article-body strong { font-weight:700; }
+    .pullquote { border-left:3px solid var(--foothills); padding:1rem 1.5rem; margin:2rem 0; background:var(--cream); }
+    .pullquote p { font-family:'Playfair Display',serif; font-size:1.05rem; font-style:italic; line-height:1.65; color:var(--ink); margin:0; }
+    .series-box { background:var(--cream); border:1px solid var(--mist); border-left:3px solid var(--sierra); padding:1.25rem 1.5rem; margin:2.5rem 0; }
+    .series-label { font-family:'DM Mono',monospace; font-size:0.55rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--sierra); margin-bottom:0.5rem; }
+    .series-links { display:flex; flex-direction:column; gap:0.4rem; margin-top:0.5rem; }
+    .series-links a { font-size:0.85rem; color:var(--rust); text-decoration:none; }
+    .series-links a:hover { text-decoration:underline; }
+    .article-footer { margin-top:3rem; padding-top:2rem; border-top:2px solid var(--ink); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
+    .article-footer-author { font-family:'DM Mono',monospace; font-size:0.62rem; color:var(--stone); letter-spacing:0.1em; }
+    .article-footer-nav { display:flex; gap:1.5rem; }
+    .article-footer-nav a { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.12em; text-transform:uppercase; text-decoration:none; color:var(--stone); }
+    .article-footer-nav a:hover { color:var(--sierra); }
+    footer { background:var(--ink); color:var(--stone); padding:2rem clamp(1.5rem,5vw,4rem); margin-top:4rem; }
+    .footer-inner { max-width:860px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:2rem; flex-wrap:wrap; }
+    .footer-name { font-family:'Playfair Display',serif; font-size:0.95rem; font-weight:700; color:var(--white); }
+    .footer-tagline { font-family:'DM Mono',monospace; font-size:0.52rem; color:var(--stone); margin-top:0.2rem; }
+    .footer-link { font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; text-decoration:none; color:var(--stone); }
+    .footer-link:hover { color:var(--gold); }
+
+    .article-body .pull-quote { border-left:3px solid var(--foothills); margin:2rem 0; padding:0.5rem 0 0.5rem 1.5rem; font-family:'Playfair Display',serif; font-style:italic; font-size:1.2rem; line-height:1.6; color:var(--stone); }
+    .article-body .scene-break { text-align:center; margin:2.5rem 0; color:var(--mist); letter-spacing:0.8em; font-size:0.9rem; }
+    .sidebar-label { margin:3rem 0 1.5rem; font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--stone); text-align:center; border-top:1px solid var(--mist); padding-top:2rem; }
+    .aside { background:var(--cream); border-top:2px solid var(--foothills); padding:1.3rem 1.5rem; margin:1.5rem 0; }
+    .aside-title { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--foothills); margin-bottom:0.6rem; }
+    .aside p { font-size:0.92rem; line-height:1.75; color:var(--stone); margin-bottom:0.6rem; }
+    .aside p:last-child { margin-bottom:0; }
+  </style>
+  <script>
+  (function(){
+    const KEY = 'memoir_auth', PW = 'memory';
+    if (sessionStorage.getItem(KEY) === '1') return;
+    document.documentElement.style.visibility = 'hidden';
+    function buildGate() {
+      var o = document.createElement('div');
+      o.id = 'gate-overlay';
+      o.style.cssText = 'position:fixed;inset:0;background:#f5f0e8;display:flex;align-items:center;justify-content:center;z-index:99999;font-family:Georgia,serif;';
+      o.innerHTML = '<div style="text-align:center;padding:3rem;max-width:380px;width:90%;border:2px solid #1c1a16;background:#f5f0e8;">'
+        + '<div style="font-family:monospace;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:#7a7268;margin-bottom:1rem;">Brooks Groves · Memoir</div>'
+        + '<div style="font-family:Georgia,serif;font-size:1.6rem;font-weight:700;color:#1c1a16;margin-bottom:0.5rem;">Private Archive</div>'
+        + '<div style="font-size:0.85rem;color:#7a7268;margin-bottom:2rem;font-style:italic;">Password required</div>'
+        + '<input id="gate-pw" type="password" placeholder="password" style="width:100%;padding:0.75rem 1rem;background:#ede8dc;border:1px solid #d6d0c4;color:#1c1a16;font-size:1rem;outline:none;margin-bottom:0.75rem;box-sizing:border-box;text-align:center;letter-spacing:0.1em;"/>'
+        + '<div id="gate-err" style="color:#8b3a2a;font-size:0.75rem;margin-bottom:0.75rem;min-height:1rem;"></div>'
+        + '<button id="gate-btn" style="width:100%;padding:0.75rem;background:#1c1a16;border:none;color:#fdfaf4;font-size:0.85rem;cursor:pointer;letter-spacing:0.1em;font-family:monospace;text-transform:uppercase;">Enter</button>'
+        + '<div style="margin-top:1rem;"><a href="https://memoir.brooksgroves.com" style="font-family:monospace;font-size:0.6rem;color:#7a7268;text-transform:uppercase;letter-spacing:0.1em;text-decoration:none;">← All Pieces</a></div>'
+        + '</div>';
+      document.body.appendChild(o);
+      document.documentElement.style.visibility = 'visible';
+      var inp = document.getElementById('gate-pw');
+      inp.focus();
+      function tryPw() {
+        var pw = inp.value.trim().toLowerCase();
+        if (!pw) { document.getElementById('gate-err').textContent = 'Please enter the password.'; return; }
+        if (pw === PW) {
+          sessionStorage.setItem(KEY, '1');
+          document.getElementById('gate-overlay').remove();
+        } else {
+          document.getElementById('gate-err').textContent = 'Incorrect password.';
+          inp.value = ''; inp.focus();
+        }
+      }
+      document.getElementById('gate-btn').addEventListener('click', tryPw);
+      inp.addEventListener('keydown', function(e){ if(e.key==='Enter') tryPw(); });
+    }
+    if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', buildGate); } else { buildGate(); }
+  })();
+  </script>
+</head>
+<body>
+<div class="topline"></div>
+<header>
+  <div class="masthead-inner">
+    <a href="https://brooksgroves.com" class="site-name">Brooks Groves</a>
+    <a href="https://memoir.brooksgroves.com" class="header-link">← Memoir</a>
+  </div>
+</header>
+
+<div class="article-wrap">
+  <a href="https://memoir.brooksgroves.com" class="article-back">← All Pieces</a>
+  <div class="article-num">Iron Door Irregulars · Yosemite · Summer 1982</div>
+  <p class="article-kicker">Sonora Pass · Mono Lake · The Week the Datsun Chose My Life</p>
+  <h1 class="article-title">Daff Dome</h1>
+  <div class="article-meta">
+    <span>Tuolumne Meadows · The Summer I Was Twelve · 1982</span>
+    <span>Brooks Groves</span>
+  </div>
+  <div class="article-tags">
+    <a href="https://brooksgroves.com/tags.html#Memoir" class="article-tag-pill">Memoir</a>
+    <a href="https://brooksgroves.com/tags.html#Iron%20Door%20Irregulars" class="article-tag-pill">Iron Door Irregulars</a>
+    <a href="https://brooksgroves.com/tags.html#Hippie%20Bro" class="article-tag-pill">Hippie Bro</a>
+    <a href="https://brooksgroves.com/tags.html#Yosemite" class="article-tag-pill">Yosemite</a>
+    <a href="https://brooksgroves.com/tags.html#Eastern%20Sierra" class="article-tag-pill">Eastern Sierra</a>
+    <a href="https://brooksgroves.com/tags.html#Mono%20Lake" class="article-tag-pill">Mono Lake</a>
+    <a href="https://brooksgroves.com/tags.html#Tuolumne" class="article-tag-pill">Tuolumne</a>
+    <a href="https://brooksgroves.com/tags.html#Groveland" class="article-tag-pill">Groveland</a>
+    <a href="https://brooksgroves.com/tags.html#1980s" class="article-tag-pill">1980s</a>
+  </div>
+
+  <div class="disclaimer">
+  </div>
+
+  <div class="article-body">
+
+  <p style="font-style:italic; color:var(--stone); font-size:0.95rem; border-left:3px solid var(--mist); padding-left:1.2rem; margin-bottom:2.5rem;">These stories come from a specific time and place — the Sierra, the desert beyond it, the 1980s, a kind of freedom kids don't get anymore. The places are real. The people are real. The rest is as true as memory allows. This one's the one the others were leading up to.</p>
+
+  <p>The summer I was twelve, a broken-down car decided the rest of my childhood, and it took me about forty years to understand that's what had happened.</p>
+
+  <p>I didn't know it at the time. At the time it was just the best summer of my life, and then a week stranded in Yosemite, and then a lot of crying at a party, and then somehow I lived in a different town and went to a different school and became a different person than the one I'd have been. But it all turned on a baby-blue Datsun dying in exactly the right place at exactly the wrong time. So let me tell it in order.</p>
+
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">The Setup</div>
+
+  <p>By 1982 my parents had been divorced for a while — late-seventies, early-eighties California, you know the story, everybody's parents were getting divorced. The arrangement was that I lived with my dad up in Janesville, way up in Lassen County, during the school year, and spent summers down with my mom. I'd done fifth and sixth grade up north as a Janesville Wildcat. It was fine. It was actually pretty good. But it wasn't *home*, and home was down in the foothills with my mom, who by then had moved in with Wayne — Hippie Bro — in Big Oak Flat.</p>
+
+  <p>And that summer had been about as good as a summer gets. Swimming at the Pine Mountain Lake marina. Roaming the hills like a feral creature. Walking back and forth across the divide between Big Oak Flat and Groveland on the old railroad grade — that hill with the abandoned rail bed that was the unofficial trail between the two towns — to get to my best friend Zack's house, which I did constantly. I was a right proper kid, free in the way you could be free then, and the whole golden thing was about to end, because my dad was scheduled to come pick me up and haul me back to Janesville for seventh grade.</p>
+
+  <p>But there was time for one more adventure. There's always time for one more adventure. That's how these things start.</p>
+
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">The Expedition</div>
+
+  <p>My mom had the baby-blue Datsun — a late-seventies station wagon, the family flagship, held together by duct tape and the collective optimism of every grease-stained Iron Door Irregular who'd ever laid hands on it: Hippie Bro, Crazy Irvin, and Frank from the Dam, whose secret modifications were the only reason it ran at all. The plan was a rock-hunting trip. My mom was a serious amateur geologist and a world-class rock hound, and she could read the ground like a book she'd been waiting our whole lives to open. So: me, Zack, and my mom. No Hippie Bro this time. Just the three of us and the wagon.</p>
+
+  <p>We went down to Sonora for supplies — the big town, the Tuolumne County seat, down the hill from us — and then up and over Sonora Pass, which is its own kind of magnificent, stopping at Strawberry and Kennedy Meadows where my mom knew people. She'd worked for the California Department of Fish and Game for a while, though not anymore by then, and she stayed tied into that world — the high-country fish-stocking world — and I remember it being a genuine event when the truck came and they released all the trout into the streams. Down the eastern side to Bridgeport — we drove right past the hot springs without knowing they were there; that's a different story, a couple years later, a napkin map. This was before all that. We were innocent of the hot springs in 1982.</p>
+
+  <p>And then down to Mono Lake, which we loved, and which my mom had friends near too. We climbed the Inyo Craters. And we collected rocks. Lord, did we collect rocks. We filled that Datsun with obsidian — great heavy blocks of volcanic glass — and tufa, and every specimen that would fit, until we were riding around the high desert in a station wagon weighed down with what amounted to half a volcano. We were very thorough. We had plenty of water; we were prepared for the desert. We were not, it turned out, prepared for what several hundred pounds of geology does to a car that's already living on borrowed time.</p>
+
+  <p>The Datsun started acting up out at the Inyo Craters — and if you've been out those roads, you know what kind of country that is to have a car act up in. We might have been stuck briefly. But my mom got it going and nursed it back to Lee Vining, where her friends were. We still had the whole of Tioga Pass ahead of us — up and over the crest, through Yosemite, and home to Groveland so my dad could collect me. A lot of car between here and there.</p>
+
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">The Smurfs, Briefly</div>
+
+  <p>I have to stop and tell you about the Smurfs, because 1982 was peak Smurf. You could not go two feet without a Smurf. They were on the television, in the stores, on the ads, on everything. The whole culture had Smurfs. And Zack and I — we liked the Smurfs, sure, but we were also, frankly, a little over the Smurfs. We were oversaturated. We had reached Smurf fatigue. So we spent a good portion of that trip doing what bored, slightly cynical twelve-year-olds do, which was interrogating the Smurfs — debating the existential questions, the continuity problems, the basic logic of Smurf society. Hold that thought. The Smurfs come back.</p>
+
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">Over Tioga, and the Dying</div>
+
+  <p>You have to understand what Tioga Pass was in 1982. It wasn't the smooth engineered extension of Highway 120 it is now, all gentle grades and tidy corners. Back then it was epic — a genuine challenge, the top of the world as far as I knew, the highest and grandest pass I'd ever crossed. And we were taking it in an overloaded Datsun with half a volcano in the back, two kids, my mom, and an engine that had already threatened to quit on us out in the desert.</p>
+
+  <p>We crawled up that mountain. Slow, so slow, the car hot and the wind hot and real summer still baking everything, the engine getting hotter and starting to make noises it shouldn't make. But we made it — up and over the crest and down the western side to Tuolumne Meadows.</p>
+
+  <p>I have spent the rest of my life recommending Tuolumne Meadows to anyone who'll listen, so let me try to say why. You climb all that way up the eastern wall of the Sierra, white-knuckle and grinding, and then the country just <em>opens</em>. At about eighty-six hundred feet the mountains step back and there's this enormous green meadow — the largest in the high Sierra — flat and golden and shot through with the Tuolumne River braiding across it in slow silver channels, and the whole thing is ringed by clean granite domes and peaks standing up out of the grass like something built rather than grown. Lembert Dome at one end. Cathedral Peak with its impossible spire off to the south. The air at that altitude is thin and bright and smells like pine and snowmelt and warm stone, and the light comes down so clear it feels like it's coming up out of the ground as much as down from the sky. After the heat of the desert and the dread of the climb, it was like surfacing. You could breathe again. The whole world got big and quiet and kind.</p>
+
+  <p>For my mom it was a geology textbook standing open — all that exposed granite, scraped bare and polished by the glaciers that carved the whole basin, the domes rounded by ice the way a river rounds a stone, just on a scale that takes ten thousand years to read. She could stand in that meadow and tell you what the ice had done and which way it had moved and how long the rock had waited. For Zack and me it was just the most beautiful place we'd ever been turned loose in.</p>
+
+  <p>We stopped to let the car cool, and we wandered out across the meadow to Soda Springs — the cold mineral spring that bubbles up rust-red and naturally carbonated right out of the ground, fizzing up out of the earth like the planet's own soda fountain, which to two kids in 1982 was about the most wonderful thing imaginable. We spent a good while there, breathing the thin bright air, letting the engine come back down. None of us knew the engine wasn't going to forgive us.</p>
+
+  <p>Then we got back in. The Datsun made some threatening sounds, but it started, and we pulled out — we still had a lot of road ahead, and my dad was going to be picking me up soon. We made it maybe a mile or two down the road.</p>
+
+  <p>And then the car just died.</p>
+
+  <p>No drama, no bang. The engine simply stopped and would not start again — something electrical, a distributor thing, some small invisible failure that may as well have been the hand of God. My mom coasted us down a hill and steered into a turnout. We didn't know it then, but that turnout is the parking for one of the famous climbing areas up there, the base of Daff Dome — D.A.F.F., the climbers' acronym for "Dome Across From Fairview," a place I would come back to over and over in college, with ropes and chalk and actual knowledge, and climb for real. But in 1982 it was just a gravel pull-off where our car had died, and the only questions were: where are we, and what do we do now.</p>
+
+  <p>The car rolled to a stop. We all looked at each other. And my mom — and this is the whole of my mother in one moment — said, calmly: <em>We have food and water. We're okay. We just need a phone.</em></p>
+
+  <div class="pull-quote">In 1982, "we just need a phone" was not a small thing to say in the middle of Yosemite. There were no cell phones, no answering machines. You needed a working pay phone, and you needed someone on the other end to actually be home and pick up. We had neither. What we had was a dead car, a week of time, and the most beautiful prison in America.</div>
+
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">Base Camp</div>
+
+  <p>This turnout became our home for a week.</p>
+
+  <p>The first move was to walk back to the Tuolumne Meadows store to call somebody. It's a few miles, but it's gorgeous country, and we got a real feel for the land doing it — which is the thing about that whole week, that the misery and the beauty were the exact same thing. We got to the store and the pay phone was out of order. End of summer, heavily used, dead. So we bought some supplies, and then — for reasons that made sense to no one, then or now — we bought a bag of ice. A bag of ice, to carry four or five miles back to a car with no working anything, in the heat of summer. It melted entirely on the walk back, of course. My mom confessed years later that the ice had not been her finest decision. But we were committed to that ice. We saw it through.</p>
+
+  <p>The store told us the next working pay phone was the other direction, down at Tenaya Lake, another four or five miles. That was tomorrow's problem. So that first day we were just stuck at the car, and Zack and I did what we were going to spend the whole week doing, which was discover that being stranded in Yosemite is, if you are twelve and not the one responsible for anything, approximately the greatest thing that has ever happened to you.</p>
+
+  <p>We had a creek, so we had water and a place to play. We had a cool shaded forest. We had Daff Dome looming up behind us, waterfalls coming off the high country, granite everywhere. We were, in every way that mattered to a kid, in paradise. And we had nothing but time.</p>
+
+  <p>So we built a city for the Smurfs.</p>
+
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">The Smurf City</div>
+
+  <p>It started as a few little houses out of sticks and twigs and bark and whatever the forest floor gave us. Think of those elaborate fairy villages or troll towns you'll see now in a place like Seabrook — we were doing that, decades early, except for the Smurfs, the very Smurfs we claimed to be so over. We had endless time and nothing to spend it on, so the village grew. A few houses became a neighborhood. A neighborhood became a town. The town became, over the days, a whole Smurf <em>city</em> — elaborate, organized, built into the granite slabs and the roots, genuinely impressive, a real piece of work.</p>
+
+  <p>Now — and the adult writing this knows better — you are not supposed to build structures in a national park. We know that now. You leave it the way you found it. But this was 1982, and we were two kids stuck in the woods with a dead car and a bag of melted ice, and we built our Smurf metropolis, and I will not apologize to the National Park Service across a span of forty-odd years. The strangest part is how rarely we saw a ranger. In 2026 you'd be cited inside an hour. In 1982 we had the run of the place. They must have checked on the stranded family with the dead Datsun at least once, but I genuinely don't remember it. We were mostly just left alone up there, the way you could be left alone then.</p>
+
+  <p>We also had, besides my mom's geology and nature field guides, a Choose Your Own Adventure book or two that we'd already read into the ground, making every choice, dying every death. My mom had her own books and was perfectly content — she read, she botanized, she watched the light move on the rock, while her son and his best friend ran feral building a civilization for cartoon characters they'd publicly disavowed. She was, throughout, completely fine. That was the other half of my mother: the calm. Stranded in the wilderness with two kids and no car, and she just settled in and read her field guides.</p>
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">The Phone at Tenaya Lake</div>
+
+  <p>The next day was the hike to the Tenaya Lake pay phone — the other direction, another four or five miles, and just as beautiful as the walk the other way had been. We talked about everything on those hikes. Zack had gotten into the Beatles and had a lot of questions for my mom about what exactly was going on in <em>Sgt. Pepper's</em> — questions which, to be fair, are about as deep now as they were then. I think we'd seen the movie, or a cartoon of it, and that's where it came from, that and some Led Zeppelin. We were little rocker kids even then, working out the big mysteries on a granite trail in the high Sierra on the way to a pay phone.</p>
+
+  <p>We had a roll of dimes. We called the numbers and they just rang. We called and waited and called again, trying to be strategic about the dimes. And there's a particular feeling, at twelve, of standing at a pay phone in the wilderness listening to a number ring and ring with nobody picking up — <em>does anybody even know we're missing? Is anyone looking? What is happening out there in the world without us?</em> We were fine. We were having the time of our lives. But somewhere out there people had to be starting to wonder.</p>
+
+  <p>At last my mom got through — to Hippie Bro, I think. Finally a voice on the other end. He knew roughly where we were now: somewhere on 120 after Tenaya Lake and before Tuolumne Meadows, and anyway the baby-blue Datsun is hard to miss. Hippie Bro was on the case. But we had a dead car and he'd have to find a way up to us, and it might, he said, take some time. We gave him the number of the Tenaya pay phone and agreed on a time to be back there for the next call. Then we hiked back to the car for the evening — nerve-wracking, all of it, and also some of the most incredible country on the planet, the lake and the granite and the clouds resting on the high domes off in the distance, the rivers, all of it. We ate our snacks, looked at a sky absolutely loaded with stars, and slept.</p>
+
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">The Climb (Which My Mother Knew Nothing About)</div>
+
+  <p>The next morning the place felt like home. The creek, the birds, the Smurf city, the big rock behind us. And with the whole day to kill before the next phone call, Zack and I decided we'd climb to the top of Daff Dome to see what was up there.</p>
+
+  <p>We grabbed some snacks and, I'm fairly sure, a Coca-Cola — the perfect breakfast of the 1980s American child — crossed the logs over the stream, stepped onto the granite ramp, and started up.</p>
+
+  <p>At first it was nothing, like walking up a giant tilted sidewalk. Then it got higher, and the views got bigger, and then it got higher still and the views got <em>enormous</em>, and our small twelve-year-old minds came genuinely apart at where we were and what we were doing and the sheer size of the universe. Somewhere up there we found, inexplicably, a golf ball. A golf ball, thousands of feet up a granite dome in the middle of Yosemite. How it got there, why it was there, we will never know. We held it and asked it many questions. And then we bounced it down the rock — and it hit a ledge and bounced <em>higher</em> than we could have thrown it, and came down and bounced higher again, each bounce sending it further up into the air than the last, until it sailed off and was gone. We watched it go. I still think about that golf ball.</p>
+
+  <p>Daff Dome isn't a sheer wall — it's a great rounded dome, so it's never exactly steep, but it is exposed, and the higher you go the more you feel it. We climbed above the tree line into pure granite and pure sky. We could see the Datsun far below, tiny, a little blue Hot Wheels car in a gravel pull-off. We could see Highway 120 snaking off in both directions, Tenaya Lake, Tuolumne Meadows — our whole world, the entire stage of our week, laid out small and shining beneath us. At one point I think we could even see Half Dome and the valley beyond, though I won't swear to it. We kept going. No ropes. No protection. No knowledge of any of it — just two kids and childlike curiosity, climbing higher and higher up a granite dome because it was there and we wanted to see.</p>
+
+  <div class="pull-quote">We could see the top, but it got too steep up there for us to manage — not for lack of trying. And then Zack got stuck on a big granite ledge, and for a few minutes it was not good, it was genuinely dire, the two of us a few thousand feet up with no rope and my mom and the dead car very, very far below.</div>
+
+  <p>He got off it — found some sketchy tree roots and edges and worked his way down off the ledge. Then we still had the whole dome to descend, which is harder than going up and took us a long, careful while. But we made it down. And my mom, this whole time, had no idea. She thought we'd spent the morning down low looking for bugs and snakes and reading the nature guides — which, to be fair, we also did. Zack and I looked at each other when we got back, and we knew, without a word, that we had just been somewhere and done something that we would carry the rest of our lives. The grown-ups never knew. That was the first secret I ever kept that was worth keeping.</p>
+
+  <p>That's the thing nobody understood about that week, then or for years after. To my mom it was a crisis to be managed. To my dad, somewhere out on the highway, it was about to be a shock. But to Zack and me it was the summit of our entire childhood, and the broken car was the thing that gave it to us. You'd never choose to break down. But I would not trade that week for anything.</p>
+
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">Rescue, From Both Directions at Once</div>
+
+  <p>We hiked back down to the Tenaya phone at the appointed time, and amazingly it rang, and it was Hippie Bro. He'd gotten a ride with Crazy Irvin and they were going to head up in a little bit — and you have to understand that "in a little bit" in 1982 Hippie Bro time is a quantity open to wide interpretation. This was not a man who was ever five minutes early to a big meeting in Singapore. But he knew where we were, and he was coming, and all we had to do was wait.</p>
+
+  <p>So we waited. And waited. It was a long time. Zack and I climbed the rocks some more — different rocks now, because we knew the area like locals, scrambling around like a couple of mountain goats, a week of granite under us. Early evening came and still no Hippie Bro.</p>
+
+  <p>And then, from the Tioga Pass side — the eastern side — a car came along, and who should it be but my dad. And my then-stepmother. Driving right past us. They didn't recognize us — why would they; their kid was supposed to be waiting in Big Oak Flat, not standing in a turnout in the middle of Yosemite — and we had to flag them down, waving like crazy, until at last they slowed, turned around, and came back. And you can imagine they had some questions.</p>
+
+  <p>And at just about that same moment, from the Big Oak Flat side — the western side — here came Hippie Bro and Crazy Irvin.</p>
+
+  <div class="pull-quote">Both halves of my whole divided life arrived on the same stretch of mountain road within minutes of each other, from opposite directions. My dad and stepmother from the east, the Janesville world, the school-year world. Hippie Bro and Crazy Irvin from the west, my mom's world, the summer world. Everyone I belonged to, converging at once on a dead blue Datsun in the high Sierra.</div>
+
+  <p>And just like that, we went from being stranded to being something closer to a party.</p>
+
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">The Party at the Dead Car</div>
+
+  <p>Everybody gathered at the Datsun to figure it out. Somebody produced beer — there was always beer — and pretty soon the whole rescue party was standing around the open hood with a Budweiser in hand, frowning into the engine, trying a whole lot of things, and not one of them had the faintest clue what was wrong. Not for lack of effort. Just for lack of Frank from the Dam, who wasn't there yet. They drank and tinkered and offered theories and the car stayed exactly as dead as before.</p>
+
+  <p>And there was a small, particular weather system off to one side of all this, which was my mom and my stepmother in the same clearing for the first time in a while, being extremely polite to each other. They did not really care for one another — the way a first wife and a second wife in a not-yet-finished story often don't — and at twelve I didn't have the whole picture, but I could read the temperature. Two women orbiting the same broken car and the same kid, keeping a careful distance, everyone pretending it was all perfectly easy. It mostly was. But I noticed. Kids always notice. I just filed it away and went back to the rocks.</p>
+
+  <p>Zack and I watched the whole thing from up on the rocks, which we now climbed with total confidence, the masters of this domain. And we went down to our Smurf city — and we destroyed it.</p>
+
+  <p>We'd had it with the Smurfs. We were done. So we became giant monsters and laid waste to the metropolis we'd spent a week building, stomping and roaring through it, and I'm fairly sure the whole demolition was on a suggestion from Crazy Irvin, who appreciated a good leveling. Everyone was genuinely impressed by what we'd built before we wrecked it — it really was elaborate, all those granite slabs and twig structures. And then it was gone, scattered back into the forest it came from, which — the adult notes with relief — is exactly how a national park would want it left. We didn't know that then. We were just done being kids in that particular way, though I didn't know that either.</p>
+
+  <p>The Datsun was not going to start that evening. So we packed everything we could into the two cars — everything except the several hundred pounds of obsidian and tufa from the east side, which we left piled by the turnout, the geology too heavy to rescue. And then we drove away from Daff Dome, and to my genuine surprise we headed back toward Groveland — all of us, the whole convergence. We had to drop Zack at his house. Word had gone ahead. And here's the thing about 1982: nobody seemed to think any of it was strange. A family stranded in the mountains for an extra week? Most normal thing in the world, apparently. Everyone was completely relaxed about it.</p>
+
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">Zack's House, and the Part Where I Came Apart</div>
+
+  <p>It was Labor Day weekend, I think — still a few days before school. We ended up at Zack's parents' house, and his bigger family was all there, and it seemed like everybody in both towns was there, a whole crowd, a lot going on after two weeks of us being off in the mountains. And as these things do, it turned into a party — a little for us kids, because we'd just had our wilderness epic, but mostly for the adults, who in that time and place needed no excuse whatsoever to have a party and would gladly invent one.</p>
+
+  <p>And somewhere in all of it — all those people, my mom, Hippie Bro, my dad, the stepmother I was not a fan of, the noise and the relief and the weight of the summer ending — something in me just came apart.</p>
+
+  <p>I freaked out. I broke down. I was not going back to Janesville. I could not do it. I wanted to stay in Groveland and Big Oak Flat with my friends and go to school with my own class. Janesville had been fine — better than fine, really — but I just couldn't go, and I came undone about it in front of everyone, the way only a twelve-year-old at the end of a very long summer can. There was drama, because there was real feeling under it. It was emotional in a way I didn't have words for then and barely have words for now: a kid being asked to leave the place that was actually home, and finally, all at once, refusing.</p>
+
+  <p>And — for whatever combination of reasons, the timing and the tears and the crowd and everyone worn down and the simple fact that I meant it — it was decided that I could stay.</p>
+
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">The Room Hippie Bro Built</div>
+
+  <p>I would stay in Big Oak Flat with my mom and Hippie Bro, in the old miner's cabin, and go back to Tenaya Elementary for seventh grade — go from being a Janesville Wildcat to a Tenaya Warrior. <em>Go Warriors.</em> My mom got me signed up fast.</p>
+
+  <p>And Hippie Bro built me a room. He was a carpenter, and he made me my own room in that old cabin, and it was a genuinely cool room, and I loved it. After everything I've told you about Wayne — the duct tape and the schemes and the cheerful "let's try it" that got us into half our trouble — I want you to sit with the image of him with a hammer, building a kid a room so the kid could stay. That's the whole man, right there, in lumber. It's the thing I think about most.</p>
+
+  <p>I was relieved and nervous and completely alive, in all the ways a twelve-year-old gets to be. School would start in a few days. Everything would be set. I'd go to Tenaya for two years and then to Sonora High, where I'd be a Wildcat all over again, and where I suppose I'm still a Wildcat at heart — but Sonora High School is another story.</p>
+
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">The Yellow Wire</div>
+
+  <p>And what about the baby-blue Datsun, dead in a turnout under Daff Dome?</p>
+
+  <p>Well. Sure enough, Frank from the Dam rolled up. Of course he did. He took one look, did a little jiggle with the wires, and about two minutes later the engine turned over and the car ran — ran as well as it had ever run, good as new. It was the yellow wire, or something, some small silly thing that was nothing at all to Frank from the Dam and a genuine miracle to the rest of us. That was always the way with Frank. The car that no one else could touch would die, and Frank would appear and lay one finger on it and it would live, and he could never quite explain what he'd done, and you could never quite explain Frank.</p>
+
+  <p>The Datsun came home to Big Oak Flat with a load of obsidian and a hundred other specimens from the east side. And the Datsun and I were home, both of us, for the next few years in Big Oak Flat, California. The car and the kid, saved together, brought down off the mountain by the same odd grace.</p>
+
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">What the Breakdown Bought</div>
+
+  <p>Here's the part I didn't understand until much later.</p>
+
+  <p>My dad and that stepmother — it was his second marriage — split up not long after, in a gnarly divorce, and it was ugly for a while. If I'd gone back to Janesville like I was supposed to, I'd have been right in the middle of all that. Instead I was down in Groveland, finding my way back in with the kids I'd been away from for two years, catching up quick, being a foothills kid again. My dad would marry again after that, and again after that, and I'd visit him summers up in Lassen County and have other adventures up there — but those are other stories. Eventually he moved to Elk Grove. If I'd stayed on that side, I'd have gone to Lassen High, and then moved again, and lived a whole different life through a whole different set of rooms.</p>
+
+  <p>But I didn't, because a Datsun died at Daff Dome and stranded me for a week, and that week broke something open in me, and at a party at Zack's house I finally said the thing I'd never managed to say, and they let me stay. The next few years had their own challenges — but what teenage years don't. I got the foothills. I got my mom and Hippie Bro and the room he built. I got Sonora High and a whole life rooted in that country, the country that made me, the rocks my mother taught me to read that I'd grow up to map for a living.</p>
+
+  <p>I've thought a lot, over the years, about how thin the margin was. A yellow wire. A distributor that picked one mile of road out of all the road there is to give out on. If the Datsun makes it home that week the way it was supposed to, I go back to Janesville, and I'm a different man writing a different story, or not writing one at all. The whole rest of my life balanced on a car breaking down in the most beautiful place it ever broke down, and a stranger named Frank knowing which wire to touch.</p>
+
+  <p>Zack still brings up Daff Dome. Forty years on, he'll mention that one time at Daff Dome, and we both go quiet and a little electric, because we know what it was. It was the week we were stranded in paradise and built a city and tore it down, the week we climbed too high with no rope and told no one, the week both my families came up the same mountain from opposite ends. And it was the week, though none of us knew it standing around that dead car drinking Budweiser in the dusk, that the course of my whole life got decided — quietly, mechanically, by a baby-blue Datsun that chose, for once, the exact right moment to die.</p>
+
+  <p>And that is my story here.</p>
+
+  </div>
+
+  <div class="series-box">
+    <div class="series-label">The Iron Door Irregulars · A Series</div>
+    <p style="font-size:0.9rem; color:var(--stone); line-height:1.7; margin:0 0 0.5rem;">Real and imagined adventures from the Sierra foothills and the desert beyond — Hippie Bro, Crazy Irvin, Frank from the Dam, and the cast of characters who passed through the Iron Door Saloon.</p>
+    <div class="series-links">
+      <a href="/hippie-bro.html">Hippie Bro and the Mashed Potatoes →</a>
+      <a href="/cattle-guard.html">If You Hit the Third Cattle Guard →</a>
+      <a href="/the-long-way-around.html">The Long Way Around →</a>
+      <a href="/daff-dome.html">Daff Dome →</a>
+    </div>
+  </div>
+
+  <div class="article-footer">
+    <div class="article-footer-author">Brooks Groves · Tuolumne Meadows · Summer 1982</div>
+    <div class="article-footer-nav">
+      <a href="https://memoir.brooksgroves.com">← All Pieces</a>
+      <a href="/the-long-way-around.html">The Long Way Around →</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <p class="footer-name">Brooks Groves</p>
+      <p class="footer-tagline">memoir.brooksgroves.com</p>
+    </div>
+    <a href="https://brooksgroves.com" class="footer-link">brooksgroves.com ↗</a>
+  </div>
+</footer>
+</body>
+</html>
