@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The RV Has Spoken — Brooks Groves</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌲</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,900;1,400;1,600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink:#1c1a16; --parchment:#f5f0e8; --cream:#ede8dc;
+      --sage:#4a5c45; --rust:#8b3a2a; --stone:#7a7268;
+      --gold:#c8922a; --mist:#d6d0c4; --white:#fdfaf4;
+      --sierra:#4a6b3a; --foothills:#8b6914;
+    }
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    body { background:var(--parchment); color:var(--ink); font-family:'Libre Baskerville',Georgia,serif; font-size:16px; line-height:1.7; overflow-x:hidden; }
+    body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E"); pointer-events:none; z-index:9999; opacity:0.5; }
+    .topline { height:4px; background:linear-gradient(90deg,var(--sierra) 0%,var(--foothills) 50%,var(--rust) 100%); }
+    header { border-bottom:2px solid var(--ink); padding:0 clamp(1.5rem,5vw,4rem); background:var(--parchment); }
+    .masthead-inner { display:flex; align-items:center; justify-content:space-between; gap:1rem; max-width:860px; margin:0 auto; padding:0.75rem 0; }
+    .site-name { font-family:'Playfair Display',serif; font-size:clamp(1.1rem,2.5vw,1.4rem); font-weight:900; text-decoration:none; color:var(--ink); }
+    .header-link { font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; text-decoration:none; color:var(--stone); }
+    .header-link:hover { color:var(--sierra); }
+    .article-wrap { max-width:720px; margin:0 auto; padding:clamp(3rem,6vw,5rem) clamp(1.5rem,5vw,2rem) clamp(3rem,6vw,5rem); }
+    .article-back { font-family:'DM Mono',monospace; font-size:0.63rem; letter-spacing:0.12em; text-transform:uppercase; text-decoration:none; color:var(--stone); display:inline-block; margin-bottom:2rem; }
+    .article-back:hover { color:var(--sierra); }
+    .article-num { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--sierra); margin-bottom:0.4rem; }
+    .article-kicker { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--foothills); margin-bottom:0.75rem; }
+    .article-title { font-family:'Playfair Display',serif; font-size:clamp(2rem,5vw,3.2rem); font-weight:900; line-height:1.08; letter-spacing:-0.02em; margin-bottom:1rem; }
+    .article-meta { font-family:'DM Mono',monospace; font-size:0.62rem; color:var(--stone); letter-spacing:0.1em; margin-bottom:1rem; display:flex; gap:1.5rem; flex-wrap:wrap; }
+    .article-tags { display:flex; gap:0.5rem; flex-wrap:wrap; padding-bottom:2rem; border-bottom:1px solid var(--mist); margin-bottom:2.5rem; }
+    .article-tag-pill { font-family:'DM Mono',monospace; font-size:0.58rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--stone); background:var(--cream); border:1px solid var(--mist); padding:0.25rem 0.65rem; border-radius:4px; text-decoration:none; display:inline-block; transition:background 0.15s,border-color 0.15s,color 0.15s; }
+    .article-tag-pill:hover { background:var(--gold); border-color:var(--gold); color:var(--white); }
+    .disclaimer { background:var(--cream); border-left:3px solid var(--stone); padding:1rem 1.5rem; margin-bottom:2.5rem; }
+    .disclaimer p { font-size:0.82rem; color:var(--stone); line-height:1.7; font-style:italic; }
+    .article-body { font-size:1.05rem; line-height:1.85; }
+    .article-body p { margin-bottom:1.5rem; }
+    .article-body p:first-of-type::first-letter { font-family:'Playfair Display',serif; font-size:3.5rem; font-weight:900; float:left; line-height:0.85; margin:0.1em 0.08em 0 0; color:var(--sierra); }
+    .article-body hr { border:none; border-top:2px solid var(--mist); margin:2.5rem 0; }
+    .article-body em { font-style:italic; }
+    .article-body strong { font-weight:700; }
+    .pullquote { border-left:3px solid var(--foothills); padding:1rem 1.5rem; margin:2rem 0; background:var(--cream); }
+    .pullquote p { font-family:'Playfair Display',serif; font-size:1.05rem; font-style:italic; line-height:1.65; color:var(--ink); margin:0; }
+    .series-box { background:var(--cream); border:1px solid var(--mist); border-left:3px solid var(--sierra); padding:1.25rem 1.5rem; margin:2.5rem 0; }
+    .series-label { font-family:'DM Mono',monospace; font-size:0.55rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--sierra); margin-bottom:0.5rem; }
+    .series-links { display:flex; flex-direction:column; gap:0.4rem; margin-top:0.5rem; }
+    .series-links a { font-size:0.85rem; color:var(--rust); text-decoration:none; }
+    .series-links a:hover { text-decoration:underline; }
+    .article-footer { margin-top:3rem; padding-top:2rem; border-top:2px solid var(--ink); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
+    .article-footer-author { font-family:'DM Mono',monospace; font-size:0.62rem; color:var(--stone); letter-spacing:0.1em; }
+    .article-footer-nav { display:flex; gap:1.5rem; }
+    .article-footer-nav a { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.12em; text-transform:uppercase; text-decoration:none; color:var(--stone); }
+    .article-footer-nav a:hover { color:var(--sierra); }
+    footer { background:var(--ink); color:var(--stone); padding:2rem clamp(1.5rem,5vw,4rem); margin-top:4rem; }
+    .footer-inner { max-width:860px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:2rem; flex-wrap:wrap; }
+    .footer-name { font-family:'Playfair Display',serif; font-size:0.95rem; font-weight:700; color:var(--white); }
+    .footer-tagline { font-family:'DM Mono',monospace; font-size:0.52rem; color:var(--stone); margin-top:0.2rem; }
+    .footer-link { font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; text-decoration:none; color:var(--stone); }
+    .footer-link:hover { color:var(--gold); }
+
+    .article-body .pull-quote { border-left:3px solid var(--foothills); margin:2rem 0; padding:0.5rem 0 0.5rem 1.5rem; font-family:'Playfair Display',serif; font-style:italic; font-size:1.2rem; line-height:1.6; color:var(--stone); }
+    .article-body .scene-break { text-align:center; margin:2.5rem 0; color:var(--mist); letter-spacing:0.8em; font-size:0.9rem; }
+    .sidebar-label { margin:3rem 0 1.5rem; font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--stone); text-align:center; border-top:1px solid var(--mist); padding-top:2rem; }
+    .aside { background:var(--cream); border-top:2px solid var(--foothills); padding:1.3rem 1.5rem; margin:1.5rem 0; }
+    .aside-title { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--foothills); margin-bottom:0.6rem; }
+    .aside p { font-size:0.92rem; line-height:1.75; color:var(--stone); margin-bottom:0.6rem; }
+    .aside p:last-child { margin-bottom:0; }
+  </style>
+  <script>
+  (function(){
+    const KEY = 'memoir_auth', PW = 'memory';
+    if (sessionStorage.getItem(KEY) === '1') return;
+    document.documentElement.style.visibility = 'hidden';
+    function buildGate() {
+      var o = document.createElement('div');
+      o.id = 'gate-overlay';
+      o.style.cssText = 'position:fixed;inset:0;background:#f5f0e8;display:flex;align-items:center;justify-content:center;z-index:99999;font-family:Georgia,serif;';
+      o.innerHTML = '<div style="text-align:center;padding:3rem;max-width:380px;width:90%;border:2px solid #1c1a16;background:#f5f0e8;">'
+        + '<div style="font-family:monospace;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:#7a7268;margin-bottom:1rem;">Brooks Groves · Memoir</div>'
+        + '<div style="font-family:Georgia,serif;font-size:1.6rem;font-weight:700;color:#1c1a16;margin-bottom:0.5rem;">Private Archive</div>'
+        + '<div style="font-size:0.85rem;color:#7a7268;margin-bottom:2rem;font-style:italic;">Password required</div>'
+        + '<input id="gate-pw" type="password" placeholder="password" style="width:100%;padding:0.75rem 1rem;background:#ede8dc;border:1px solid #d6d0c4;color:#1c1a16;font-size:1rem;outline:none;margin-bottom:0.75rem;box-sizing:border-box;text-align:center;letter-spacing:0.1em;"/>'
+        + '<div id="gate-err" style="color:#8b3a2a;font-size:0.75rem;margin-bottom:0.75rem;min-height:1rem;"></div>'
+        + '<button id="gate-btn" style="width:100%;padding:0.75rem;background:#1c1a16;border:none;color:#fdfaf4;font-size:0.85rem;cursor:pointer;letter-spacing:0.1em;font-family:monospace;text-transform:uppercase;">Enter</button>'
+        + '<div style="margin-top:1rem;"><a href="https://memoir.brooksgroves.com" style="font-family:monospace;font-size:0.6rem;color:#7a7268;text-transform:uppercase;letter-spacing:0.1em;text-decoration:none;">← All Pieces</a></div>'
+        + '</div>';
+      document.body.appendChild(o);
+      document.documentElement.style.visibility = 'visible';
+      var inp = document.getElementById('gate-pw');
+      inp.focus();
+      function tryPw() {
+        var pw = inp.value.trim().toLowerCase();
+        if (!pw) { document.getElementById('gate-err').textContent = 'Please enter the password.'; return; }
+        if (pw === PW) {
+          sessionStorage.setItem(KEY, '1');
+          document.getElementById('gate-overlay').remove();
+        } else {
+          document.getElementById('gate-err').textContent = 'Incorrect password.';
+          inp.value = ''; inp.focus();
+        }
+      }
+      document.getElementById('gate-btn').addEventListener('click', tryPw);
+      inp.addEventListener('keydown', function(e){ if(e.key==='Enter') tryPw(); });
+    }
+    if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', buildGate); } else { buildGate(); }
+  })();
+  </script>
+</head>
+<body>
+<div class="topline"></div>
+<header>
+  <div class="masthead-inner">
+    <a href="https://brooksgroves.com" class="site-name">Brooks Groves</a>
+    <a href="https://memoir.brooksgroves.com" class="header-link">← Memoir</a>
+  </div>
+</header>
+
+<div class="article-wrap">
+  <a href="https://memoir.brooksgroves.com" class="article-back">← All Pieces</a>
+  <div class="article-num">Seattle Stories · 107.7 The End · Summer 2000</div>
+  <p class="article-kicker">End War · Two RVs Under the Webcam · The Russian Lit Guy</p>
+  <h1 class="article-title">The RV Has Spoken</h1>
+  <div class="article-meta">
+    <span>The Summer I Got Voted Off the Radio · Seattle · 2000</span>
+    <span>Brooks Groves</span>
+  </div>
+  <div class="article-tags">
+    <a href="https://brooksgroves.com/tags.html#Memoir" class="article-tag-pill">Memoir</a>
+    <a href="https://brooksgroves.com/tags.html#Seattle" class="article-tag-pill">Seattle</a>
+    <a href="https://brooksgroves.com/tags.html#107.7%20The%20End" class="article-tag-pill">107.7 The End</a>
+    <a href="https://brooksgroves.com/tags.html#Andy%20Savage" class="article-tag-pill">Andy Savage</a>
+    <a href="https://brooksgroves.com/tags.html#Radio" class="article-tag-pill">Radio</a>
+    <a href="https://brooksgroves.com/tags.html#The%20Westin" class="article-tag-pill">The Westin</a>
+    <a href="https://brooksgroves.com/tags.html#2000s" class="article-tag-pill">2000s</a>
+  </div>
+
+  <div class="disclaimer">
+  </div>
+
+  <div class="article-body">
+
+  <p style="font-style:italic; color:var(--stone); font-size:0.95rem; border-left:3px solid var(--mist); padding-left:1.2rem; margin-bottom:2.5rem;">A true story from Seattle in the summer of 2000, back when alternative radio ran the city and a reality-TV craze could put a graveyard-shift bellman who read Russian novels into a recreational vehicle on live television. The places are real, the people are real, the radio station is real. It happened more or less exactly like this, twenty-six years ago, and I have the jacket to prove it. Or I did, until I sold it.</p>
+
+  <p>In the summer of 2000 I got voted off the radio, and on my way out I poured all our drinking water onto a parking lot on live television, and that is the most famous I have ever been or ever expect to be.</p>
+
+  <p>Let me back up.</p>
+
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">The Craze</div>
+
+  <p>That was the summer of the first season of <em>Survivor</em>, and the whole country had lost its mind over it. You have to remember what a genuine phenomenon it was — before reality television was wallpaper, before there were forty versions of everything, there was just this one strange new show where strangers got stranded on an island and voted each other off one by one, and everybody watched, and everybody argued about it.</p>
+
+  <p>I was working graveyard as a bellman at the Westin Seattle at the time, and my coworkers and I would dissect that show for hours. Who was playing whom. Which alliance was real. Whether so-and-so was a snake or a genius or both. We'd go on about it for entire shifts, week after week, all the way to the final tribal council. It was the thing.</p>
+
+  <p>So you can imagine my reaction when I was listening to the radio one morning — 107.7 The End, which was <em>the</em> station, Seattle's big alternative-rock institution, the place all the music I loved lived — and Andy Savage and the morning crew announced that they were going to do their own version. Their own <em>Survivor</em>. They were calling it <strong>End War</strong>. Everybody wanted a piece of the phenomenon, and The End was no exception.</p>
+
+  <p>The show was "The Morning End," Andy Savage with his crew — Jodi and Steve and the rest. I was an avid, loyal, daily listener. And the moment I heard them describe what they were planning, I knew I was going to apply, because I had a feeling I was exactly the kind of person they were looking for.</p>
+
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">The Candidate</div>
+
+  <p>Here is who I was in the summer of 2000.</p>
+
+  <p>I was living in a basement studio at the Arkona on 1st Ave N, a few blocks off Key Arena, with three ferrets. I worked the overnight shift as a bellman. And I was, at that particular moment in my life, deep into Russian literature — I had just finished <em>War and Peace</em>, the whole brick of it, and I was quietly, enormously proud of myself for it. A graveyard-shift bellman with three ferrets and a freshly conquered Tolstoy, living in a basement on lower Queen Anne.</p>
+
+  <p>I figured I was a pretty good candidate.</p>
+
+  <p>The application asked the things you'd expect — favorite band, what makes you you, all of it — and I filled it out and sent it in and didn't think much more about it. Then the next day the phone rang and it was the station, asking me to come in for an interview. I was, as you might imagine, thrilled.</p>
+
+  <p>The studio was everything an avid listener wants it to be. I'd never been interviewed live on the radio before, and the whole thing — the gear, the boards, the on-air talent I'd been listening to for years sitting right there — was too cool for school. I did well. They were still working through a lot of candidates, but I could feel it had gone right. The format, as I came to understand it, was this: two teams, each living in an RV, doing <em>Survivor</em>-style challenges, but for the radio — which is a strange and different animal, because radio is sound, and most of what we'd actually be doing was sitting in a recreational vehicle.</p>
+
+  <p>There was one more hurdle: a talent show. The candidates had to get up in front of a crowd and win them over — the public, plus the DJs and station people we'd be working with.</p>
+
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">Tuaca and Ouzo</div>
+
+  <p>The talent show was at a sports bar that used to sit across from Key Arena — the name is gone from me now — a few blocks from my basement, so I could practically roll there. There were maybe twenty of us candidates, and we each had to get up and do a bit, and the crowd had to like us.</p>
+
+  <p>We were, I want to be clear, <em>over</em>-served. The drinks of the evening, as I recall, were Tuaca and ouzo, in some volume, and you can imagine what that does to a room full of nervous people auditioning to live in an RV on the radio. I got up there and did some kind of comedy sketch. I genuinely cannot tell you what it was — it's lost to the Tuaca — but people laughed, and they told me afterward they liked it, and apparently it was enough. They announced the finalists that night, the booze kept flowing, and the whole thing turned into a party. It was, start to finish, a great time.</p>
+
+  <p>I'd made it. I was going to be on the radio.</p>
+
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">The Boss Who Bet Against Me</div>
+
+  <p>There was one practical matter: I had a job. I worked graveyard at the Westin, and now I was telling my boss I needed to disappear for up to two weeks to go live in an RV for a radio contest. A bellman is, I will insist to this day, a critical role. But my boss heard me out, and he understood, and he let me do it — and I am fairly sure the reason he let me do it was that he was completely certain I would never last two weeks. He figured I'd be back at the bell stand in a couple of days. It was, in its way, a vote of no confidence that worked out in my favor. Permission granted. Off I went.</p>
+
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">Blindfolded</div>
+
+  <p>The big day came. All the finalists met at the station and we were introduced to the listening public on the air — a whole production, the launch of End War, and somewhere out there in a vault, maybe, are recordings of all of it, though it was twenty-six years ago and who knows. Then they split us into two teams of five, blindfolded us, and loaded us into Suburbans to be taken to our secret location.</p>
+
+  <p>My team was two women and three men. I was one of the three men — the lone Californian. The other two men, and one of the two women, were all from Michigan, a built-in contingent who'd clearly arrived knowing each other. The other woman was from Mountlake Terrace — a new-age yoga person who made candles. And then there was me: the graveyard-shift Russian Lit guy with the three ferrets. That was my brand. We all had our brands, our personas, and the station made sure to play them up to the extreme on the air, because that's how you make drama. A Michigan contingent, a candle-making yogi, and a bellman who read Tolstoy in a basement. Casting.</p>
+
+  <p>The blindfolds and the Suburbans and the secret location were, it turned out, theater. Because where they actually took us was the <strong>Entercom parking lot on Eastlake Avenue</strong> — Entercom owned The End back then — where two big RVs were parked. That was the island. A parking lot at the radio station. They walked us into the RVs and locked us in, posted a security guard and all the production rigging outside, and that was home now. We were also being filmed for the Q13 morning show, so this was radio <em>and</em> television. It was, as everyone kept saying, a big deal.</p>
+
+  <p>And that's when it got real.</p>
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">The Alliance Math</div>
+
+  <p>Inside the RV, the game started immediately. Day one. The three Michiganders were clearly a bloc — they'd come together, they thought together, they were a built-in alliance. Which left the yoga girl and me as the outsiders, the leftovers, and so naturally we formed our own little alliance of necessity: the candle-maker and the Russian Lit guy against the Michigan three. We needed to flip just one of them to our side to have a chance. It turned out to be much harder than we imagined. We were down three-to-two from the first afternoon, and we knew it.</p>
+
+  <p>The whole thing was streamed on a webcam over the internet, which in 2000 was genuinely novel — people watching a parking-lot RV on their computers. And the station had pointedly turned <em>off</em> the radio inside the RV so we couldn't hear what was being said about us. Listeners called in and said all kinds of things, the DJs speculated and editorialized, an entire program revolved around us, and we couldn't hear a word of it. We just sat in the RV, sealed off, performing for a webcam and an audience we couldn't perceive. The other RV had the same setup and the same kind of dynamic, though we barely knew those people — the station had cast the whole thing for maximum friction, and friction there was.</p>
+
+  <p>Here is what living in that RV was actually like by about day four: it stank. We all stank. No showers, very little water, not much food, and absolutely nothing to do. We'd read the RV owner's manual so many times that one of the guys made a deck of cards out of it — and reading that manual cover to cover is, incidentally, how somebody eventually figured out how to turn the radio back on, which was very much against the rules and which we did anyway. So now we could secretly hear the broadcast: the DJs talking about us, the other team's game plan, the live "reports" on what we were doing, which was nothing. We were staring at walls. People were apparently riveted by us staring at walls.</p>
+
+  <p>I learned later that everyone at the Westin was listening to the whole thing — my coworkers, my boss, all of them tuned in to the saga of the bellman in the RV. I'm sure that was a delight for them. We had Pat Cashman, a big-deal local TV personality, come visit us, which was fun. We did the Q13 morning show. Each morning they'd pull one person from each team down to the studio, treat us nicely, and interview us on the radio and on TV about life in the RV and what we thought of these other people we were trapped with — a confessional, exactly like the show, all the gossip and strategy aired out. And we couldn't hear any of it back. Or weren't supposed to.</p>
+
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">The Three Flavors of Failure</div>
+
+  <p>The first person out wasn't voted off at all. There was a commotion in the other RV one afternoon, and a guy over there — a corrections officer from up north, of all things — simply opened the door and announced he was done. He couldn't do it. A man whose actual job was confinement, undone by being confined in a recreational vehicle in a parking lot. He just walked out. One down, and nobody had even voted.</p>
+
+  <p>The second person out was my alliance.</p>
+
+  <p>One morning we won a challenge — I've genuinely lost which one, it was a Q13 morning-show bit — and the yoga girl came back into the RV electric with excitement, and she let loose: <em>that was effing amazing,</em> except not "effing," the real word, and several more, a totally normal burst of joy at having won. Except that at that exact moment, unbeknownst to any of us, the station's executives were in a boardroom meeting listening to the live broadcast — admiring the ratings, talking about what a hit End War was — when her unbleeped, very-much-against-FCC-rules celebration came pouring over the air into their meeting.</p>
+
+  <div class="pull-quote">A car came. It was all very serious. They boarded the RV, and they told us, and just like that the candle-maker from Mountlake Terrace was gone — not voted out, not quit, but removed by the station, taken down by federal broadcast decency law for a hot mic.</div>
+
+  <p>Three flavors of failure, and we'd now seen two: the quitter who couldn't take the box, and the swearer who couldn't take the live mic. And here was the thing that mattered for me — she wasn't just a contestant. She was <em>my</em> alliance. My one ally. Her swear didn't just end her game; it ended mine. With her gone I was alone, one against three Michiganders, and I could feel the tension settle into that RV like weather. Everyone stayed friendly. But you could feel it. I was next, and on some level we all knew it.</p>
+
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">The Confessional I Forgot Was Live</div>
+
+  <p>We carried on. I kept trying to crack the Michigan bloc and it kept not working. We listened to our forbidden radio and heard the DJs speculate about our alliances, more or less correctly, which was a strange pleasure — being analyzed and getting to grade the analysis. We talked about everything there is to talk about when there's nothing else to do. We talked about concerts, and I held forth on the show I'd been at on New Year's Eve 1991 at the Cow Palace — Pearl Jam and Nirvana and the Red Hot Chili Peppers — which was agreed, all around, to have been a great show. Because I'm from California. Not Michigan.</p>
+
+  <p>Then one morning it was my turn for the studio confessional, and I made my mistake. They asked their probing questions, and I told them the truth: that I was pretty sure there was an alliance against me now that the yoga girl was gone, that I was trying to swing things back, that I had my doubts. Good honest reality-TV confessional. The only problem was that I had forgotten our radio was secretly turned back on in the RV — which meant my entire team heard every word I said about them. By the time I got back, they knew exactly where I stood and exactly what I thought. Not that it changed anything. By that point the script was more or less written.</p>
+
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">The RV Has Spoken</div>
+
+  <p>The vote came after an immunity challenge. We'd already won a reward earlier — a Mexican dinner at the place next to where the RVs were parked — but this was a separate challenge with immunity on the line, a scavenger-hunt-meets-maze thing in and around the studio where we ran around acting like maniacs, which after a week in a sealed RV was not a stretch. I came up short. We lost. And losing meant somebody was getting voted out of the RV. Simple as that.</p>
+
+  <p>It was a whole dramatic production, the DJs working through every permutation of who knew what about whom. We went back to the RV, and we did the tribal-council vote, live on the webcam, each of us facing the camera and showing our pick, exactly like the show. Then they tallied it outside, with Q13 filming live and the radio carrying it, and they read the votes the way they do.</p>
+
+  <p>Brooks, one vote. Megan, one vote. Brooks, two votes — and the first person officially voted off End War.</p>
+
+  <p>It was me. Not a total surprise. But not fun, either.</p>
+
+  <p>They did the whole bit — <em>the RV has spoken</em> — and then they honked the RV's horn, long and loud, to mark the elimination.</p>
+
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">The Water</div>
+
+  <p>And then I did the thing I am still, in some small way, known for.</p>
+
+  <p>We had our drinking water in the RV in big gallon jugs — the whole team's water supply for however long they had left. And on my way out, on live television, I gathered up those jugs, and I poured them out. Slowly. All of it, every jug, glugging out onto the asphalt of the Entercom parking lot while the cameras rolled. A slow, deliberate, villainous pour. Then I threw the empty jugs down, and I can still hear the exact sound of those plastic jugs bouncing and skittering across the parking lot.</p>
+
+  <div class="pull-quote">Everybody went WTF, including me. I have no idea where it came from. But the cameras ate it up and the people ate it up and the drama was suddenly very, very real — the quiet Russian Lit guy, the bookworm in the corner, going full pro-wrestling heel on his way out the door. For about thirty seconds I was the most dramatic person in Seattle.</div>
+
+  <p>They took me away in the black Suburban, back to the station, where I did a final exit interview about the whole experience and signed some papers — NDAs, the works. And then I was just standing outside on the sidewalk, a free man, no longer on the radio.</p>
+
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">The Gatorade Apology</div>
+
+  <p>My phone rang. It was work. Of course they knew — it had all just played out live on the TV and the radio, the whole thing, the water and everything. And they needed me back at the hotel. Graveyard shift that night. The boss who bet I'd never last had, in fairness, won his bet.</p>
+
+  <p>But before my shift I felt bad about the water. Genuinely bad. So I went and bought about five gallons of Gatorade and brought it back to the RV and apologized — for the pour, for the drama, for the whole heel turn. And my former teammates were gracious about it. <em>Don't hate the player,</em> they said. <em>Hate the game.</em> Which is fair, and which is maybe the truest thing anyone said all summer.</p>
+
+  <p>Because I was still eligible for that Mexican dinner we'd won — the reward came with me even though the game hadn't. So while I got to go home afterward and they had to go back to the RV, we all sat down together first and ate and drank a frankly heroic number of margaritas and had a genuinely good time. And there, over the chips, they told me why they'd really voted me off.</p>
+
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">Why the Russian Lit Guy Had to Go</div>
+
+  <p>It wasn't that I was the weak one. It wasn't that I was the odd bookish guy they could pick off easily. It was the opposite.</p>
+
+  <p>They told me they had to vote me out precisely <em>because</em> I was dangerous. If I'd managed to swing even one of their votes — which I'd spent the whole week trying to do — I'd have been in too deep, too connected, a real threat down the stretch. Better to take me out early, while they still cleanly could. They'd even convinced themselves I had some secret alliance going with people in the <em>other</em> RV — which was a genuinely flattering thing to believe, given that I barely knew those people and had no such thing. They'd looked at the quiet guy reading Tolstoy and decided he was the most dangerous player in the box.</p>
+
+  <p>I have thought about that a lot over the years. I didn't go out because I was too odd for the game. I went out because I played it too well to leave in.</p>
+
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">The Long Tail</div>
+
+  <p>I had to listen to the rest of it the way everyone else did — on the radio, from the outside. I got to watch, by ear, my old team get picked apart, and then the two RVs merged, and all the careful alliances dissolved into chaos the way they always do. And the one other woman from my RV — who had come to slay from day one, who was always going to win this thing — won it, and the five thousand dollars that came with it. She earned every dollar.</p>
+
+  <p>In the later days they took the survivors on road trips in the RV, the whole thing mutating into a kind of <em>Road Rules</em>–<em>Real World</em>–<em>Survivor</em> hybrid, the way all those shows blurred together back then — except this one was on the radio, in Seattle, in the summer of 2000.</p>
+
+  <p>At the very end they brought us all back to the studio for a big final interview, everyone together, to hash out who'd been thinking what about whom. And the DJs told us something I've always liked: they'd <em>wanted</em> the yoga girl and me to have our alliance. That was the story they were rooting for. If the FCC hadn't taken her out over that hot mic, who knows how it all plays out. They told me the Russian Lit angle was the thing that got me cast in the first place — that was the hook, the bookish bellman with the ferrets, that's what opened the door. They'd just expected me to be <em>weirder</em>. Apparently I wasn't quite weird enough, and that was its own small disappointment to them.</p>
+
+  <p>We all got these fancy Doc Martens radio-station jackets and a big stack of CDs, a lot of which I still have. And we were made special guests of Endfest that year — the station's big festival, August 5th, 2000, out at the Kitsap County Fairgrounds: 3 Doors Down, Third Eye Blind, BT, Deftones, Everlast, Harvey Danger, Korn, the Murder City Devils, MxPx, Papa Roach, Powerman 5000, the whole turn-of-the-millennium lineup. I never actually made it to the show. But I had that jacket and those CDs for years and years. I think I finally sold the jacket about a decade ago, which I now regret a little.</p>
+
+  <p>End War only happened that one time. The ratings were big — it was a genuine hit, a perfect little storm of a stunt for that exact cultural moment — but they never did it again. And not too long after, the whole morning crew was let go, and The End didn't renew Andy Savage's contract, and an era of Seattle radio quietly closed. That had nothing to do with our summer in the parking lot, of course. But there's something fitting in it anyway — that the whole wild apparatus that put a graveyard bellman in an RV on live television was itself just passing through, a moment that came once and didn't come again.</p>
+
+  <p>I was the Russian Lit guy. I lasted longer than the quitter and longer than the swearer. I beat the box and I beat the microphone. I got voted off only because I was too good to keep around. And on my way out I poured out all the water and threw the jugs across a parking lot on live TV, and then I bought everyone Gatorade and said I was sorry.</p>
+
+  <p>Then I went back to the Westin and carried bags on the graveyard shift, the same as ever, except now everyone at the hotel had heard the whole thing. And that is my story here.</p>
+
+  </div>
+
+  <div class="series-box" style="border-left-color:var(--rust);">
+    <div class="series-label" style="color:var(--rust);">Seattle Stories · A Collection</div>
+    <p style="font-size:0.9rem; color:var(--stone); line-height:1.7; margin:0;">True stories from a Seattle life — the radio, the Westin, the basement studios and the bars and the friends, the years after the foothills. <em>More to come.</em></p>
+  </div>
+
+  <div class="article-footer">
+    <div class="article-footer-author">Brooks Groves · Seattle Stories · Summer 2000</div>
+    <div class="article-footer-nav">
+      <a href="https://memoir.brooksgroves.com">← All Pieces</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <p class="footer-name">Brooks Groves</p>
+      <p class="footer-tagline">memoir.brooksgroves.com</p>
+    </div>
+    <a href="https://brooksgroves.com" class="footer-link">brooksgroves.com ↗</a>
+  </div>
+</footer>
+</body>
+</html>
