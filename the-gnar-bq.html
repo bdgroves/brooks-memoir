@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Gnar-BQ — Brooks Groves</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌲</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,900;1,400;1,600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink:#1c1a16; --parchment:#f5f0e8; --cream:#ede8dc;
+      --sage:#4a5c45; --rust:#8b3a2a; --stone:#7a7268;
+      --gold:#c8922a; --mist:#d6d0c4; --white:#fdfaf4;
+      --sierra:#4a6b3a; --foothills:#8b6914;
+    }
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    body { background:var(--parchment); color:var(--ink); font-family:'Libre Baskerville',Georgia,serif; font-size:16px; line-height:1.7; overflow-x:hidden; }
+    body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E"); pointer-events:none; z-index:9999; opacity:0.5; }
+    .topline { height:4px; background:linear-gradient(90deg,var(--sierra) 0%,var(--foothills) 50%,var(--rust) 100%); }
+    header { border-bottom:2px solid var(--ink); padding:0 clamp(1.5rem,5vw,4rem); background:var(--parchment); }
+    .masthead-inner { display:flex; align-items:center; justify-content:space-between; gap:1rem; max-width:860px; margin:0 auto; padding:0.75rem 0; }
+    .site-name { font-family:'Playfair Display',serif; font-size:clamp(1.1rem,2.5vw,1.4rem); font-weight:900; text-decoration:none; color:var(--ink); }
+    .header-link { font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; text-decoration:none; color:var(--stone); }
+    .header-link:hover { color:var(--sierra); }
+    .article-wrap { max-width:720px; margin:0 auto; padding:clamp(3rem,6vw,5rem) clamp(1.5rem,5vw,2rem) clamp(3rem,6vw,5rem); }
+    .article-back { font-family:'DM Mono',monospace; font-size:0.63rem; letter-spacing:0.12em; text-transform:uppercase; text-decoration:none; color:var(--stone); display:inline-block; margin-bottom:2rem; }
+    .article-back:hover { color:var(--sierra); }
+    .article-num { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--sierra); margin-bottom:0.4rem; }
+    .article-kicker { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--foothills); margin-bottom:0.75rem; }
+    .article-title { font-family:'Playfair Display',serif; font-size:clamp(2rem,5vw,3.2rem); font-weight:900; line-height:1.08; letter-spacing:-0.02em; margin-bottom:1rem; }
+    .article-meta { font-family:'DM Mono',monospace; font-size:0.62rem; color:var(--stone); letter-spacing:0.1em; margin-bottom:1rem; display:flex; gap:1.5rem; flex-wrap:wrap; }
+    .article-tags { display:flex; gap:0.5rem; flex-wrap:wrap; padding-bottom:2rem; border-bottom:1px solid var(--mist); margin-bottom:2.5rem; }
+    .article-tag-pill { font-family:'DM Mono',monospace; font-size:0.58rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--stone); background:var(--cream); border:1px solid var(--mist); padding:0.25rem 0.65rem; border-radius:4px; text-decoration:none; display:inline-block; transition:background 0.15s,border-color 0.15s,color 0.15s; }
+    .article-tag-pill:hover { background:var(--gold); border-color:var(--gold); color:var(--white); }
+    .disclaimer { background:var(--cream); border-left:3px solid var(--stone); padding:1rem 1.5rem; margin-bottom:2.5rem; }
+    .disclaimer p { font-size:0.82rem; color:var(--stone); line-height:1.7; font-style:italic; }
+    .article-body { font-size:1.05rem; line-height:1.85; }
+    .article-body p { margin-bottom:1.5rem; }
+    .article-body p:first-of-type::first-letter { font-family:'Playfair Display',serif; font-size:3.5rem; font-weight:900; float:left; line-height:0.85; margin:0.1em 0.08em 0 0; color:var(--sierra); }
+    .article-body hr { border:none; border-top:2px solid var(--mist); margin:2.5rem 0; }
+    .article-body em { font-style:italic; }
+    .article-body strong { font-weight:700; }
+    .pullquote { border-left:3px solid var(--foothills); padding:1rem 1.5rem; margin:2rem 0; background:var(--cream); }
+    .pullquote p { font-family:'Playfair Display',serif; font-size:1.05rem; font-style:italic; line-height:1.65; color:var(--ink); margin:0; }
+    .series-box { background:var(--cream); border:1px solid var(--mist); border-left:3px solid var(--sierra); padding:1.25rem 1.5rem; margin:2.5rem 0; }
+    .series-label { font-family:'DM Mono',monospace; font-size:0.55rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--sierra); margin-bottom:0.5rem; }
+    .series-links { display:flex; flex-direction:column; gap:0.4rem; margin-top:0.5rem; }
+    .series-links a { font-size:0.85rem; color:var(--rust); text-decoration:none; }
+    .series-links a:hover { text-decoration:underline; }
+    .article-footer { margin-top:3rem; padding-top:2rem; border-top:2px solid var(--ink); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
+    .article-footer-author { font-family:'DM Mono',monospace; font-size:0.62rem; color:var(--stone); letter-spacing:0.1em; }
+    .article-footer-nav { display:flex; gap:1.5rem; }
+    .article-footer-nav a { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.12em; text-transform:uppercase; text-decoration:none; color:var(--stone); }
+    .article-footer-nav a:hover { color:var(--sierra); }
+    footer { background:var(--ink); color:var(--stone); padding:2rem clamp(1.5rem,5vw,4rem); margin-top:4rem; }
+    .footer-inner { max-width:860px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:2rem; flex-wrap:wrap; }
+    .footer-name { font-family:'Playfair Display',serif; font-size:0.95rem; font-weight:700; color:var(--white); }
+    .footer-tagline { font-family:'DM Mono',monospace; font-size:0.52rem; color:var(--stone); margin-top:0.2rem; }
+    .footer-link { font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; text-decoration:none; color:var(--stone); }
+    .footer-link:hover { color:var(--gold); }
+
+    .article-body .pull-quote { border-left:3px solid var(--foothills); margin:2rem 0; padding:0.5rem 0 0.5rem 1.5rem; font-family:'Playfair Display',serif; font-style:italic; font-size:1.2rem; line-height:1.6; color:var(--stone); }
+    .article-body .scene-break { text-align:center; margin:2.5rem 0; color:var(--mist); letter-spacing:0.8em; font-size:0.9rem; }
+    .sidebar-label { margin:3rem 0 1.5rem; font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--stone); text-align:center; border-top:1px solid var(--mist); padding-top:2rem; }
+    .aside { background:var(--cream); border-top:2px solid var(--foothills); padding:1.3rem 1.5rem; margin:1.5rem 0; }
+    .aside-title { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--foothills); margin-bottom:0.6rem; }
+    .aside p { font-size:0.92rem; line-height:1.75; color:var(--stone); margin-bottom:0.6rem; }
+    .aside p:last-child { margin-bottom:0; }
+  </style>
+  <script>
+  (function(){
+    const KEY = 'memoir_auth', PW = 'memory';
+    if (sessionStorage.getItem(KEY) === '1') return;
+    document.documentElement.style.visibility = 'hidden';
+    function buildGate() {
+      var o = document.createElement('div');
+      o.id = 'gate-overlay';
+      o.style.cssText = 'position:fixed;inset:0;background:#f5f0e8;display:flex;align-items:center;justify-content:center;z-index:99999;font-family:Georgia,serif;';
+      o.innerHTML = '<div style="text-align:center;padding:3rem;max-width:380px;width:90%;border:2px solid #1c1a16;background:#f5f0e8;">'
+        + '<div style="font-family:monospace;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:#7a7268;margin-bottom:1rem;">Brooks Groves · Memoir</div>'
+        + '<div style="font-family:Georgia,serif;font-size:1.6rem;font-weight:700;color:#1c1a16;margin-bottom:0.5rem;">Private Archive</div>'
+        + '<div style="font-size:0.85rem;color:#7a7268;margin-bottom:2rem;font-style:italic;">Password required</div>'
+        + '<input id="gate-pw" type="password" placeholder="password" style="width:100%;padding:0.75rem 1rem;background:#ede8dc;border:1px solid #d6d0c4;color:#1c1a16;font-size:1rem;outline:none;margin-bottom:0.75rem;box-sizing:border-box;text-align:center;letter-spacing:0.1em;"/>'
+        + '<div id="gate-err" style="color:#8b3a2a;font-size:0.75rem;margin-bottom:0.75rem;min-height:1rem;"></div>'
+        + '<button id="gate-btn" style="width:100%;padding:0.75rem;background:#1c1a16;border:none;color:#fdfaf4;font-size:0.85rem;cursor:pointer;letter-spacing:0.1em;font-family:monospace;text-transform:uppercase;">Enter</button>'
+        + '<div style="margin-top:1rem;"><a href="https://memoir.brooksgroves.com" style="font-family:monospace;font-size:0.6rem;color:#7a7268;text-transform:uppercase;letter-spacing:0.1em;text-decoration:none;">← All Pieces</a></div>'
+        + '</div>';
+      document.body.appendChild(o);
+      document.documentElement.style.visibility = 'visible';
+      var inp = document.getElementById('gate-pw');
+      inp.focus();
+      function tryPw() {
+        var pw = inp.value.trim().toLowerCase();
+        if (!pw) { document.getElementById('gate-err').textContent = 'Please enter the password.'; return; }
+        if (pw === PW) {
+          sessionStorage.setItem(KEY, '1');
+          document.getElementById('gate-overlay').remove();
+        } else {
+          document.getElementById('gate-err').textContent = 'Incorrect password.';
+          inp.value = ''; inp.focus();
+        }
+      }
+      document.getElementById('gate-btn').addEventListener('click', tryPw);
+      inp.addEventListener('keydown', function(e){ if(e.key==='Enter') tryPw(); });
+    }
+    if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', buildGate); } else { buildGate(); }
+  })();
+  </script>
+</head>
+<body>
+<div class="topline"></div>
+<header>
+  <div class="masthead-inner">
+    <a href="https://brooksgroves.com" class="site-name">Brooks Groves</a>
+    <a href="https://memoir.brooksgroves.com" class="header-link">← Memoir</a>
+  </div>
+</header>
+
+<div class="article-wrap">
+  <a href="https://memoir.brooksgroves.com" class="article-back">← All Pieces</a>
+  <div class="article-num">Seattle Stories · Green Lake · circa 2000</div>
+  <p class="article-kicker">A Doorman's Birthday · One Jack Russell · A Piñata Full of Liquor</p>
+  <h1 class="article-title">The Gnar-BQ</h1>
+  <div class="article-meta">
+    <span>The Birthday Nobody Who Was There Has Forgotten · Seattle</span>
+    <span>Brooks Groves</span>
+  </div>
+  <div class="article-tags">
+    <a href="https://brooksgroves.com/tags.html#Memoir" class="article-tag-pill">Memoir</a>
+    <a href="https://brooksgroves.com/tags.html#Seattle" class="article-tag-pill">Seattle</a>
+    <a href="https://brooksgroves.com/tags.html#The%20Westin" class="article-tag-pill">The Westin</a>
+    <a href="https://brooksgroves.com/tags.html#Green%20Lake" class="article-tag-pill">Green Lake</a>
+    <a href="https://brooksgroves.com/tags.html#Skateboarding" class="article-tag-pill">Skateboarding</a>
+    <a href="https://brooksgroves.com/tags.html#2000s" class="article-tag-pill">2000s</a>
+  </div>
+
+  <div class="article-body">
+
+  <p style="font-style:italic; color:var(--stone); font-size:0.95rem; border-left:3px solid var(--mist); padding-left:1.2rem; margin-bottom:2.5rem;">A true story from a Seattle backyard, sometime around the turn of the millennium. I don't remember the exact year. I remember the barbecue. The people are real, the dog survived, and it happened more or less exactly like this — which is to say, like nothing else before or since.</p>
+
+  <p>I don't remember the exact year. I remember the barbecue.</p>
+
+  <p>My buddy Craig — who worked the front door at the Westin for a few years there — decided his birthday deserved more than another backyard cookout. Craig didn't throw barbecues. He threw a <strong>Gnar-BQ</strong>. That name tells you almost everything you need to know.</p>
+
+  <p>Craig was one of those guys who made every room louder just by walking into it. He was a great doorman, and that's a harder job than people give it credit for. You spend your whole shift reading people — opening doors, remembering names, calling cabs, calming down the ones who came in hot, making everybody feel like they matter. Craig was good at all of it. But this wasn't work. This was his birthday.</p>
+
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">The Arrival</div>
+
+  <p>At the time I was living down in Belltown and deep into what I proudly referred to as my Level Five Vegan phase. I wasn't eating meat — but I was still drinking beer, which tells you exactly how firm my convictions were. I grabbed a six-pack of local microbrew and a package of Tofurky dogs and headed north toward Green Lake. Technically Ravenna, if you're the kind of person who cares about neighborhood boundaries, but Green Lake was close enough for everybody.</p>
+
+  <p>I figured I was walking into the front end of a full-blown rager.</p>
+
+  <p>Instead, it was quiet. Uncomfortably quiet.</p>
+
+  <p>Inside the house, people looked like someone had just announced the end of the world. A couple of the girls were crying. Friends were hugging each other, saying <em>it's going to be okay</em>. And there I stood in the doorway, holding a six-pack in one hand and a package of vegan hot dogs in the other, wondering what kind of Gnar-BQ I had stumbled into.</p>
+
+  <p>One of them looked up at me.</p>
+
+  <p>"Oh." A pause. "The party's out back."</p>
+
+  <p>Not the greeting I'd expected.</p>
+
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">The Incident</div>
+
+  <p>I found Craig in the backyard, and he was not his usual high-voltage self. I asked him if this was even the right day for the party. He said it was. Then he looked at the ground and told me he'd done something bad.</p>
+
+  <p>Here is what happened. Craig loved baseball — played growing up, and swung a bat like he thought Edgar Martinez was watching. There was a piñata planned for later, and Craig, being Craig, had decided to take a few warm-up cuts.</p>
+
+  <p>One of the girls had a Jack Russell Terrier. If you've ever met one, you know they operate on the firm belief that every moving object in the universe exists purely for their entertainment. Craig started his practice swing. The dog saw a brand-new game. The timing could not possibly have been worse.</p>
+
+  <p>One accidental swing later, the poor little guy was on his way to the emergency vet.</p>
+
+  <p>That will put a damper on any birthday. Nobody wanted burgers. Nobody wanted beer. Nobody knew if the dog was going to be okay, and for a couple of hours the Gnar-BQ quietly turned into a group therapy session in a backyard in Ravenna.</p>
+
+  <p>Then the car pulled back into the driveway.</p>
+
+  <p>The dog came hopping out sporting a little bandaged leg and an even more ridiculous wrap around his head — he looked like he'd gone twelve rounds with Mike Tyson. Five minutes later he was tearing around the backyard like nothing had ever happened. Dogs are wonderfully forgiving. People finally exhaled. Craig hugged the owners. Everybody hugged everybody. The birthday was officially back on.</p>
+
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">The Crew</div>
+
+  <p>Then the skateboard crew started rolling in.</p>
+
+  <p>Most of them were out of Lake Forest Park — a genuine crew, semi-pro guys of some note. They had videos out before YouTube existed. They had merch. The one image I've never been able to shake was a Bigfoot on a skateboard throwing a shaka, which should tell you everything about the caliber of operation we're talking about. Great bunch of dudes, and I knew a lot of them, because a lot of them had also worked valet at the Westin.</p>
+
+  <p>So this wasn't just a birthday party anymore. It was one of those accidental reunions where everybody in the yard has at least three stories involving downtown Seattle, an expensive car, and a decision that seemed reasonable at the time. We'd all met through the hotel. But nobody was talking about the hotel. This was the opposite of work.</p>
+
+  <p>The backyard kept filling. Beer runs became a recurring event. The grill never cooled off. And a small, reasonable bonfire began, very quietly, to become a large and less reasonable one.</p>
+
+  <p>More than a few of the skate guys turned out to be in metal bands, and so the soundtrack tilted hard and stayed there — not classic-rock-barbecue metal, but the real stuff. Thrash and death metal, blast beats and downtuned riffs, growled vocals and odd time signatures, the kind of music where the drummer is doing something with both feet that shouldn't be physically possible. It poured out of the speakers and got louder every hour, and every so often somebody would crank it another notch, and the whole yard would nod along like it was the most natural thing in the world to grill Tofurky dogs to a wall of blast beats. Somewhere in there I'm fairly sure a couple of them were playing air-drums to their own band's demo.</p>
+
+  <p>And of course they were skating. You don't get a crew like that in a backyard and expect the boards to stay on the ground. Somebody had hauled out a launch ramp, and there were rails and ledges and whatever else the yard offered up — planters, the edge of the patio, a picnic bench that volunteered itself. Guys were popping ollies over the fire pit before it got too big, grinding anything with an edge, stomping tricks and slamming and laughing it off and rolling back around to try again, all of it set to that relentless thrash soundtrack. These were guys with actual video parts, so the level was high — every so often somebody would land something clean and the whole backyard would erupt like the piñata already had. It was part barbecue, part backyard skate session, part metal show, and nobody had planned for it to be any of those things.</p>
+
+  <p>And the whole time, hanging from a tree at the edge of the yard —</p>
+
+  <p>Waiting. Spinning slowly in the breeze.</p>
+
+  <p>The piñata.</p>
+
+  <p>Nobody knew what was inside. Speculation became its own form of entertainment. Candy? Gift cards? Beer? Whatever Craig had planned, he'd somehow managed to build suspense over it for hours, a slow fuse burning in the corner of the party while everything else got louder.</p>
+
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">The Piñata</div>
+
+  <p>Finally Craig decided it was time.</p>
+
+  <p>He stood in the middle of the yard, already several birthday beers into the evening, thanked everyone for coming, told us he loved us — and meant it — and accepted a blindfold. Then somebody handed him a bat.</p>
+
+  <p>Those of us who knew how the day had started exchanged a look. The dog, mercifully, had already been escorted to a secure and undisclosed location.</p>
+
+  <p>Craig took a practice swing. Missed. Another. Missed. Then — <em>crack</em>. Not enough. He reset, remembered he used to play ball, and came around again, and this time he connected like he was driving a fastball into the left-field bleachers.</p>
+
+  <p>The piñata didn't break. It <strong>detonated</strong>.</p>
+
+  <p>Instead of candy, it came apart in a spray of what had to be a hundred tiny liquor bottles — the little airplane kind, plastic and glass both — launched in every direction like confetti fired out of a cannon. For about thirty seconds the backyard went completely feral. People dove for them. Caught them. Missed them. Bottles bounced off shoulders and skittered across the grass. Some shattered where they landed. A few sailed straight into the bonfire, which was by now more than equal to the occasion, and every glass one that burst in the heat sent a little jet of colored flame shooting up out of the fire — blue and green and gold — so that the whole thing looked less like a birthday party and more like a small, joyful munitions accident.</p>
+
+  <p>People were laughing too hard to stand up. It was chaos in the most beautiful way — the kind you can never recreate, because nobody planned it and nobody could. Craig snatched two bottles out of the air before they hit the ground, twisted both open at once, and vanished back into his own birthday.</p>
+
+  <p>The Gnar-BQ had officially become legendary.</p>
+
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">The Wind-Down</div>
+
+  <p>Eventually the music stopped — not because anyone wanted it to.</p>
+
+  <p>The neighbors. It was a Sunday. People had work in the morning, kids trying to sleep, and, to be fair, a bonfire that had reached a size that probably registered on weather radar. They were actually pretty cool about it. The message was essentially: <em>hey, guys — maybe start winding this thing down before somebody else winds it down for you.</em> Fair enough.</p>
+
+  <p>The fire came down to something manageable. The music got softer — I'm fairly sure the ladies had taken over the stereo by that point, and the thrash gave way to something the rest of civilization could sleep through. The dog was back out in the yard, sprinting laps like the morning had never happened. And by two or three in the morning, only the diehards were left around the coals, nursing one more beer and telling one more story before calling it.</p>
+
+  <p>I caught a ride back to Belltown.</p>
+
+  <p>Every now and then, usually around Craig's birthday, I think about that Gnar-BQ. Not because it was the wildest party I've ever been to — though it's in the conversation. I think about it because it somehow crammed an entire Seattle weekend into one afternoon: a baseball accident, a trip to the emergency vet, a backyard full of hotel people and skateboarders and metalheads and vegans and one very forgiving dog, a piñata full of liquor bottles, and a bonfire that got just a little too ambitious. And somehow it all worked out.</p>
+
+  <p>That's probably what made it such a Seattle story. We'd all met through work, but work was never the story. The story was what happened after the shifts ended — around a bonfire, with people from every corner of the service industry, loud music, cheap beer, and one birthday that nobody who was there has ever forgotten.</p>
+
+  <p>Beautifully disorganized. Completely unforgettable.</p>
+
+  <p>Happy birthday, Craig.</p>
+
+  </div>
+
+  <div class="series-box" style="border-left-color:var(--rust);">
+    <div class="series-label" style="color:var(--rust);">Seattle Stories · A Collection</div>
+    <p style="font-size:0.9rem; color:var(--stone); line-height:1.7; margin:0;">True stories from a Seattle life — the radio, the Westin, the basement studios and the bars and the friends, the years after the foothills. <em>More to come.</em></p>
+  </div>
+
+  <div class="article-footer">
+    <div class="article-footer-author">Brooks Groves · Seattle Stories · circa 2000</div>
+    <div class="article-footer-nav">
+      <a href="https://memoir.brooksgroves.com">← All Pieces</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <p class="footer-name">Brooks Groves</p>
+      <p class="footer-tagline">memoir.brooksgroves.com</p>
+    </div>
+    <a href="https://brooksgroves.com" class="footer-link">brooksgroves.com ↗</a>
+  </div>
+</footer>
+</body>
+</html>
