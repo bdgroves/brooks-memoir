@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deadly Duck: Anger — Brooks Groves</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌲</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,900;1,400;1,600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink:#1c1a16; --parchment:#f5f0e8; --cream:#ede8dc;
+      --sage:#4a5c45; --rust:#8b3a2a; --stone:#7a7268;
+      --gold:#c8922a; --mist:#d6d0c4; --white:#fdfaf4;
+      --sierra:#4a6b3a; --foothills:#8b6914;
+    }
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    body { background:var(--parchment); color:var(--ink); font-family:'Libre Baskerville',Georgia,serif; font-size:16px; line-height:1.7; overflow-x:hidden; }
+    body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E"); pointer-events:none; z-index:9999; opacity:0.5; }
+    .topline { height:4px; background:linear-gradient(90deg,var(--sierra) 0%,var(--foothills) 50%,var(--rust) 100%); }
+    header { border-bottom:2px solid var(--ink); padding:0 clamp(1.5rem,5vw,4rem); background:var(--parchment); }
+    .masthead-inner { display:flex; align-items:center; justify-content:space-between; gap:1rem; max-width:860px; margin:0 auto; padding:0.75rem 0; }
+    .site-name { font-family:'Playfair Display',serif; font-size:clamp(1.1rem,2.5vw,1.4rem); font-weight:900; text-decoration:none; color:var(--ink); }
+    .header-link { font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; text-decoration:none; color:var(--stone); }
+    .header-link:hover { color:var(--sierra); }
+    .article-wrap { max-width:720px; margin:0 auto; padding:clamp(3rem,6vw,5rem) clamp(1.5rem,5vw,2rem) clamp(3rem,6vw,5rem); }
+    .article-back { font-family:'DM Mono',monospace; font-size:0.63rem; letter-spacing:0.12em; text-transform:uppercase; text-decoration:none; color:var(--stone); display:inline-block; margin-bottom:2rem; }
+    .article-back:hover { color:var(--sierra); }
+    .article-num { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--sierra); margin-bottom:0.4rem; }
+    .article-kicker { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--foothills); margin-bottom:0.75rem; }
+    .article-title { font-family:'Playfair Display',serif; font-size:clamp(2rem,5vw,3.2rem); font-weight:900; line-height:1.08; letter-spacing:-0.02em; margin-bottom:1rem; }
+    .article-meta { font-family:'DM Mono',monospace; font-size:0.62rem; color:var(--stone); letter-spacing:0.1em; margin-bottom:1rem; display:flex; gap:1.5rem; flex-wrap:wrap; }
+    .article-tags { display:flex; gap:0.5rem; flex-wrap:wrap; padding-bottom:2rem; border-bottom:1px solid var(--mist); margin-bottom:2.5rem; }
+    .article-tag-pill { font-family:'DM Mono',monospace; font-size:0.58rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--stone); background:var(--cream); border:1px solid var(--mist); padding:0.25rem 0.65rem; border-radius:4px; text-decoration:none; display:inline-block; transition:background 0.15s,border-color 0.15s,color 0.15s; }
+    .article-tag-pill:hover { background:var(--gold); border-color:var(--gold); color:var(--white); }
+    .disclaimer { background:var(--cream); border-left:3px solid var(--stone); padding:1rem 1.5rem; margin-bottom:2.5rem; }
+    .disclaimer p { font-size:0.82rem; color:var(--stone); line-height:1.7; font-style:italic; }
+    .article-body { font-size:1.05rem; line-height:1.85; }
+    .article-body p { margin-bottom:1.5rem; }
+    .article-body p:first-of-type::first-letter { font-family:'Playfair Display',serif; font-size:3.5rem; font-weight:900; float:left; line-height:0.85; margin:0.1em 0.08em 0 0; color:var(--sierra); }
+    .article-body hr { border:none; border-top:2px solid var(--mist); margin:2.5rem 0; }
+    .article-body em { font-style:italic; }
+    .article-body strong { font-weight:700; }
+    .pullquote { border-left:3px solid var(--foothills); padding:1rem 1.5rem; margin:2rem 0; background:var(--cream); }
+    .pullquote p { font-family:'Playfair Display',serif; font-size:1.05rem; font-style:italic; line-height:1.65; color:var(--ink); margin:0; }
+    .series-box { background:var(--cream); border:1px solid var(--mist); border-left:3px solid var(--sierra); padding:1.25rem 1.5rem; margin:2.5rem 0; }
+    .series-label { font-family:'DM Mono',monospace; font-size:0.55rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--sierra); margin-bottom:0.5rem; }
+    .series-links { display:flex; flex-direction:column; gap:0.4rem; margin-top:0.5rem; }
+    .series-links a { font-size:0.85rem; color:var(--rust); text-decoration:none; }
+    .series-links a:hover { text-decoration:underline; }
+    .article-footer { margin-top:3rem; padding-top:2rem; border-top:2px solid var(--ink); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
+    .article-footer-author { font-family:'DM Mono',monospace; font-size:0.62rem; color:var(--stone); letter-spacing:0.1em; }
+    .article-footer-nav { display:flex; gap:1.5rem; }
+    .article-footer-nav a { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.12em; text-transform:uppercase; text-decoration:none; color:var(--stone); }
+    .article-footer-nav a:hover { color:var(--sierra); }
+    footer { background:var(--ink); color:var(--stone); padding:2rem clamp(1.5rem,5vw,4rem); margin-top:4rem; }
+    .footer-inner { max-width:860px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:2rem; flex-wrap:wrap; }
+    .footer-name { font-family:'Playfair Display',serif; font-size:0.95rem; font-weight:700; color:var(--white); }
+    .footer-tagline { font-family:'DM Mono',monospace; font-size:0.52rem; color:var(--stone); margin-top:0.2rem; }
+    .footer-link { font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; text-decoration:none; color:var(--stone); }
+    .footer-link:hover { color:var(--gold); }
+
+    .article-body .pull-quote { border-left:3px solid var(--foothills); margin:2rem 0; padding:0.5rem 0 0.5rem 1.5rem; font-family:'Playfair Display',serif; font-style:italic; font-size:1.2rem; line-height:1.6; color:var(--stone); }
+    .article-body .scene-break { text-align:center; margin:2.5rem 0; color:var(--mist); letter-spacing:0.8em; font-size:0.9rem; }
+    .sidebar-label { margin:3rem 0 1.5rem; font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--stone); text-align:center; border-top:1px solid var(--mist); padding-top:2rem; }
+    .aside { background:var(--cream); border-top:2px solid var(--foothills); padding:1.3rem 1.5rem; margin:1.5rem 0; }
+    .aside-title { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--foothills); margin-bottom:0.6rem; }
+    .aside p { font-size:0.92rem; line-height:1.75; color:var(--stone); margin-bottom:0.6rem; }
+    .aside p:last-child { margin-bottom:0; }
+  </style>
+  <script>
+  (function(){
+    const KEY = 'memoir_auth', PW = 'memory';
+    if (sessionStorage.getItem(KEY) === '1') return;
+    document.documentElement.style.visibility = 'hidden';
+    function buildGate() {
+      var o = document.createElement('div');
+      o.id = 'gate-overlay';
+      o.style.cssText = 'position:fixed;inset:0;background:#f5f0e8;display:flex;align-items:center;justify-content:center;z-index:99999;font-family:Georgia,serif;';
+      o.innerHTML = '<div style="text-align:center;padding:3rem;max-width:380px;width:90%;border:2px solid #1c1a16;background:#f5f0e8;">'
+        + '<div style="font-family:monospace;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:#7a7268;margin-bottom:1rem;">Brooks Groves · Memoir</div>'
+        + '<div style="font-family:Georgia,serif;font-size:1.6rem;font-weight:700;color:#1c1a16;margin-bottom:0.5rem;">Private Archive</div>'
+        + '<div style="font-size:0.85rem;color:#7a7268;margin-bottom:2rem;font-style:italic;">Password required</div>'
+        + '<input id="gate-pw" type="password" placeholder="password" style="width:100%;padding:0.75rem 1rem;background:#ede8dc;border:1px solid #d6d0c4;color:#1c1a16;font-size:1rem;outline:none;margin-bottom:0.75rem;box-sizing:border-box;text-align:center;letter-spacing:0.1em;"/>'
+        + '<div id="gate-err" style="color:#8b3a2a;font-size:0.75rem;margin-bottom:0.75rem;min-height:1rem;"></div>'
+        + '<button id="gate-btn" style="width:100%;padding:0.75rem;background:#1c1a16;border:none;color:#fdfaf4;font-size:0.85rem;cursor:pointer;letter-spacing:0.1em;font-family:monospace;text-transform:uppercase;">Enter</button>'
+        + '<div style="margin-top:1rem;"><a href="https://memoir.brooksgroves.com" style="font-family:monospace;font-size:0.6rem;color:#7a7268;text-transform:uppercase;letter-spacing:0.1em;text-decoration:none;">← All Pieces</a></div>'
+        + '</div>';
+      document.body.appendChild(o);
+      document.documentElement.style.visibility = 'visible';
+      var inp = document.getElementById('gate-pw');
+      inp.focus();
+      function tryPw() {
+        var pw = inp.value.trim().toLowerCase();
+        if (!pw) { document.getElementById('gate-err').textContent = 'Please enter the password.'; return; }
+        if (pw === PW) {
+          sessionStorage.setItem(KEY, '1');
+          document.getElementById('gate-overlay').remove();
+        } else {
+          document.getElementById('gate-err').textContent = 'Incorrect password.';
+          inp.value = ''; inp.focus();
+        }
+      }
+      document.getElementById('gate-btn').addEventListener('click', tryPw);
+      inp.addEventListener('keydown', function(e){ if(e.key==='Enter') tryPw(); });
+    }
+    if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', buildGate); } else { buildGate(); }
+  })();
+  </script>
+</head>
+<body>
+<div class="topline"></div>
+<header>
+  <div class="masthead-inner">
+    <a href="https://brooksgroves.com" class="site-name">Brooks Groves</a>
+    <a href="https://memoir.brooksgroves.com" class="header-link">← Memoir</a>
+  </div>
+</header>
+
+<div class="article-wrap">
+  <a href="https://memoir.brooksgroves.com" class="article-back">← All Stories</a>
+  <div class="article-num">Blinn College Stories · Chapter One · Fall 1988</div>
+  <p class="article-kicker">Groveland to Brenham · A Cadillac · A Boom Box · Deep in the Heart of Texas</p>
+  <h1 class="article-title">Deep in the Heart of Texas</h1>
+  <div class="article-meta">
+    <span>Brenham, Texas · Blinn College · 1988–1990</span>
+    <span>Brooks Groves</span>
+  </div>
+  <div class="article-tags">
+    <a href="https://brooksgroves.com/tags.html#Blinn%20College%20Stories" class="article-tag-pill">Blinn College Stories</a>
+    <a href="https://brooksgroves.com/tags.html#Texas" class="article-tag-pill">Texas</a>
+    <a href="https://brooksgroves.com/tags.html#Brenham" class="article-tag-pill">Brenham</a>
+    <a href="https://brooksgroves.com/tags.html#1980s" class="article-tag-pill">1980s</a>
+    <a href="https://brooksgroves.com/tags.html#Coming%20of%20Age" class="article-tag-pill">Coming of Age</a>
+  </div>
+
+  <div class="disclaimer">
+  </div>
+
+  <div class="article-body">
+
+  <p style="font-style:italic; color:var(--stone); font-size:0.95rem; border-left:3px solid var(--mist); padding-left:1.2rem; margin-bottom:2.5rem;">The first in a series of true stories from two years at Blinn College in Brenham, Texas — the oldest junior college in the state, in the middle of German-Texas farm country — where a homesick kid from the Sierra foothills landed in the fall of 1988 with a boom box, a Nintendo, and no plan whatsoever. Names are real. The Cadillac was very real. Pull up a chair.</p>
+
+  <p>Funny how life works sometimes.</p>
+  <p>You grow up thinking your whole world is about as big as you can see from where you're standing. For me, that was Groveland, California. A little town in the Sierra foothills on the road to Yosemite. Swimming holes, pine trees, tennis, summer jobs, and all the sociology that comes with growing up in a small mountain town.</p>
+  <p>Then one day, everyone decides perhaps you should leave.</p>
+  <p>In my case, my dad and some relatives in Houston thought getting out of the foothills for a while might be good for me. Groveland, wonderful as it is, has always had its own sociological perils. Maybe I needed a change of scenery. Maybe I needed some Texas values. Maybe I just needed to get away for a while.</p>
+  <p>I didn't really have a plan.</p>
+  <p>At eighteen, I don't think that's particularly uncommon.</p>
+  <p>There had been some money set aside for school until I was twenty-six, so best to take advantage of that while I could. I applied to a few schools and exactly one school accepted me.</p>
+  <p>Blinn College.</p>
+  <p>Decision made.</p>
+  <p>To be honest, I couldn't have told you where Brenham, Texas was before that acceptance letter arrived. I knew it wasn't terribly far from Houston and that I had relatives nearby. Beyond that, I knew absolutely nothing.</p>
+  <div class="aside">
+    <div class="aside-title">The School at the End of the Letter</div>
+    <p style="margin:0 0 0.7rem;color:var(--stone);line-height:1.7;font-size:0.9rem;">Blinn College turned out to be the oldest junior college in Texas — founded in 1883 as Mission Institute by the Southern German Conference of the Methodist Church, to train ministers, with an original class of three students meeting in the German Methodist Church.</p>
+    <p style="margin:0 0 0.7rem;color:var(--stone);line-height:1.7;font-size:0.9rem;">It was renamed in 1889 for the Reverend Christian Blinn, a wealthy German immigrant in New York who'd never set foot in Brenham but sent the money that saved the place. In 1937 it became the first county-owned junior college district in the state.</p>
+    <p style="margin:0;color:var(--stone);line-height:1.7;font-size:0.9rem;">None of which I knew when I mailed my application. I picked the one school that picked me, and it happened to be a piece of nineteenth-century German-Methodist Texas history. That's how a lot of eighteen-year-old decisions go: enormous, and made with a coin flip's worth of information.</p>
+  </div>
+  <p>And so, that's where I was going.</p>
+  <p>I had a wonderful final summer in Groveland before leaving. By then my mom had moved to Reno and my dad was living in Sacramento, so I pretty much had the old Groveland house to myself, with Crazy Irving and his wife keeping an eye on things as best anyone could. There are stories there too, but those are for another day.</p>
+  <p>I saved what money I could from working at the Hotel Charlotte. Enough for a plane ticket and a few necessities. Whether enough to make it through the school year remained very much an open question.</p>
+  <p>Then one day, Josh and Zack drove me down to San Francisco International Airport.</p>
+  <p>There are several stories hidden inside that sentence as well. Something involving a car chase through the streets of downtown San Francisco and dinner at the Claremont Hotel in Berkeley immediately come to mind.</p>
+  <p>Bookmark those for later.</p>
+  <p>And then, just like that, I was on an airplane heading for Houston.</p>
+  <p>It was the furthest from home I had ever been.</p>
+  <hr>
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">Everything Was Different</div>
+  <p>I don't remember much about the flight itself, but I remember stepping off the plane.</p>
+  <p>Everything was different.</p>
+  <p>The heat was different. The humidity was different. The rain was different. Even the color green was different somehow. California has a particular kind of beauty. Texas has another.</p>
+  <p>I regrouped in Houston with relatives in Memorial Oaks — the very civilized version of Texas, as it turns out. There were valet grocery stores, beautiful tennis courts, and my introduction to a Texas that looked nothing like the one I was about to discover. I picked up a few things for school while I was there, including what I remember being a pretty sweet pair of Andre Agassi tennis shoes. Tennis was a big part of my life then and would remain so during my Texas years.</p>
+  <p>And then it was time to head to Brenham.</p>
+  <p>This is where things got strange.</p>
+  <p>My grandparents didn't drive me to college. Instead, Mildred's son did.</p>
+  <p>Mildred was the housekeeper and had apparently worked for the family forever, or at least as long as anyone could remember. She was one of the nicest people you'd ever meet. She had two sons, one of whom would eventually become an actor best known as Chuck Norris's sidekick on <em>Walker, Texas Ranger.</em></p>
+  <p>This was the other brother.</p>
+  <p>So we loaded all my worldly possessions into a giant Cadillac because, well, it's Texas. Of course it's a giant Cadillac.</p>
+  <p>And off we went to Blinn College.</p>
+  <hr>
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">Old Texas. German Texas.</div>
+  <p>My baseline understanding of Texas at this point consisted almost entirely of Memorial Oaks and Houston. Brenham was decidedly not Memorial Oaks.</p>
+  <p>Brenham was old Texas.</p>
+  <p>German Texas.</p>
+  <p>Something I would later learn was part of the great German immigration into central Texas that shaped so much of the culture there. Places like Brenham, New Braunfels, and Fredericksburg all grew from those roots.</p>
+  <div class="aside">
+    <div class="aside-title">The German Hill Country</div>
+    <p style="margin:0 0 0.7rem;color:var(--stone);line-height:1.7;font-size:0.9rem;">Beginning in the 1840s, tens of thousands of Germans emigrated to central Texas, fleeing political upheaval back home and drawn by cheap land. They settled a belt of country — Brenham, New Braunfels, Fredericksburg, Boerne — that's still called the German Belt, and they brought Lutheran and Methodist churches, dance halls, sausage, and the language with them.</p>
+    <p style="margin:0 0 0.7rem;color:var(--stone);line-height:1.7;font-size:0.9rem;">Brenham sits in Washington County, right in the thick of it. Into the twentieth century you could still hear German spoken in the shops, and a German-language newspaper, the <em>Texas Volksbote</em>, was published in town from 1873 to 1919. The road signs out in the county still read Adamek and Schlottmann and Beckendorff.</p>
+    <p style="margin:0;color:var(--stone);line-height:1.7;font-size:0.9rem;">So when a kid from a California mining town felt like he'd landed somewhere genuinely foreign — he had. It just happened to be foreign in German.</p>
+  </div>
+  <p>At the time, I just knew it was different.</p>
+  <p>We stopped to eat lunch at a park before checking in, and I remember becoming aware for perhaps the first time in my life that I might actually be the minority in a particular place. Tuolumne County wasn't exactly known for its diversity in 1988. I didn't know much about any of that then, but I was beginning to understand that Texas was going to teach me quite a few things over the next two years.</p>
+  <hr>
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">Memorial Hall</div>
+  <p>Then we pulled up to Memorial Hall.</p>
+  <p>My new home.</p>
+  <p>The first person I met was Mrs. Massy, our dorm mother.</p>
+  <p>Mrs. Massy was an older German lady with an intensity about her that was immediately apparent. She was perfectly pleasant, but within about thirty seconds I knew she was not going to tolerate much nonsense in Memorial Hall.</p>
+  <p>Unfortunately for her, Memorial Hall was full of college students.</p>
+  <p>She informed me of various rules and regulations and eventually showed me to my room.</p>
+  <p>Which, as luck would have it, was directly above her apartment.</p>
+  <p>Of course it was.</p>
+  <p>The room itself looked like it had been furnished sometime during the Eisenhower administration. Two beds. Two wooden chairs. A desk. White walls and a window overlooking the back parking lot and…</p>
+  <p>…the train tracks.</p>
+  <p>Well.</p>
+  <p>Here I am.</p>
+  <p>Mildred's son helped unload my things, which must have looked curious to anyone observing the scene. Here comes this kid from California rolling up in a giant Cadillac driven by an African American gentleman, helping my great aunt unload my belongings in the middle of rural Texas.</p>
+  <p>And then they were gone.</p>
+  <p>The Cadillac disappeared down the road and suddenly I was standing there absolutely alone.</p>
+  <p>No friends.</p>
+  <p>No family.</p>
+  <p>No idea where my classes were.</p>
+  <p>No idea where anything was.</p>
+  <p>Just me.</p>
+  <p>Deep in the heart of Texas.</p>
+  <hr>
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">Public Enemy in Memorial Hall</div>
+  <p>I spent a few minutes unpacking and getting my bearings before pulling out my little boom box. Zack and others had made me several mix tapes before I left California and I was very grateful to have them.</p>
+  <p>Public Enemy. N.W.A. D.R.I. 7 Seconds. The Butthole Surfers, because Texas and all.</p>
+  <p>So there I was, blasting Public Enemy while unpacking my worldly possessions in Memorial Hall with the door propped open.</p>
+  <p>There was only one small problem.</p>
+  <p>Blinn College was predominantly African American at the time, and people walking down the hallway would hear Public Enemy coming from my room and naturally assume one thing before looking inside.</p>
+  <p>They were invariably surprised to discover it was just some random white kid from California.</p>
+  <p>One of my first lessons at Blinn College.</p>
+  <p>Eventually Mrs. Massy appeared at my door and politely informed me that my music was entirely too loud.</p>
+  <p>Which, in retrospect, was absolutely true.</p>
+  <hr>
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">Batman & the Spit Cup</div>
+  <p>Then came my new roommate, Tim.</p>
+  <p>Tim was a red-haired kid from East Texas beginning his second year at Blinn, and he had the entire college experience pretty well dialed in already. This was fortunate, because I had absolutely nothing dialed in whatsoever.</p>
+  <p>Everyone called him Batman.</p>
+  <p>Apparently because he stayed awake all night watching television and was perpetually late for his morning classes.</p>
+  <p>He immediately agreed to show me around campus and introduce me to some of his friends. There was Scratch, who earned his nickname for fairly obvious reasons, and several others who all seemed very East Texas to me.</p>
+  <p>Tim also chewed tobacco and kept a sort of communal spit cup in the room, which I found deeply disturbing.</p>
+  <p>Many months later, my hacky sack accidentally found its way into said container.</p>
+  <p>I can report that there is no amount of washing that completely removes that particular memory.</p>
+  <p>But I digress.</p>
+  <hr>
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">Top Ramen & a Nintendo</div>
+  <p>I was still very much a fish out of water.</p>
+  <p>Over the next few days I slowly figured out where my classes were and where things existed on campus. I suspect I broke down and cried more than once during that first week. There's something about suddenly finding yourself eighteen hundred miles from home that can do that to a person.</p>
+  <p>Before classes started, I decided there were a few things I absolutely needed.</p>
+  <p>A Nintendo NES. Super Mario Brothers and Duck Hunt. A thirteen-inch television. A tiny refrigerator. A coffee maker. And a cheap bicycle.</p>
+  <p>That was about all my summer job had provided.</p>
+  <p>The funny thing was I didn't really have any coffee.</p>
+  <p>What I did have was Top Ramen.</p>
+  <p>Lots and lots of Top Ramen.</p>
+  <p>The coffee maker quickly became less of a coffee maker and more of a highly specialized Top Ramen preparation device. Looking back, I suspect I was among America's leading consumers of sodium between 1988 and 1990.</p>
+  <p>As it turned out, I was also the only person in Memorial Hall with a Nintendo, which immediately became social currency.</p>
+  <div class="aside">
+    <div class="aside-title">The Little Creamery Down the Road</div>
+    <p style="margin:0 0 0.7rem;color:var(--stone);line-height:1.7;font-size:0.9rem;">One thing I did have going for me: I'd landed in the ice cream capital of Texas and didn't even know it. Blue Bell — <q>the little creamery in Brenham</q> — has been made right there in town since 1907, when it started as a dairy farmers' butter co-op in a converted cotton gin. It didn't make ice cream until 1911, two gallons a day, hand-cranked in a wooden tub.</p>
+    <p style="margin:0;color:var(--stone);line-height:1.7;font-size:0.9rem;">By the time I showed up in 1988 it was a full-blown Texas institution, the pride of Brenham, and about the best thing a broke, homesick, ramen-fed college kid could put in that tiny refrigerator. Say what you will about being eighteen hundred miles from home — the ice cream was undeniably better.</p>
+  </div>
+  <p>Meanwhile, the rest of the students continued moving into the dormitories.</p>
+  <p>Big Texas pickup trucks. Even bigger stereos. Stacks of speakers.</p>
+  <p>It was the late eighties, after all. Nobody had earbuds or Bluetooth speakers. If you liked Bon Jovi, then everyone within a hundred feet was going to like Bon Jovi as well.</p>
+  <p>Music poured out of every room in Memorial Hall while Mrs. Massy attempted to maintain some semblance of civilization.</p>
+  <hr>
+  <p>Outside my window, freight trains rolled through town. Bon Jovi was blasting somewhere down the hall. Mrs. Massy was trying to restore order to Memorial Hall. Tim Batman was undoubtedly preparing to stay awake until three in the morning watching television.</p>
+  <p>And me?</p>
+  <p>I was eighteen years old and wondering what the hell I had gotten myself into.</p>
+  <p>Tomorrow would be my first day of classes at Blinn College.</p>
+  <p>But that's getting ahead of ourselves.</p>
+  <div class="pull-quote">Tonight I was just a homesick kid from the Sierra foothills of California, listening to Public Enemy in the middle of Texas.</div>
+
+  </div>
+
+  <div class="series-box" style="border-left-color:var(--foothills);">
+    <div class="series-label" style="color:var(--foothills);">Blinn College Stories · A Series</div>
+    <p style="font-size:0.9rem; color:var(--stone); line-height:1.7; margin:0;">Two years in Brenham, Texas, 1988 to 1990 — German farm country, freight trains, Blue Bell ice cream, and a Sierra-foothills kid figuring it out eighteen hundred miles from home. Funny, observational, occasionally thoughtful, sometimes ridiculous. <em>Chapter Two coming.</em></p>
+  </div>
+
+  <div class="article-footer">
+    <div class="article-footer-author">Brooks Groves · Blinn College Stories · Brenham, Texas</div>
+    <div class="article-footer-nav">
+      <a href="https://memoir.brooksgroves.com">← All Stories</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <p class="footer-name">Brooks Groves</p>
+      <p class="footer-tagline">memoir.brooksgroves.com</p>
+    </div>
+    <a href="https://brooksgroves.com" class="footer-link">brooksgroves.com ↗</a>
+  </div>
+</footer>
+</body>
+</html>
