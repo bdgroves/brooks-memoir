@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cow Roping on a Saturday Morning — Brooks Groves</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌲</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,900;1,400;1,600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink:#1c1a16; --parchment:#f5f0e8; --cream:#ede8dc;
+      --sage:#4a5c45; --rust:#8b3a2a; --stone:#7a7268;
+      --gold:#c8922a; --mist:#d6d0c4; --white:#fdfaf4;
+      --sierra:#4a6b3a; --foothills:#8b6914;
+    }
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    body { background:var(--parchment); color:var(--ink); font-family:'Libre Baskerville',Georgia,serif; font-size:16px; line-height:1.7; overflow-x:hidden; }
+    body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E"); pointer-events:none; z-index:9999; opacity:0.5; }
+    .topline { height:4px; background:linear-gradient(90deg,var(--sierra) 0%,var(--foothills) 50%,var(--rust) 100%); }
+    header { border-bottom:2px solid var(--ink); padding:0 clamp(1.5rem,5vw,4rem); background:var(--parchment); }
+    .masthead-inner { display:flex; align-items:center; justify-content:space-between; gap:1rem; max-width:860px; margin:0 auto; padding:0.75rem 0; }
+    .site-name { font-family:'Playfair Display',serif; font-size:clamp(1.1rem,2.5vw,1.4rem); font-weight:900; text-decoration:none; color:var(--ink); }
+    .header-link { font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; text-decoration:none; color:var(--stone); }
+    .header-link:hover { color:var(--sierra); }
+    .article-wrap { max-width:720px; margin:0 auto; padding:clamp(3rem,6vw,5rem) clamp(1.5rem,5vw,2rem) clamp(3rem,6vw,5rem); }
+    .article-back { font-family:'DM Mono',monospace; font-size:0.63rem; letter-spacing:0.12em; text-transform:uppercase; text-decoration:none; color:var(--stone); display:inline-block; margin-bottom:2rem; }
+    .article-back:hover { color:var(--sierra); }
+    .article-num { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--sierra); margin-bottom:0.4rem; }
+    .article-kicker { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--foothills); margin-bottom:0.75rem; }
+    .article-title { font-family:'Playfair Display',serif; font-size:clamp(2rem,5vw,3.2rem); font-weight:900; line-height:1.08; letter-spacing:-0.02em; margin-bottom:1rem; }
+    .article-meta { font-family:'DM Mono',monospace; font-size:0.62rem; color:var(--stone); letter-spacing:0.1em; margin-bottom:1rem; display:flex; gap:1.5rem; flex-wrap:wrap; }
+    .article-tags { display:flex; gap:0.5rem; flex-wrap:wrap; padding-bottom:2rem; border-bottom:1px solid var(--mist); margin-bottom:2.5rem; }
+    .article-tag-pill { font-family:'DM Mono',monospace; font-size:0.58rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--stone); background:var(--cream); border:1px solid var(--mist); padding:0.25rem 0.65rem; border-radius:4px; text-decoration:none; display:inline-block; transition:background 0.15s,border-color 0.15s,color 0.15s; }
+    .article-tag-pill:hover { background:var(--gold); border-color:var(--gold); color:var(--white); }
+    .disclaimer { background:var(--cream); border-left:3px solid var(--stone); padding:1rem 1.5rem; margin-bottom:2.5rem; }
+    .disclaimer p { font-size:0.82rem; color:var(--stone); line-height:1.7; font-style:italic; }
+    .article-body { font-size:1.05rem; line-height:1.85; }
+    .article-body p { margin-bottom:1.5rem; }
+    .article-body p:first-of-type::first-letter { font-family:'Playfair Display',serif; font-size:3.5rem; font-weight:900; float:left; line-height:0.85; margin:0.1em 0.08em 0 0; color:var(--sierra); }
+    .article-body hr { border:none; border-top:2px solid var(--mist); margin:2.5rem 0; }
+    .article-body em { font-style:italic; }
+    .article-body strong { font-weight:700; }
+    .pullquote { border-left:3px solid var(--foothills); padding:1rem 1.5rem; margin:2rem 0; background:var(--cream); }
+    .pullquote p { font-family:'Playfair Display',serif; font-size:1.05rem; font-style:italic; line-height:1.65; color:var(--ink); margin:0; }
+    .series-box { background:var(--cream); border:1px solid var(--mist); border-left:3px solid var(--sierra); padding:1.25rem 1.5rem; margin:2.5rem 0; }
+    .series-label { font-family:'DM Mono',monospace; font-size:0.55rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--sierra); margin-bottom:0.5rem; }
+    .series-links { display:flex; flex-direction:column; gap:0.4rem; margin-top:0.5rem; }
+    .series-links a { font-size:0.85rem; color:var(--rust); text-decoration:none; }
+    .series-links a:hover { text-decoration:underline; }
+    .article-footer { margin-top:3rem; padding-top:2rem; border-top:2px solid var(--ink); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
+    .article-footer-author { font-family:'DM Mono',monospace; font-size:0.62rem; color:var(--stone); letter-spacing:0.1em; }
+    .article-footer-nav { display:flex; gap:1.5rem; }
+    .article-footer-nav a { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.12em; text-transform:uppercase; text-decoration:none; color:var(--stone); }
+    .article-footer-nav a:hover { color:var(--sierra); }
+    footer { background:var(--ink); color:var(--stone); padding:2rem clamp(1.5rem,5vw,4rem); margin-top:4rem; }
+    .footer-inner { max-width:860px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:2rem; flex-wrap:wrap; }
+    .footer-name { font-family:'Playfair Display',serif; font-size:0.95rem; font-weight:700; color:var(--white); }
+    .footer-tagline { font-family:'DM Mono',monospace; font-size:0.52rem; color:var(--stone); margin-top:0.2rem; }
+    .footer-link { font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; text-decoration:none; color:var(--stone); }
+    .footer-link:hover { color:var(--gold); }
+
+    .article-body .pull-quote { border-left:3px solid var(--foothills); margin:2rem 0; padding:0.5rem 0 0.5rem 1.5rem; font-family:'Playfair Display',serif; font-style:italic; font-size:1.2rem; line-height:1.6; color:var(--stone); }
+    .article-body .scene-break { text-align:center; margin:2.5rem 0; color:var(--mist); letter-spacing:0.8em; font-size:0.9rem; }
+    .sidebar-label { margin:3rem 0 1.5rem; font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--stone); text-align:center; border-top:1px solid var(--mist); padding-top:2rem; }
+    .aside { background:var(--cream); border-top:2px solid var(--foothills); padding:1.3rem 1.5rem; margin:1.5rem 0; }
+    .aside-title { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--foothills); margin-bottom:0.6rem; }
+    .aside p { font-size:0.92rem; line-height:1.75; color:var(--stone); margin-bottom:0.6rem; }
+    .aside p:last-child { margin-bottom:0; }
+  </style>
+  <script>
+  (function(){
+    const KEY = 'memoir_auth', PW = 'memory';
+    if (sessionStorage.getItem(KEY) === '1') return;
+    document.documentElement.style.visibility = 'hidden';
+    function buildGate() {
+      var o = document.createElement('div');
+      o.id = 'gate-overlay';
+      o.style.cssText = 'position:fixed;inset:0;background:#f5f0e8;display:flex;align-items:center;justify-content:center;z-index:99999;font-family:Georgia,serif;';
+      o.innerHTML = '<div style="text-align:center;padding:3rem;max-width:380px;width:90%;border:2px solid #1c1a16;background:#f5f0e8;">'
+        + '<div style="font-family:monospace;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:#7a7268;margin-bottom:1rem;">Brooks Groves · Memoir</div>'
+        + '<div style="font-family:Georgia,serif;font-size:1.6rem;font-weight:700;color:#1c1a16;margin-bottom:0.5rem;">Private Archive</div>'
+        + '<div style="font-size:0.85rem;color:#7a7268;margin-bottom:2rem;font-style:italic;">Password required</div>'
+        + '<input id="gate-pw" type="password" placeholder="password" style="width:100%;padding:0.75rem 1rem;background:#ede8dc;border:1px solid #d6d0c4;color:#1c1a16;font-size:1rem;outline:none;margin-bottom:0.75rem;box-sizing:border-box;text-align:center;letter-spacing:0.1em;"/>'
+        + '<div id="gate-err" style="color:#8b3a2a;font-size:0.75rem;margin-bottom:0.75rem;min-height:1rem;"></div>'
+        + '<button id="gate-btn" style="width:100%;padding:0.75rem;background:#1c1a16;border:none;color:#fdfaf4;font-size:0.85rem;cursor:pointer;letter-spacing:0.1em;font-family:monospace;text-transform:uppercase;">Enter</button>'
+        + '<div style="margin-top:1rem;"><a href="https://memoir.brooksgroves.com" style="font-family:monospace;font-size:0.6rem;color:#7a7268;text-transform:uppercase;letter-spacing:0.1em;text-decoration:none;">← All Pieces</a></div>'
+        + '</div>';
+      document.body.appendChild(o);
+      document.documentElement.style.visibility = 'visible';
+      var inp = document.getElementById('gate-pw');
+      inp.focus();
+      function tryPw() {
+        var pw = inp.value.trim().toLowerCase();
+        if (!pw) { document.getElementById('gate-err').textContent = 'Please enter the password.'; return; }
+        if (pw === PW) {
+          sessionStorage.setItem(KEY, '1');
+          document.getElementById('gate-overlay').remove();
+        } else {
+          document.getElementById('gate-err').textContent = 'Incorrect password.';
+          inp.value = ''; inp.focus();
+        }
+      }
+      document.getElementById('gate-btn').addEventListener('click', tryPw);
+      inp.addEventListener('keydown', function(e){ if(e.key==='Enter') tryPw(); });
+    }
+    if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', buildGate); } else { buildGate(); }
+  })();
+  </script>
+</head>
+<body>
+<div class="topline"></div>
+<header>
+  <div class="masthead-inner">
+    <a href="https://brooksgroves.com" class="site-name">Brooks Groves</a>
+    <a href="https://memoir.brooksgroves.com" class="header-link">← Memoir</a>
+  </div>
+</header>
+
+<div class="article-wrap">
+  <a href="https://memoir.brooksgroves.com" class="article-back">← All Stories</a>
+  <div class="article-num">Blinn College Stories · Chapter Two · Fall 1988</div>
+  <p class="article-kicker">Memorial Hall · A Cool Saturday Morning · Fake Cattle &amp; Real Lone Star</p>
+  <h1 class="article-title">Cow Roping on a Saturday Morning</h1>
+  <div class="article-meta">
+    <span>Brenham, Texas · Blinn College · 1988–1990</span>
+    <span>Brooks Groves</span>
+  </div>
+  <div class="article-tags">
+    <a href="https://brooksgroves.com/tags.html#Blinn%20College%20Stories" class="article-tag-pill">Blinn College Stories</a>
+    <a href="https://brooksgroves.com/tags.html#Texas" class="article-tag-pill">Texas</a>
+    <a href="https://brooksgroves.com/tags.html#Brenham" class="article-tag-pill">Brenham</a>
+    <a href="https://brooksgroves.com/tags.html#1980s" class="article-tag-pill">1980s</a>
+    <a href="https://brooksgroves.com/tags.html#Coming%20of%20Age" class="article-tag-pill">Coming of Age</a>
+    <a href="https://brooksgroves.com/tags.html#Groveland" class="article-tag-pill">Groveland</a>
+  </div>
+
+  <div class="disclaimer">
+  </div>
+
+  <div class="article-body">
+
+  <p style="font-style:italic; color:var(--stone); font-size:0.95rem; border-left:3px solid var(--mist); padding-left:1.2rem; margin-bottom:2.5rem;">Chapter Two of the Blinn College Stories. A California kid, a few weeks into East Texas, is sleeping off a night of Nintendo when he's woken by what sounds like a rodeo breaking out in the dorm parking lot. It more or less was. Names and cattle — well, the cattle were fake. Everything else is true.</p>
+
+  <p>By this point I had been in Brenham, Texas for a little while and was slowly getting acclimated to East Texas.</p>
+  <p>I knew where most of my classes were. I had become reasonably proficient at cooking Top Ramen in a coffee maker. Catfish Thursdays were not to be missed. Progress was being made.</p>
+  <p>Still, I remained a long way from Groveland, California.</p>
+  <p>Memorial Hall was an all-male dorm, mostly filled with East Texas kids who would head home on the weekends. Those of us from farther away — the foreign exchange students from places like California — were generally left behind to fend for ourselves.</p>
+  <p>It was a cool, crisp fall Saturday morning. Or at least that's how I remember it.</p>
+  <p>I was sleeping in, probably because I had been up far too late the night before. I'd like to say I was studying late into the evening, but it was more likely I had spent an irresponsible amount of time playing Nintendo. The Legend of Zelda wasn't going to solve itself.</p>
+  <p>Then I heard it.</p>
+  <p>A commotion outside my window.</p>
+  <p>At first I wasn't entirely sure what I was hearing. There were people yelling <q>Yee Haw!</q> and <q>Way to rope 'em!</q> Country music was blasting somewhere in the distance, and it sounded for all the world like a rodeo had spontaneously broken out outside Memorial Hall.</p>
+  <p>I remember thinking, <em>what in the hell is going on out there?</em></p>
+  <p>So I got up and looked out the window.</p>
+  <hr>
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">Sort of Cattle</div>
+  <p>There, in the large parking lot between the dormitories, were dozens of giant Texas trucks. People were wearing cowboy hats, boots, and enough country-western attire to make it abundantly clear that I was no longer in California. There was music playing, people laughing, and what appeared to be cattle running around the parking lot.</p>
+  <p>Well… sort of cattle.</p>
+  <p>They were fake cattle — practice dummies, I would later learn — but everyone seemed to be taking them very seriously.</p>
+  <p>There were cowboys and cowgirls everywhere, practicing their roping skills with an intensity usually reserved for brain surgery or landing airplanes. There were different kinds of ropes, different techniques, and people enthusiastically discussing all of it over what I recall being Lone Star beer, despite the fact that it was something like nine o'clock in the morning.</p>
+  <div class="aside">
+    <div class="aside-title">Roping the Dummy</div>
+    <p style="margin:0 0 0.7rem;color:var(--stone);line-height:1.7;font-size:0.9rem;">What I was watching was almost certainly team-roping practice on a roping dummy — usually a plastic steer head mounted on a bale or a sawhorse, or a full-body model on wheels. It's how ropers drill without running a live animal into the ground.</p>
+    <p style="margin:0 0 0.7rem;color:var(--stone);line-height:1.7;font-size:0.9rem;">Team roping has two riders: the <em>header</em> ropes the steer's horns and turns it, and the <em>heeler</em> ropes the two hind legs. Both loops have to land clean, which takes thousands of throws to make automatic — hence a parking lot full of people whipping ropes at a fake cow at nine in the morning. It's the only rodeo event contested as a team, and in Texas ag country it's less a sport than a way of life.</p>
+    <p style="margin:0;color:var(--stone);line-height:1.7;font-size:0.9rem;">To a kid from the Sierra foothills it looked like a flash mob. To everybody else in that parking lot, it was just Saturday.</p>
+  </div>
+  <div class="aside">
+    <div class="aside-title">The National Beer of Texas</div>
+    <p style="margin:0 0 0.7rem;color:var(--stone);line-height:1.7;font-size:0.9rem;">The Lone Star was not incidental. Brewed in San Antonio and branding itself <q>the National Beer of Texas,</q> Lone Star was <em>the</em> longneck — the one they'd hand you at any dancehall, honky-tonk, or ice house in the state, immortalized in the era's ads by a giant armadillo chasing the delivery trucks.</p>
+    <p style="margin:0;color:var(--stone);line-height:1.7;font-size:0.9rem;">By 1988 it was pure Texas shorthand: cheap, cold, everywhere, and completely woven into the music-and-truck-and-rope culture unfolding in that parking lot. That it was being consumed at nine in the morning at a Future Farmers event only made the picture more complete.</p>
+  </div>
+  <p>Turns out it was some sort of Future Farmers of America gathering or demonstration.</p>
+  <div class="aside">
+    <div class="aside-title">Those Blue Corduroy Jackets</div>
+    <p style="margin:0 0 0.7rem;color:var(--stone);line-height:1.7;font-size:0.9rem;">The FFA — Future Farmers of America, now officially just the National FFA Organization — was founded in 1928, and in a town like Brenham it wasn't a club so much as a pillar of teenage life, right alongside football and church. The blue corduroy jacket with the gold emblem on the back is one of the most recognizable things a rural American kid can wear.</p>
+    <p style="margin:0;color:var(--stone);line-height:1.7;font-size:0.9rem;">Its members raise and show livestock, judge cattle, compete in everything from public speaking to — yes — roping, and it runs deep in exactly the German-Texas farm country Blinn sits in. For most of the people in that parking lot, this was simply the world they'd grown up in. For me it was an anthropological field expedition I hadn't signed up for.</p>
+  </div>
+  <hr>
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">The Curriculum Continues</div>
+  <p>Growing up in the Sierra foothills of California, I had certainly seen cows before. That wasn't the surprising part.</p>
+  <p>What I had never seen was an entire parking lot full of people voluntarily waking up early on a Saturday morning to enthusiastically practice roping pretend cows.</p>
+  <p>Texas was continuing its educational curriculum.</p>
+  <p>It struck me that this was exactly why I had been sent there in the first place. My father and relatives in Houston thought it would be good for me to get out of the foothills for a while — to experience someplace entirely different and learn a few new values along the way.</p>
+  <p>Mission accomplished.</p>
+  <p>The funny thing was, they probably thought I was just as strange as I thought they were.</p>
+  <p>There I was: some weird kid from California listening to Public Enemy and punk rock, playing Nintendo all night, eating nothing but Top Ramen, studying computers when most people didn't own one, and hitting tennis balls around every afternoon.</p>
+  <p>I was as much of a curiosity to them as they were to me.</p>
+  <div class="pull-quote">For me it was all wonderfully strange. For the people who grew up there, none of it seemed unusual at all.</div>
+  <p>One of the things I remember most about my time at Blinn wasn't necessarily the big moments. It was waking up on an ordinary Saturday morning and discovering something that was completely foreign to me, but perfectly ordinary to everyone else.</p>
+  <p>That happened a lot in Texas.</p>
+  <p>There were the accents, the football, the churches, the trains that ran behind Memorial Hall, and the endless fields that seemed to stretch forever. There were beer parties out in the thickets, country music pouring out of dorm room stereos, and Saturday mornings spent roping fake cows in parking lots.</p>
+  <p>For the people who grew up there, none of it seemed unusual.</p>
+  <p>For me, it was all wonderfully strange.</p>
+  <hr>
+  <p>More than thirty-five years later, I still smile thinking about opening those blinds and wondering where in the world I had landed.</p>
+  <p>East Texas, as it turns out.</p>
+
+  </div>
+
+  <div class="series-box" style="border-left-color:var(--foothills);">
+    <div class="series-label" style="color:var(--foothills);">Blinn College Stories · A Series</div>
+    <p style="font-size:0.9rem; color:var(--stone); line-height:1.7; margin:0;">Two years in Brenham, Texas, 1988 to 1990 — German farm country, freight trains, Blue Bell ice cream, and a Sierra-foothills kid figuring it out eighteen hundred miles from home. Funny, observational, occasionally thoughtful, sometimes ridiculous. <em>More chapters coming.</em></p>
+  </div>
+
+  <div class="article-footer">
+    <div class="article-footer-author">Brooks Groves · Blinn College Stories · Brenham, Texas</div>
+    <div class="article-footer-nav">
+      <a href="/deep-in-the-heart-of-texas.html">← Ch. 1 · Deep in the Heart of Texas</a>
+      <a href="https://memoir.brooksgroves.com">All Stories</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <p class="footer-name">Brooks Groves</p>
+      <p class="footer-tagline">memoir.brooksgroves.com</p>
+    </div>
+    <a href="https://brooksgroves.com" class="footer-link">brooksgroves.com ↗</a>
+  </div>
+</footer>
+</body>
+</html>
