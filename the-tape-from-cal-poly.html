@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Tape from Cal Poly — Brooks Groves</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌲</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,900;1,400;1,600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink:#1c1a16; --parchment:#f5f0e8; --cream:#ede8dc;
+      --sage:#4a5c45; --rust:#8b3a2a; --stone:#7a7268;
+      --gold:#c8922a; --mist:#d6d0c4; --white:#fdfaf4;
+      --sierra:#4a6b3a; --foothills:#8b6914;
+    }
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    body { background:var(--parchment); color:var(--ink); font-family:'Libre Baskerville',Georgia,serif; font-size:16px; line-height:1.7; overflow-x:hidden; }
+    body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E"); pointer-events:none; z-index:9999; opacity:0.5; }
+    .topline { height:4px; background:linear-gradient(90deg,var(--sierra) 0%,var(--foothills) 50%,var(--rust) 100%); }
+    header { border-bottom:2px solid var(--ink); padding:0 clamp(1.5rem,5vw,4rem); background:var(--parchment); }
+    .masthead-inner { display:flex; align-items:center; justify-content:space-between; gap:1rem; max-width:860px; margin:0 auto; padding:0.75rem 0; }
+    .site-name { font-family:'Playfair Display',serif; font-size:clamp(1.1rem,2.5vw,1.4rem); font-weight:900; text-decoration:none; color:var(--ink); }
+    .header-link { font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; text-decoration:none; color:var(--stone); }
+    .header-link:hover { color:var(--sierra); }
+    .article-wrap { max-width:720px; margin:0 auto; padding:clamp(3rem,6vw,5rem) clamp(1.5rem,5vw,2rem) clamp(3rem,6vw,5rem); }
+    .article-back { font-family:'DM Mono',monospace; font-size:0.63rem; letter-spacing:0.12em; text-transform:uppercase; text-decoration:none; color:var(--stone); display:inline-block; margin-bottom:2rem; }
+    .article-back:hover { color:var(--sierra); }
+    .article-num { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--sierra); margin-bottom:0.4rem; }
+    .article-kicker { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--foothills); margin-bottom:0.75rem; }
+    .article-title { font-family:'Playfair Display',serif; font-size:clamp(2rem,5vw,3.2rem); font-weight:900; line-height:1.08; letter-spacing:-0.02em; margin-bottom:1rem; }
+    .article-meta { font-family:'DM Mono',monospace; font-size:0.62rem; color:var(--stone); letter-spacing:0.1em; margin-bottom:1rem; display:flex; gap:1.5rem; flex-wrap:wrap; }
+    .article-tags { display:flex; gap:0.5rem; flex-wrap:wrap; padding-bottom:2rem; border-bottom:1px solid var(--mist); margin-bottom:2.5rem; }
+    .article-tag-pill { font-family:'DM Mono',monospace; font-size:0.58rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--stone); background:var(--cream); border:1px solid var(--mist); padding:0.25rem 0.65rem; border-radius:4px; text-decoration:none; display:inline-block; transition:background 0.15s,border-color 0.15s,color 0.15s; }
+    .article-tag-pill:hover { background:var(--gold); border-color:var(--gold); color:var(--white); }
+    .disclaimer { background:var(--cream); border-left:3px solid var(--stone); padding:1rem 1.5rem; margin-bottom:2.5rem; }
+    .disclaimer p { font-size:0.82rem; color:var(--stone); line-height:1.7; font-style:italic; }
+    .article-body { font-size:1.05rem; line-height:1.85; }
+    .article-body p { margin-bottom:1.5rem; }
+    .article-body p:first-of-type::first-letter { font-family:'Playfair Display',serif; font-size:3.5rem; font-weight:900; float:left; line-height:0.85; margin:0.1em 0.08em 0 0; color:var(--sierra); }
+    .article-body hr { border:none; border-top:2px solid var(--mist); margin:2.5rem 0; }
+    .article-body em { font-style:italic; }
+    .article-body strong { font-weight:700; }
+    .pullquote { border-left:3px solid var(--foothills); padding:1rem 1.5rem; margin:2rem 0; background:var(--cream); }
+    .pullquote p { font-family:'Playfair Display',serif; font-size:1.05rem; font-style:italic; line-height:1.65; color:var(--ink); margin:0; }
+    .series-box { background:var(--cream); border:1px solid var(--mist); border-left:3px solid var(--sierra); padding:1.25rem 1.5rem; margin:2.5rem 0; }
+    .series-label { font-family:'DM Mono',monospace; font-size:0.55rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--sierra); margin-bottom:0.5rem; }
+    .series-links { display:flex; flex-direction:column; gap:0.4rem; margin-top:0.5rem; }
+    .series-links a { font-size:0.85rem; color:var(--rust); text-decoration:none; }
+    .series-links a:hover { text-decoration:underline; }
+    .article-footer { margin-top:3rem; padding-top:2rem; border-top:2px solid var(--ink); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
+    .article-footer-author { font-family:'DM Mono',monospace; font-size:0.62rem; color:var(--stone); letter-spacing:0.1em; }
+    .article-footer-nav { display:flex; gap:1.5rem; }
+    .article-footer-nav a { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.12em; text-transform:uppercase; text-decoration:none; color:var(--stone); }
+    .article-footer-nav a:hover { color:var(--sierra); }
+    footer { background:var(--ink); color:var(--stone); padding:2rem clamp(1.5rem,5vw,4rem); margin-top:4rem; }
+    .footer-inner { max-width:860px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:2rem; flex-wrap:wrap; }
+    .footer-name { font-family:'Playfair Display',serif; font-size:0.95rem; font-weight:700; color:var(--white); }
+    .footer-tagline { font-family:'DM Mono',monospace; font-size:0.52rem; color:var(--stone); margin-top:0.2rem; }
+    .footer-link { font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; text-decoration:none; color:var(--stone); }
+    .footer-link:hover { color:var(--gold); }
+
+    .article-body .pull-quote { border-left:3px solid var(--foothills); margin:2rem 0; padding:0.5rem 0 0.5rem 1.5rem; font-family:'Playfair Display',serif; font-style:italic; font-size:1.2rem; line-height:1.6; color:var(--stone); }
+    .article-body .scene-break { text-align:center; margin:2.5rem 0; color:var(--mist); letter-spacing:0.8em; font-size:0.9rem; }
+    .sidebar-label { margin:3rem 0 1.5rem; font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--stone); text-align:center; border-top:1px solid var(--mist); padding-top:2rem; }
+    .aside { background:var(--cream); border-top:2px solid var(--foothills); padding:1.3rem 1.5rem; margin:1.5rem 0; }
+    .aside-title { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--foothills); margin-bottom:0.6rem; }
+    .aside p { font-size:0.92rem; line-height:1.75; color:var(--stone); margin-bottom:0.6rem; }
+    .aside p:last-child { margin-bottom:0; }
+  </style>
+  <script>
+  (function(){
+    const KEY = 'memoir_auth', PW = 'memory';
+    if (sessionStorage.getItem(KEY) === '1') return;
+    document.documentElement.style.visibility = 'hidden';
+    function buildGate() {
+      var o = document.createElement('div');
+      o.id = 'gate-overlay';
+      o.style.cssText = 'position:fixed;inset:0;background:#f5f0e8;display:flex;align-items:center;justify-content:center;z-index:99999;font-family:Georgia,serif;';
+      o.innerHTML = '<div style="text-align:center;padding:3rem;max-width:380px;width:90%;border:2px solid #1c1a16;background:#f5f0e8;">'
+        + '<div style="font-family:monospace;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:#7a7268;margin-bottom:1rem;">Brooks Groves · Memoir</div>'
+        + '<div style="font-family:Georgia,serif;font-size:1.6rem;font-weight:700;color:#1c1a16;margin-bottom:0.5rem;">Private Archive</div>'
+        + '<div style="font-size:0.85rem;color:#7a7268;margin-bottom:2rem;font-style:italic;">Password required</div>'
+        + '<input id="gate-pw" type="password" placeholder="password" style="width:100%;padding:0.75rem 1rem;background:#ede8dc;border:1px solid #d6d0c4;color:#1c1a16;font-size:1rem;outline:none;margin-bottom:0.75rem;box-sizing:border-box;text-align:center;letter-spacing:0.1em;"/>'
+        + '<div id="gate-err" style="color:#8b3a2a;font-size:0.75rem;margin-bottom:0.75rem;min-height:1rem;"></div>'
+        + '<button id="gate-btn" style="width:100%;padding:0.75rem;background:#1c1a16;border:none;color:#fdfaf4;font-size:0.85rem;cursor:pointer;letter-spacing:0.1em;font-family:monospace;text-transform:uppercase;">Enter</button>'
+        + '<div style="margin-top:1rem;"><a href="https://memoir.brooksgroves.com" style="font-family:monospace;font-size:0.6rem;color:#7a7268;text-transform:uppercase;letter-spacing:0.1em;text-decoration:none;">← All Pieces</a></div>'
+        + '</div>';
+      document.body.appendChild(o);
+      document.documentElement.style.visibility = 'visible';
+      var inp = document.getElementById('gate-pw');
+      inp.focus();
+      function tryPw() {
+        var pw = inp.value.trim().toLowerCase();
+        if (!pw) { document.getElementById('gate-err').textContent = 'Please enter the password.'; return; }
+        if (pw === PW) {
+          sessionStorage.setItem(KEY, '1');
+          document.getElementById('gate-overlay').remove();
+        } else {
+          document.getElementById('gate-err').textContent = 'Incorrect password.';
+          inp.value = ''; inp.focus();
+        }
+      }
+      document.getElementById('gate-btn').addEventListener('click', tryPw);
+      inp.addEventListener('keydown', function(e){ if(e.key==='Enter') tryPw(); });
+    }
+    if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', buildGate); } else { buildGate(); }
+  })();
+  </script>
+</head>
+<body>
+<div class="topline"></div>
+<header>
+  <div class="masthead-inner">
+    <a href="https://brooksgroves.com" class="site-name">Brooks Groves</a>
+    <a href="https://memoir.brooksgroves.com" class="header-link">← Memoir</a>
+  </div>
+</header>
+
+<div class="article-wrap">
+  <a href="https://memoir.brooksgroves.com" class="article-back">← All Stories</a>
+  <div class="article-num">Memoir · The Summer of 1989</div>
+  <p class="article-kicker">Pine Mountain Lake · An Empty Condo · A Cassette from Australia</p>
+  <h1 class="article-title">The Tape from Cal Poly</h1>
+  <div class="article-meta">
+    <span>Groveland, California · Summer 1989</span>
+    <span>Brooks Groves</span>
+  </div>
+  <div class="article-tags">
+    <a href="https://brooksgroves.com/tags.html#Memoir" class="article-tag-pill">Memoir</a>
+    <a href="https://brooksgroves.com/tags.html#Music" class="article-tag-pill">Music</a>
+    <a href="https://brooksgroves.com/tags.html#Groveland" class="article-tag-pill">Groveland</a>
+    <a href="https://brooksgroves.com/tags.html#Sierra%20Nevada" class="article-tag-pill">Sierra Nevada</a>
+    <a href="https://brooksgroves.com/tags.html#1980s" class="article-tag-pill">1980s</a>
+    <a href="https://brooksgroves.com/tags.html#Coming%20of%20Age" class="article-tag-pill">Coming of Age</a>
+  </div>
+
+  <div class="disclaimer">
+  </div>
+
+  <div class="article-body">
+
+  <p style="font-style:italic; color:var(--stone); font-size:0.95rem; border-left:3px solid var(--mist); padding-left:1.2rem; margin-bottom:2.5rem;">A love letter to being nineteen years old and discovering the world is so much bigger than you imagined. It starts in Groveland the summer after that first year at Blinn — but it belongs to all of these stories. Less about Midnight Oil than about the night a single cassette tape quietly stayed with me for the rest of my life.</p>
+
+  <p>There are moments in your life that don't feel particularly important when they're happening. They just feel like another warm summer evening with good friends and a few beers. Looking back, I've found those moments are usually the important ones.</p>
+  <p>The summer of 1989 was one of those moments.</p>
+  <p>I had just come home to Groveland after my freshman year at Blinn College in Brenham, Texas. Funny enough, I wasn't exactly the same person who had left a year earlier. I suppose that's what college is supposed to do to you.</p>
+  <p>I had left the Sierra Nevada foothills of California and somehow found myself living in East Texas. I had eaten catfish for the first time, survived Memorial Hall, discovered a Nintendo could occupy an entire weekend, voted for the first time, and met people unlike anyone I had ever known growing up in Groveland. My world had become considerably larger in just one year.</p>
+  <p>Coming home was strange. Everything looked exactly the same, but it somehow wasn't. Or perhaps it was me that wasn't quite the same anymore.</p>
+  <p>I had escaped, but I still belonged there.</p>
+  <hr>
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">An Empty Condo at Pine Mountain Lake</div>
+  <p>That summer I was living with my friend Zack in a condo at Pine Mountain Lake. Calling it furnished would probably be overselling things a bit. We didn't have much. There were sleeping bags on the floor, a boom box sitting somewhere in the living room, and whatever worldly possessions two nineteen-year-old kids could scrape together. It was perfect.</p>
+  <p>There are some advantages to being nineteen that you don't fully appreciate until much later in life. One of them is that you can be perfectly happy sitting on the floor of an empty condo drinking cheap beer with good friends on a warm summer evening.</p>
+  <p>That was enough.</p>
+  <p>It was one of those beautiful Sierra Nevada foothill evenings where the air stays warm long after sunset. You could see the stars outside and there wasn't anywhere in particular we needed to be. We'd probably been swimming earlier that day, maybe at Rainbow Pool or down at the marina. Hard to say. In those days we seemed to be everywhere and nowhere all at once.</p>
+  <div class="aside">
+    <div class="aside-title">Rainbow Pool</div>
+    <p style="margin:0 0 0.7rem;color:var(--stone);line-height:1.7;font-size:0.9rem;">Rainbow Pool is a real place, and for a lot of us it was <em>the</em> place — a swimming hole on the South Fork of the Tuolumne River right along Highway 120, the old road to Yosemite, a few miles above Groveland. A wide granite basin, a waterfall, cold snowmelt water, and a rope's worth of local kids daring each other off the rocks all summer long.</p>
+    <p style="margin:0;color:var(--stone);line-height:1.7;font-size:0.9rem;">It's on Forest Service land in the Stanislaus National Forest, a genuine Gold Rush–era stop that's been cooling off foothill kids for generations. When you grow up in Groveland, a summer is measured partly in afternoons at Rainbow Pool. That the evening in this story might have started there is almost too fitting.</p>
+  </div>
+  <hr>
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">“You Have to Hear This”</div>
+  <p>Then our friend Jody came by with her friend Leslie.</p>
+  <p>Leslie had just finished her freshman year at Cal Poly in San Luis Obispo. Like me, she was coming home after a year of college and carrying around new experiences, new ideas, and a slightly different version of herself than the one that had left home the year before.</p>
+  <p>And she was carrying a cassette tape.</p>
+  <p>Now, for anyone who didn't grow up before the internet, it might be difficult to explain how music traveled in those days. There wasn't an algorithm waiting to recommend your next favorite band. You discovered music through people. Someone heard something on college radio. Someone bought an album. Someone made you a copy. Someone brought it home and said four simple words.</p>
+  <p><span style="font-style:italic;">“You have to hear this.”</span></p>
+  <p>That was it.</p>
+  <div class="pull-quote">Australia traveled to Groveland, California one cassette tape at a time.</div>
+  <p>The album was <em>Diesel and Dust</em> by Midnight Oil.</p>
+  <p>She told us the kids at Cal Poly were really into this Australian band, and given that Leslie cared deeply about environmental issues and all of those bigger ideas that seem to find us during our college years, it made perfect sense that she'd connected with them.</p>
+  <p>So we sat down and listened.</p>
+  <p>And then we listened again.</p>
+  <p>And then we sat around talking late into the night.</p>
+  <div class="aside">
+    <div class="aside-title">Diesel and Dust, All the Way from the Outback</div>
+    <p style="margin:0 0 0.7rem;color:var(--stone);line-height:1.7;font-size:0.9rem;">The tape wasn't just good timing — it was one of the most purposeful rock records of the decade. <em>Diesel and Dust</em> (1987) was Midnight Oil's sixth album, written after the band toured remote Aboriginal communities in the Australian outback on the 1986 Blackfella/Whitefella Tour. Its opening track, <q>Beds Are Burning,</q> became a global hit and a rallying cry for Aboriginal land rights — a protest song you could dance to, which is a hard thing to pull off.</p>
+    <p style="margin:0;color:var(--stone);line-height:1.7;font-size:0.9rem;">Frontman Peter Garrett wasn't kidding about any of it, either: he would go on to actually serve in the Australian Parliament as the country's environment minister. So when a nineteen-year-old in a Sierra foothill condo felt like this band <em>meant</em> something — he was right. Rolling Stone's editors named it the best album of 1988. It had traveled a long way to reach that boom box, and it wasn't done traveling.</p>
+  </div>
+  <hr>
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">It Wasn’t Just the Music</div>
+  <p>It's funny looking back, because Midnight Oil wasn't really like anything else I was listening to at the time. There was punk and hardcore floating around my collection. There was classic rock. There was all kinds of late-'80s music finding its way into our lives. But there was something different about Midnight Oil.</p>
+  <p>It wasn't just the music.</p>
+  <p>It was the urgency of it. It felt like this band had something important to say.</p>
+  <p>And then there was Australia.</p>
+  <p>Growing up in Groveland and spending my freshman year in East Texas, Australia might as well have been another planet. Yet here it was, arriving in an empty condo at Pine Mountain Lake through a college student from Cal Poly carrying around a cassette tape.</p>
+  <p>It was environmental issues. It was indigenous cultures. It was politics. It was history. It was geography.</p>
+  <p>Most of all, it was curiosity.</p>
+  <p>At nineteen years old, I don't think we appreciate how receptive we are to new ideas. Leslie and I spent much of that evening comparing notes about our freshman years away from home. Similar experiences in many ways, but different ones too. We had both left home and returned slightly changed by it.</p>
+  <p>The world was becoming much larger than either of us had imagined when we graduated from high school.</p>
+  <p>Of course, Zack wasn't nearly as impressed as I was. He thought Midnight Oil was a little too political for his tastes — which makes me laugh all these years later, because I suppose that's been part of Midnight Oil from the very beginning. But that's the beautiful thing about moments like these. Four people can sit in the same room listening to the same music and walk away carrying something completely different.</p>
+  <p>I walked away carrying Midnight Oil.</p>
+  <hr>
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">Everything That Was Still Waiting</div>
+  <p>What I couldn't possibly know, sitting there on that sleeping bag in the summer of 1989, was that Midnight Oil would never really leave.</p>
+  <p>I had no idea that Australia would someday become a place I'd travel to many times. I had no idea I'd spend decades listening to every album and discovering all the deep cuts. I had no idea I'd see them perform live, or keep finding something new in their music nearly four decades later.</p>
+  <p>All of that was still waiting for me.</p>
+  <p>Thirty-seven years have passed since that warm summer evening at Pine Mountain Lake. The empty condo is long gone. We've all grown older and our lives have gone in directions none of us could have imagined sitting there on the floor talking late into the night.</p>
+  <p>And Midnight Oil is somehow still here.</p>
+  <p>In fact, as I sit writing this today, I was listening to <q>Gadigal Land</q> just a few minutes ago and thinking about that cassette tape from Cal Poly.</p>
+  <hr>
+  <p>Funny how life works sometimes.</p>
+  <p>A nineteen-year-old kid comes home from Texas trying to figure out who he is. A friend comes back from college carrying a cassette tape from Australia and says, <q>You have to hear this.</q></p>
+  <p>And thirty-seven years later, he's still listening.</p>
+  <p>Some of the most important things in our lives don't arrive with great fanfare. Sometimes they arrive in an empty condo at Pine Mountain Lake, carried inside a little plastic cassette case by an old friend coming home from college.</p>
+  <div class="pull-quote">And somehow, they never really leave.</div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-footer-author">Brooks Groves · Memoir · Groveland, California</div>
+    <div class="article-footer-nav">
+      <a href="https://memoir.brooksgroves.com">← All Memoir Pieces</a>
+      <a href="/blinn-college-stories.html">The Blinn College Stories</a>
+      <a href="/sierra-foothills.html">The Sierra Foothills</a>
+    </div>
+  </div>
+</div>
+<footer>
+  <div class="footer-inner">
+    <div>
+      <p class="footer-name">Brooks Groves</p>
+      <p class="footer-tagline">memoir.brooksgroves.com</p>
+    </div>
+    <a href="https://brooksgroves.com" class="footer-link">brooksgroves.com ↗</a>
+  </div>
+</footer>
+</body>
+</html>
