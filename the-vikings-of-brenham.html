@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Vikings of Brenham — Brooks Groves</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌲</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,900;1,400;1,600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink:#1c1a16; --parchment:#f5f0e8; --cream:#ede8dc;
+      --sage:#4a5c45; --rust:#8b3a2a; --stone:#7a7268;
+      --gold:#c8922a; --mist:#d6d0c4; --white:#fdfaf4;
+      --sierra:#4a6b3a; --foothills:#8b6914;
+    }
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    body { background:var(--parchment); color:var(--ink); font-family:'Libre Baskerville',Georgia,serif; font-size:16px; line-height:1.7; overflow-x:hidden; }
+    body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E"); pointer-events:none; z-index:9999; opacity:0.5; }
+    .topline { height:4px; background:linear-gradient(90deg,var(--sierra) 0%,var(--foothills) 50%,var(--rust) 100%); }
+    header { border-bottom:2px solid var(--ink); padding:0 clamp(1.5rem,5vw,4rem); background:var(--parchment); }
+    .masthead-inner { display:flex; align-items:center; justify-content:space-between; gap:1rem; max-width:860px; margin:0 auto; padding:0.75rem 0; }
+    .site-name { font-family:'Playfair Display',serif; font-size:clamp(1.1rem,2.5vw,1.4rem); font-weight:900; text-decoration:none; color:var(--ink); }
+    .header-link { font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; text-decoration:none; color:var(--stone); }
+    .header-link:hover { color:var(--sierra); }
+    .article-wrap { max-width:720px; margin:0 auto; padding:clamp(3rem,6vw,5rem) clamp(1.5rem,5vw,2rem) clamp(3rem,6vw,5rem); }
+    .article-back { font-family:'DM Mono',monospace; font-size:0.63rem; letter-spacing:0.12em; text-transform:uppercase; text-decoration:none; color:var(--stone); display:inline-block; margin-bottom:2rem; }
+    .article-back:hover { color:var(--sierra); }
+    .article-num { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--sierra); margin-bottom:0.4rem; }
+    .article-kicker { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--foothills); margin-bottom:0.75rem; }
+    .article-title { font-family:'Playfair Display',serif; font-size:clamp(2rem,5vw,3.2rem); font-weight:900; line-height:1.08; letter-spacing:-0.02em; margin-bottom:1rem; }
+    .article-meta { font-family:'DM Mono',monospace; font-size:0.62rem; color:var(--stone); letter-spacing:0.1em; margin-bottom:1rem; display:flex; gap:1.5rem; flex-wrap:wrap; }
+    .article-tags { display:flex; gap:0.5rem; flex-wrap:wrap; padding-bottom:2rem; border-bottom:1px solid var(--mist); margin-bottom:2.5rem; }
+    .article-tag-pill { font-family:'DM Mono',monospace; font-size:0.58rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--stone); background:var(--cream); border:1px solid var(--mist); padding:0.25rem 0.65rem; border-radius:4px; text-decoration:none; display:inline-block; transition:background 0.15s,border-color 0.15s,color 0.15s; }
+    .article-tag-pill:hover { background:var(--gold); border-color:var(--gold); color:var(--white); }
+    .disclaimer { background:var(--cream); border-left:3px solid var(--stone); padding:1rem 1.5rem; margin-bottom:2.5rem; }
+    .disclaimer p { font-size:0.82rem; color:var(--stone); line-height:1.7; font-style:italic; }
+    .article-body { font-size:1.05rem; line-height:1.85; }
+    .article-body p { margin-bottom:1.5rem; }
+    .article-body p:first-of-type::first-letter { font-family:'Playfair Display',serif; font-size:3.5rem; font-weight:900; float:left; line-height:0.85; margin:0.1em 0.08em 0 0; color:var(--sierra); }
+    .article-body hr { border:none; border-top:2px solid var(--mist); margin:2.5rem 0; }
+    .article-body em { font-style:italic; }
+    .article-body strong { font-weight:700; }
+    .pullquote { border-left:3px solid var(--foothills); padding:1rem 1.5rem; margin:2rem 0; background:var(--cream); }
+    .pullquote p { font-family:'Playfair Display',serif; font-size:1.05rem; font-style:italic; line-height:1.65; color:var(--ink); margin:0; }
+    .series-box { background:var(--cream); border:1px solid var(--mist); border-left:3px solid var(--sierra); padding:1.25rem 1.5rem; margin:2.5rem 0; }
+    .series-label { font-family:'DM Mono',monospace; font-size:0.55rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--sierra); margin-bottom:0.5rem; }
+    .series-links { display:flex; flex-direction:column; gap:0.4rem; margin-top:0.5rem; }
+    .series-links a { font-size:0.85rem; color:var(--rust); text-decoration:none; }
+    .series-links a:hover { text-decoration:underline; }
+    .article-footer { margin-top:3rem; padding-top:2rem; border-top:2px solid var(--ink); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
+    .article-footer-author { font-family:'DM Mono',monospace; font-size:0.62rem; color:var(--stone); letter-spacing:0.1em; }
+    .article-footer-nav { display:flex; gap:1.5rem; }
+    .article-footer-nav a { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.12em; text-transform:uppercase; text-decoration:none; color:var(--stone); }
+    .article-footer-nav a:hover { color:var(--sierra); }
+    footer { background:var(--ink); color:var(--stone); padding:2rem clamp(1.5rem,5vw,4rem); margin-top:4rem; }
+    .footer-inner { max-width:860px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:2rem; flex-wrap:wrap; }
+    .footer-name { font-family:'Playfair Display',serif; font-size:0.95rem; font-weight:700; color:var(--white); }
+    .footer-tagline { font-family:'DM Mono',monospace; font-size:0.52rem; color:var(--stone); margin-top:0.2rem; }
+    .footer-link { font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; text-decoration:none; color:var(--stone); }
+    .footer-link:hover { color:var(--gold); }
+
+    .article-body .pull-quote { border-left:3px solid var(--foothills); margin:2rem 0; padding:0.5rem 0 0.5rem 1.5rem; font-family:'Playfair Display',serif; font-style:italic; font-size:1.2rem; line-height:1.6; color:var(--stone); }
+    .article-body .scene-break { text-align:center; margin:2.5rem 0; color:var(--mist); letter-spacing:0.8em; font-size:0.9rem; }
+    .sidebar-label { margin:3rem 0 1.5rem; font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--stone); text-align:center; border-top:1px solid var(--mist); padding-top:2rem; }
+    .aside { background:var(--cream); border-top:2px solid var(--foothills); padding:1.3rem 1.5rem; margin:1.5rem 0; }
+    .aside-title { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--foothills); margin-bottom:0.6rem; }
+    .aside p { font-size:0.92rem; line-height:1.75; color:var(--stone); margin-bottom:0.6rem; }
+    .aside p:last-child { margin-bottom:0; }
+  </style>
+  <script>
+  (function(){
+    const KEY = 'memoir_auth', PW = 'memory';
+    if (sessionStorage.getItem(KEY) === '1') return;
+    document.documentElement.style.visibility = 'hidden';
+    function buildGate() {
+      var o = document.createElement('div');
+      o.id = 'gate-overlay';
+      o.style.cssText = 'position:fixed;inset:0;background:#f5f0e8;display:flex;align-items:center;justify-content:center;z-index:99999;font-family:Georgia,serif;';
+      o.innerHTML = '<div style="text-align:center;padding:3rem;max-width:380px;width:90%;border:2px solid #1c1a16;background:#f5f0e8;">'
+        + '<div style="font-family:monospace;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:#7a7268;margin-bottom:1rem;">Brooks Groves · Memoir</div>'
+        + '<div style="font-family:Georgia,serif;font-size:1.6rem;font-weight:700;color:#1c1a16;margin-bottom:0.5rem;">Private Archive</div>'
+        + '<div style="font-size:0.85rem;color:#7a7268;margin-bottom:2rem;font-style:italic;">Password required</div>'
+        + '<input id="gate-pw" type="password" placeholder="password" style="width:100%;padding:0.75rem 1rem;background:#ede8dc;border:1px solid #d6d0c4;color:#1c1a16;font-size:1rem;outline:none;margin-bottom:0.75rem;box-sizing:border-box;text-align:center;letter-spacing:0.1em;"/>'
+        + '<div id="gate-err" style="color:#8b3a2a;font-size:0.75rem;margin-bottom:0.75rem;min-height:1rem;"></div>'
+        + '<button id="gate-btn" style="width:100%;padding:0.75rem;background:#1c1a16;border:none;color:#fdfaf4;font-size:0.85rem;cursor:pointer;letter-spacing:0.1em;font-family:monospace;text-transform:uppercase;">Enter</button>'
+        + '<div style="margin-top:1rem;"><a href="https://memoir.brooksgroves.com" style="font-family:monospace;font-size:0.6rem;color:#7a7268;text-transform:uppercase;letter-spacing:0.1em;text-decoration:none;">← All Pieces</a></div>'
+        + '</div>';
+      document.body.appendChild(o);
+      document.documentElement.style.visibility = 'visible';
+      var inp = document.getElementById('gate-pw');
+      inp.focus();
+      function tryPw() {
+        var pw = inp.value.trim().toLowerCase();
+        if (!pw) { document.getElementById('gate-err').textContent = 'Please enter the password.'; return; }
+        if (pw === PW) {
+          sessionStorage.setItem(KEY, '1');
+          document.getElementById('gate-overlay').remove();
+        } else {
+          document.getElementById('gate-err').textContent = 'Incorrect password.';
+          inp.value = ''; inp.focus();
+        }
+      }
+      document.getElementById('gate-btn').addEventListener('click', tryPw);
+      inp.addEventListener('keydown', function(e){ if(e.key==='Enter') tryPw(); });
+    }
+    if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', buildGate); } else { buildGate(); }
+  })();
+  </script>
+</head>
+<body>
+<div class="topline"></div>
+<header>
+  <div class="masthead-inner">
+    <a href="https://brooksgroves.com" class="site-name">Brooks Groves</a>
+    <a href="https://memoir.brooksgroves.com" class="header-link">← Memoir</a>
+  </div>
+</header>
+
+<div class="article-wrap">
+  <a href="/blinn-college-stories.html" class="article-back">← Blinn College Stories</a>
+  <div class="article-num">Blinn College Stories · The Stories · 1988–1990</div>
+  <p class="article-kicker">Giant Swedes · The Viking Events · A Berlin-Wall Cadillac</p>
+  <h1 class="article-title">The Vikings of Brenham</h1>
+  <div class="article-meta">
+    <span>Brenham, Texas · Blinn College · 1988–1990</span>
+    <span>Brooks Groves</span>
+  </div>
+  <div class="article-tags">
+    <a href="https://brooksgroves.com/tags.html#Blinn%20College%20Stories" class="article-tag-pill">Blinn College Stories</a>
+    <a href="https://brooksgroves.com/tags.html#Texas" class="article-tag-pill">Texas</a>
+    <a href="https://brooksgroves.com/tags.html#Brenham" class="article-tag-pill">Brenham</a>
+    <a href="https://brooksgroves.com/tags.html#1980s" class="article-tag-pill">1980s</a>
+    <a href="https://brooksgroves.com/tags.html#Coming%20of%20Age" class="article-tag-pill">Coming of Age</a>
+    <a href="https://brooksgroves.com/tags.html#Friendship" class="article-tag-pill">Friendship</a>
+  </div>
+
+  <div class="disclaimer">
+  </div>
+
+  <div class="article-body">
+
+  <p style="font-style:italic; color:var(--stone); font-size:0.95rem; border-left:3px solid var(--mist); padding-left:1.2rem; margin-bottom:2.5rem;">One of the Blinn College Stories. A kid from California, five giant Swedish throwers — hammer, discus, shot put — and a Cadillac painted like the Berlin Wall, all somehow deposited in the middle of East Texas at the same moment. This is the one where all the others come together: about the people who taught me it was a wonderful thing to be exactly who you are.</p>
+
+  <p>If you'd told eighteen-year-old me, growing up in Groveland, California, that I would someday be hanging around giant Swedish throwers in the middle of East Texas, I would have suggested you seek immediate medical attention.</p>
+  <p>And yet, there we all were.</p>
+  <p>One of the things that made Blinn College so special wasn't the college itself — though it was certainly a wonderful place and time in my life. It was the people. Somehow, in this little community college in the middle of East Texas, people from all over the world found themselves together, trying to figure out who they were going to become.</p>
+  <p>We were all trying to find our way deep in the heart of Texas.</p>
+  <p>The baseball players were local heroes. The Caribbean athletes were there running faster than the rest of us could ever imagine. Todd Smith was trying to save our souls one vitamin at a time. I was trying to save Princess Zelda and become a slightly better tennis player than I'd been the day before.</p>
+  <p>And then there were the Swedes.</p>
+  <hr>
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">The Viking Events</div>
+  <p>Track and field was a very big deal at Blinn College, and these guys were not runners. They participated in what I like to call the Viking events. Hammer throw. Discus. Shot put. The events where you look at another human being and immediately think, <q>Well, that person was clearly designed to throw something heavy across an enormous field.</q></p>
+  <p>They weren't just big. They were gigantic.</p>
+  <p>Imagine giant Scandinavian men walking around Brenham, Texas, with heavy Swedish accents and personalities somehow even larger than their physical size. They looked like they belonged in some ancient Scandinavian legend. Instead, they were going to community college in Texas.</p>
+  <p>And they were absolutely fantastic.</p>
+  <div class="aside">
+    <div class="aside-title">Wait — Why Was Blinn Full of Vikings?</div>
+    <p style="margin:0 0 0.7rem;color:var(--stone);line-height:1.7;font-size:0.9rem;">This part sounds made up, but Blinn ran one of the greatest junior-college track programs that has ever existed. Starting in 1987 — right as I arrived — the Buccaneers rattled off <em>nineteen</em> national NJCAA championships across indoor, outdoor, and cross country. They routinely beat four-year Division I schools and even took on Carl Lewis's famed Santa Monica Track Club. Eleven former Blinn runners competed in the 1992 Olympics.</p>
+    <p style="margin:0;color:var(--stone);line-height:1.7;font-size:0.9rem;">To stock a team like that, the coaches recruited globally — which is exactly how a tiny Texas town ended up with Caribbean sprinters and a crew of enormous Scandinavian throwers wandering its one main drag. The Swedes weren't a fluke. They were part of a genuine international pipeline that, for a few strange and wonderful years, made Brenham one of the fastest, strongest little places in America.</p>
+  </div>
+  <p>At first, I'll admit, they were intimidating. When you're nineteen years old and five giant Vikings walk into the room, your first thought isn't necessarily, <q>I bet these guys are giant teddy bears.</q> But that's exactly what they were. Once you got to know them, they were some of the friendliest and funniest people around campus.</p>
+  <p>They also happened to be impossibly cool.</p>
+  <p>They didn't care what anybody thought of them, and I was fascinated by that.</p>
+  <div class="pull-quote">They weren't trying to become Texans. They weren't trying to blend in. They were Swedish, and they leaned all the way into it.</div>
+  <p>And I loved that about them.</p>
+  <hr>
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">The Cadillac</div>
+  <p>The centerpiece of their legend around campus was their Cadillac. Not just any Cadillac, either. This thing was an enormous American land yacht that had been painted to look like the graffiti side of the Berlin Wall. Bright colors. Random artwork. Completely impossible to miss. If there was ever any question as to whether the Swedes had arrived somewhere, the Cadillac had already answered it.</p>
+  <p>It must have looked like an alien spacecraft parked in Brenham.</p>
+  <div class="aside">
+    <div class="aside-title">A Berlin Wall on Wheels, 1989</div>
+    <p style="margin:0 0 0.7rem;color:var(--stone);line-height:1.7;font-size:0.9rem;">The timing gives the paint job an accidental poignancy. For the two years I was at Blinn, the actual Berlin Wall was still standing — the hard line between East and West, the defining symbol of a divided world. It didn't come down until November 1989, right in the middle of our time there.</p>
+    <p style="margin:0;color:var(--stone);line-height:1.7;font-size:0.9rem;">So for most of the era of that Cadillac, a carful of Scandinavians was driving a replica of the Berlin Wall around East Texas while the real one still stood half a world away. A group of Europeans, an American luxury car, and a wall that was about to fall — all rolling down Main Street in Brenham. None of us thought about it that way at the time. We just thought the car looked incredible.</p>
+  </div>
+  <p>Of course, all the girls loved them. Giant Scandinavian athletes with accents, driving around East Texas in a Cadillac that looked like modern art? They weren't exactly hurting for attention.</p>
+  <p>They were probably twenty or twenty-one, slightly older than many of us freshmen, and seemed far more worldly than I was at nineteen. They'd traveled halfway around the world to throw heavy things remarkably far, and somehow found themselves in Texas doing exactly that.</p>
+  <p>They were there for their sport, certainly, but they also did very well in school. They took what they were doing seriously without ever taking themselves too seriously. I've always admired people who can do both.</p>
+  <hr>
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">Kegs, Metal & the Soundtrack of Memorial Hall</div>
+  <p>And they knew how to have fun.</p>
+  <p>There were Thursday night keggers down the street where one of these giant human beings could lift a keg over his head like Donkey Kong carrying a barrel. Looking back, I suppose I shouldn't have been surprised. If you can throw a hammer two hundred feet, a keg probably doesn't present much of a challenge.</p>
+  <p>They shared their Scandinavian heavy metal while the rest of us were listening to whatever strange collections of music we'd brought from home. Somewhere on campus there was country music playing. Somewhere else there was punk rock. There was probably Public Enemy coming from one dorm room and George Strait coming from another. Scandinavian metal was finding its way into the mix as well.</p>
+  <p>And somehow, we were all doing it in Texas.</p>
+  <div class="aside">
+    <div class="aside-title">The Sound Coming Out of Sweden</div>
+    <p style="margin:0 0 0.7rem;color:var(--stone);line-height:1.7;font-size:0.9rem;">The Swedes' taste wasn't random, either — by the late 1980s Scandinavia was quietly becoming one of the great engines of heavy metal on earth. Sweden and neighboring Norway were incubating the death-metal and black-metal scenes that would explode in the early '90s and make bands from towns most Americans couldn't find on a map into global names.</p>
+    <p style="margin:0;color:var(--stone);line-height:1.7;font-size:0.9rem;">So when these guys played their music in a Texas dorm in 1989, they were a little ahead of the curve — carrying the first rumblings of a Scandinavian metal wave into a hallway that was otherwise split between Public Enemy and George Strait. It was one more thing arriving in Brenham from very far away, one more reminder of how big the world actually was.</p>
+  </div>
+  <hr>
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">The Building Wasn’t Remarkable. The People Were.</div>
+  <p>That's one of my favorite things about Blinn when I think back on it today. Memorial Hall itself wasn't anything particularly special. It was old brick and linoleum floors and institutional paint and a pay phone down the hall. The building wasn't remarkable at all.</p>
+  <p>The people were.</p>
+  <p>At eighteen years old, I wished I could be a little more like the Swedes. Not because I wanted to be Swedish or six foot six or throw heavy objects farther than anyone else — but because they seemed completely comfortable being exactly who they were.</p>
+  <p>They didn't apologize for being different. They celebrated it.</p>
+  <p>Forty years later, I think that's one of the greatest things they taught me.</p>
+  <p>When we're young, we're all borrowing little pieces of the people we admire. Todd taught me about civic duty and friendship. The Swedes taught me something about confidence and not caring so much what other people think. Midnight Oil taught me that music could make the world larger. Memorial Hall taught me that wonderful and strange people are often waiting for us, if we're curious enough to meet them.</p>
+  <p>It's funny looking back now, because I don't remember what distances they threw, or where they finished in competition. What I remember are giant smiles, heavy Swedish accents, Scandinavian metal, Viking hats, and a Cadillac that looked like someone had driven the Berlin Wall through the middle of East Texas.</p>
+  <p>Mostly, though, I remember wondering how all of us ended up there together at all.</p>
+  <p>A kid from California. Giant Vikings from Sweden. Texas baseball heroes. Caribbean athletes. Southern Baptist foresters. We were all trying to figure out who we were going to become.</p>
+  <p>For two brief years, our paths simply happened to cross in Brenham, Texas.</p>
+  <div class="pull-quote">Thank goodness they did.</div>
+
+  </div>
+
+  <div class="series-box" style="border-left-color:var(--foothills);">
+    <div class="series-label" style="color:var(--foothills);">Blinn College Stories · A Series</div>
+    <p style="font-size:0.9rem; color:var(--stone); line-height:1.7; margin:0;">Two years in Brenham, Texas, 1988 to 1990 — German farm country, freight trains, Blue Bell ice cream, and a Sierra-foothills kid figuring it out eighteen hundred miles from home. Funny, observational, occasionally thoughtful, sometimes ridiculous. <em>The collection continues.</em></p>
+  </div>
+
+  <div class="article-footer">
+    <div class="article-footer-author">Brooks Groves · Blinn College Stories · Brenham, Texas</div>
+    <div class="article-footer-nav">
+      <a href="/blinn-college-stories.html">← Blinn College Stories</a>
+      <a href="https://memoir.brooksgroves.com">All Memoir Pieces</a>
+      <a href="/across-the-hall.html">Prev · Across the Hall</a>
+    </div>
+  </div>
+</div>
+<footer>
+  <div class="footer-inner" style="flex-direction:column;text-align:center;gap:1rem;">
+    <div>
+      <p class="footer-name">Brooks Groves</p>
+      <p class="footer-tagline">🌲 Made in the Pacific Northwest &middot; ❤️ Born in <a href="https://en.wikipedia.org/wiki/Tuolumne_County,_California" target="_blank">Tuolumne County, CA</a></p>
+    </div>
+    <div class="footer-links" style="justify-content:center;gap:1.5rem;flex-wrap:wrap;">
+      <a href="https://brooksgroves.com/writing/">Writing</a>
+      <a href="https://memoir.brooksgroves.com">Memoir</a>
+      <a href="https://brooksgroves.com/tags.html">Tags</a>
+      <a href="https://brooksgroves.com">Home</a>
+      <a href="https://ko-fi.com/brooksgroves" target="_blank" style="color:var(--gold);">🍺 Tip Jar</a>
+    </div>
+    <p style="font-family:'DM Mono',monospace;font-size:0.52rem;color:var(--stone);width:100%;padding-top:1rem;border-top:1px solid #2a2a26;">&copy; 2026 Brooks Groves &middot; Lakewood, WA</p>
+  </div>
+</footer>
+</body>
+</html>
