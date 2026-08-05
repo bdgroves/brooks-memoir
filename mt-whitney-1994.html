@@ -1,237 +1,290 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Two Hundred and Ninety Miles, Then Straight Up &mdash; Brooks Groves</title>
-<meta name="description" content="A 1994 Mt. Whitney journal, found in a garage in 2026 and revisited.">
-<meta property="og:title" content="Two Hundred and Ninety Miles, Then Straight Up">
-<meta property="og:description" content="A 1994 Mt. Whitney journal, found in a garage in 2026 and revisited.">
-<meta property="og:type" content="article">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-:root{
-  --paper:#f2e9d8; --paper-deep:#e9dcc2; --paper-card:#efe4cd;
-  --land:#e7dcc4; --land-alt:#ded2b8;
-  --ink:#26211c; --ink-soft:#5f5546; --ink-faint:#8a7d6a;
-  --rule:#cab895; --iron:#8c3a2b; --slate:#3f5464; --gold:#a8802c; --snow:#dfe8ec;
-  --measure:34rem;
-  --shadow:0 1px 0 rgba(38,33,28,.05),0 12px 30px -20px rgba(38,33,28,.55);
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Two Hundred and Ninety Miles, Then Straight Up — Brooks Groves</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌲</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,900;1,400;1,600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink:#1c1a16; --parchment:#f5f0e8; --cream:#ede8dc;
+      --sage:#4a5c45; --rust:#8b3a2a; --stone:#7a7268;
+      --gold:#c8922a; --mist:#d6d0c4; --white:#fdfaf4;
+      --sierra:#4a6b3a; --foothills:#8b6914;
+    }
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    body { background:var(--parchment); color:var(--ink); font-family:'Libre Baskerville',Georgia,serif; font-size:16px; line-height:1.7; overflow-x:hidden; }
+    body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E"); pointer-events:none; z-index:9999; opacity:0.5; }
+    .topline { height:4px; background:linear-gradient(90deg,var(--sierra) 0%,var(--foothills) 50%,var(--rust) 100%); }
+    header { border-bottom:2px solid var(--ink); padding:0 clamp(1.5rem,5vw,4rem); background:var(--parchment); }
+    .masthead-inner { display:flex; align-items:center; justify-content:space-between; gap:1rem; max-width:860px; margin:0 auto; padding:0.75rem 0; }
+    .site-name { font-family:'Playfair Display',serif; font-size:clamp(1.1rem,2.5vw,1.4rem); font-weight:900; text-decoration:none; color:var(--ink); }
+    .header-link { font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; text-decoration:none; color:var(--stone); }
+    .header-link:hover { color:var(--sierra); }
+    .article-wrap { max-width:720px; margin:0 auto; padding:clamp(3rem,6vw,5rem) clamp(1.5rem,5vw,2rem) clamp(3rem,6vw,5rem); }
+    .article-back { font-family:'DM Mono',monospace; font-size:0.63rem; letter-spacing:0.12em; text-transform:uppercase; text-decoration:none; color:var(--stone); display:inline-block; margin-bottom:2rem; }
+    .article-back:hover { color:var(--sierra); }
+    .article-num { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--sierra); margin-bottom:0.4rem; }
+    .article-kicker { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--foothills); margin-bottom:0.75rem; }
+    .article-title { font-family:'Playfair Display',serif; font-size:clamp(2rem,5vw,3.2rem); font-weight:900; line-height:1.08; letter-spacing:-0.02em; margin-bottom:1rem; }
+    .article-meta { font-family:'DM Mono',monospace; font-size:0.62rem; color:var(--stone); letter-spacing:0.1em; margin-bottom:1rem; display:flex; gap:1.5rem; flex-wrap:wrap; }
+    .article-tags { display:flex; gap:0.5rem; flex-wrap:wrap; padding-bottom:2rem; border-bottom:1px solid var(--mist); margin-bottom:2.5rem; }
+    .article-tag-pill { font-family:'DM Mono',monospace; font-size:0.58rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--stone); background:var(--cream); border:1px solid var(--mist); padding:0.25rem 0.65rem; border-radius:4px; text-decoration:none; display:inline-block; transition:background 0.15s,border-color 0.15s,color 0.15s; }
+    .article-tag-pill:hover { background:var(--gold); border-color:var(--gold); color:var(--white); }
+    .disclaimer { background:var(--cream); border-left:3px solid var(--stone); padding:1rem 1.5rem; margin-bottom:2.5rem; }
+    .disclaimer p { font-size:0.82rem; color:var(--stone); line-height:1.7; font-style:italic; }
+    .article-body { font-size:1.05rem; line-height:1.85; }
+    .article-body p { margin-bottom:1.5rem; }
+    .article-body p:first-of-type::first-letter { font-family:'Playfair Display',serif; font-size:3.5rem; font-weight:900; float:left; line-height:0.85; margin:0.1em 0.08em 0 0; color:var(--sierra); }
+    .article-body hr { border:none; border-top:2px solid var(--mist); margin:2.5rem 0; }
+    .article-body em { font-style:italic; }
+    .article-body strong { font-weight:700; }
+    .pullquote { border-left:3px solid var(--foothills); padding:1rem 1.5rem; margin:2rem 0; background:var(--cream); }
+    .pullquote p { font-family:'Playfair Display',serif; font-size:1.05rem; font-style:italic; line-height:1.65; color:var(--ink); margin:0; }
+    .series-box { background:var(--cream); border:1px solid var(--mist); border-left:3px solid var(--sierra); padding:1.25rem 1.5rem; margin:2.5rem 0; }
+    .series-label { font-family:'DM Mono',monospace; font-size:0.55rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--sierra); margin-bottom:0.5rem; }
+    .series-links { display:flex; flex-direction:column; gap:0.4rem; margin-top:0.5rem; }
+    .series-links a { font-size:0.85rem; color:var(--rust); text-decoration:none; }
+    .series-links a:hover { text-decoration:underline; }
+    .article-footer { margin-top:3rem; padding-top:2rem; border-top:2px solid var(--ink); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
+    .article-footer-author { font-family:'DM Mono',monospace; font-size:0.62rem; color:var(--stone); letter-spacing:0.1em; }
+    .article-footer-nav { display:flex; gap:1.5rem; }
+    .article-footer-nav a { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.12em; text-transform:uppercase; text-decoration:none; color:var(--stone); }
+    .article-footer-nav a:hover { color:var(--sierra); }
+    footer { background:var(--ink); color:var(--stone); padding:2rem clamp(1.5rem,5vw,4rem); margin-top:4rem; }
+    .footer-inner { max-width:860px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:2rem; flex-wrap:wrap; }
+    .footer-name { font-family:'Playfair Display',serif; font-size:0.95rem; font-weight:700; color:var(--white); }
+    .footer-tagline { font-family:'DM Mono',monospace; font-size:0.52rem; color:var(--stone); margin-top:0.2rem; }
+    .footer-link { font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; text-decoration:none; color:var(--stone); }
+    .footer-link:hover { color:var(--gold); }
+
+    .article-body .pull-quote { border-left:3px solid var(--foothills); margin:2rem 0; padding:0.5rem 0 0.5rem 1.5rem; font-family:'Playfair Display',serif; font-style:italic; font-size:1.2rem; line-height:1.6; color:var(--stone); }
+    .article-body .scene-break { text-align:center; margin:2.5rem 0; color:var(--mist); letter-spacing:0.8em; font-size:0.9rem; }
+    .sidebar-label { margin:3rem 0 1.5rem; font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--stone); text-align:center; border-top:1px solid var(--mist); padding-top:2rem; }
+    .aside { background:var(--cream); border-top:2px solid var(--foothills); padding:1.3rem 1.5rem; margin:1.5rem 0; }
+    .aside-title { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--foothills); margin-bottom:0.6rem; }
+    .aside p { font-size:0.92rem; line-height:1.75; color:var(--stone); margin-bottom:0.6rem; }
+    .aside p:last-child { margin-bottom:0; }
+  
+/* ── Whitney journal: source palette remapped onto the memoir parchment vars ── */
+.article-body{
+  --paper:var(--parchment); --paper-deep:var(--cream); --paper-card:var(--cream);
+  --land:var(--cream); --land-alt:var(--mist);
+  --ink-soft:var(--stone); --ink-faint:var(--stone);
+  --rule:var(--mist); --iron:var(--rust); --slate:#4a5c45; --snow:#dfe8ec;
+  --shadow:0 1px 3px rgba(28,26,22,.06);
 }
-*{box-sizing:border-box}
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
-body{margin:0;background:var(--paper);
-  background-image:radial-gradient(ellipse at 12% 6%,rgba(168,128,44,.06),transparent 55%),
-                   radial-gradient(ellipse at 88% 74%,rgba(63,84,100,.05),transparent 55%);
-  color:var(--ink);font-family:"Libre Baskerville",Georgia,serif;font-size:17px;line-height:1.78;
-  -webkit-font-smoothing:antialiased}
-h1,h2,h3{font-family:"Playfair Display",Georgia,serif;font-weight:700;line-height:1.15}
-.wrap{max-width:72rem;margin:0 auto;padding:0 1.25rem}
-.mono{font-family:"DM Mono",ui-monospace,monospace;font-size:.9em;letter-spacing:.06em}
-.col{max-width:var(--measure);margin:0 auto}
+.article-body .wj-day{padding:2.4rem 0;border-top:1px solid var(--mist)}
+.article-body .wj-first{border-top:none;padding-top:0}
 
-/* masthead */
-.masthead{padding:5.5rem 1.25rem 1rem;text-align:center;max-width:52rem;margin:0 auto}
-.eyebrow{font-family:"DM Mono",monospace;font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;color:var(--ink-faint)}
-.masthead h1{font-size:clamp(2rem,6vw,3.9rem);margin:1.3rem 0 .5rem;letter-spacing:-.015em}
-.masthead .sub{font-family:"Playfair Display",serif;font-style:italic;font-weight:500;
-  font-size:clamp(1rem,2.4vw,1.28rem);color:var(--ink-soft);margin:0}
-.masthead .byline{margin-top:2.2rem;font-family:"DM Mono",monospace;font-size:.7rem;
-  letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);line-height:2}
-.orn{width:100%;max-width:13rem;margin:2.6rem auto 0;height:1px;
-  background:linear-gradient(90deg,transparent,var(--rule) 20%,var(--rule) 80%,transparent);position:relative}
-.orn::after{content:"\25B2";position:absolute;left:50%;top:-.72em;transform:translateX(-50%);
-  background:var(--paper);padding:0 .6rem;color:var(--iron);font-size:.68rem}
-
-/* prose */
-section{padding:2.2rem 0}
-.day{padding:2.6rem 0;border-top:1px solid var(--rule)}
-.dateline{display:flex;align-items:baseline;gap:.9rem;flex-wrap:wrap;margin-bottom:1.3rem}
-.dateline .d{font-family:"DM Mono",monospace;font-weight:500;font-size:.76rem;
-  letter-spacing:.16em;text-transform:uppercase;color:var(--iron)}
-.dateline .place{font-family:"DM Mono",monospace;font-size:.7rem;letter-spacing:.08em;color:var(--ink-faint)}
-h2{font-size:1.72rem;margin:0 0 1.1rem;letter-spacing:-.01em}
-p{margin:0 0 1.2rem}
-.lead::first-letter{font-family:"Playfair Display",serif;font-size:3.4rem;line-height:.82;
-  float:left;margin:.16em .1em 0 0;color:var(--iron)}
-
-/* journal voice */
-.j{border-left:2px solid var(--rule);padding:.2rem 0 .2rem 1.4rem;margin:1.6rem 0;color:var(--ink)}
-.j p{margin:0 0 1rem}
-.j p:last-child{margin:0}
-.j .tick{font-family:"DM Mono",monospace;font-size:.82rem;line-height:1.9;
-  background:var(--paper-card);border:1px solid var(--rule);padding:.7rem .9rem;display:inline-block}
-
-/* zack */
-.zack{background:var(--paper-deep);border:1px solid var(--rule);padding:2rem 1.7rem;margin:2.6rem 0;box-shadow:var(--shadow)}
-.zack .attrib{font-family:"DM Mono",monospace;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--ink-faint);margin:0 0 1.3rem;padding-bottom:.85rem;border-bottom:1px solid var(--rule)}
-.zack .hand{font-style:italic;font-size:1.1rem;line-height:1.95}
-.zack .hand p{margin:0 0 1.1rem}
-.zack .hand p:last-child{margin:0}
-
-/* sidebar */
-.side{background:var(--paper-card);border:1px solid var(--rule);border-top:2px solid var(--gold);
-  padding:1.3rem 1.4rem;margin:2.4rem 0;box-shadow:var(--shadow)}
-.side h3{font-family:"DM Mono",monospace;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--gold);margin:0 0 .8rem;font-weight:400}
-.side p{font-family:"DM Mono",monospace;font-size:.79rem;line-height:1.8;color:var(--ink-soft);margin:0 0 .8rem}
-.side p:last-child{margin:0}
-@media(min-width:78rem){
-  .side{float:right;clear:right;width:16.5rem;margin:.4rem -18.25rem 1.4rem 0}
-}
-
-/* table */
-.tbl{margin:2.4rem 0;overflow-x:auto}
-table{border-collapse:collapse;width:100%;font-family:"DM Mono",monospace;font-size:.76rem;line-height:1.6}
-th,td{text-align:left;padding:.6rem .7rem;border-bottom:1px solid var(--rule);vertical-align:top}
-th{font-weight:500;color:var(--ink-faint);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase}
-td:first-child{color:var(--iron);white-space:nowrap}
-
-/* manifest */
-.manifest{background:var(--paper-card);border:1px solid var(--rule);padding:1.6rem;margin:2.4rem 0}
-.manifest h3{font-family:"DM Mono",monospace;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--ink-faint);margin:0 0 1.1rem;font-weight:400}
-.manifest .cols{display:grid;gap:0 2rem;grid-template-columns:1fr}
-@media(min-width:34rem){.manifest .cols{grid-template-columns:1fr 1fr}}
-.manifest ul{margin:0;padding:0}
-.manifest li{font-family:"DM Mono",monospace;font-size:.75rem;line-height:1.95;list-style:none;
-  color:var(--ink-soft);border-bottom:1px dotted var(--rule)}
-.manifest .grp{font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);
-  margin:1rem 0 .25rem;border:none}
-.manifest .grp:first-child{margin-top:0}
-
-/* record */
-.record{display:grid;gap:1px;grid-template-columns:repeat(2,1fr);background:var(--rule);
-  border:1px solid var(--rule);margin:2.6rem 0}
-@media(min-width:44rem){.record{grid-template-columns:repeat(4,1fr)}}
-.record div{background:var(--paper-card);padding:1.2rem .9rem;text-align:center}
-.record .n{font-family:"Playfair Display",serif;font-size:1.5rem;font-weight:700;color:var(--slate);display:block;line-height:1.1}
-.record .k{font-family:"DM Mono",monospace;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--ink-faint);margin-top:.45rem;display:block;line-height:1.5}
-
-/* pull */
-.pull{font-family:"Playfair Display",serif;font-style:italic;font-weight:500;
+.article-body h1, .article-body h2, .article-body h3 { font-family:"Playfair Display",Georgia,serif;font-weight:700;line-height:1.15 }
+.article-body /* masthead */
+.masthead { padding:5.5rem 1.25rem 1rem;text-align:center;max-width:52rem;margin:0 auto }
+.article-body /* prose */
+section { padding:2.2rem 0 }
+.article-body .day { padding:2.6rem 0;border-top:1px solid var(--rule) }
+.article-body .dateline { display:flex;align-items:baseline;gap:.9rem;flex-wrap:wrap;margin-bottom:1.3rem }
+.article-body .dateline .d { font-family:"DM Mono",monospace;font-weight:500;font-size:.76rem;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--iron) }
+.article-body .dateline .place { font-family:"DM Mono",monospace;font-size:.7rem;letter-spacing:.08em;color:var(--ink-faint) }
+.article-body h2 { font-size:1.72rem;margin:0 0 1.1rem;letter-spacing:-.01em }
+.article-body .lead::first-letter { font-family:"Playfair Display",serif;font-size:3.4rem;line-height:.82;
+  float:left;margin:.16em .1em 0 0;color:var(--iron) }
+.article-body /* journal voice */
+.j { border-left:2px solid var(--rule);padding:.2rem 0 .2rem 1.4rem;margin:1.6rem 0;color:var(--ink) }
+.article-body .j p { margin:0 0 1rem }
+.article-body .j p:last-child { margin:0 }
+.article-body .j .tick { font-family:"DM Mono",monospace;font-size:.82rem;line-height:1.9;
+  background:var(--paper-card);border:1px solid var(--rule);padding:.7rem .9rem;display:inline-block }
+.article-body /* zack */
+.zack { background:var(--paper-deep);border:1px solid var(--rule);padding:2rem 1.7rem;margin:2.6rem 0;box-shadow:var(--shadow) }
+.article-body .zack .attrib { font-family:"DM Mono",monospace;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-faint);margin:0 0 1.3rem;padding-bottom:.85rem;border-bottom:1px solid var(--rule) }
+.article-body .zack .hand { font-style:italic;font-size:1.1rem;line-height:1.95 }
+.article-body .zack .hand p { margin:0 0 1.1rem }
+.article-body .zack .hand p:last-child { margin:0 }
+.article-body /* sidebar */
+.side { background:var(--paper-card);border:1px solid var(--rule);border-top:2px solid var(--gold);
+  padding:1.3rem 1.4rem;margin:2.4rem 0;box-shadow:var(--shadow) }
+.article-body .side h3 { font-family:"DM Mono",monospace;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--gold);margin:0 0 .8rem;font-weight:400 }
+.article-body .side p { font-family:"DM Mono",monospace;font-size:.79rem;line-height:1.8;color:var(--ink-soft);margin:0 0 .8rem }
+.article-body .side p:last-child { margin:0 }
+.article-body table { border-collapse:collapse;width:100%;font-family:"DM Mono",monospace;font-size:.76rem;line-height:1.6 }
+.article-body th, .article-body td { text-align:left;padding:.6rem .7rem;border-bottom:1px solid var(--rule);vertical-align:top }
+.article-body th { font-weight:500;color:var(--ink-faint);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase }
+.article-body td:first-child { color:var(--iron);white-space:nowrap }
+.article-body /* manifest */
+.manifest { background:var(--paper-card);border:1px solid var(--rule);padding:1.6rem;margin:2.4rem 0 }
+.article-body .manifest h3 { font-family:"DM Mono",monospace;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--ink-faint);margin:0 0 1.1rem;font-weight:400 }
+.article-body .manifest .cols { display:grid;gap:0 2rem;grid-template-columns:1fr }
+.article-body .manifest li { font-family:"DM Mono",monospace;font-size:.75rem;line-height:1.95;list-style:none;
+  color:var(--ink-soft);border-bottom:1px dotted var(--rule) }
+.article-body .manifest .grp { font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);
+  margin:1rem 0 .25rem;border:none }
+.article-body .manifest .grp:first-child { margin-top:0 }
+.article-body /* record */
+.record { display:grid;gap:1px;grid-template-columns:repeat(2,1fr);background:var(--rule);
+  border:1px solid var(--rule);margin:2.6rem 0 }
+.article-body .record .n { font-family:"Playfair Display",serif;font-size:1.5rem;font-weight:700;color:var(--slate);display:block;line-height:1.1 }
+.article-body .record .k { font-family:"DM Mono",monospace;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink-faint);margin-top:.45rem;display:block;line-height:1.5 }
+.article-body /* pull */
+.pull { font-family:"Playfair Display",serif;font-style:italic;font-weight:500;
   font-size:clamp(1.28rem,3.2vw,1.8rem);line-height:1.42;text-align:center;
-  margin:3.4rem auto;max-width:30rem}
-.pull cite{display:block;font-family:"DM Mono",monospace;font-style:normal;font-size:.66rem;
-  letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);margin-top:1.1rem}
-
-/* figures / maps / photos */
-figure{margin:3rem 0}
-.card{background:var(--paper-card);border:1px solid var(--rule);padding:1.1rem;box-shadow:var(--shadow)}
-.card svg{display:block;width:100%;height:auto}
-figcaption{font-family:"DM Mono",monospace;font-size:.71rem;line-height:1.75;color:var(--ink-faint);margin-top:.85rem}
-.wide{max-width:62rem;margin-left:auto;margin-right:auto}
-.plate{display:grid;gap:1.6rem;grid-template-columns:1fr}
-@media(min-width:60rem){.plate{grid-template-columns:minmax(0,.78fr) minmax(0,1fr);align-items:start}}
-.stack{display:grid;gap:1.6rem}
-.photo img{width:100%;height:auto;display:block;border:1px solid var(--rule);box-shadow:var(--shadow)}
-.photo .ph{display:none;border:1px dashed var(--rule);background:var(--paper-card);aspect-ratio:4/3;
+  margin:3.4rem auto;max-width:30rem }
+.article-body .pull cite { display:block;font-family:"DM Mono",monospace;font-style:normal;font-size:.66rem;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);margin-top:1.1rem }
+.article-body /* figures / maps / photos */
+figure { margin:3rem 0 }
+.article-body .card { background:var(--paper-card);border:1px solid var(--rule);padding:1.1rem;box-shadow:var(--shadow) }
+.article-body .card svg { display:block;width:100%;height:auto }
+.article-body figcaption { font-family:"DM Mono",monospace;font-size:.71rem;line-height:1.75;color:var(--ink-faint);margin-top:.85rem }
+.article-body .wide { max-width:62rem;margin-left:auto;margin-right:auto }
+.article-body .plate { display:grid;gap:1.6rem;grid-template-columns:1fr }
+.article-body .photo img { width:100%;height:auto;display:block;border:1px solid var(--rule);box-shadow:var(--shadow) }
+.article-body .photo .ph { display:none;border:1px dashed var(--rule);background:var(--paper-card);aspect-ratio:4/3;
   align-items:center;justify-content:center;flex-direction:column;gap:.4rem;padding:1.5rem;text-align:center;
-  font-family:"DM Mono",monospace;font-size:.68rem;color:var(--ink-faint);letter-spacing:.06em}
-.photo.missing img{display:none}
-.photo.missing .ph{display:flex}
+  font-family:"DM Mono",monospace;font-size:.68rem;color:var(--ink-faint);letter-spacing:.06em }
+.article-body .photo.missing img { display:none }
+.article-body .photo.missing .ph { display:flex }
+.article-body /* map ink */
+.land { fill:var(--land);stroke:var(--ink-soft);stroke-width:1;stroke-linejoin:round }
+.article-body .land-alt { fill:var(--land-alt);stroke:var(--ink-soft);stroke-width:1;stroke-linejoin:round }
+.article-body .route { fill:none;stroke:var(--iron);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round }
+.article-body .route-cas { fill:none;stroke:var(--iron);stroke-width:1.2;stroke-dasharray:1 5;stroke-linecap:round;opacity:.8 }
+.article-body .trail { fill:none;stroke:var(--iron);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round }
+.article-body .water { fill:var(--slate);opacity:.28 }
+.article-body .crest { fill:none;stroke:var(--ink-faint);stroke-width:1;opacity:.5 }
+.article-body .snowf { fill:var(--snow);stroke:var(--slate);stroke-width:.6;stroke-dasharray:3 3;opacity:.9 }
+.article-body .dot { fill:var(--paper-card);stroke:var(--ink);stroke-width:1.5 }
+.article-body .dot-key { fill:var(--iron);stroke:var(--paper-card);stroke-width:1.6 }
+.article-body .peak { fill:var(--ink) }
+.article-body .t { font-family:"DM Mono",monospace;font-size:10px;fill:var(--ink);letter-spacing:.04em }
+.article-body .t-key { font-family:"DM Mono",monospace;font-size:10.5px;font-weight:500;fill:var(--ink);letter-spacing:.06em }
+.article-body .t-sm { font-family:"DM Mono",monospace;font-size:8.5px;fill:var(--ink-faint);letter-spacing:.05em }
+.article-body .t-geo { font-family:"DM Mono",monospace;font-size:9px;fill:var(--ink-faint);letter-spacing:.3em }
+.article-body .t-hwy { font-family:"DM Mono",monospace;font-size:8.5px;fill:var(--iron);letter-spacing:.14em }
+.article-body .prof-fill { fill:var(--slate);opacity:.12 }
+.article-body .prof-line { fill:none;stroke:var(--slate);stroke-width:2.4;stroke-linejoin:round;stroke-linecap:round }
+.article-body .grid { stroke:var(--rule);stroke-width:.6 }
+.article-body .glis { fill:none;stroke:var(--iron);stroke-width:1.6;stroke-dasharray:4 3 }
+.article-body /* coda */
+.coda { border-top:1px solid var(--rule);margin-top:3rem;padding:3rem 0 1rem;text-align:center }
+.article-body .coda .end { font-family:"Playfair Display",serif;font-size:1.15rem;letter-spacing:.42em;
+  text-transform:uppercase;color:var(--ink-soft);margin:0 0 .6rem }
+.article-body .coda .sig { font-family:"Playfair Display",serif;font-style:italic;font-size:1.55rem }
+.article-body footer a:hover { color:var(--iron) }
+.article-body a:focus-visible { outline:2px solid var(--slate);outline-offset:3px }
+@media(min-width:78rem){
+  .article-body .side { float:right;clear:right;width:16.5rem;margin:.4rem -18.25rem 1.4rem 0 }
+}
+@media(min-width:34rem){
+  .article-body .manifest .cols { grid-template-columns:1fr 1fr }
+}
+@media(min-width:44rem){
+  .article-body .record { grid-template-columns:repeat(4,1fr) }
+}
+@media(min-width:60rem){
+  .article-body .plate { grid-template-columns:minmax(0,.78fr) minmax(0,1fr);align-items:start }
+}
 
-/* map ink */
-.land{fill:var(--land);stroke:var(--ink-soft);stroke-width:1;stroke-linejoin:round}
-.land-alt{fill:var(--land-alt);stroke:var(--ink-soft);stroke-width:1;stroke-linejoin:round}
-.route{fill:none;stroke:var(--iron);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
-.route-cas{fill:none;stroke:var(--iron);stroke-width:1.2;stroke-dasharray:1 5;stroke-linecap:round;opacity:.8}
-.trail{fill:none;stroke:var(--iron);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
-.water{fill:var(--slate);opacity:.28}
-.crest{fill:none;stroke:var(--ink-faint);stroke-width:1;opacity:.5}
-.snowf{fill:var(--snow);stroke:var(--slate);stroke-width:.6;stroke-dasharray:3 3;opacity:.9}
-.dot{fill:var(--paper-card);stroke:var(--ink);stroke-width:1.5}
-.dot-key{fill:var(--iron);stroke:var(--paper-card);stroke-width:1.6}
-.peak{fill:var(--ink)}
-.t{font-family:"DM Mono",monospace;font-size:10px;fill:var(--ink);letter-spacing:.04em}
-.t-key{font-family:"DM Mono",monospace;font-size:10.5px;font-weight:500;fill:var(--ink);letter-spacing:.06em}
-.t-sm{font-family:"DM Mono",monospace;font-size:8.5px;fill:var(--ink-faint);letter-spacing:.05em}
-.t-geo{font-family:"DM Mono",monospace;font-size:9px;fill:var(--ink-faint);letter-spacing:.3em}
-.t-hwy{font-family:"DM Mono",monospace;font-size:8.5px;fill:var(--iron);letter-spacing:.14em}
-.prof-fill{fill:var(--slate);opacity:.12}
-.prof-line{fill:none;stroke:var(--slate);stroke-width:2.4;stroke-linejoin:round;stroke-linecap:round}
-.grid{stroke:var(--rule);stroke-width:.6}
-.glis{fill:none;stroke:var(--iron);stroke-width:1.6;stroke-dasharray:4 3}
+/* The memoir template drop-caps p:first-of-type, which matches the first
+   paragraph of EVERY container — and this piece has many nested blocks.
+   Reset it everywhere, then restore it only on the opening dek, so the story
+   drop-caps exactly once, the same as every other memoir piece. */
+.article-body p:first-of-type::first-letter{
+  font-family:inherit;font-size:inherit;font-weight:inherit;float:none;
+  line-height:inherit;margin:0;color:inherit;
+}
+.article-body > p:first-of-type::first-letter{
+  font-family:'Playfair Display',serif;font-size:3.5rem;font-weight:900;float:left;
+  line-height:0.85;margin:0.1em 0.08em 0 0;color:var(--sierra);
+}
 
-/* coda */
-.coda{border-top:1px solid var(--rule);margin-top:3rem;padding:3rem 0 1rem;text-align:center}
-.coda .end{font-family:"Playfair Display",serif;font-size:1.15rem;letter-spacing:.42em;
-  text-transform:uppercase;color:var(--ink-soft);margin:0 0 .6rem}
-.coda .sig{font-family:"Playfair Display",serif;font-style:italic;font-size:1.55rem}
-footer{padding:2.5rem 0 4.5rem;text-align:center;font-family:"DM Mono",monospace;
-  font-size:.67rem;letter-spacing:.1em;color:var(--ink-faint);line-height:2.1}
-footer a{color:var(--ink-soft);text-decoration:none;border-bottom:1px solid var(--rule)}
-footer a:hover{color:var(--iron)}
-a:focus-visible{outline:2px solid var(--slate);outline-offset:3px}
-
-/* password gate — matches the memoir archive, styled to this page's palette */
-.gate{display:none;position:fixed;inset:0;background:var(--paper);z-index:9000;
-  align-items:center;justify-content:center;flex-direction:column;gap:1.4rem;padding:1.5rem}
-.gate.show{display:flex}
-.gate-inner{max-width:23rem;width:100%;text-align:center;border:1px solid var(--rule);
-  background:var(--paper-card);padding:2.4rem 1.9rem;box-shadow:var(--shadow)}
-.gate-eyebrow{font-family:"DM Mono",monospace;font-size:.62rem;letter-spacing:.22em;
-  text-transform:uppercase;color:var(--ink-faint);margin:0 0 1rem}
-.gate-title{font-family:"Playfair Display",serif;font-size:1.6rem;margin:0 0 .7rem;color:var(--ink)}
-.gate-sub{font-style:italic;font-size:.9rem;color:var(--ink-soft);margin:0 0 1.5rem;line-height:1.7}
-.gate-input{width:100%;padding:.7rem .8rem;font-family:"DM Mono",monospace;font-size:.85rem;
-  text-align:center;border:1px solid var(--rule);background:var(--paper);color:var(--ink);margin-bottom:.7rem}
-.gate-btn{width:100%;padding:.7rem;font-family:"DM Mono",monospace;font-size:.72rem;
-  letter-spacing:.14em;text-transform:uppercase;background:var(--ink);color:var(--paper);
-  border:none;cursor:pointer}
-.gate-btn:hover{background:var(--iron)}
-.gate-error{font-family:"DM Mono",monospace;font-size:.66rem;color:var(--iron);min-height:1em;margin:.6rem 0 0}
-.gate-back{display:inline-block;margin-top:1.2rem;font-family:"DM Mono",monospace;font-size:.62rem;
-  letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);text-decoration:none}
-
-.story-back{display:block;max-width:72rem;margin:1.6rem auto -1.5rem;padding:0 1.25rem;
-  font-family:"DM Mono",monospace;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--ink-faint);text-decoration:none}
-.story-back:hover{color:var(--iron)}
-.footer-nav{display:flex;justify-content:center;gap:1.4rem;flex-wrap:wrap;margin-top:1.6rem;
-  padding-top:1.4rem;border-top:1px solid var(--rule)}
-.footer-nav a{font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;border-bottom:none}
-.footer-nav a.tipjar{color:var(--gold)}
-.footer-legal{margin-top:1.3rem;font-size:.62rem;color:var(--ink-faint)}
-.soundtrack{background:var(--paper-card);border:1px solid var(--rule);border-top:2px solid var(--gold);
-  padding:1.6rem 1.5rem;margin:3rem 0 1rem;box-shadow:var(--shadow)}
-.soundtrack h3{font-family:"DM Mono",monospace;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--gold);margin:0 0 .8rem;font-weight:400}
-.soundtrack > p{font-family:"DM Mono",monospace;font-size:.79rem;line-height:1.8;color:var(--ink-soft);margin:0 0 1.2rem}
-.soundtrack-cta{text-align:center;margin:1rem 0 0}
-.soundtrack-cta a{font-family:"DM Mono",monospace;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;
-  color:var(--paper);background:var(--iron);padding:.6rem 1.3rem;text-decoration:none;border:none;display:inline-block}
-.soundtrack-cta a:hover{background:var(--gold);color:var(--ink)}
-</style></head><body>
-
-<div class="gate show" id="gate">
-  <div class="gate-inner">
-    <p class="gate-eyebrow">Brooks Groves &middot; Memoir</p>
-    <h2 class="gate-title">Private Archive</h2>
-    <p class="gate-sub">These are personal essays &mdash; still being written, still being figured out. Password required.</p>
-    <input type="password" id="gate-input" class="gate-input" placeholder="password" autocomplete="off">
-    <button class="gate-btn" onclick="checkPassword()">Enter</button>
-    <p class="gate-error" id="gate-error"></p>
-    <a href="https://brooksgroves.com" class="gate-back">&larr; brooksgroves.com</a>
+</style>
+  <script>
+  (function(){
+    const KEY = 'memoir_auth', PW = 'memory';
+    if (sessionStorage.getItem(KEY) === '1') return;
+    document.documentElement.style.visibility = 'hidden';
+    function buildGate() {
+      var o = document.createElement('div');
+      o.id = 'gate-overlay';
+      o.style.cssText = 'position:fixed;inset:0;background:#f5f0e8;display:flex;align-items:center;justify-content:center;z-index:99999;font-family:Georgia,serif;';
+      o.innerHTML = '<div style="text-align:center;padding:3rem;max-width:380px;width:90%;border:2px solid #1c1a16;background:#f5f0e8;">'
+        + '<div style="font-family:monospace;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:#7a7268;margin-bottom:1rem;">Brooks Groves · Memoir</div>'
+        + '<div style="font-family:Georgia,serif;font-size:1.6rem;font-weight:700;color:#1c1a16;margin-bottom:0.5rem;">Private Archive</div>'
+        + '<div style="font-size:0.85rem;color:#7a7268;margin-bottom:2rem;font-style:italic;">Password required</div>'
+        + '<input id="gate-pw" type="password" placeholder="password" style="width:100%;padding:0.75rem 1rem;background:#ede8dc;border:1px solid #d6d0c4;color:#1c1a16;font-size:1rem;outline:none;margin-bottom:0.75rem;box-sizing:border-box;text-align:center;letter-spacing:0.1em;"/>'
+        + '<div id="gate-err" style="color:#8b3a2a;font-size:0.75rem;margin-bottom:0.75rem;min-height:1rem;"></div>'
+        + '<button id="gate-btn" style="width:100%;padding:0.75rem;background:#1c1a16;border:none;color:#fdfaf4;font-size:0.85rem;cursor:pointer;letter-spacing:0.1em;font-family:monospace;text-transform:uppercase;">Enter</button>'
+        + '<div style="margin-top:1rem;"><a href="https://memoir.brooksgroves.com" style="font-family:monospace;font-size:0.6rem;color:#7a7268;text-transform:uppercase;letter-spacing:0.1em;text-decoration:none;">← All Pieces</a></div>'
+        + '</div>';
+      document.body.appendChild(o);
+      document.documentElement.style.visibility = 'visible';
+      var inp = document.getElementById('gate-pw');
+      inp.focus();
+      function tryPw() {
+        var pw = inp.value.trim().toLowerCase();
+        if (!pw) { document.getElementById('gate-err').textContent = 'Please enter the password.'; return; }
+        if (pw === PW) {
+          sessionStorage.setItem(KEY, '1');
+          document.getElementById('gate-overlay').remove();
+        } else {
+          document.getElementById('gate-err').textContent = 'Incorrect password.';
+          inp.value = ''; inp.focus();
+        }
+      }
+      document.getElementById('gate-btn').addEventListener('click', tryPw);
+      inp.addEventListener('keydown', function(e){ if(e.key==='Enter') tryPw(); });
+    }
+    if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', buildGate); } else { buildGate(); }
+  })();
+  </script>
+</head>
+<body>
+<div class="topline"></div>
+<header>
+  <div class="masthead-inner">
+    <a href="https://brooksgroves.com" class="site-name">Brooks Groves</a>
+    <a href="https://memoir.brooksgroves.com" class="header-link">← Memoir</a>
   </div>
-</div>
-
-<a href="https://memoir.brooksgroves.com" class="story-back">&larr; All Stories</a>
-
-<header class="masthead">
-  <div class="eyebrow">Inyo County, California</div>
-  <h1>Two Hundred and Ninety Miles, Then Straight Up</h1>
-  <p class="sub">A 1994 journal, revisited in 2026</p>
-  <div class="byline">Brooks Groves &nbsp;&middot;&nbsp; with Zack Hurley<br>Written on the mountain &middot; Annotated thirty-two years later</div>
-  <div class="orn"></div>
 </header>
 
-<main class="wrap">
-<section class="col">
+<div class="article-wrap">
+  <a href="https://memoir.brooksgroves.com" class="article-back">← All Stories</a>
+  <div class="article-num">Memoir · A Found Journal · June 1994</div>
+  <p class="article-kicker">Reno to Lone Pine · Seventy-Five Pounds · The Ninety-Seven Switchbacks</p>
+  <h1 class="article-title">Two Hundred and Ninety Miles, Then Straight Up</h1>
+  <div class="article-meta">
+    <span>Inyo County, California · June 1994</span>
+    <span>Brooks Groves · with Zack Hurley</span>
+  </div>
+  <div class="article-tags">
+    <a href="https://brooksgroves.com/tags.html#Memoir" class="article-tag-pill">Memoir</a>
+    <a href="https://brooksgroves.com/tags.html#Sierra%20Nevada" class="article-tag-pill">Sierra Nevada</a>
+    <a href="https://brooksgroves.com/tags.html#Mountaineering" class="article-tag-pill">Mountaineering</a>
+    <a href="https://brooksgroves.com/tags.html#1990s" class="article-tag-pill">1990s</a>
+    <a href="https://brooksgroves.com/tags.html#Groveland" class="article-tag-pill">Groveland</a>
+    <a href="https://brooksgroves.com/tags.html#Friendship" class="article-tag-pill">Friendship</a>
+  </div>
 
-<article class="day" style="border-top:none">
+  <div class="disclaimer">
+  </div>
+
+  <div class="article-body">
+
+  <p style="font-style:italic; color:var(--stone); font-size:0.95rem; border-left:3px solid var(--mist); padding-left:1.2rem; margin-bottom:2.5rem;">A notebook found in the garage in 2026, wedged between an original Nintendo and a stack of old coffee makers: <em>MT. WHITNEY: AN EXPEDITIONAL CONCEPTUS 1994</em>. Two twenty-four-year-olds with no car, no money and no permit ride a Greyhound two hundred and ninety miles, carry seventy-five-pound packs up the highest peak in the lower forty-eight, and run an FM radio survey from the summit. His words, his order, his obsessions &mdash; annotated thirty-two years later.</p>
+
+
+
+<section class="wj-day wj-first">
   <div class="dateline"><span class="d">Prologue</span><span class="place">Lakewood, Washington &middot; 2026</span></div>
   <h2>The Garage</h2>
   <p class="lead">I was cleaning out the garage, looking for something else entirely.</p>
@@ -248,9 +301,9 @@ a:focus-visible{outline:2px solid var(--slate);outline-offset:3px}
   <p>The temptation, reading something like this, is to fix it. To smooth out the spelling, cut the profanity, make the young man sound like someone who had already learned the things I&rsquo;ve since learned. I&rsquo;m not going to do that. What follows is his notebook, cleaned up only enough to be readable &mdash; his words, his order, his obsessions. When I have something to add, I&rsquo;ll add it in my own voice, which you&rsquo;ll be able to tell apart easily enough, because his is the one having a better time.</p>
   <p>It&rsquo;s too good to leave in a box between a Nintendo and some coffee makers.</p>
   <p>So here it is.</p>
-</article>
+</section>
 
-<article class="day">
+<section class="wj-day">
   <div class="dateline"><span class="d">17 June 1994</span><span class="place">Reno, Nevada</span></div>
   <h2>No guarantees</h2>
   <div class="j">
@@ -267,9 +320,9 @@ a:focus-visible{outline:2px solid var(--slate);outline-offset:3px}
   <p>And notice what he does with the permit problem. He doesn&rsquo;t consider not going. He identifies that the plan has a hole in it, describes the hole accurately, and then makes the plan anyway. The whole trip runs on that principle, and I want to be careful not to call it stupidity, because it wasn&rsquo;t. It was a specific kind of confidence that I no longer have and can&rsquo;t quite reconstruct. We assumed the universe would work something out.</p>
   <p>It usually did.</p>
   <p>And then, having declared that the expedition holds no guarantees, he turns the page and writes out a schedule.</p>
-</article>
+</section>
 
-<article class="day">
+<section class="wj-day">
   <div class="dateline"><span class="d">The plan</span><span class="place">Written three days before the bus</span></div>
   <h2>The Itinerarium</h2>
   <div class="j">
@@ -302,9 +355,9 @@ a:focus-visible{outline:2px solid var(--slate);outline-offset:3px}
   </div>
   <p>He was a day ahead on the permit and five hundred feet short on the base camp. Everything else landed on the day he said it would, four days before the bus left, written by someone with no reservation, no vehicle, no permit, and no Plan B.</p>
   <p>I&rsquo;ve spent thirty years doing logistics professionally and I&rsquo;m not sure I&rsquo;d have called it any closer.</p>
-</article>
+</section>
 
-<article class="day">
+<section class="wj-day">
   <div class="dateline"><span class="d">17 June &middot; 9:20 p.m.</span><span class="place">Reno</span></div>
   <h2>Go simple, go easy, go Greyhound</h2>
   <div class="j">
@@ -316,8 +369,8 @@ a:focus-visible{outline:2px solid var(--slate);outline-offset:3px}
   <p>That last paragraph arrives out of nowhere. He&rsquo;s been writing about bus schedules for half a page, and then at twenty past nine at night he suddenly has a thought about the nature of currency, writes it down in the same block capitals he used for the departure times, and goes straight back to logistics.</p>
   <p>That&rsquo;s the notebook in miniature. Everything gets recorded at the same weight. A phone number, a fifty-dollar debt, a small crisis about the meaning of money.</p>
   <p>He was also right to feel bad about the fifty dollars, and I&rsquo;d forgotten entirely that I&rsquo;d promised Zack a one-way ride and then couldn&rsquo;t deliver. The guy who was going to drive us bailed for a party on a boat. Thirty-two years later I have no memory of who he was, and the boat has outlived him in the record.</p>
-  <div class="side">
-    <h3>The Greydog</h3>
+  <div class="aside">
+    <div class="aside-title">The Greydog</div>
     <p>Greyhound ran the east side of the Sierra on US 395 as regular service in 1994 &mdash; the reason a trip like this was possible at all for two people without a vehicle. That service has since been cut back drastically.</p>
     <p>$64 round trip in 1994 is roughly $135 today.</p>
   </div>
@@ -326,9 +379,9 @@ a:focus-visible{outline:2px solid var(--slate);outline-offset:3px}
   </div>
   <p>There is the entire friendship in two sentences. I was worried about how we would physically get to the mountain. Zack was worried about whether we would have anything to drink once we were on it.</p>
   <p>Both of us were right. Neither of us was worried about the correct thing, which turned out to be rum.</p>
-</article>
+</section>
 
-<article class="day">
+<section class="wj-day">
   <div class="dateline"><span class="d">18 June</span><span class="place">Reno</span></div>
   <h2>The shit I am going to bring</h2>
   <div class="j"><p>Now that transportation is taken care of, I must get my gear together. Currently all my stuff is scattered around my room &mdash; most of it is in the closet. What I want to do is use my past mountaineering experience to learn what I really need and what I don&rsquo;t.</p></div>
@@ -359,17 +412,17 @@ a:focus-visible{outline:2px solid var(--slate);outline-offset:3px}
   <p>Maps: the Mt. Whitney 15-minute quadrangle and the Inyo National Forest sheet. Two guidebooks. A compass. This is a man who intends to know where he is at all times, and who will accomplish that with paper.</p>
   <p>Boots. Socks. Long underwear (1). Sweat pants (1). Shorts (1). Parka. Sweater (1). Gloves with liners. T-shirt (2). The quantities in parentheses are the tell. He is counting his clothing.</p>
   <p>Then, further down: <i>Walkman with external speakers &mdash; (choice tapes).</i> A hacky sack. Sunglasses, listed as &ldquo;for emergency.&rdquo; An espresso maker. And two bota bags containing a litre and a half of rum.</p>
-  <div class="side">
-    <h3>The yellow Sony</h3>
+  <div class="aside">
+    <div class="aside-title">The yellow Sony</div>
     <p>A Sony Sports Walkman &mdash; the yellow splash-resistant model &mdash; with FM, auto-reverse, and a pair of external speakers the size of matchboxes.</p>
     <p>There was no private listening and no shuffle. You chose four or five cassettes before you left the house, carried them physically, and played them until the batteries died.</p>
   </div>
   <p>The pack, as assembled, weighed somewhere around seventy-five pounds. The pack itself was rented &mdash; a blue Snow Leopard internal-frame that I didn&rsquo;t own and couldn&rsquo;t afford to own. Zack was carrying an Inca Trails pack with roughly thirty pounds of camera equipment in it: bodies, lenses, film. No previews, no LCD, no way to know whether you&rsquo;d got the shot until weeks later. Every frame cost money, and he carried all of it up the mountain anyway, because that&rsquo;s what getting the picture required.</p>
   <p>I&rsquo;ve watched people online agonize over whether to bring a second pair of socks on a three-day trip. We brought canned corn. Actual cans. Potatoes and carrots and a head of garlic, carried up to twelve thousand feet and carried back down again.</p>
   <p>And an espresso maker. Which &mdash; I&rsquo;m looking at the list again &mdash; I cannot confirm we ever used.</p>
-</article>
+</section>
 
-<article class="day">
+<section class="wj-day">
   <div class="dateline"><span class="d">19 June</span><span class="place">Reno</span></div>
   <h2>Blamo</h2>
   <div class="j">
@@ -379,7 +432,7 @@ a:focus-visible{outline:2px solid var(--slate);outline-offset:3px}
   <p>They weren&rsquo;t. The road rash is never mentioned again.</p>
   <p>I like this entry because of what he&rsquo;s afraid of, which is being disqualified before the start. Not the mountain. The forty-eight hours between here and the mountain. He has one week of vacation and a non-refundable bus ticket and he has just been reminded that the plan can be destroyed by something as ordinary as a bicycle tire.</p>
   <p>Also: &ldquo;Good thing I wasn&rsquo;t drunk.&rdquo; Hold onto that. He is going to be extremely drunk in about thirty hours, at eight thousand feet, on the night before a ten-and-a-half-hour climb.</p>
-</article>
+</section>
 
 </section>
 
@@ -511,9 +564,9 @@ a:focus-visible{outline:2px solid var(--slate);outline-offset:3px}
   </div>
 </section>
 
-<section class="col">
 
-<article class="day" style="border-top:none">
+
+<section class="wj-day wj-first">
   <div class="dateline"><span class="d">20 June</span><span class="place">Reno &rarr; Lone Pine</span></div>
   <h2>The city really is like a prison</h2>
   <div class="j">
@@ -535,17 +588,17 @@ a:focus-visible{outline:2px solid var(--slate);outline-offset:3px}
     <p>Just passed Independence and Mt. Williamson, second highest in the lower forty-eight. We can see the top of Mt. Whitney and we&rsquo;re only ten miles from Lone Pine. Never thought we&rsquo;d get here. There&rsquo;s hardly any snow on the mountain and the crowds don&rsquo;t look too bad. We&rsquo;ll see.</p>
   </div>
   <p>&ldquo;Never thought we&rsquo;d get here.&rdquo; They are seven hours into a trip they&rsquo;ve been planning for three days, and he has already been surprised by his own arrival.</p>
-</article>
+</section>
 
-<article class="day">
+<section class="wj-day">
   <div class="dateline"><span class="d">20 June &middot; afternoon</span><span class="place">Lone Pine &rarr; Whitney Portal</span></div>
   <h2>Six openings left</h2>
   <div class="j">
     <p>Timing is of the essence. We got off the bus and it was hotter than hell and we didn&rsquo;t even know where we were. Things did not look good. But we went to the ranger station south of town to see about permits, and the ranger lady said they had six openings left. We took two and said thank you very much.</p>
   </div>
   <p>Six openings left. We took two.</p>
-  <div class="side">
-    <h3>The permit, then and now</h3>
+  <div class="aside">
+    <div class="aside-title">The permit, then and now</div>
     <p>In June 1994 the Mt. Whitney trail ran on quotas with same-day walk-up availability for cancellations and no-shows. A weekday arrival with no reservation had a real chance.</p>
     <p>Today the trail runs on an advance lottery. Applications open months ahead and most are unsuccessful. This trip, exactly as taken, could not be repeated.</p>
   </div>
@@ -560,9 +613,9 @@ a:focus-visible{outline:2px solid var(--slate);outline-offset:3px}
     <p>We found a good campsite, set up quickly, and next thing you know we&rsquo;re drinking beer and listening to Fugazi. Fifteen hours ahead of schedule. Right fucking on, dude.</p>
     <p>Tomorrow we&rsquo;ll get up at six and be on that trail by seven, no later.</p>
   </div>
-</article>
+</section>
 
-<article class="day">
+<section class="wj-day">
   <div class="dateline"><span class="d">Whitney Portal</span><span class="place">The same night &middot; 8,360 ft</span></div>
   <h2>A second hand</h2>
   <p>The next two pages are not in my handwriting.</p>
@@ -577,19 +630,13 @@ a:focus-visible{outline:2px solid var(--slate);outline-offset:3px}
     </div>
   </div>
 
-  <figure class="photo" id="ph-zack">
-    <img src="img/whitney-1994-zack-page.jpg" alt="Scan of Zack&rsquo;s handwritten pages in the 1994 journal" onerror="this.closest('figure').classList.add('missing')">
-    <div class="ph"><span>&#9634;</span><span>img/whitney-1994-zack-page.jpg</span></div>
-    <figcaption>The pages themselves. Worth seeing as an artifact, not only as text.</figcaption>
-  </figure>
-
   <p>Zack wrote that at eight thousand three hundred and sixty feet, at some point after we had drunk most of a litre and a half of rum and a twelve-pack of beer, the night before the hardest day either of us had ever had.</p>
   <p>Everything I wrote in that notebook is about logistics. Bus times, elevations, permit rules, dollar amounts. Seven pages of a young man managing a problem. Zack picks up the same pen, in the same tent, and says the thing directly.</p>
   <p>&ldquo;I&rsquo;m only the photographer.&rdquo; He is carrying thirty pounds of camera gear up a mountain to document a trip that is not his idea, and he calls himself the photographer like it&rsquo;s a demotion.</p>
   <p>He was the reason there is anything to look at.</p>
-</article>
+</section>
 
-<article class="day">
+<section class="wj-day">
   <div class="dateline"><span class="d">21 June</span><span class="place">Whitney Portal &rarr; Trail Camp</span></div>
   <h2>High elevations make for high hangovers</h2>
   <div class="j">
@@ -599,8 +646,8 @@ a:focus-visible{outline:2px solid var(--slate);outline-offset:3px}
   </div>
   <p>Six miles. Three thousand six hundred and forty feet of gain. Ten and a half hours elapsed, seven and a half of them moving, with seventy-five pounds each and a hangover acquired at altitude.</p>
   <p>Two days later we would come back down past that same point in one hour.</p>
-  <div class="side">
-    <h3>The ninety-seven</h3>
+  <div class="aside">
+    <div class="aside-title">The ninety-seven</div>
     <p>The switchbacks between Trail Camp and Trail Crest gain roughly 1,600 feet in two and a half miles. The count is traditionally given as ninety-seven, though nobody agrees, and the number rises the more times you count it.</p>
   </div>
   <p>The Austrian gets one sentence. His name was Ben, and the notebook never says so.</p>
@@ -609,9 +656,9 @@ a:focus-visible{outline:2px solid var(--slate);outline-offset:3px}
   <p>We told him about the ninety-seven switchbacks between Trail Camp and the crest and he seemed to regard them as an American indulgence.</p>
   <p>There&rsquo;s a small discrepancy here I&rsquo;ll leave standing rather than fix. The notebook records meeting him on the way up, at Trail Camp, as though he appeared on the trail. My memory has him around earlier than that, back at the Portal. One of those is wrong and I genuinely don&rsquo;t know which. The notebook was written the same week and I wasn&rsquo;t, so the odds favour the notebook &mdash; but the notebook also failed to write down his name, so it isn&rsquo;t infallible either.</p>
   <p>Both versions go on the page. That&rsquo;s what the notebook is for.</p>
-</article>
+</section>
 
-<article class="day">
+<section class="wj-day">
   <div class="dateline"><span class="d">22 June &middot; 6:00 a.m.</span><span class="place">Trail Camp &middot; 12,000 ft</span></div>
   <h2>See you when we get back</h2>
   <div class="j">
@@ -621,11 +668,11 @@ a:focus-visible{outline:2px solid var(--slate);outline-offset:3px}
   <p>That&rsquo;s the last thing he writes on the day it happens.</p>
   <p>Seven pages of buildup &mdash; the permit, the bus, the hitchhike, the gear, the hangover &mdash; and when the mountain finally arrives, the notebook goes quiet. He puts it in the tent and goes climbing.</p>
   <p>&ldquo;See you when we get back,&rdquo; addressed to a spiral notebook. As though it were staying behind to wait.</p>
-</article>
+</section>
 
 <div class="pull">&ldquo;When we got to the Trail Crest the whole world changed.&rdquo;<cite>Written the next morning, at Outpost Camp</cite></div>
 
-<article class="day">
+<section class="wj-day">
   <div class="dateline"><span class="d">23 June &middot; written at dawn</span><span class="place">The summit &middot; 14,505 ft</span></div>
   <h2>Low and behold</h2>
   <div class="j">
@@ -637,8 +684,8 @@ a:focus-visible{outline:2px solid var(--slate);outline-offset:3px}
   <p>The Pacific Crest Trail runs through that country. We knew roughly nothing about it in 1994 &mdash; it was a line on a map and not yet a thing people organized their lives around. We looked down at it and then went to the summit.</p>
   <p>That&rsquo;s the moment, if you want the moment. Not the top. The crest, where you find out the mountain has been hiding half the world from you the entire climb.</p>
 
-  <div class="side">
-    <h3>The Smithsonian hut</h3>
+  <div class="aside">
+    <div class="aside-title">The Smithsonian hut</div>
     <p>The stone shelter on the summit was built in 1909 by the Smithsonian Institution as a high-altitude observation station. It is still there, and it is still the thing you steer toward across the last two miles of the plateau.</p>
   </div>
 
@@ -649,7 +696,7 @@ a:focus-visible{outline:2px solid var(--slate);outline-offset:3px}
   <p>There&rsquo;s a photograph of him doing it.</p>
 
   <figure class="photo" id="ph-summit">
-    <img src="img/whitney-1994-summit.jpg" alt="Black and white photograph of Brooks crouched on the summit of Mt. Whitney reading the elevation marker, ice axe planted beside him" onerror="this.closest('figure').classList.add('missing')">
+    <img src="img/whitney-1994-summit.jpg" alt="Black and white photograph of Brooks crouched on the summit of Mt. Whitney reading the elevation marker, ice axe planted beside him">
     <div class="ph"><span>&#9634;</span><span>img/whitney-1994-summit.jpg</span></div>
     <figcaption>Mt. Whitney summit, 22 June 1994. Photograph by Zack Hurley; printed by both of us some weeks later at 424 Pierce Street, San Francisco.</figcaption>
   </figure>
@@ -674,9 +721,9 @@ a:focus-visible{outline:2px solid var(--slate);outline-offset:3px}
     <p>Before we left we signed the book up there, so there is now a Department of the Interior document that proves we were up there.</p>
   </div>
   <p>I love that he needed proof. Two hundred photographs weren&rsquo;t enough; he wanted it in the federal record.</p>
-</article>
+</section>
 
-<article class="day">
+<section class="wj-day">
   <div class="dateline"><span class="d">22 June &middot; afternoon</span><span class="place">Trail Crest &rarr; the cirque</span></div>
   <h2>Let&rsquo;s slide down the fucking hill</h2>
   <div class="j">
@@ -698,8 +745,8 @@ a:focus-visible{outline:2px solid var(--slate);outline-offset:3px}
     <p>Back at Trail Camp we ate a lot. Got hell of sunburned, windburned, and generally exposed to the harsh elements. So we packed our bags and headed down to Outpost Camp. We did it in an hour &mdash; funny that it took us three hours to get up there.</p>
     <p>Along the way I found a few more sky pilots. They only grow above eleven thousand feet, and I wanted to get one for Karri. I do hope she likes it, as they&rsquo;re really hard to find and I had to lean over a cliff to get them. I&rsquo;m going to make an art project out of these wildflowers &mdash; press and laminate, really. Should be a nice floral arrangement.</p>
   </div>
-  <div class="side">
-    <h3>Sky pilot</h3>
+  <div class="aside">
+    <div class="aside-title">Sky pilot</div>
     <p><i>Polemonium eximium.</i> A cushion plant of the Sierra crest, essentially absent below eleven thousand feet, flowering deep blue-violet in a place where almost nothing else flowers at all.</p>
     <p>We know more now about leaving alpine plants where they are.</p>
   </div>
@@ -707,9 +754,9 @@ a:focus-visible{outline:2px solid var(--slate);outline-offset:3px}
   <p>In 1994 he leaned over a cliff for them, and the whole reason he did it was to bring something back for someone who wasn&rsquo;t there.</p>
   <p>Karri was a girl at work. We all worked at Harrah&rsquo;s forever &mdash; 1990 to 1996, in my case &mdash; and she&rsquo;d said she wanted some nice wildflowers from the mountain, and so he got her some. That&rsquo;s the entire transaction. Someone mentioned in passing that they&rsquo;d like a flower, and he remembered it at eleven thousand feet with a hangover, and leaned out over a drop to collect it.</p>
   <p>I have no idea what happened to her.</p>
-</article>
+</section>
 
-<article class="day">
+<section class="wj-day">
   <div class="dateline"><span class="d">22&ndash;23 June &middot; overnight</span><span class="place">Outpost Camp &middot; 10,365 ft</span></div>
   <h2>Nothing but zombie vision</h2>
   <div class="j">
@@ -722,16 +769,16 @@ a:focus-visible{outline:2px solid var(--slate);outline-offset:3px}
   <p>He&rsquo;s out of food. He&rsquo;s out of stove fuel. He&rsquo;s been awake since half past two in the morning, sunburned and windburned at ten thousand feet, and the phrase he reaches for is an economics term. He is describing, precisely and correctly, the moment a trip stops paying for itself.</p>
   <p>This is the low point of the notebook and it&rsquo;s also the point where I recognize him most. Whatever is happening, however bad it gets, the response is to find the accurate word for it and write the word down.</p>
   <p>They got up at 2:30 in the morning and made tea and discussed how bad the situation was. Two people at ten thousand feet in the dark, with nothing left to burn after that pot, having a meeting.</p>
-</article>
+</section>
 
-<article class="day">
+<section class="wj-day">
   <div class="dateline"><span class="d">23 June</span><span class="place">Outpost &rarr; Portal &rarr; Lone Pine</span></div>
   <h2>One hundred and ten degrees</h2>
   <div class="j">
     <p>The hike down went by very fast, as we wanted to get the hell out of there as fast as possible. It only took an hour and a half to reach the Portal. There we hung out at the store and talked to the locals &mdash; Andy &mdash; about the area, and he told us about other good hikes in the region. We took showers and drank beer while we waited for Ben to get back from another hike; he&rsquo;s giving us a ride down to Lone Pine at two. So we waited, saw some BMW test vehicles, and talked about what we&rsquo;d done.</p>
   </div>
-  <div class="side">
-    <h3>Prototypes in the valley</h3>
+  <div class="aside">
+    <div class="aside-title">Prototypes in the valley</div>
     <p>The Owens Valley has been used for hot-weather automotive proving runs for decades &mdash; long straight highway, reliable heat, and very few people. Camouflaged prototypes on 395 are a local commonplace.</p>
   </div>
   <p>Two men who have not slept, sunburned to the point of injury, sitting outside a store at eight thousand feet, watching camouflaged German prototype cars go past. It did not occur to him to find this strange. It goes in the notebook the same way the bus fare did.</p>
@@ -753,15 +800,15 @@ a:focus-visible{outline:2px solid var(--slate);outline-offset:3px}
   <p>I have it. It&rsquo;s a Polaroid, and it survived.</p>
 
   <figure class="photo" id="ph-jakes">
-    <img src="img/whitney-1994-jakes-saloon.jpg" alt="Polaroid taken at Jake&rsquo;s Saloon, Lone Pine, California, June 1994" onerror="this.closest('figure').classList.add('missing')">
+    <img src="img/whitney-1994-jakes-saloon.jpg" alt="Polaroid taken at Jake&rsquo;s Saloon, Lone Pine, California, June 1994">
     <div class="ph"><span>&#9634;</span><span>img/whitney-1994-jakes-saloon.jpg</span></div>
     <figcaption>Jake&rsquo;s Saloon, Lone Pine, 23 June 1994 &mdash; the last beer before the overnight bus. The photograph the notebook told me to go and find.</figcaption>
   </figure>
 
   <p>Thirty-two years later I found the notebook in the garage, and the notebook told me where to look next.</p>
-</article>
+</section>
 
-<article class="day">
+<section class="wj-day">
   <div class="dateline"><span class="d">24 June</span><span class="place">Reno, Nevada</span></div>
   <h2>Light and fast</h2>
   <div class="j">
@@ -773,9 +820,9 @@ a:focus-visible{outline:2px solid var(--slate);outline-offset:3px}
   <p>&ldquo;Light and fast.&rdquo;</p>
   <p>This is a man who carried canned corn and an espresso maker and a litre and a half of rum to twelve thousand feet, and who is now, on the same page, in the same pen, proposing minimalism as a way of life.</p>
   <p>I don&rsquo;t know whether the July Fourth trip happened. I hope it did. I suspect that if it did, the pack still weighed sixty pounds.</p>
-</article>
+</section>
 
-<article class="day">
+<section class="wj-day">
   <div class="dateline"><span class="d">Some weeks later</span><span class="place">San Francisco</span></div>
   <h2>424 Pierce Street</h2>
   <p>The trip didn&rsquo;t actually end at the Reno bus station.</p>
@@ -784,9 +831,9 @@ a:focus-visible{outline:2px solid var(--slate);outline-offset:3px}
   <p>The summit picture &mdash; the one of me crouched over the marker with the axe planted beside me &mdash; we made that print at Pierce Street. It didn&rsquo;t come out of a camera looking like that. It came out of a tray.</p>
   <p>Which reframes the whole photographic side of this for me. Zack didn&rsquo;t carry thirty pounds of gear up Whitney to document our trip. He carried it up there to get material, and then he went home and did the actual work, and I got to stand in the dark and watch a week of my life come up out of the developer.</p>
   <p>He&rsquo;s still doing it. Different city, different mountains, same discipline.</p>
-</article>
+</section>
 
-<article class="day">
+<section class="wj-day">
   <div class="dateline"><span class="d">Epilogue</span><span class="place">2026</span></div>
   <h2>We went back</h2>
   <p>We climbed Whitney again a few years later.</p>
@@ -808,7 +855,7 @@ a:focus-visible{outline:2px solid var(--slate);outline-offset:3px}
   <p>I did. It took me thirty-two years to get around to it, and it was in the garage the whole time &mdash; between a Nintendo and some coffee makers, in a box I opened looking for something else entirely.</p>
   <p>There&rsquo;s more in there. I&rsquo;ve barely started.</p>
   <p>The notebook. The Polaroid from Jake&rsquo;s. A print made at Pierce Street in a room with the lights off. And the ice axe, which we went back up a cirque for and which is still, somehow, mine.</p>
-</article>
+</section>
 
 <div class="coda">
   <p class="end">The End</p>
@@ -816,58 +863,35 @@ a:focus-visible{outline:2px solid var(--slate);outline-offset:3px}
 </div>
 
 </section>
-</main>
+  </div>
 
-
-<!-- SOUNDTRACK — un-comment once the Spotify playlist exists, and replace
-     PLAYLIST_ID (2 places) with the real id.
-<section class="col">
-  <div class="soundtrack">
-    <h3>The Tapes &middot; June 1994</h3>
-    <p>Four or five cassettes, chosen before the bus and played on two matchbox speakers until the batteries went. Rebuilt as best I can reconstruct it.</p>
-    <div class="soundtrack-player">
-      <iframe style="border-radius:8px;border:1px solid var(--rule);min-height:352px;" src="https://open.spotify.com/embed/playlist/PLAYLIST_ID?utm_source=generator" width="100%" height="352" frameborder="0" title="Mt. Whitney 1994 tapes" allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-      <p class="soundtrack-cta">
-        <a href="https://open.spotify.com/playlist/PLAYLIST_ID" target="_blank" rel="noopener">Open in Spotify to listen along &#8599;</a>
-      </p>
+  <div class="article-footer">
+    <div class="article-footer-author">Brooks Groves · Memoir · Inyo County, California</div>
+    <div class="article-footer-nav">
+      <a href="https://memoir.brooksgroves.com">← All Memoir Pieces</a>
+      <a href="/sierra-foothills.html">The Sierra Foothills</a>
+      <a href="https://brooksgroves.com/tags.html">Tags</a>
     </div>
+    <p style="font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;color:var(--stone);margin:1.2rem 0 0;">
+      From the original notebook, June 1994 &middot; Transcribed and annotated 2026 &middot; Photographs by Zack Hurley
+    </p>
   </div>
-</section>
--->
-
+</div>
 <footer>
-  From the original notebook, June 1994 &middot; Transcribed and annotated 2026<br>
-  Photographs by Zack Hurley
-  <div class="footer-nav">
-    <a href="https://memoir.brooksgroves.com">&larr; All Memoir Pieces</a>
-    <a href="https://brooksgroves.com/writing/">Writing</a>
-    <a href="https://brooksgroves.com/tags.html">Tags</a>
-    <a href="https://brooksgroves.com">Home</a>
-    <a href="https://ko-fi.com/brooksgroves" target="_blank" rel="noopener" class="tipjar">🍺 Tip Jar</a>
+  <div class="footer-inner" style="flex-direction:column;text-align:center;gap:1rem;">
+    <div>
+      <p class="footer-name">Brooks Groves</p>
+      <p class="footer-tagline">🌲 Made in the Pacific Northwest &middot; ❤️ Born in <a href="https://en.wikipedia.org/wiki/Tuolumne_County,_California" target="_blank">Tuolumne County, CA</a></p>
+    </div>
+    <div class="footer-links" style="justify-content:center;gap:1.5rem;flex-wrap:wrap;">
+      <a href="https://brooksgroves.com/writing/">Writing</a>
+      <a href="https://memoir.brooksgroves.com">Memoir</a>
+      <a href="https://brooksgroves.com/tags.html">Tags</a>
+      <a href="https://brooksgroves.com">Home</a>
+      <a href="https://ko-fi.com/brooksgroves" target="_blank" style="color:var(--gold);">🍺 Tip Jar</a>
+    </div>
+    <p style="font-family:'DM Mono',monospace;font-size:0.52rem;color:var(--stone);width:100%;padding-top:1rem;border-top:1px solid #2a2a26;">&copy; 2026 Brooks Groves &middot; Lakewood, WA</p>
   </div>
-  <div class="footer-legal">&copy; 2026 Brooks Groves &middot; Lakewood, WA</div>
 </footer>
-
-<script>
-  const MEMOIR_KEY = 'memoir_auth';
-  const MEMOIR_PW  = 'memory';
-  function checkPassword(){
-    const val = document.getElementById('gate-input').value.trim().toLowerCase();
-    if (val === MEMOIR_PW) {
-      sessionStorage.setItem(MEMOIR_KEY,'1');
-      document.getElementById('gate').classList.remove('show');
-      document.getElementById('gate-error').textContent = '';
-    } else {
-      document.getElementById('gate-error').textContent = 'incorrect password';
-      document.getElementById('gate-input').value = '';
-      document.getElementById('gate-input').focus();
-    }
-  }
-  document.getElementById('gate-input').addEventListener('keydown', function(e){
-    if (e.key === 'Enter') checkPassword();
-  });
-  if (sessionStorage.getItem(MEMOIR_KEY) === '1') {
-    document.getElementById('gate').classList.remove('show');
-  }
-</script>
-</body></html>
+</body>
+</html>
