@@ -207,6 +207,50 @@ figure { margin:3rem 0 }
   line-height:0.85;margin:0.1em 0.08em 0 0;color:var(--sierra);
 }
 
+/* ── Maps & photographs: break out of the 720px text column on wide screens ──
+   The route map, climb profile and elevation chart carry fine labelling that
+   is unreadable at column width. */
+@media (min-width:1080px){
+  /* .wide already carries max-width:62rem and .plate is a two-column grid —
+     the design always wanted these big. Break out the SECTION, not the
+     individual cards, so the internal grid and stack stay intact. */
+  .article-body .wide{
+    width:min(62rem, calc(100vw - 3rem));
+    max-width:none;
+    margin-left:50%;
+    transform:translateX(-50%);
+  }
+  .article-body figure.photo{
+    width:min(52rem, calc(100vw - 3rem));
+    margin-left:50%;
+    transform:translateX(-50%);
+  }
+}
+.article-body .card svg,
+.article-body figure img{ cursor:zoom-in; }
+.article-body .zoom-hint{
+  font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--stone);opacity:.7;margin:.4rem 0 0;text-align:right;
+}
+
+/* ── Click-to-enlarge overlay ── */
+.zoom-overlay{position:fixed;inset:0;background:rgba(28,26,22,.95);z-index:9500;
+  display:none;align-items:center;justify-content:center;padding:2.5rem 1.5rem}
+.zoom-overlay.open{display:flex}
+.zoom-stage{width:min(1400px,94vw);max-height:92vh;overflow:auto;background:var(--parchment);
+  padding:1rem;box-shadow:0 20px 60px -20px rgba(0,0,0,.6)}
+.zoom-stage svg,.zoom-stage img{width:100%;height:auto;display:block}
+.zoom-close{position:absolute;top:1rem;right:1.3rem;background:none;border:none;
+  color:var(--parchment);font-size:1.5rem;line-height:1;cursor:pointer;font-family:'DM Mono',monospace}
+.zoom-close:hover{color:var(--gold)}
+@media (min-width:1080px){
+  /* The source stacked the map beside the profiles in two columns, which at
+     this width makes the route map SMALLER than it was. One column per figure
+     gives each the full 62rem. */
+  .article-body .plate{ grid-template-columns:1fr; }
+  .article-body .stack{ display:grid; gap:1.6rem; grid-template-columns:1fr; }
+}
+
 </style>
   <script>
   (function(){
@@ -893,5 +937,53 @@ figure { margin:3rem 0 }
     <p style="font-family:'DM Mono',monospace;font-size:0.52rem;color:var(--stone);width:100%;padding-top:1rem;border-top:1px solid #2a2a26;">&copy; 2026 Brooks Groves &middot; Lakewood, WA</p>
   </div>
 </footer>
+
+<script>
+/* Click-to-enlarge for the maps, profiles and photographs.
+   The overlay stage carries the article-body class because the SVG styling
+   is scoped to .article-body — without it a cloned map renders unstyled. */
+(function(){
+  var targets = document.querySelectorAll('.article-body .card svg, .article-body figure img');
+  if (!targets.length) return;
+
+  var ov = document.createElement('div');
+  ov.className = 'zoom-overlay';
+  ov.innerHTML = '<button class="zoom-close" aria-label="Close">&#10005;</button>'
+               + '<div class="zoom-stage article-body"></div>';
+  document.body.appendChild(ov);
+  var stage = ov.querySelector('.zoom-stage');
+
+  function open(el){
+    stage.innerHTML = '';
+    var clone = el.cloneNode(true);
+    clone.style.cursor = 'default';
+    stage.appendChild(clone);
+    ov.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function close(){
+    ov.classList.remove('open');
+    stage.innerHTML = '';
+    document.body.style.overflow = '';
+  }
+  targets.forEach(function(t){
+    t.addEventListener('click', function(){ open(t); });
+    // quiet affordance so the click target is discoverable
+    var host = t.closest('.card') || t.closest('figure');
+    if (host && !host.querySelector('.zoom-hint')) {
+      var h = document.createElement('p');
+      h.className = 'zoom-hint';
+      h.textContent = 'Click to enlarge';
+      host.appendChild(h);
+    }
+  });
+  ov.addEventListener('click', function(e){
+    if (e.target === ov || e.target.classList.contains('zoom-close')) close();
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && ov.classList.contains('open')) close();
+  });
+})();
+</script>
 </body>
 </html>
