@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Great East Texas Slingshot Incident — Brooks Groves</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌲</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,900;1,400;1,600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink:#1c1a16; --parchment:#f5f0e8; --cream:#ede8dc;
+      --sage:#4a5c45; --rust:#8b3a2a; --stone:#7a7268;
+      --gold:#c8922a; --mist:#d6d0c4; --white:#fdfaf4;
+      --sierra:#4a6b3a; --foothills:#8b6914;
+    }
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    body { background:var(--parchment); color:var(--ink); font-family:'Libre Baskerville',Georgia,serif; font-size:16px; line-height:1.7; overflow-x:hidden; }
+    body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E"); pointer-events:none; z-index:9999; opacity:0.5; }
+    .topline { height:4px; background:linear-gradient(90deg,var(--sierra) 0%,var(--foothills) 50%,var(--rust) 100%); }
+    header { border-bottom:2px solid var(--ink); padding:0 clamp(1.5rem,5vw,4rem); background:var(--parchment); }
+    .masthead-inner { display:flex; align-items:center; justify-content:space-between; gap:1rem; max-width:860px; margin:0 auto; padding:0.75rem 0; }
+    .site-name { font-family:'Playfair Display',serif; font-size:clamp(1.1rem,2.5vw,1.4rem); font-weight:900; text-decoration:none; color:var(--ink); }
+    .header-link { font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; text-decoration:none; color:var(--stone); }
+    .header-link:hover { color:var(--sierra); }
+    .article-wrap { max-width:720px; margin:0 auto; padding:clamp(3rem,6vw,5rem) clamp(1.5rem,5vw,2rem) clamp(3rem,6vw,5rem); }
+    .article-back { font-family:'DM Mono',monospace; font-size:0.63rem; letter-spacing:0.12em; text-transform:uppercase; text-decoration:none; color:var(--stone); display:inline-block; margin-bottom:2rem; }
+    .article-back:hover { color:var(--sierra); }
+    .article-num { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--sierra); margin-bottom:0.4rem; }
+    .article-kicker { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--foothills); margin-bottom:0.75rem; }
+    .article-title { font-family:'Playfair Display',serif; font-size:clamp(2rem,5vw,3.2rem); font-weight:900; line-height:1.08; letter-spacing:-0.02em; margin-bottom:1rem; }
+    .article-meta { font-family:'DM Mono',monospace; font-size:0.62rem; color:var(--stone); letter-spacing:0.1em; margin-bottom:1rem; display:flex; gap:1.5rem; flex-wrap:wrap; }
+    .article-tags { display:flex; gap:0.5rem; flex-wrap:wrap; padding-bottom:2rem; border-bottom:1px solid var(--mist); margin-bottom:2.5rem; }
+    .article-tag-pill { font-family:'DM Mono',monospace; font-size:0.58rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--stone); background:var(--cream); border:1px solid var(--mist); padding:0.25rem 0.65rem; border-radius:4px; text-decoration:none; display:inline-block; transition:background 0.15s,border-color 0.15s,color 0.15s; }
+    .article-tag-pill:hover { background:var(--gold); border-color:var(--gold); color:var(--white); }
+    .disclaimer { background:var(--cream); border-left:3px solid var(--stone); padding:1rem 1.5rem; margin-bottom:2.5rem; }
+    .disclaimer p { font-size:0.82rem; color:var(--stone); line-height:1.7; font-style:italic; }
+    .article-body { font-size:1.05rem; line-height:1.85; }
+    .article-body p { margin-bottom:1.5rem; }
+    .article-body p:first-of-type::first-letter { font-family:'Playfair Display',serif; font-size:3.5rem; font-weight:900; float:left; line-height:0.85; margin:0.1em 0.08em 0 0; color:var(--sierra); }
+    .article-body hr { border:none; border-top:2px solid var(--mist); margin:2.5rem 0; }
+    .article-body em { font-style:italic; }
+    .article-body strong { font-weight:700; }
+    .pullquote { border-left:3px solid var(--foothills); padding:1rem 1.5rem; margin:2rem 0; background:var(--cream); }
+    .pullquote p { font-family:'Playfair Display',serif; font-size:1.05rem; font-style:italic; line-height:1.65; color:var(--ink); margin:0; }
+    .series-box { background:var(--cream); border:1px solid var(--mist); border-left:3px solid var(--sierra); padding:1.25rem 1.5rem; margin:2.5rem 0; }
+    .series-label { font-family:'DM Mono',monospace; font-size:0.55rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--sierra); margin-bottom:0.5rem; }
+    .series-links { display:flex; flex-direction:column; gap:0.4rem; margin-top:0.5rem; }
+    .series-links a { font-size:0.85rem; color:var(--rust); text-decoration:none; }
+    .series-links a:hover { text-decoration:underline; }
+    .article-footer { margin-top:3rem; padding-top:2rem; border-top:2px solid var(--ink); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
+    .article-footer-author { font-family:'DM Mono',monospace; font-size:0.62rem; color:var(--stone); letter-spacing:0.1em; }
+    .article-footer-nav { display:flex; gap:1.5rem; }
+    .article-footer-nav a { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.12em; text-transform:uppercase; text-decoration:none; color:var(--stone); }
+    .article-footer-nav a:hover { color:var(--sierra); }
+    footer { background:var(--ink); color:var(--stone); padding:2rem clamp(1.5rem,5vw,4rem); margin-top:4rem; }
+    .footer-inner { max-width:860px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:2rem; flex-wrap:wrap; }
+    .footer-name { font-family:'Playfair Display',serif; font-size:0.95rem; font-weight:700; color:var(--white); }
+    .footer-tagline { font-family:'DM Mono',monospace; font-size:0.52rem; color:var(--stone); margin-top:0.2rem; }
+    .footer-link { font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; text-decoration:none; color:var(--stone); }
+    .footer-link:hover { color:var(--gold); }
+
+    .article-body .pull-quote { border-left:3px solid var(--foothills); margin:2rem 0; padding:0.5rem 0 0.5rem 1.5rem; font-family:'Playfair Display',serif; font-style:italic; font-size:1.2rem; line-height:1.6; color:var(--stone); }
+    .article-body .scene-break { text-align:center; margin:2.5rem 0; color:var(--mist); letter-spacing:0.8em; font-size:0.9rem; }
+    .sidebar-label { margin:3rem 0 1.5rem; font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--stone); text-align:center; border-top:1px solid var(--mist); padding-top:2rem; }
+    .aside { background:var(--cream); border-top:2px solid var(--foothills); padding:1.3rem 1.5rem; margin:1.5rem 0; }
+    .aside-title { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--foothills); margin-bottom:0.6rem; }
+    .aside p { font-size:0.92rem; line-height:1.75; color:var(--stone); margin-bottom:0.6rem; }
+    .aside p:last-child { margin-bottom:0; }
+  </style>
+  <script>
+  (function(){
+    const KEY = 'memoir_auth', PW = 'memory';
+    if (sessionStorage.getItem(KEY) === '1') return;
+    document.documentElement.style.visibility = 'hidden';
+    function buildGate() {
+      var o = document.createElement('div');
+      o.id = 'gate-overlay';
+      o.style.cssText = 'position:fixed;inset:0;background:#f5f0e8;display:flex;align-items:center;justify-content:center;z-index:99999;font-family:Georgia,serif;';
+      o.innerHTML = '<div style="text-align:center;padding:3rem;max-width:380px;width:90%;border:2px solid #1c1a16;background:#f5f0e8;">'
+        + '<div style="font-family:monospace;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:#7a7268;margin-bottom:1rem;">Brooks Groves · Memoir</div>'
+        + '<div style="font-family:Georgia,serif;font-size:1.6rem;font-weight:700;color:#1c1a16;margin-bottom:0.5rem;">Private Archive</div>'
+        + '<div style="font-size:0.85rem;color:#7a7268;margin-bottom:2rem;font-style:italic;">Password required</div>'
+        + '<input id="gate-pw" type="password" placeholder="password" style="width:100%;padding:0.75rem 1rem;background:#ede8dc;border:1px solid #d6d0c4;color:#1c1a16;font-size:1rem;outline:none;margin-bottom:0.75rem;box-sizing:border-box;text-align:center;letter-spacing:0.1em;"/>'
+        + '<div id="gate-err" style="color:#8b3a2a;font-size:0.75rem;margin-bottom:0.75rem;min-height:1rem;"></div>'
+        + '<button id="gate-btn" style="width:100%;padding:0.75rem;background:#1c1a16;border:none;color:#fdfaf4;font-size:0.85rem;cursor:pointer;letter-spacing:0.1em;font-family:monospace;text-transform:uppercase;">Enter</button>'
+        + '<div style="margin-top:1rem;"><a href="https://memoir.brooksgroves.com" style="font-family:monospace;font-size:0.6rem;color:#7a7268;text-transform:uppercase;letter-spacing:0.1em;text-decoration:none;">← All Pieces</a></div>'
+        + '</div>';
+      document.body.appendChild(o);
+      document.documentElement.style.visibility = 'visible';
+      var inp = document.getElementById('gate-pw');
+      inp.focus();
+      function tryPw() {
+        var pw = inp.value.trim().toLowerCase();
+        if (!pw) { document.getElementById('gate-err').textContent = 'Please enter the password.'; return; }
+        if (pw === PW) {
+          sessionStorage.setItem(KEY, '1');
+          document.getElementById('gate-overlay').remove();
+        } else {
+          document.getElementById('gate-err').textContent = 'Incorrect password.';
+          inp.value = ''; inp.focus();
+        }
+      }
+      document.getElementById('gate-btn').addEventListener('click', tryPw);
+      inp.addEventListener('keydown', function(e){ if(e.key==='Enter') tryPw(); });
+    }
+    if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', buildGate); } else { buildGate(); }
+  })();
+  </script>
+</head>
+<body>
+<div class="topline"></div>
+<header>
+  <div class="masthead-inner">
+    <a href="https://brooksgroves.com" class="site-name">Brooks Groves</a>
+    <a href="https://memoir.brooksgroves.com" class="header-link">← Memoir</a>
+  </div>
+</header>
+
+<div class="article-wrap">
+  <a href="/blinn-college-stories.html" class="article-back">← Blinn College Stories</a>
+  <div class="article-num">Blinn College Stories · The Stories · Fall 1988</div>
+  <p class="article-kicker">Surgical Tubing · A Full Can of Lone Star · The Night I Thought I Was Dead</p>
+  <h1 class="article-title">The Great East Texas Slingshot Incident</h1>
+  <div class="article-meta">
+    <span>Brenham, Texas · Blinn College · 1988–1990</span>
+    <span>Brooks Groves</span>
+  </div>
+  <div class="article-tags">
+    <a href="https://brooksgroves.com/tags.html#Blinn%20College%20Stories" class="article-tag-pill">Blinn College Stories</a>
+    <a href="https://brooksgroves.com/tags.html#Texas" class="article-tag-pill">Texas</a>
+    <a href="https://brooksgroves.com/tags.html#Brenham" class="article-tag-pill">Brenham</a>
+    <a href="https://brooksgroves.com/tags.html#1980s" class="article-tag-pill">1980s</a>
+    <a href="https://brooksgroves.com/tags.html#Coming%20of%20Age" class="article-tag-pill">Coming of Age</a>
+  </div>
+
+  <div class="disclaimer">
+  </div>
+
+  <div class="article-body">
+
+  <p style="font-style:italic; color:var(--stone); font-size:0.95rem; border-left:3px solid var(--mist); padding-left:1.2rem; margin-bottom:2.5rem;">One of the Blinn College Stories. Fall 1988. A question &mdash; how far can you <em>launch</em> a water balloon? &mdash; leads to surgical tubing, a hundred-yard test flight, a full can of Lone Star, and one very bad idea involving the Brenham cruise. Featuring the night I got caught, talked fast, and discovered that the scariest people in East Texas were actually pretty nice.</p>
+
+  <p>Fall 1988. Blinn College. Memorial Hall.</p>
+  <p>I was eighteen years old, eighteen hundred miles from everything familiar, trying to figure out exactly what kind of place I had landed in.</p>
+  <p>Coming from California, I thought I understood people.</p>
+  <p>Then I got to Texas.</p>
+  <p>Memorial Hall was a collection of characters who seemed impossible to have all ended up in the same building. Students from everywhere. The serious ones and the funny ones. The ones who knew exactly where they were going and the ones who had absolutely no idea. Future doctors. Athletes. The guys who would become successful, and the guys who would become stories.</p>
+  <p>And then there were the rest of us, just trying to make it through eighteen without doing anything too memorable.</p>
+  <p>Which, as it turned out, was harder than expected.</p>
+  <hr>
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">A Question of Engineering</div>
+  <p>I'd come to Blinn from California with curiosity and a willingness to see what happened next. That curiosity got me into a lot of interesting situations.</p>
+  <p>This one started with a question.</p>
+  <p>How far can you <em>launch</em> a water balloon?</p>
+  <p>Not throw one. Launch one.</p>
+  <p>That distinction mattered. Throwing a water balloon was something any kid could do. Launching one required engineering.</p>
+  <p>And apparently, on this particular afternoon, that was exactly what we were interested in.</p>
+  <p>A couple of guys from the dorm had heard about building a giant slingshot. They were the kind of guys who seemed cooler than everyone else. One of them — I think his name was Dan, or maybe Dave — was from Amarillo. Even then I thought that was interesting. Texas was so big that Texans from different parts of Texas seemed like they came from different worlds.</p>
+  <p>He liked that I was creative. Maybe because I looked at things differently. Maybe because I was the California kid who wasn't exactly like everyone else.</p>
+  <p>Whatever the reason, he included me.</p>
+  <div class="pull-quote">And when you are eighteen years old, being included matters.</div>
+  <p>So we started building.</p>
+  <p>This was not a casual afternoon project. We had a plan. We made trips to different hardware stores around Brenham because no single place had everything we needed. Surgical tubing. Wooden dowels. A funnel. Leather. Hardware.</p>
+  <p>The pieces slowly came together. By the end, we had created something that looked like it belonged somewhere between a science experiment and a medieval weapon.</p>
+  <div class="aside">
+    <div class="aside-title">The Physics of a Very Bad Idea</div>
+    <p style="margin:0 0 0.7rem;color:var(--stone);line-height:1.7;font-size:0.9rem;">What we'd built was, in engineering terms, an elastic energy storage device — the same principle as a bow, a catapult, or a trebuchet. Pull the surgical tubing back and you convert muscle work into elastic potential energy stored in the stretched rubber. Release it and that energy transfers into the projectile as kinetic energy, all at once.</p>
+    <p style="margin:0;color:var(--stone);line-height:1.7;font-size:0.9rem;">Which explains our first failure exactly. The tubing dumped its energy into the water balloon faster than the latex could handle, and the balloon simply tore itself apart on acceleration. The fix wasn't more power. It was less — or a projectile that could survive the launch. And it also explains the beer can: a dense, rigid object holds its shape, carries far more momentum, and punches through air with much less drag than a wobbling bag of water. Heavier flew farther. We didn't know the vocabulary for any of this. We just kept adjusting until it worked.</p>
+  </div>
+  <hr>
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">THWACK</div>
+  <p>Obviously, the next step was testing. There was a park near the dorm where we could experiment.</p>
+  <p>The first launch taught us an important lesson: the slingshot worked too well. The water balloon exploded before it got anywhere. Too much energy. Too much force.</p>
+  <p>Back to engineering. We adjusted. Modified. Tried again.</p>
+  <p>This was the part I loved. Nobody was just messing around — we were solving a problem. The same curiosity that made me wonder about science and technology was happening right there in a park in Brenham, Texas.</p>
+  <p>Eventually, we got it right.</p>
+  <p>The tubing stretched. The pouch pulled back. The release happened.</p>
+  <p>And then came the sound.</p>
+  <p><strong>THWACK.</strong></p>
+  <p>The balloon launched. For a moment, everyone just watched. It climbed into the Texas sky. And then it kept going.</p>
+  <p>Almost a hundred yards. The length of a football field.</p>
+  <p>We stood there amazed. Not because we had built a weapon — because we had built an idea. The physics worked. The math worked. The thing we imagined actually happened.</p>
+  <p>There is something incredible about that when you are eighteen.</p>
+  <hr>
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">Scientifically Speaking, We Needed Data</div>
+  <p>Of course, once you prove something works, the next question becomes: <q>What else can we launch?</q></p>
+  <p>So we experimented. Fruit. Apples. Anything that could safely tell us more about our creation.</p>
+  <p>Then someone suggested something else. A beer can. A full Lone Star.</p>
+  <p>Now, before anyone gets the wrong idea — this was testing. Lone Star was college beer. It was not ammunition. We were not wasting beer.</p>
+  <p>But scientifically speaking… we needed data.</p>
+  <p>The full can launched farther than anything else. Much farther. It disappeared across the field and landed with enough force to leave a noticeable mark in the grass.</p>
+  <p>We looked at each other. This was impressive.</p>
+  <p>This was also probably the moment where reasonable people would have said, <q>Great experiment. Time to put it away.</q></p>
+  <p>We were not reasonable people. We were eighteen.</p>
+  <p>Then came the sentence that changed the night.</p>
+  <p><q>What if we took it to the cruise?</q></p>
+  <p>Nobody said no. Nobody said <q>this might be a bad idea.</q> We laughed — the kind of laughter only eighteen-year-old guys can have when they're standing next to something they probably should not be standing next to.</p>
+  <p>I was actually a little hesitant. I knew what this thing could do. We had tested it. We understood it. And aiming it anywhere near the legendary Brenham cruise felt like moving from science experiment into something else entirely.</p>
+  <p>But here was the truth: the cool guys wanted me there.</p>
+  <p>And sometimes at eighteen, that is all the reason you need.</p>
+  <hr>
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">The Cruise</div>
+  <p>The cruise was part of the rhythm of life in Brenham. Friday and Saturday nights belonged to the streets.</p>
+  <p>This was before phones. Before social media. Before everyone had a thousand ways to stay connected. If you wanted to know what was happening, you went there.</p>
+  <p>The shopping center parking lot. The trucks. The people. The music. The entire town seemed to gather.</p>
+  <div class="aside">
+    <div class="aside-title">Every Generation Gets Its Own Cruise</div>
+    <p style="margin:0 0 0.7rem;color:var(--stone);line-height:1.7;font-size:0.9rem;">I grew up about an hour east of Modesto, California — the town George Lucas grew up in and immortalized in <em>American Graffiti</em>, the movie that turned one night of aimless driving into an American myth. Watching it later made me realize that Brenham simply had its own version, running a couple of decades behind the one Lucas filmed.</p>
+    <p style="margin:0;color:var(--stone);line-height:1.7;font-size:0.9rem;">There's a small irony in the timing. Cruising was already being legislated out of existence across the country in the years I was at Blinn, and Modesto itself — the place that made cruising famous — banned it in 1990, the same year I left Texas. The ban stood for more than three decades before the city finally lifted it. So the Brenham cruise I stumbled into on a Friday night in 1988 was closer to the end of something than any of us knew.</p>
+  </div>
+  <p>Pickup trucks were everywhere. Square-body Chevys. Ford F-150s. Chrome roll bars. KC Daylighters shining into the darkness. Trucks cleaned like they were family members. Guys leaning against them pretending they weren't trying to impress anyone. Girls with giant Aqua Net hair sitting on tailgates. Country music rolling out of one truck, rock music competing from another.</p>
+  <p>Everyone watching everyone. Everyone knowing everyone.</p>
+  <p>It was not just a parking lot. It was the social center of Washington County.</p>
+  <p>And that night, we showed up with a giant homemade slingshot.</p>
+  <hr>
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">The Situation</div>
+  <p>The first water balloon launched perfectly.</p>
+  <p><strong>THWACK.</strong></p>
+  <p>It crossed the distance. A giant splash near the trucks. No one got hit. Nothing was damaged. Just confusion.</p>
+  <p><q>What was that?</q></p>
+  <p>Another balloon. Another splash.</p>
+  <p>People started looking around. Then pointing. Then searching. The girls noticed. The guys noticed. And suddenly the whole parking lot was interested.</p>
+  <p>Then the headlights appeared. Trucks started moving. People started coming toward us.</p>
+  <p>And that was when I had my first real thought.</p>
+  <p><em>Oh no.</em></p>
+  <p>This was no longer a science experiment. This was a situation.</p>
+  <p>Then came the only logical response.</p>
+  <p>Run.</p>
+  <p>Everyone scattered. Everyone except me seemed to know exactly where to go. I did not. I was an eighteen-year-old kid from California trying to navigate East Texas in the dark after a few Lone Stars.</p>
+  <p>I ran. I slipped. I found a ditch. Then bushes.</p>
+  <p>I thought I had disappeared.</p>
+  <p>I had not.</p>
+  <p>Because apparently East Texans are very good at finding things hiding in the woods.</p>
+  <p>The trucks came closer. The KC lights swept across the area. The darkness disappeared. Voices. Boots. Movement.</p>
+  <p>I tried to become part of the ground. I tried not to breathe. I tried to convince myself they couldn't see me.</p>
+  <p>Then I heard it.</p>
+  <p><q>There he is.</q></p>
+  <p>And that was the end of my career as an escaped fugitive.</p>
+  <hr>
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">The Strangest Twist of the Night</div>
+  <p>They pulled me out. They looked at me. And almost immediately they realized something.</p>
+  <p>I was probably not the mastermind. I was just the guy they caught — a small California kid who had somehow become the representative of the entire operation.</p>
+  <p>Then came the questions. Who are you? Where are your friends? Whose idea was this? Why would you do this?</p>
+  <p>I did what came naturally. I talked. Fast. Very fast.</p>
+  <p>Because suddenly I was not trying to be cool anymore. I was trying to survive the next hour.</p>
+  <p>And then came the strangest twist of the entire night.</p>
+  <p>The girls.</p>
+  <p>They looked at me. Really looked at me. And instead of seeing a dangerous prankster, they saw what I actually was: a skinny eighteen-year-old kid who had made a terrible decision.</p>
+  <p><q>Don't hurt him,</q> one of them said. <q>Look how small he is.</q></p>
+  <p>Another laughed. <q>He's cute.</q></p>
+  <p>And suddenly, the situation improved dramatically. They saw me like a little brother. I was still embarrassed. Still terrified. But I was no longer convinced this was the end.</p>
+  <p>Eventually, I made my move.</p>
+  <p><q>I'll take you to the others.</q></p>
+  <p>Somehow… they believed me. Or maybe they just wanted to see what would happen.</p>
+  <p>Either way, back to Blinn we went.</p>
+  <p>I pointed toward a dorm. <q>They're probably in there. I'll go get them.</q></p>
+  <p>The truck stopped. The door opened. I walked toward the building. Turned the corner.</p>
+  <p>And ran.</p>
+  <p>I ran faster than I knew I could run. Around the back. Into the darkness. Back toward Memorial Hall.</p>
+  <p>I did not return until I was sure the excitement had died down.</p>
+  <hr>
+  <p>The next morning, everyone laughed. And laughed. And laughed. Because from their perspective, it was the funniest thing that had ever happened.</p>
+  <p>I was both the hero and the idiot. The hero because I escaped. The idiot because I was the only one who got caught.</p>
+  <p>Both were accurate.</p>
+  <p>Looking back now, I understand something I didn't understand at eighteen. Nobody was trying to ruin my life that night. Nobody was trying to hurt me. They were just another group of eighteen-year-olds living their own Friday night adventure.</p>
+  <p>The difference was, they were East Texas. And I was a curious kid from California who had wandered into their world carrying a homemade slingshot.</p>
+  <p>Would I do it again? At fifty-six? Absolutely not.</p>
+  <p>Would eighteen-year-old Brooks have done it?</p>
+  <p>Unfortunately, I already know the answer.</p>
+  <div class="pull-quote">Because sometimes growing up is not about avoiding every bad decision. Sometimes it is about surviving one — and then being lucky enough to have a great story forty years later.</div>
+
+  </div>
+
+  <div class="series-box" style="border-left-color:var(--foothills);">
+    <div class="series-label" style="color:var(--foothills);">Blinn College Stories · A Series</div>
+    <p style="font-size:0.9rem; color:var(--stone); line-height:1.7; margin:0;">Two years in Brenham, Texas, 1988 to 1990 — German farm country, freight trains, Blue Bell ice cream, and a Sierra-foothills kid figuring it out eighteen hundred miles from home. Funny, observational, occasionally thoughtful, sometimes ridiculous. <em>The collection continues.</em></p>
+  </div>
+
+  <div class="article-footer">
+    <div class="article-footer-author">Brooks Groves · Blinn College Stories · Brenham, Texas</div>
+    <div class="article-footer-nav">
+      <a href="/blinn-college-stories.html">← Blinn College Stories</a>
+      <a href="https://memoir.brooksgroves.com">All Memoir Pieces</a>
+      <a href="/the-baseball-gods-of-east-texas.html">Prev · The Baseball Gods of East Texas</a>
+    </div>
+  </div>
+</div>
+<footer>
+  <div class="footer-inner" style="flex-direction:column;text-align:center;gap:1rem;">
+    <div>
+      <p class="footer-name">Brooks Groves</p>
+      <p class="footer-tagline">🌲 Made in the Pacific Northwest &middot; ❤️ Born in <a href="https://en.wikipedia.org/wiki/Tuolumne_County,_California" target="_blank">Tuolumne County, CA</a></p>
+    </div>
+    <div class="footer-links" style="justify-content:center;gap:1.5rem;flex-wrap:wrap;">
+      <a href="https://brooksgroves.com/writing/">Writing</a>
+      <a href="https://memoir.brooksgroves.com">Memoir</a>
+      <a href="https://brooksgroves.com/tags.html">Tags</a>
+      <a href="https://brooksgroves.com">Home</a>
+      <a href="https://ko-fi.com/brooksgroves" target="_blank" style="color:var(--gold);">🍺 Tip Jar</a>
+    </div>
+    <p style="font-family:'DM Mono',monospace;font-size:0.52rem;color:var(--stone);width:100%;padding-top:1rem;border-top:1px solid #2a2a26;">&copy; 2026 Brooks Groves &middot; Lakewood, WA</p>
+  </div>
+</footer>
+</body>
+</html>
