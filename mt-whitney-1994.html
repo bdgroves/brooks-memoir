@@ -611,49 +611,9 @@ figure { margin:3rem 0 }
 
 
 <!-- ============ THE MOUNTAIN ITSELF ============ -->
-<style>
-  .terrain-figure .terrain-wrap { position:relative; display:block }
-  .terrain-figure .terrain-labels {
-    position:absolute; inset:0; width:100%; height:100%;
-    pointer-events:none; overflow:visible;
-  }
-  .terrain-figure .terrain-labels text {
-    paint-order: stroke fill;
-    stroke: var(--paper-card);
-    stroke-width: 3.5px;
-    stroke-linejoin: round;
-  }
-</style>
-
 <section>
-  <figure class="photo terrain-figure">
-    <div class="terrain-wrap">
-      <img src="maps/whitney-3d.png" alt="Three-dimensional rendering of Mt. Whitney's east face, looking up the drainage from Whitney Portal toward the summit. A red line shows the actual GPS trace of the Mount Whitney Trail climbing from the valley floor at the bottom of the frame to the summit at the top; the ninety-seven switchbacks are visible near the ridge.">
-      <svg class="terrain-labels" viewBox="0 0 2400 1400" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-        <!-- Labels positioned in the 2400×1400 image's pixel coordinates.
-             Nudge x/y on any line to move that label. -->
-
-        <!-- Whitney Portal — bottom of frame -->
-        <text class="t-key" x="1285" y="1348">WHITNEY PORTAL</text>
-        <text class="t-sm"  x="1285" y="1376">8,360 ft &middot; camp 1</text>
-
-        <!-- Outpost Camp — mid-mountain -->
-        <text class="t" x="1260" y="878">Outpost Camp</text>
-        <text class="t-sm" x="1260" y="903">10,365 ft &middot; camp 3</text>
-
-        <!-- Trail Camp — base of the wall -->
-        <text class="t" x="1280" y="618">Trail Camp</text>
-        <text class="t-sm" x="1280" y="643">12,000 ft &middot; camp 2</text>
-
-        <!-- Trail Crest — right-anchored to sit to the left of its dot -->
-        <text class="t" x="1150" y="288" text-anchor="end">Trail Crest</text>
-        <text class="t-sm" x="1150" y="313" text-anchor="end">13,600 ft</text>
-
-        <!-- Mt. Whitney — top of frame -->
-        <text class="t-key" x="1570" y="218">MT. WHITNEY</text>
-        <text class="t-sm"  x="1570" y="246">14,505 ft</text>
-      </svg>
-    </div>
+  <figure class="photo">
+    <img src="maps/whitney-3d.png" alt="Three-dimensional rendering of Mt. Whitney's east face, looking up the drainage from Whitney Portal toward the summit. A red line shows the actual GPS trace of the Mount Whitney Trail climbing from the valley floor at the bottom of the frame to the summit at the top; the ninety-seven switchbacks are visible near the ridge.">
     <figcaption>6,145 feet of gain, in one image. The east face of Whitney rendered from USGS 3DEP elevation data with the GPS trace of the Mount Whitney Trail draped over the terrain &mdash; Portal at the bottom of the frame, summit at the top, the ninety-seven switchbacks visible up in the alpine.</figcaption>
   </figure>
 </section>
