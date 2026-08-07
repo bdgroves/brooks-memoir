@@ -143,7 +143,8 @@ section { padding:2.2rem 0 }
 .article-body /* figures / maps / photos */
 figure { margin:3rem 0 }
 .article-body .card { background:var(--paper-card);border:1px solid var(--rule);padding:1.1rem;box-shadow:var(--shadow) }
-.article-body .card svg { display:block;width:100%;height:auto }
+.article-body .card svg,
+.article-body .card img { display:block;width:100%;height:auto }
 .article-body figcaption { font-family:"DM Mono",monospace;font-size:.71rem;line-height:1.75;color:var(--ink-faint);margin-top:.85rem }
 .article-body .wide { max-width:62rem;margin-left:auto;margin-right:auto }
 .article-body .plate { display:grid;gap:1.6rem;grid-template-columns:1fr }
@@ -227,6 +228,7 @@ figure { margin:3rem 0 }
   }
 }
 .article-body .card svg,
+.article-body .card img,
 .article-body figure img{ cursor:zoom-in; }
 .article-body .zoom-hint{
   font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;
@@ -611,11 +613,15 @@ figure { margin:3rem 0 }
 
 
 <!-- ============ THE MOUNTAIN ITSELF ============ -->
-<section>
-  <figure class="photo">
-    <img src="maps/whitney-3d.png" alt="Three-dimensional rendering of Mt. Whitney's east face, looking up the drainage from Whitney Portal toward the summit. A red line shows the actual GPS trace of the Mount Whitney Trail climbing from the valley floor at the bottom of the frame to the summit at the top; the ninety-seven switchbacks are visible near the ridge.">
-    <figcaption>6,145 feet of gain, in one image. The east face of Whitney rendered from USGS 3DEP elevation data with the GPS trace of the Mount Whitney Trail draped over the terrain &mdash; Portal at the bottom of the frame, summit at the top, the ninety-seven switchbacks visible up in the alpine.</figcaption>
-  </figure>
+<section class="wide">
+  <div class="plate">
+    <div>
+      <div class="card">
+        <img src="maps/whitney-3d.png" alt="Three-dimensional rendering of Mt. Whitney's east face, looking up the drainage from Whitney Portal toward the summit. A red line shows the actual GPS trace of the Mount Whitney Trail climbing from the valley floor at the bottom of the frame to the summit at the top; the ninety-seven switchbacks are visible near the ridge.">
+      </div>
+      <figcaption>6,145 feet of gain, in one image. The east face of Whitney rendered from USGS 3DEP elevation data with the GPS trace of the Mount Whitney Trail draped over the terrain &mdash; Portal at the bottom of the frame, summit at the top, the ninety-seven switchbacks visible up in the alpine.</figcaption>
+    </div>
+  </div>
 </section>
 
 
@@ -917,7 +923,7 @@ figure { margin:3rem 0 }
   <p>Zack went back to San Francisco after that week in 1994, and kept going. He&rsquo;s in Vancouver, British Columbia now, which has all the mountains a person could reasonably need. He still takes photographs. I assume there&rsquo;s a portfolio somewhere that ought to be seen &mdash; though that&rsquo;s his call and not mine. He&rsquo;s the artist.</p>
   <p>We&rsquo;ve had a lot of adventures since. Some of them are going to end up written down like this one. There is, for instance, an evening in Midtown that turned into a serious and I would say rigorous debate about the merits of R5-D4, which is a story for another day and another notebook.</p>
   <p>We see each other. Not nearly often enough.</p>
-  <p>The last mountain we went at together was Victoria Peak, in North Vancouver, up above Grouse. We didn&rsquo;t get it. Weather, and &mdash; of course &mdash; time. Time is the one that gets you now. In 1994 the constraint was money and we had all the time in the world; these days it&rsquo;s precisely the other way around, and nobody warns you about the swap.</p>
+  <p>The last mountain we went at together was Crown Mountain, in North Vancouver, up above Grouse. We didn&rsquo;t get it. Weather, and &mdash; of course &mdash; time. Time is the one that gets you now. In 1994 the constraint was money and we had all the time in the world; these days it&rsquo;s precisely the other way around, and nobody warns you about the swap.</p>
   <p>Next time we go light and fast on that one.</p>
   <p>Here&rsquo;s what I actually think this notebook is about, and it isn&rsquo;t Mt. Whitney.</p>
   <p>There is a window in a life, and it&rsquo;s narrow, and you don&rsquo;t notice it while you&rsquo;re inside it. It&rsquo;s the stretch where your oldest friend can still disappear with you for a week on nine days&rsquo; notice. Where three hundred miles on a Greyhound is a reasonable answer to a transportation problem, because it&rsquo;s the answer you can afford. Where hitchhiking is a plan and not a last resort. Where seventy-five pounds sounds ambitious rather than medically inadvisable. Where the largest logistical risk you&rsquo;re carrying is whether the batteries will hold out until camp.</p>
@@ -994,7 +1000,7 @@ figure { margin:3rem 0 }
    The overlay stage carries the article-body class because the SVG styling
    is scoped to .article-body — without it a cloned map renders unstyled. */
 (function(){
-  var targets = document.querySelectorAll('.article-body .card svg, .article-body figure img');
+  var targets = document.querySelectorAll('.article-body .card svg, .article-body .card img, .article-body figure img');
   if (!targets.length) return;
 
   var ov = document.createElement('div');
