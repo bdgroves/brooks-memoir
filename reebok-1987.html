@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Because Life Is Not a Spectator Sport — Brooks Groves</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌲</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,900;1,400;1,600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink:#1c1a16; --parchment:#f5f0e8; --cream:#ede8dc;
+      --sage:#4a5c45; --rust:#8b3a2a; --stone:#7a7268;
+      --gold:#c8922a; --mist:#d6d0c4; --white:#fdfaf4;
+      --sierra:#4a6b3a; --foothills:#8b6914;
+    }
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    body { background:var(--parchment); color:var(--ink); font-family:'Libre Baskerville',Georgia,serif; font-size:16px; line-height:1.7; overflow-x:hidden; }
+    body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E"); pointer-events:none; z-index:9999; opacity:0.5; }
+    .topline { height:4px; background:linear-gradient(90deg,var(--sierra) 0%,var(--foothills) 50%,var(--rust) 100%); }
+    header { border-bottom:2px solid var(--ink); padding:0 clamp(1.5rem,5vw,4rem); background:var(--parchment); }
+    .masthead-inner { display:flex; align-items:center; justify-content:space-between; gap:1rem; max-width:860px; margin:0 auto; padding:0.75rem 0; }
+    .site-name { font-family:'Playfair Display',serif; font-size:clamp(1.1rem,2.5vw,1.4rem); font-weight:900; text-decoration:none; color:var(--ink); }
+    .header-link { font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; text-decoration:none; color:var(--stone); }
+    .header-link:hover { color:var(--sierra); }
+    .article-wrap { max-width:720px; margin:0 auto; padding:clamp(3rem,6vw,5rem) clamp(1.5rem,5vw,2rem) clamp(3rem,6vw,5rem); }
+    .article-back { font-family:'DM Mono',monospace; font-size:0.63rem; letter-spacing:0.12em; text-transform:uppercase; text-decoration:none; color:var(--stone); display:inline-block; margin-bottom:2rem; }
+    .article-back:hover { color:var(--sierra); }
+    .article-num { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--sierra); margin-bottom:0.4rem; }
+    .article-kicker { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--foothills); margin-bottom:0.75rem; }
+    .article-title { font-family:'Playfair Display',serif; font-size:clamp(2rem,5vw,3.2rem); font-weight:900; line-height:1.08; letter-spacing:-0.02em; margin-bottom:1rem; }
+    .article-meta { font-family:'DM Mono',monospace; font-size:0.62rem; color:var(--stone); letter-spacing:0.1em; margin-bottom:1rem; display:flex; gap:1.5rem; flex-wrap:wrap; }
+    .article-tags { display:flex; gap:0.5rem; flex-wrap:wrap; padding-bottom:2rem; border-bottom:1px solid var(--mist); margin-bottom:2.5rem; }
+    .article-tag-pill { font-family:'DM Mono',monospace; font-size:0.58rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--stone); background:var(--cream); border:1px solid var(--mist); padding:0.25rem 0.65rem; border-radius:4px; text-decoration:none; display:inline-block; transition:background 0.15s,border-color 0.15s,color 0.15s; }
+    .article-tag-pill:hover { background:var(--gold); border-color:var(--gold); color:var(--white); }
+    .disclaimer { background:var(--cream); border-left:3px solid var(--stone); padding:1rem 1.5rem; margin-bottom:2.5rem; }
+    .disclaimer p { font-size:0.82rem; color:var(--stone); line-height:1.7; font-style:italic; }
+    .article-body { font-size:1.05rem; line-height:1.85; }
+    .article-body p { margin-bottom:1.5rem; }
+    .article-body p:first-of-type::first-letter { font-family:'Playfair Display',serif; font-size:3.5rem; font-weight:900; float:left; line-height:0.85; margin:0.1em 0.08em 0 0; color:var(--sierra); }
+    .article-body hr { border:none; border-top:2px solid var(--mist); margin:2.5rem 0; }
+    .article-body em { font-style:italic; }
+    .article-body strong { font-weight:700; }
+    .pullquote { border-left:3px solid var(--foothills); padding:1rem 1.5rem; margin:2rem 0; background:var(--cream); }
+    .pullquote p { font-family:'Playfair Display',serif; font-size:1.05rem; font-style:italic; line-height:1.65; color:var(--ink); margin:0; }
+    .series-box { background:var(--cream); border:1px solid var(--mist); border-left:3px solid var(--sierra); padding:1.25rem 1.5rem; margin:2.5rem 0; }
+    .series-label { font-family:'DM Mono',monospace; font-size:0.55rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--sierra); margin-bottom:0.5rem; }
+    .series-links { display:flex; flex-direction:column; gap:0.4rem; margin-top:0.5rem; }
+    .series-links a { font-size:0.85rem; color:var(--rust); text-decoration:none; }
+    .series-links a:hover { text-decoration:underline; }
+    .article-footer { margin-top:3rem; padding-top:2rem; border-top:2px solid var(--ink); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
+    .article-footer-author { font-family:'DM Mono',monospace; font-size:0.62rem; color:var(--stone); letter-spacing:0.1em; }
+    .article-footer-nav { display:flex; gap:1.5rem; }
+    .article-footer-nav a { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.12em; text-transform:uppercase; text-decoration:none; color:var(--stone); }
+    .article-footer-nav a:hover { color:var(--sierra); }
+    footer { background:var(--ink); color:var(--stone); padding:2rem clamp(1.5rem,5vw,4rem); margin-top:4rem; }
+    .footer-inner { max-width:860px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:2rem; flex-wrap:wrap; }
+    .footer-name { font-family:'Playfair Display',serif; font-size:0.95rem; font-weight:700; color:var(--white); }
+    .footer-tagline { font-family:'DM Mono',monospace; font-size:0.52rem; color:var(--stone); margin-top:0.2rem; }
+    .footer-link { font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; text-decoration:none; color:var(--stone); }
+    .footer-link:hover { color:var(--gold); }
+
+    .article-body .pull-quote { border-left:3px solid var(--foothills); margin:2rem 0; padding:0.5rem 0 0.5rem 1.5rem; font-family:'Playfair Display',serif; font-style:italic; font-size:1.2rem; line-height:1.6; color:var(--stone); }
+    .article-body .scene-break { text-align:center; margin:2.5rem 0; color:var(--mist); letter-spacing:0.8em; font-size:0.9rem; }
+    .sidebar-label { margin:3rem 0 1.5rem; font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--stone); text-align:center; border-top:1px solid var(--mist); padding-top:2rem; }
+    .aside { background:var(--cream); border-top:2px solid var(--foothills); padding:1.3rem 1.5rem; margin:1.5rem 0; }
+    .aside-title { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--foothills); margin-bottom:0.6rem; }
+    .aside p { font-size:0.92rem; line-height:1.75; color:var(--stone); margin-bottom:0.6rem; }
+    .aside p:last-child { margin-bottom:0; }
+  
+    @media (min-width:1080px){
+      .article-body .wide{
+        width:min(62rem, calc(100vw - 3rem));
+        max-width:none;
+        margin-left:50%;
+        transform:translateX(-50%);
+      }
+    }
+    .article-body .plate{ display:grid; gap:1.6rem; grid-template-columns:1fr; }
+    .article-body .card{ background:var(--cream); border:1px solid var(--mist); padding:1.1rem; box-shadow:0 1px 3px rgba(0,0,0,0.05); }
+    .article-body .card svg{ display:block; width:100%; height:auto; }
+
+</style>
+  <script>
+  (function(){
+    const KEY = 'memoir_auth', PW = 'memory';
+    if (sessionStorage.getItem(KEY) === '1') return;
+    document.documentElement.style.visibility = 'hidden';
+    function buildGate() {
+      var o = document.createElement('div');
+      o.id = 'gate-overlay';
+      o.style.cssText = 'position:fixed;inset:0;background:#f5f0e8;display:flex;align-items:center;justify-content:center;z-index:99999;font-family:Georgia,serif;';
+      o.innerHTML = '<div style="text-align:center;padding:3rem;max-width:380px;width:90%;border:2px solid #1c1a16;background:#f5f0e8;">'
+        + '<div style="font-family:monospace;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:#7a7268;margin-bottom:1rem;">Brooks Groves · Memoir</div>'
+        + '<div style="font-family:Georgia,serif;font-size:1.6rem;font-weight:700;color:#1c1a16;margin-bottom:0.5rem;">Private Archive</div>'
+        + '<div style="font-size:0.85rem;color:#7a7268;margin-bottom:2rem;font-style:italic;">Password required</div>'
+        + '<input id="gate-pw" type="password" placeholder="password" style="width:100%;padding:0.75rem 1rem;background:#ede8dc;border:1px solid #d6d0c4;color:#1c1a16;font-size:1rem;outline:none;margin-bottom:0.75rem;box-sizing:border-box;text-align:center;letter-spacing:0.1em;"/>'
+        + '<div id="gate-err" style="color:#8b3a2a;font-size:0.75rem;margin-bottom:0.75rem;min-height:1rem;"></div>'
+        + '<button id="gate-btn" style="width:100%;padding:0.75rem;background:#1c1a16;border:none;color:#fdfaf4;font-size:0.85rem;cursor:pointer;letter-spacing:0.1em;font-family:monospace;text-transform:uppercase;">Enter</button>'
+        + '<div style="margin-top:1rem;"><a href="https://memoir.brooksgroves.com" style="font-family:monospace;font-size:0.6rem;color:#7a7268;text-transform:uppercase;letter-spacing:0.1em;text-decoration:none;">← All Pieces</a></div>'
+        + '</div>';
+      document.body.appendChild(o);
+      document.documentElement.style.visibility = 'visible';
+      var inp = document.getElementById('gate-pw');
+      inp.focus();
+      function tryPw() {
+        var pw = inp.value.trim().toLowerCase();
+        if (!pw) { document.getElementById('gate-err').textContent = 'Please enter the password.'; return; }
+        if (pw === PW) {
+          sessionStorage.setItem(KEY, '1');
+          document.getElementById('gate-overlay').remove();
+        } else {
+          document.getElementById('gate-err').textContent = 'Incorrect password.';
+          inp.value = ''; inp.focus();
+        }
+      }
+      document.getElementById('gate-btn').addEventListener('click', tryPw);
+      inp.addEventListener('keydown', function(e){ if(e.key==='Enter') tryPw(); });
+    }
+    if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', buildGate); } else { buildGate(); }
+  })();
+  </script>
+</head>
+<body>
+<div class="topline"></div>
+<header>
+  <div class="masthead-inner">
+    <a href="https://brooksgroves.com" class="site-name">Brooks Groves</a>
+    <a href="https://memoir.brooksgroves.com" class="header-link">← Memoir</a>
+  </div>
+</header>
+
+<div class="article-wrap">
+  <a href="https://memoir.brooksgroves.com" class="article-back">← All Stories</a>
+  <div class="article-num">Memoir · A Found Report · Autumn 1987</div>
+  <p class="article-kicker">A Semester Tracking Reebok &middot; Black Monday &middot; The Chart Nobody Unfolded</p>
+  <h1 class="article-title">Because Life Is Not a Spectator Sport</h1>
+  <div class="article-meta">
+    <span>Sonora, California · Period Two Economics · 1987</span>
+    <span>Brooks Groves</span>
+  </div>
+  <div class="article-tags">
+    <a href="https://brooksgroves.com/tags.html#Memoir" class="article-tag-pill">Memoir</a>
+    <a href="https://brooksgroves.com/tags.html#Economics" class="article-tag-pill">Economics</a>
+    <a href="https://brooksgroves.com/tags.html#1980s" class="article-tag-pill">1980s</a>
+    <a href="https://brooksgroves.com/tags.html#Groveland" class="article-tag-pill">Groveland</a>
+    <a href="https://brooksgroves.com/tags.html#Wall%20Street" class="article-tag-pill">Wall Street</a>
+    <a href="https://brooksgroves.com/tags.html#Friendship" class="article-tag-pill">Friendship</a>
+  </div>
+
+  <div class="disclaimer"></div>
+
+  <div class="article-body">
+
+  <p style="font-style:italic; color:var(--stone); font-size:0.95rem; border-left:3px solid var(--mist); padding-left:1.2rem; margin-bottom:2.5rem;">A 1987 economics assignment, found in the same garage box as the Whitney notebook. Track a stock on the New York Stock Exchange. Write it up weekly. Thirteen weeks. A seventeen-year-old picked Reebok because he played tennis and could already draw the logo &mdash; and then, without knowing it, spent a semester hand-copying the largest one-day stock market collapse in American history out of the newspaper, sixty-three days in a row.</p>
+
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">The Same Box</div>
+  <p>The Mt. Whitney notebook was not the only thing in that box.</p>
+  <p>Underneath it, in a blue three-ring binder with the cover coming away from the spine, was a stack of ruled paper about a quarter of an inch thick. Handwritten. Blue ballpoint, with a lot of red pen on the first few pages and then, abruptly, none.</p>
+  <p>On the front, hand-lettered inside a border I'd drawn in green and blue felt-tip:</p>
+  <blockquote style="border-left:3px solid var(--mist);margin:1.3rem 0;padding:0.4rem 0 0.4rem 1.3rem;color:var(--stone);font-style:italic;font-size:0.96rem;line-height:1.75;"><strong>Semester report</strong><br><br>
+<strong>NEW YORK STOCK EXCHANGE</strong><br>and<br><strong>REEBOK INTERNATIONAL LTD.</strong><br><br>
+Presented to Mr. Gritz; Period Two Economics<br>on the 18th of December 1987.<br><br>
+A Simulated Professional Comparison:<br>By<br>Brooks Groves</blockquote>
+  <p>Along the bottom, in bubble letters, the word <em>Reebok</em> three times, a Union Jack, and the company slogan:</p>
+  <blockquote style="border-left:3px solid var(--mist);margin:1.3rem 0;padding:0.4rem 0 0.4rem 1.3rem;color:var(--stone);font-style:italic;font-size:0.96rem;line-height:1.75;"><strong>Because life is not a spectator sport&reg;</strong></blockquote>
+  <p>And then, in tiny print underneath, in the same handwriting:</p>
+  <blockquote style="border-left:3px solid var(--mist);margin:1.3rem 0;padding:0.4rem 0 0.4rem 1.3rem;color:var(--stone);font-style:italic;font-size:0.96rem;line-height:1.75;">Copied with permission Reebok International Limited 1987. All rights reserved.</blockquote>
+  <p>Nobody had given me permission. I was seventeen and I had drawn a corporate logo on a school assignment, and it had occurred to me, unprompted, that I might be in some kind of legal trouble. So I wrote myself an indemnity.</p>
+  <p>In the middle of the page, circled in red: <strong>75.</strong></p>
+  <hr>
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">Why Reebok</div>
+  <p>Because they were the shoe.</p>
+  <p>That's the entire answer, and it doesn't need dressing up. It was 1987, I played tennis, and everybody wanted Reeboks &mdash; the white leather ones with the Union Jack on the side. Given an assignment to pick a company off the New York Stock Exchange and follow it for a semester, I picked the one whose logo I could already draw from memory.</p>
+  <p>Which is, I'll point out, roughly the level of analysis most people bring to it.</p>
+  <p>There's a page near the back of the report that makes the whole thing plain: a scrapbook page, clippings taped down alongside logo stickers peeled off shoeboxes, each one annotated in ballpoint with when I'd bought them. <strong>AVIA &mdash; bought 4-86. Ellesse &mdash; bought 12-87, US ONLY.</strong> And a black <strong>Reebok Performance Tennis</strong> sticker, which is not a coincidence, because that's the shoe I actually played in.</p>
+  <p>The economics assignment and the sneaker collection are, at that point, the same document.</p>
+  <hr>
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">The Assignment</div>
+  <p>Track a stock. Write it up weekly. Thirteen weeks. Explain what moved it.</p>
+  <p>I started on the eighth of September, 1987.</p>
+  <blockquote style="border-left:3px solid var(--mist);margin:1.3rem 0;padding:0.4rem 0 0.4rem 1.3rem;color:var(--stone);font-style:italic;font-size:0.96rem;line-height:1.75;">At the start of this project the highest the stock market was ever at was 2722.42 on August 25, 1987. On Friday the 4th of September the base price was at 2562. Market closed on the 7th (Labor Day). September 8, 1987, Tuesday, the market closed at 2545.12, dropping 16.88 points from the previous close of 2562.</blockquote>
+  <p>Before I go further I should say where those numbers came from, because in 2026 &ldquo;I looked up the closing price&rdquo; means nothing, and in 1987 it meant a trip to the library.</p>
+  <p>There was no internet. No app. No way, from a house in Tuolumne County, to find out what Reebok closed at on a Tuesday. The number existed in exactly two places I could reach: the <em>Union Democrat</em>, our local paper, and the <em>Wall Street Journal</em>, which the county library carried. Getting the data &mdash; the data this entire report is <em>made of</em> &mdash; meant physically going to the library, finding the paper, and reading it out of the agate stock tables: one share price in eighths, in a column of a thousand other share prices, copied out by hand.</p>
+  <p>Every trading day. For thirteen weeks. Sixty-three times.</p>
+  <div class="aside">
+    <div class="aside-title">Reading a Stock Table in 1987</div>
+    <p style="margin:0 0 0.7rem;color:var(--stone);line-height:1.7;font-size:0.9rem;">The financial pages ran what's called agate type &mdash; tiny, dense, unadorned text, named for the old six-point printer's font &mdash; and a stock table like the one in the <em>Wall Street Journal</em> could list well over two thousand issues on the NYSE alone, each one squeezed into a single line: ticker, day's high, low, close, volume, and the change from the day before.</p>
+    <p style="margin:0 0 0.7rem;color:var(--stone);line-height:1.7;font-size:0.9rem;">Prices ran in fractions of a dollar down to eighths &mdash; $20&#8539; &mdash; a convention that traced back to Spanish colonial coinage and wasn't retired for U.S. equities until 2001. Finding one company's line inside that grid, correctly, sixty-three days running, was itself a small feat of attention. There was no search box. There was a magnifying glass, if you were lucky, and good eyesight, if you weren't.</p>
+  </div>
+  <p>I want that on the record, because the modern version of this assignment is a spreadsheet that fills itself. The 1987 version was a teenager deciding, sixty-three separate times, that the number was worth the trip.</p>
+  <p>Above that paragraph, in red, the first thing Mr. Gritz ever wrote on the document:</p>
+  <blockquote style="border-left:3px solid var(--mist);margin:1.3rem 0;padding:0.4rem 0 0.4rem 1.3rem;color:var(--stone);font-style:italic;font-size:0.96rem;line-height:1.75;"><strong>chart?</strong></blockquote>
+  <p>Hold onto that. It comes back &mdash; and not the way you'd think.</p>
+  <p>Mr. Gritz &mdash; Robert Gritz, I believe, though I only ever called him Mr. Gritz &mdash; was intense. That is the word, and anyone who had him will know exactly what it means. Period Two Economics was taught by a man whose actual subject was the Cold War. The Iron Curtain. The domino theory. Reagan. Communists &mdash; always, relentlessly, communists. You came in for supply and demand and left having been briefed on the strategic situation in Eastern Europe.</p>
+  <p>I want to be clear that I liked him. You don't remember a teacher's obsessions forty years later unless he made them interesting.</p>
+  <p>Zack was in that class. Same room, same period, same lectures on the Iron Curtain. There are a lot of stories from Period Two Economics, and most of them are not about economics.</p>
+  <hr>
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">Weeks One Through Four: Nothing</div>
+  <p>For a month, nothing happens, and I dutifully record nothing happening.</p>
+  <blockquote style="border-left:3px solid var(--mist);margin:1.3rem 0;padding:0.4rem 0 0.4rem 1.3rem;color:var(--stone);font-style:italic;font-size:0.96rem;line-height:1.75;">Reebok remains stable in the first week and little change is indicated.</blockquote>
+  <blockquote style="border-left:3px solid var(--mist);margin:1.3rem 0;padding:0.4rem 0 0.4rem 1.3rem;color:var(--stone);font-style:italic;font-size:0.96rem;line-height:1.75;">Reebok is obviously following a downward trend much like the Dow Jones is starting to do.</blockquote>
+  <blockquote style="border-left:3px solid var(--mist);margin:1.3rem 0;padding:0.4rem 0 0.4rem 1.3rem;color:var(--stone);font-style:italic;font-size:0.96rem;line-height:1.75;">Reebok has demonstrated that a drop is apparent due to heavy program trading and restlessness among the Koreans.</blockquote>
+  <p>Every day: the Dow's close, the point change, the reason as reported, and where Reebok finished, in eighths. Twenty and an eighth. Nineteen and a half. Eighteen. Seventeen. Fifteen and five eighths.</p>
+  <p>The red pen is working hard through here. <em>Awkward. Fragment. Fragment.</em> Every bare date circled. Every unpunctuated figure circled. And then, at the bottom of week two, this:</p>
+  <blockquote style="border-left:3px solid var(--mist);margin:1.3rem 0;padding:0.4rem 0 0.4rem 1.3rem;color:var(--stone);font-style:italic;font-size:0.96rem;line-height:1.75;"><strong>Gross grammatical, spelling, &amp; punctuation errors &mdash; I&rsquo;ve stopped marking the errors at this point.</strong></blockquote>
+  <p>He was two weeks in. There were eleven to go.</p>
+  <hr>
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">What He Was Actually Right About</div>
+  <p>I want to defend the kid for one paragraph, because nobody did at the time.</p>
+  <p>From week two onward he keeps coming back to one idea, and it is not an obvious idea for a seventeen-year-old to have. Reebok is falling faster than the market. Why? Because of South Korea.</p>
+  <blockquote style="border-left:3px solid var(--mist);margin:1.3rem 0;padding:0.4rem 0 0.4rem 1.3rem;color:var(--stone);font-style:italic;font-size:0.96rem;line-height:1.75;">Also due to the many Korean strikes from the political side of that country where the products are made.</blockquote>
+  <p>Marked: <em>fragment.</em></p>
+  <p>He keeps at it. Week three, week eight, week ten. And in the closing section he lays it out properly:</p>
+  <blockquote style="border-left:3px solid var(--mist);margin:1.3rem 0;padding:0.4rem 0 0.4rem 1.3rem;color:var(--stone);font-style:italic;font-size:0.96rem;line-height:1.75;">The place where they manufacture 72% of there total products, the land of South Korea where many political and labor strikes have occured over the past year. Korea is one of the Asian Dragons where many US products are made but like Hong Kong and Tiawan they want more money, so products will cost more to produce. Reebok will be cutting there production in Korea by 50% with new plants being operated in Indonesia and Thailand.</blockquote>
+  <p>Taped into the back of the binder is a <em>Wall Street Journal</em> column, &ldquo;Heard on the Street,&rdquo; headlined <strong>Reebok, Other Makers Show Varying Levels of Vulnerability to South Korean Protests.</strong> In it, Reebok's chairman says almost exactly what the student wrote: Korean production coming down from a hundred percent, new plants in Thailand and Indonesia.</p>
+  <p>There's a second clipping a few pages on &mdash; <strong>Reebok's Barclay to Quit Post as Division President</strong> &mdash; reporting that the company's number-three executive was stepping down from the footwear division specifically to work on the South Korea dependency. That's the source of the otherwise baffling line at the end of week ten:</p>
+  <blockquote style="border-left:3px solid var(--mist);margin:1.3rem 0;padding:0.4rem 0 0.4rem 1.3rem;color:var(--stone);font-style:italic;font-size:0.96rem;line-height:1.75;">Also the No. 3 executive quiet his division of the footwear department.</blockquote>
+  <p>Which is, admittedly, four words of nonsense. But he had read the article, understood what it meant, and connected it to a share price he'd been tracking for two months. He just couldn't spell &ldquo;quit.&rdquo;</p>
+  <p>He found the concentration risk, sourced it, tracked its effect on the price across three months, and named the mitigation. In 1987. Nobody was calling it supply-chain risk yet.</p>
+  <p>The spelling is atrocious. The analysis is correct.</p>
+  <hr>
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">Weeks Five and Six: The Records Start Falling</div>
+  <p>This is where, reading it now, my stomach goes.</p>
+  <p><strong>Week five, Tuesday the sixth of October:</strong></p>
+  <blockquote style="border-left:3px solid var(--mist);margin:1.3rem 0;padding:0.4rem 0 0.4rem 1.3rem;color:var(--stone);font-style:italic;font-size:0.96rem;line-height:1.75;">The Dow closed at 2548.63, down 91.55. The fear of high interest rates was relevent today. Many computer selling programs overloaded again.</blockquote>
+  <p>Down ninety-one and a half points. The largest single-day point drop in the history of the Dow Jones Industrial Average.</p>
+  <p>He notes it and moves on to Wednesday.</p>
+  <p><strong>Week six, Wednesday the fourteenth:</strong></p>
+  <blockquote style="border-left:3px solid var(--mist);margin:1.3rem 0;padding:0.4rem 0 0.4rem 1.3rem;color:var(--stone);font-style:italic;font-size:0.96rem;line-height:1.75;">The Dow closed at 2412.70, down 95.46. This is the highest drop in the Dow to date. The trade deficit was somewhat higher than expected.</blockquote>
+  <p>A new record. Eight days after the last one.</p>
+  <p><strong>Week six, Friday the sixteenth:</strong></p>
+  <blockquote style="border-left:3px solid var(--mist);margin:1.3rem 0;padding:0.4rem 0 0.4rem 1.3rem;color:var(--stone);font-style:italic;font-size:0.96rem;line-height:1.75;">The Dow closed at 2246.73, down 108.36. This is the largest drop in stock market history to date. Down because of the downward trend caused on Wednesday. The problem gets worse with program selling.</blockquote>
+  <p>Another new record. Two days after the last one.</p>
+  <p>Three all-time records inside eleven days, each one noted in a single flat sentence, each one immediately followed by where Reebok closed.</p>
+  <p>And then the week-six summary, four words long, which I would now describe as the most quietly ominous thing in the document:</p>
+  <blockquote style="border-left:3px solid var(--mist);margin:1.3rem 0;padding:0.4rem 0 0.4rem 1.3rem;color:var(--stone);font-style:italic;font-size:0.96rem;line-height:1.75;"><strong>A prediction of a drop most likely ahead.</strong></blockquote>
+  <p>He wrote that on Friday the sixteenth of October, 1987.</p>
+  <div class="aside">
+    <div class="aside-title">Program Trading &amp; Portfolio Insurance</div>
+    <p style="margin:0 0 0.7rem;color:var(--stone);line-height:1.7;font-size:0.9rem;">The phrase the report keeps circling &mdash; <q>program trading,</q> <q>computer selling programs</q> &mdash; refers to a strategy called portfolio insurance, then new and fashionable among large institutional investors. The idea was to hedge a stock portfolio by automatically selling stock-index futures as prices fell, using a computer model to decide when and how much, in theory limiting the downside without ever having to sell the underlying stocks.</p>
+    <p style="margin:0 0 0.7rem;color:var(--stone);line-height:1.7;font-size:0.9rem;">The flaw only showed up under stress: as prices fell, the models triggered more selling, which pushed prices down further, which triggered more selling. A hedge designed to work for any one investor became, once enough investors ran the same model at the same time, a machine for manufacturing exactly the crash it was built to avoid. The Brady Commission, convened by the Reagan administration to investigate Black Monday, named it as a central cause in its report the following January &mdash; six weeks after a high school senior in Tuolumne County had already written <q>the problem gets worse with program selling</q> in a school binder.</p>
+  </div>
+  <hr>
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">Week Seven</div>
+  <blockquote style="border-left:3px solid var(--mist);margin:1.3rem 0;padding:0.4rem 0 0.4rem 1.3rem;color:var(--stone);font-style:italic;font-size:0.96rem;line-height:1.75;">On Monday 19, the Dow Jones closed at 1738.41, down 508.33. This was the biggest drop ever in history; the name &ldquo;Black Monday&rdquo; was given for this day. This was the lowest the market has been since April 7, 1986.<br><br>The reasons for this have many possible answers. One reason might have been that there was no cooperation with trade partners, and this caused some confusion. The market was also very vulnerable to foreign investors who have been taking advantage of the low prices. Others claim part of the drop on the trade deficit and the effects on the falling dollar. These same investors have shown a drop in confidence for Reagan, to whom some of the blame has been placed upon.<br><br>Reebok closed at 15&#188;, down &#190;.</blockquote>
+  <p>Down five hundred and eight points. Twenty-two and a half percent of the market, gone in a single session &mdash; nearly twice the worst day of 1929. Half a trillion dollars.</p>
+  <p>He gets the number right. <em>Down 508.33.</em> The official figure is 508.32, and his own arithmetic explains the difference: his Friday close was a penny off, and he subtracted rather than copied. The math is correct. He checked his own work.</p>
+  <p>He lists four plausible causes, which is four more than most of Wall Street managed that week.</p>
+  <p>And then he writes: <em>Reebok closed at 15&#188;, down &#190;.</em></p>
+  <p>And then he goes on to Tuesday.</p>
+  <hr>
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">What He Didn’t Know</div>
+  <p>I asked myself, reading this in the garage, whether I remembered any of it. Whether the nineteenth of October 1987 was a day in my life.</p>
+  <p>It wasn't. Not really.</p>
+  <p>I was seventeen in Tuolumne County. Sonora High School. This was rural California in the Reagan years &mdash; a county economy built on timber and tourists and whatever else, several hours and an entire universe away from lower Manhattan. Wall Street was a thing on television. Nobody I knew owned stock. The crash of the century happened on a Monday, and I am fairly sure I went to school on Tuesday, and it was just Tuesday.</p>
+  <p>I did not know or understand the magnitude of what I was writing down.</p>
+  <p>That's the whole document, right there. He has, in front of him, correct to the penny, the single largest one-day collapse in the history of American finance. He writes it up accurately. He identifies the causes. He notes where his sneaker company closed. And he does not know &mdash; cannot know, has no way of knowing &mdash; that he is holding a piece of history in a blue three-ring binder for a grade.</p>
+  <p>The Whitney notebook has the same quality, and I've said so elsewhere: it was written by someone who didn't know how the story came out. This is a harder version. He didn't know what the story <em>was.</em></p>
+  <hr>
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">The Dominoes</div>
+  <p>Here is the thing I could not have appreciated at seventeen and cannot stop thinking about now.</p>
+  <p>I was writing this paper for a man who talked about the domino theory almost every day.</p>
+  <p>And in October of 1987 the dominoes fell &mdash; in almost exactly the sequence he described in the abstract, at almost exactly the speed. It started in Hong Kong, where the Hang Seng collapsed and the exchange simply shut its doors for the rest of the week. It moved west through Asia. It hit Europe as those markets opened. By the time New York rang the bell on Monday morning, the thing was already global and already unstoppable, and the Dow lost a fifth of its value before lunch.</p>
+  <p>I recorded that cascade myself, in week eight, in one sentence:</p>
+  <blockquote style="border-left:3px solid var(--mist);margin:1.3rem 0;padding:0.4rem 0 0.4rem 1.3rem;color:var(--stone);font-style:italic;font-size:0.96rem;line-height:1.75;">Hong Kong, Tokyo and Europe markets in panic, causing drops in those markets.</blockquote>
+  <p>That is a domino theory. It is a correct and contemporaneously observed domino theory. It just wasn't the one we were being taught.</p>
+  <p>The threat we spent that semester preparing for was ideological, external, and on the other side of a wall. The one that actually knocked the world over that autumn was internal, mechanical, and mostly the product of American computers executing American portfolio-insurance strategies faster than American humans could stop them. Twenty-five months later the Berlin Wall came down. The Iron Curtain didn't fall on us. Wall Street did.</p>
+  <p>And there's one more layer, which I only saw when I plotted the data.</p>
+  <p>The thing dragging Reebok down all semester &mdash; the thing I kept writing about and kept getting marked <em>fragment</em> for &mdash; was labour unrest in South Korea. Nineteen eighty-seven was the year South Korea convulsed: mass pro-democracy protests through the summer, then thousands of strikes across the industrial economy. A frontline Cold War state, the exact kind of place Period Two Economics was concerned with, having a genuine political upheaval.</p>
+  <p>I was tracking it. Not because I was interested in Korean democratisation. Because it was making my sneakers more expensive.</p>
+  <div class="pull-quote">That's the assignment in one line. A seventeen-year-old in a Cold War classroom, accidentally documenting the arrival of the globalised economy, one shoe at a time.</div>
+  <hr>
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">Weeks Eight Through Thirteen: The Long Unwinding</div>
+  <p>The remarkable thing about the back half is how ordinary it is. The world has just fallen over, and the assignment continues, because the assignment was thirteen weeks.</p>
+  <blockquote style="border-left:3px solid var(--mist);margin:1.3rem 0;padding:0.4rem 0 0.4rem 1.3rem;color:var(--stone);font-style:italic;font-size:0.96rem;line-height:1.75;">The bond market was up although no reason is apparent to me.</blockquote>
+  <blockquote style="border-left:3px solid var(--mist);margin:1.3rem 0;padding:0.4rem 0 0.4rem 1.3rem;color:var(--stone);font-style:italic;font-size:0.96rem;line-height:1.75;">The market was somewhat &ldquo;dead,&rdquo; with no rally and no sell-offs.</blockquote>
+  <blockquote style="border-left:3px solid var(--mist);margin:1.3rem 0;padding:0.4rem 0 0.4rem 1.3rem;color:var(--stone);font-style:italic;font-size:0.96rem;line-height:1.75;">Gold prices down. This is strange because when the dollar falls, gold and precious metals should be up because of their stableness.</blockquote>
+  <blockquote style="border-left:3px solid var(--mist);margin:1.3rem 0;padding:0.4rem 0 0.4rem 1.3rem;color:var(--stone);font-style:italic;font-size:0.96rem;line-height:1.75;">Thursday &mdash; Turkey Day &mdash; closed.</blockquote>
+  <blockquote style="border-left:3px solid var(--mist);margin:1.3rem 0;padding:0.4rem 0 0.4rem 1.3rem;color:var(--stone);font-style:italic;font-size:0.96rem;line-height:1.75;">Reebok is preparing for the Christmas holidays. Good news may be ahead.</blockquote>
+  <p>On the twenty-second of October, with the market having lost roughly a third of its value in two months, he records Reebok down four and three quarters and adds a two-word editorial:</p>
+  <blockquote style="border-left:3px solid var(--mist);margin:1.3rem 0;padding:0.4rem 0 0.4rem 1.3rem;color:var(--stone);font-style:italic;font-size:0.96rem;line-height:1.75;">Reebok is now suffering from the big drop; down 4&#190; <strong>(Big Deal).</strong></blockquote>
+  <p>By the fourth of December, the last day of the assignment, the Dow is at 1,766 and Reebok is at 9. It started the semester at twenty and an eighth. It had been in the forties in January.</p>
+  <hr>
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">The Chart</div>
+  <p>The very first mark on the very first page, made before Mr. Gritz had read a hundred words, is one question in red ink:</p>
+  <blockquote style="border-left:3px solid var(--mist);margin:1.3rem 0;padding:0.4rem 0 0.4rem 1.3rem;color:var(--stone);font-style:italic;font-size:0.96rem;line-height:1.75;"><strong>chart?</strong></blockquote>
+  <p>I found the answer at the bottom of the binder, folded into a block about the size of a paperback.</p>
+  <p>Four sheets of Mead graph paper, taped together along the edges into a single foldout roughly two feet on a side. Two colours: a red line for the Dow Jones, a green line for Reebok.</p>
+  <p>He turned the whole thing ninety degrees from how you'd expect. The two scales run <em>across the top</em> of the sheet, side by side &mdash; the Dow reading down from 2650 to 1700, Reebok from 22 down to 9 &mdash; because a two-thousand-point index and a seventeen-dollar stock cannot share an axis, and he'd worked that out for himself and given each its own. And then time runs <em>down the page:</em> every trading day labelled in a column down the spine, 9-8, 9-9, 9-10, 9-11, then 9-14, and on and on, with the weekday under each one, all the way down four taped sheets.</p>
+  <p>Lettered along the axis, in his hand:</p>
+  <blockquote style="border-left:3px solid var(--mist);margin:1.3rem 0;padding:0.4rem 0 0.4rem 1.3rem;color:var(--stone);font-style:italic;font-size:0.96rem;line-height:1.75;"><strong>Date from September 8, 1987 to December 16, 1987</strong></blockquote>
+  <p>December sixteenth. The report was due on the eighteenth. He was still plotting points two days before he handed it in &mdash; eight trading days past where the written weeks stop, which means he kept going after the assignment's text was finished, for no marks, because the line wasn't done.</p>
+  <p>And there, near the middle, where week seven falls: the red Dow line lurches sideways off its own track in a single savage step &mdash; Black Monday &mdash; so far, so fast, that he had to run it clear across the taped seam between two sheets. The green Reebok line, meanwhile, had begun peeling away downward weeks earlier and simply never comes back. The Korea divergence, the thing he kept getting marked <em>fragment</em> for, is right there in two colours of ink. You can see it from across a room.</p>
+  <p>He made the chart. In two colours, with a split axis, by hand, on graph paper he had to tape together because a single sheet couldn't hold the run. Out of numbers he'd walked to the library to copy, one day at a time, all autumn.</p>
+  <p>He still got a 75.</p>
+  <p>I don't know the sequence. Maybe Mr. Gritz wrote <em>chart?</em> on page one and never got to the back. Maybe he wanted one embedded in each weekly write-up rather than folded up at the end. Maybe he saw it and it didn't move him &mdash; the red pen stops in week two, so there's no way to know what he made of anything after that.</p>
+  <p>What I do know is that the kid did the work. Not just the assigned work &mdash; he stayed eight days past the end of it, plotting a line nobody was going to grade, because he wanted to see the shape.</p>
+  <hr>
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">Redrawn, Thirty-Nine Years Later</div>
+  <p>When I found all this in the garage, the first thing I did &mdash; before I read it properly, before I called anybody &mdash; was type all sixty-three days into a spreadsheet, check them against the historical record, and plot them.</p>
+  <p>Then I found his.</p>
+  <p>They're the same chart. Mine has better type. His has tape.</p>
+<section class="wide">
+  <div class="plate">
+    <div>
+      <div class="card">
+        <svg viewBox="0 0 1000 480" role="img" aria-label="Dual-axis chart of the Dow Jones Industrial Average and Reebok International stock price, 8 September to 4 December 1987, showing Reebok diverging downward in week three and both lines collapsing on Black Monday, 19 October.">
+  <text class="t-geo" x="78" y="18">THE DOW &amp; REEBOK &#183; 8 SEP&#8211;4 DEC 1987</text>
+
+  <line class="crest" x1="78" y1="405.7" x2="922" y2="405.7"/>
+  <text class="t-sm" x="68" y="408.7" text-anchor="end">1,700</text>
+  <line class="crest" x1="78" y1="332.6" x2="922" y2="332.6"/>
+  <text class="t-sm" x="68" y="335.6" text-anchor="end">1,900</text>
+  <line class="crest" x1="78" y1="259.4" x2="922" y2="259.4"/>
+  <text class="t-sm" x="68" y="262.4" text-anchor="end">2,100</text>
+  <line class="crest" x1="78" y1="186.3" x2="922" y2="186.3"/>
+  <text class="t-sm" x="68" y="189.3" text-anchor="end">2,300</text>
+  <line class="crest" x1="78" y1="113.1" x2="922" y2="113.1"/>
+  <text class="t-sm" x="68" y="116.1" text-anchor="end">2,500</text>
+  <line class="crest" x1="78" y1="40.0" x2="922" y2="40.0"/>
+  <text class="t-sm" x="68" y="43.0" text-anchor="end">2,700</text>
+  <text class="t-sm" x="932" y="401.4" fill="var(--sierra)">$8</text>
+  <text class="t-sm" x="932" y="324.6" fill="var(--sierra)">$11</text>
+  <text class="t-sm" x="932" y="247.8" fill="var(--sierra)">$14</text>
+  <text class="t-sm" x="932" y="171.0" fill="var(--sierra)">$17</text>
+  <text class="t-sm" x="932" y="94.2" fill="var(--sierra)">$20</text>
+  
+  <line class="crest" x1="78.0" y1="424" x2="78.0" y2="429"/>
+  <text class="t-sm" x="78.0" y="441" text-anchor="middle">SEP</text>
+  <line class="crest" x1="301.1" y1="424" x2="301.1" y2="429"/>
+  <text class="t-sm" x="301.1" y="441" text-anchor="middle">OCT</text>
+  <line class="crest" x1="611.6" y1="424" x2="611.6" y2="429"/>
+  <text class="t-sm" x="611.6" y="441" text-anchor="middle">NOV</text>
+  <line class="crest" x1="892.9" y1="424" x2="892.9" y2="429"/>
+  <text class="t-sm" x="892.9" y="441" text-anchor="middle">DEC</text>
+  
+
+  <!-- Korea divergence marker -->
+  <line class="crest" x1="223.5" y1="44" x2="223.5" y2="424" stroke-dasharray="2 3"/>
+  <text class="t-sm" x="229.5" y="56" fill="var(--sierra)">Reebok starts falling</text>
+  <text class="t-sm" x="229.5" y="67" fill="var(--sierra)">&#8212; Korea, week 3</text>
+
+  <!-- three records in eleven days -->
+  <line x1="349.6" y1="91.2" x2="446.6" y2="91.2" stroke="var(--rust)" stroke-width="1" opacity=".5"/>
+  <line x1="349.6" y1="86.2" x2="349.6" y2="96.2" stroke="var(--rust)" stroke-width="1" opacity=".5"/>
+  <line x1="446.6" y1="86.2" x2="446.6" y2="96.2" stroke="var(--rust)" stroke-width="1" opacity=".5"/>
+  <text class="t-sm" x="398.1" y="82.2" text-anchor="middle">three record point-drops, eleven days</text>
+
+  <!-- fills and lines -->
+  <path class="prof-fill" d="M 78.0,424.0 L 78.0,96.6 L 87.7,95.1 L 97.4,85.3 L 107.1,73.4 L 136.2,71.8 L 145.9,88.8 L 155.6,102.1 L 165.3,102.9 L 175.0,104.1 L 204.1,115.8 L 213.8,88.3 L 223.5,81.8 L 233.2,88.9 L 242.9,87.5 L 272.0,76.0 L 281.7,80.0 L 291.4,77.9 L 301.1,62.2 L 310.8,61.6 L 339.9,61.9 L 349.6,95.4 L 359.3,94.5 L 369.0,107.1 L 378.7,119.6 L 407.8,123.6 L 417.5,110.2 L 427.2,145.1 L 436.9,166.1 L 446.6,205.8 L 475.7,391.7 L 485.4,354.1 L 495.1,285.8 L 504.9,314.1 L 514.6,314.0 L 543.7,371.4 L 553.4,352.1 L 563.1,352.0 L 572.8,318.6 L 582.5,298.4 L 611.6,290.8 L 621.3,309.3 L 631.0,316.0 L 640.7,301.3 L 650.4,311.0 L 679.5,332.5 L 689.2,340.6 L 698.9,332.9 L 708.6,310.6 L 718.3,319.8 L 747.4,314.6 L 757.1,324.4 L 766.8,318.3 L 776.5,356.2 L 786.2,349.5 L 815.3,324.1 L 825.0,309.3 L 834.7,315.4 L 854.1,328.7 L 883.2,356.9 L 892.9,353.7 L 902.6,351.2 L 912.3,377.7 L 922.0,381.6 L 922.0,424.0 Z" fill="var(--rust)" opacity=".08"/>
+  <polyline points="78.0,96.6 87.7,95.1 97.4,85.3 107.1,73.4 136.2,71.8 145.9,88.8 155.6,102.1 165.3,102.9 175.0,104.1 204.1,115.8 213.8,88.3 223.5,81.8 233.2,88.9 242.9,87.5 272.0,76.0 281.7,80.0 291.4,77.9 301.1,62.2 310.8,61.6 339.9,61.9 349.6,95.4 359.3,94.5 369.0,107.1 378.7,119.6 407.8,123.6 417.5,110.2 427.2,145.1 436.9,166.1 446.6,205.8 475.7,391.7 485.4,354.1 495.1,285.8 504.9,314.1 514.6,314.0 543.7,371.4 553.4,352.1 563.1,352.0 572.8,318.6 582.5,298.4 611.6,290.8 621.3,309.3 631.0,316.0 640.7,301.3 650.4,311.0 679.5,332.5 689.2,340.6 698.9,332.9 708.6,310.6 718.3,319.8 747.4,314.6 757.1,324.4 766.8,318.3 776.5,356.2 786.2,349.5 815.3,324.1 825.0,309.3 834.7,315.4 854.1,328.7 883.2,356.9 892.9,353.7 902.6,351.2 912.3,377.7 922.0,381.6" fill="none" stroke="var(--rust)" stroke-width="2" stroke-linejoin="round"/>
+  <polyline points="78.0,88.0 87.7,91.2 97.4,91.2 107.1,91.2 136.2,104.0 155.6,97.6 165.3,104.0 175.0,113.6 204.1,142.4 213.8,168.0 223.5,155.2 233.2,164.8 242.9,203.2 272.0,180.8 291.4,174.4 301.1,152.0 310.8,123.2 339.9,126.4 349.6,142.4 359.3,168.0 369.0,168.0 378.7,187.2 407.8,187.2 417.5,177.6 427.2,161.6 436.9,184.0 446.6,193.6 475.7,212.8 485.4,337.6 495.1,321.6 504.9,273.6 514.6,296.0 543.7,318.4 553.4,353.6 563.1,350.4 572.8,334.4 582.5,312.0 621.3,302.4 631.0,308.8 640.7,299.2 650.4,296.0 689.2,328.0 698.9,334.4 708.6,321.6 718.3,324.8 747.4,324.8 757.1,328.0 766.8,324.8 776.5,337.6 786.2,334.4 815.3,328.0 825.0,328.0 834.7,328.0 854.1,337.6 883.2,347.2 892.9,360.0 902.6,360.0 912.3,353.6 922.0,372.8" fill="none" stroke="var(--sierra)" stroke-width="2" stroke-linejoin="round"/>
+
+  <!-- Black Monday -->
+  <circle cx="475.7" cy="391.7" r="4.5" fill="var(--rust)" stroke="var(--parchment)" stroke-width="1.4"/>
+  <line x1="475.7" y1="399.7" x2="475.7" y2="424" class="crest" stroke-dasharray="2 3"/>
+  <text class="t-key" x="475.7" y="379.7" text-anchor="middle">BLACK MONDAY</text>
+  <text class="t-sm" x="475.7" y="390.7" text-anchor="middle">&#8722;508.32 &#183; &#8722;22.6%</text>
+
+  <!-- start/end labels -->
+  <text class="t-key" x="80.0" y="42.0">DOW</text>
+  <text class="t-key" x="80.0" y="53.0" fill="var(--sierra)">REEBOK</text>
+  <text class="t-sm" x="918.0" y="399.6" text-anchor="end">1,766</text>
+  <text class="t-sm" x="918.0" y="364.8" text-anchor="end" fill="var(--sierra)">$9</text>
+
+  <text class="t-sm" x="922" y="466" text-anchor="end">63 trading days &#183; hand-copied from the Union Democrat &amp; Wall Street Journal, one at a time</text>
+</svg>
+      </div>
+      <figcaption>Redrawn from the original hand-copied data, sixty-three trading days, September 8 to December 4, 1987. The Dow (rust) and Reebok (green) move together until week three, when Reebok begins falling on its own &mdash; the South Korea concentration risk, months before anyone else was naming it &mdash; and both collapse together on Black Monday, October 19th.</figcaption>
+    </div>
+  </div>
+</section>
+  <p>I have spent the last decade and a half of my working life making charts. That is a flat description of my profession &mdash; I'm a GIS analyst and a data scientist, I turn numbers into pictures so people can see the shape of what happened, and I got certified at it this past June, at fifty-six years old.</p>
+  <p>I had assumed, standing in the garage, that this was a story about a late arrival. That the teacher asked for a chart, the kid didn't make one, and it took him thirty-nine years to get around to it.</p>
+  <p>That's not what happened. He made the chart in December of 1987. He'd already found the thing I do for a living. He just also happened to be seventeen, and a bad speller, and in possession of a red pen's worth of opinions about his sentence fragments.</p>
+  <p>The Reebok line does something the Dow doesn't, and you can see it on his sheet as clearly as on mine: it starts falling in <em>week three,</em> a month before the crash, and it never comes back. That's the Korea story &mdash; the thing he kept writing down and kept getting marked <em>fragment</em> for.</p>
+  <p>It was right there in the shape the whole time. He'd drawn it.</p>
+  <p>Nobody looked.</p>
+  <p>Which, I've come to think, is a thing that happens to almost everybody's work and isn't usually anybody's fault. Fifty-two students to one teacher, by the roughest count I can make for Sonora High that year. The line was correct whether or not it was seen. It stayed correct in a box in a garage for thirty-nine years, through two acquisitions and the disappearance of the company, waiting for a reader.</p>
+  <p>It got one eventually.</p>
+  <hr>
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">The Conclusion</div>
+  <p>The class had apparently been running a simulation &mdash; ten thousand imaginary dollars, pick your stock, see how you do. He addresses this directly at the end:</p>
+  <blockquote style="border-left:3px solid var(--mist);margin:1.3rem 0;padding:0.4rem 0 0.4rem 1.3rem;color:var(--stone);font-style:italic;font-size:0.96rem;line-height:1.75;">Knowing what I do now and haveing 10,000 to play the stockmarket game, I would not have bought Reebok stock. The reason being that at the start of January Reebok had been particularly high, some where in the 40's. But during the year many more competors came out droping there price down like a hot rock.</blockquote>
+  <p>And then, closing out the ledger on a hypothetical ten grand a seventeen-year-old never had:</p>
+  <blockquote style="border-left:3px solid var(--mist);margin:1.3rem 0;padding:0.4rem 0 0.4rem 1.3rem;color:var(--stone);font-style:italic;font-size:0.96rem;line-height:1.75;">Reebok at the close of this project finished at 9, a big drop from the begining of '87. <strong>I by now would have been eating peanut butter for awhile.</strong></blockquote>
+  <p>That's the best line in the report, and it isn't close.</p>
+  <hr>
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">The Blob</div>
+  <p>The final page has no red pen on it at all. Whether that's because Mr. Gritz had stopped reading, or because there was nothing left to correct, I don't know.</p>
+  <blockquote style="border-left:3px solid var(--mist);margin:1.3rem 0;padding:0.4rem 0 0.4rem 1.3rem;color:var(--stone);font-style:italic;font-size:0.96rem;line-height:1.75;">I have learned much this semester and have expanded my knowledge of the stockmarket very much. It is quite amazing that we place our whole economy on what a few people do, and how much it can affect us. I perhaps will play this game in my future years and maybe I can get a alcer. These people are obviously very stressed but isn't that part of the American dream. As well as greed and revenge.<br><br><strong>The stockmarket in my mind is a huge blob that is capable of doing anything, with just a few people saying pretty much anything they want and make this blob do what they wish.</strong></blockquote>
+  <p>I've read that last sentence a number of times now.</p>
+  <p>It's badly punctuated. It has no citations. It would not survive a peer review. And it's a reasonably serviceable description of reflexivity in financial markets, written by a high school senior six weeks after program trading and portfolio insurance drove the largest crash in the history of the exchange &mdash; which is very close to being the actual explanation, and which took the Brady Commission until January to say in more words.</p>
+  <p>&ldquo;Maybe I can get an ulcer.&rdquo; &ldquo;Isn't that part of the American dream. As well as greed and revenge.&rdquo;</p>
+  <p>He's not wrong about that either, and I know exactly where it came from, because I can feel the whole decade in it. This was the go-go eighties &mdash; <em>Wall Street</em> was in theatres that year, greed was good, Gordon Gekko was the villain everybody secretly dressed as. The blob was the ambient mood of 1987 seen from the cheap seats: a seventeen-year-old in a rural California county, watching the richest and most frantic machine in the country do something violent and inexplicable on the news, with no way in, no stake, and no map.</p>
+  <p>What could I know? That was the honest position. I was as far from Wall Street as you could be and still be in America. The blob is what the thing looks like from there &mdash; enormous, opaque, jerked around by a few loud people, capable of anything. Which, six weeks after program trades drove it off a cliff, was not a bad guess.</p>
+  <hr>
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">The Grade</div>
+  <p><strong>75.</strong> Circled in red on the cover page, next to a hand-drawn Union Jack.</p>
+  <p>I want to be fair to Mr. Gritz, and there's a number that makes that easier.</p>
+  <p>Sonora High School, class of 1988. Classrooms scattered all over the campus, and a student-to-teacher ratio somewhere around <strong>fifty-two to one.</strong> Times however many sections he taught. Call it two hundred and fifty semester reports landing on one man's desk in the week before Christmas, each of them fifteen or twenty pages of teenage handwriting, each requiring him to check figures he'd have to look up himself.</p>
+  <p>I carried a small grievance about this for a few weeks &mdash; that he wrote <em>chart?</em> on page one and then, apparently, never turned as far as page twenty-six to find that I'd made him one. Four sheets of graph paper, taped, two colours, dual axis, and he never unfolded it.</p>
+  <p>Fifty-two to one.</p>
+  <p>He read two weeks of my report closely enough to circle every unpunctuated figure, and then he wrote <q>I've stopped marking the errors at this point,</q> which I've been treating as a shrug and which I now think was a man being honest about arithmetic. There were eleven weeks to go and two hundred and forty-nine reports behind mine.</p>
+  <p>He gave me a 75 and moved on, because he had to. The assignment was an economics paper, and an economics paper is also a piece of writing, and this one is a mess. The spelling is genuinely bad. Sentences run into each other. There is no chart, from where he was sitting. Every complaint in the margin is factually correct.</p>
+  <p>But I look at those thirteen weeks now and what I see is a kid who showed up every single day, copied the numbers accurately out of a newspaper, and got them right &mdash; including, on the one day it mattered most, to the penny. Sixty-three trading days. Three transcription slips, on days I've since corrected against the historical record, and even those preserve the change figure right down to the cent.</p>
+  <p>The word in the margin next to the largest financial collapse in modern history is <em>fragment.</em></p>
+  <hr>
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">What Happened Next</div>
+  <p>Here is the thing about that 75 that I could not have told you at seventeen, and can now.</p>
+  <p>It was a good grade.</p>
+  <p>Not good in the sense the report deserved &mdash; good in the sense that I did not do well in high school, broadly, and a 75 on anything was a fine day. What I had, that most of my transcript didn't reflect, was that I loved this one subject. I loved economics. I still do. I did the library trips and the hand-copied tables and the taped-together chart not because I was a diligent student &mdash; I demonstrably was not &mdash; but because this was the one class where the work didn't feel like work.</p>
+  <p>That's worth more than the grade, and it's the part the grade couldn't see. A 75 measures the sentence fragments. It doesn't measure a kid who found the one thing he'd chase into a county library sixty-three times, and who is, nearly forty years later, still chasing it for a living.</p>
+  <p>Zack was in that room too, and we both walked out of it and kept going &mdash; seven years later the two of us were at eight thousand three hundred and sixty feet at the base of Mt. Whitney, drunk on rum, writing in each other's notebooks. Neither of us saw that coming from Period Two Economics either. You don't, at seventeen. The transcript is not the person.</p>
+  <hr>
+  <div class="article-kicker-inline" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin:2.5rem 0 1.5rem;">Coda: Where It All Went</div>
+  <p>The report ends on the fourth of December, 1987, with the Dow at 1,766 and Reebok at 9, and a seventeen-year-old predicting, correctly, that things might get worse before they got better.</p>
+  <p>Here is what happened to everything in it.</p>
+  <div class="aside">
+    <div class="aside-title">The Market</div>
+    <p style="margin:0 0 0.7rem;color:var(--stone);line-height:1.7;font-size:0.9rem;">It took just under two years to climb back to where it stood the Friday before Black Monday. Then it kept going. As I write this, in August of 2026, the Dow closed at about 54,000 &mdash; a little over thirty times the number in my last weekly summary. Ten thousand dollars left in the index on the day I handed in that report, untouched, would be worth roughly three hundred thousand today. The worst single day in the history of the American stock market turns out, from a distance of thirty-nine years, to be a notch on a line that goes up.</p>
+    <p style="margin:0 0 0.7rem;color:var(--stone);line-height:1.7;font-size:0.9rem;">Nobody could see that from inside week seven. That's rather the point of week seven.</p>
+  </div>
+  <p><strong>My call on Reebok.</strong> I wrote that, knowing what I knew, I wouldn't have bought it. Given the year &mdash; from the forties in January to 9 in December &mdash; that was correct, and my imaginary ten thousand dollars really would have had me on peanut butter.</p>
+  <p>But it's worth following the trade all the way out, since I never did. If that seventeen-year-old had bought Reebok at the <em>end</em> of his report rather than the beginning &mdash; at 9, at the bottom, in the wreckage &mdash; and simply held it, he'd have been paid <strong>$59 a share</strong> in cash when adidas took the company private in January 2006. Ten thousand dollars becomes about sixty-five thousand.</p>
+  <p>I was right about the stock and wrong about the moment, which I now understand to be the ordinary condition of everyone who has ever looked at a chart.</p>
+  <div class="aside">
+    <div class="aside-title">Korea</div>
+    <p style="margin:0 0 0.7rem;color:var(--stone);line-height:1.7;font-size:0.9rem;">This is the part that still gets me. The thing I kept writing down, and kept getting marked <em>fragment</em> for, was that Reebok's problem was South Korea: seventy-two percent of production in one country, that country in political and industrial upheaval, and the company planning to cut Korean production by half and open plants in Indonesia and Thailand.</p>
+    <p style="margin:0 0 0.7rem;color:var(--stone);line-height:1.7;font-size:0.9rem;">That is exactly what happened. And it didn't stop there. Production went to Indonesia and Thailand, then Vietnam, then China, then wherever was cheapest next. The specific thing I described in a high school binder &mdash; a Western brand whose entire risk profile is the labour conditions of a country it doesn't operate in &mdash; stopped being a Reebok problem and became the structure of the entire consumer economy. Everything you own is downstream of that arrangement now. I didn't know that. I was tracking it because it was making my sneakers more expensive.</p>
+  </div>
+  <p><strong>Reebok itself.</strong> The company outlived my interest in it, and then it didn't outlive much else.</p>
+  <p>adidas bought it in January 2006 for <strong>$3.8 billion,</strong> chasing Nike. It never worked. adidas spent fifteen years trying to fix it, sold off the pieces &mdash; Rockport, the hockey business &mdash; and finally, in 2021, sold the brand to <strong>Authentic Brands Group</strong> for about <strong>$2.5 billion.</strong> A billion three less than they'd paid. The deal closed in early 2022.</p>
+  <p>Authentic Brands is not a shoe company. It's a brand-management company. It owns trademarks and licenses them out &mdash; Reebok now sits in a portfolio alongside Forever 21, Aeropostale, and <em>Sports Illustrated.</em></p>
+  <p>So the thing I spent thirteen weeks tracking &mdash; a company in Canton, Massachusetts, with factories and a supply chain and a chairman named Paul Fireman who gave quotes to the <em>Wall Street Journal</em> about Korean strikes &mdash; no longer exists. There is no RBK on the New York Stock Exchange. There hasn't been since 2006.</p>
+  <p>What's left is the logo. Which is, I notice, the part I drew on the cover.</p>
+  <p><strong>The subsidiaries.</strong> The stickers in the back of the binder &mdash; Avia, Ellesse, each dated in blue ballpoint &mdash; I believe I peeled out of a tennis magazine, and taped them in because I understood them to be brands Reebok owned or was buying. I was right. A seventeen-year-old had, more or less by instinct, drawn the corporate family tree in decals. Every one of those brands was subsequently sold off. Rockport went to private equity and then into bankruptcy. Ellesse ended up back in British hands. The org chart I built out of shoe stickers came apart piece by piece over the following thirty years &mdash; and the parent company came apart with it.</p>
+  <p>He was documenting a company at its high-water mark and had no idea. That's the second time in this report he does it.</p>
+  <hr>
+  <p>I keep coming back to one small thing.</p>
+  <p>The chart runs to December the sixteenth. The report was due on the eighteenth. There's no grade attached to those last eight trading days &mdash; the assignment's text was already finished, the weeks already written, and nobody was ever going to look at that end of the line.</p>
+  <p>He plotted them anyway.</p>
+  <p>And then he taped the whole thing into the back of a binder and put it in a box, and the box went into a garage, and it sat there through the acquisition and the second acquisition and the disappearance of the company entirely, while the number he'd written at the bottom of the last page went from 1,766 to fifty-four thousand.</p>
+  <p>He'd wanted to see how it came out.</p>
+  <div class="pull-quote">It's still coming out. That's the thing nobody tells you at seventeen.</div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-footer-author">Brooks Groves · Memoir · Sonora, California</div>
+    <div class="article-footer-nav">
+      <a href="https://memoir.brooksgroves.com">← All Memoir Pieces</a>
+      <a href="/mt-whitney-1994.html">The Same Box · Mt. Whitney, 1994</a>
+      <a href="https://brooksgroves.com/tags.html">Tags</a>
+    </div>
+    <p style="font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;color:var(--stone);margin:1.2rem 0 0;">
+      Handwritten, 1987 &middot; Transcribed, verified against the historical record, and annotated 2026
+    </p>
+  </div>
+</div>
+<footer>
+  <div class="footer-inner" style="flex-direction:column;text-align:center;gap:1rem;">
+    <div>
+      <p class="footer-name">Brooks Groves</p>
+      <p class="footer-tagline">🌲 Made in the Pacific Northwest &middot; ❤️ Born in <a href="https://en.wikipedia.org/wiki/Tuolumne_County,_California" target="_blank">Tuolumne County, CA</a></p>
+    </div>
+    <div class="footer-links" style="justify-content:center;gap:1.5rem;flex-wrap:wrap;">
+      <a href="https://brooksgroves.com/writing/">Writing</a>
+      <a href="https://memoir.brooksgroves.com">Memoir</a>
+      <a href="https://brooksgroves.com/tags.html">Tags</a>
+      <a href="https://brooksgroves.com">Home</a>
+      <a href="https://ko-fi.com/brooksgroves" target="_blank" style="color:var(--gold);">🍺 Tip Jar</a>
+    </div>
+    <p style="font-family:'DM Mono',monospace;font-size:0.52rem;color:var(--stone);width:100%;padding-top:1rem;border-top:1px solid #2a2a26;">&copy; 2026 Brooks Groves &middot; Lakewood, WA</p>
+  </div>
+</footer>
+</body>
+</html>
