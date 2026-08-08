@@ -82,6 +82,40 @@
     .article-body .card{ background:var(--cream); border:1px solid var(--mist); padding:1.1rem; box-shadow:0 1px 3px rgba(0,0,0,0.05); }
     .article-body .card svg{ display:block; width:100%; height:auto; }
 
+
+    /* ── Click-to-enlarge ── */
+    .article-body .card svg{ cursor:zoom-in; }
+    .article-body .zoom-hint::first-letter{
+      font-family:'DM Mono',monospace!important;font-size:inherit!important;font-weight:inherit!important;
+      float:none!important;line-height:inherit!important;margin:0!important;color:inherit!important;
+    }
+    .article-body .zoom-hint{
+      font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;
+      color:var(--stone);opacity:.7;margin:.5rem 0 0;text-align:right;
+    }
+    .zoom-overlay{position:fixed;inset:0;background:rgba(28,26,22,.95);z-index:9500;
+      display:none;align-items:center;justify-content:center;padding:2.5rem 1.5rem}
+    .zoom-overlay.open{display:flex}
+    .zoom-stage{width:min(1500px,95vw);max-height:92vh;overflow:auto;background:var(--parchment);
+      padding:1rem;box-shadow:0 20px 60px -20px rgba(0,0,0,.6)}
+    .zoom-stage svg{width:100%;height:auto;display:block}
+    .zoom-close{position:absolute;top:1rem;right:1.3rem;background:none;border:none;
+      color:var(--parchment);font-size:1.5rem;line-height:1;cursor:pointer;font-family:'DM Mono',monospace}
+    .zoom-close:hover{color:var(--gold)}
+
+
+    /* The template drop-caps p:first-of-type, which matches the first paragraph
+       of EVERY container — so each sidebar was getting one too. Reset, then
+       restore only on the opening dek. */
+    .article-body p:first-of-type::first-letter{
+      font-family:inherit;font-size:inherit;font-weight:inherit;float:none;
+      line-height:inherit;margin:0;color:inherit;
+    }
+    .article-body > p:first-of-type::first-letter{
+      font-family:'Playfair Display',serif;font-size:3.5rem;font-weight:900;float:left;
+      line-height:0.85;margin:0.1em 0.08em 0 0;color:var(--sierra);
+    }
+
 </style>
   <script>
   (function(){
@@ -700,34 +734,40 @@ A Simulated Professional Comparison:<br>By<br>Brooks Groves</blockquote>
   <div class="plate">
     <div>
       <div class="card">
-        <svg viewBox="0 0 1000 400" role="img" aria-label="The Dow Jones Industrial Average and Reebok International stock price, 8 September to 4 December 1987. Reebok diverges downward from late September; both collapse on Black Monday, 19 October.">
-  <line x1="64" y1="315.5" x2="936" y2="315.5" stroke="var(--mist)" stroke-width="1" opacity=".5"/>
-  <text class="t-sm" x="56" y="318.5" text-anchor="end">1,800</text>
-  <line x1="64" y1="226.6" x2="936" y2="226.6" stroke="var(--mist)" stroke-width="1" opacity=".5"/>
-  <text class="t-sm" x="56" y="229.6" text-anchor="end">2,100</text>
-  <line x1="64" y1="137.7" x2="936" y2="137.7" stroke="var(--mist)" stroke-width="1" opacity=".5"/>
-  <text class="t-sm" x="56" y="140.7" text-anchor="end">2,400</text>
-  <line x1="64" y1="48.8" x2="936" y2="48.8" stroke="var(--mist)" stroke-width="1" opacity=".5"/>
-  <text class="t-sm" x="56" y="51.8" text-anchor="end">2,700</text>
-  <text class="t-sm" x="944" y="301.9" fill="var(--sierra)">$10</text>
-  <text class="t-sm" x="944" y="200.0" fill="var(--sierra)">$15</text>
-  <text class="t-sm" x="944" y="98.1" fill="var(--sierra)">$20</text>
-  <text class="t-sm" x="64.0" y="376" text-anchor="middle">SEP</text>
-  <text class="t-sm" x="294.5" y="376" text-anchor="middle">OCT</text>
-  <text class="t-sm" x="615.3" y="376" text-anchor="middle">NOV</text>
-  <text class="t-sm" x="905.9" y="376" text-anchor="middle">DEC</text>
+        <svg viewBox="0 0 1000 450" role="img" aria-label="The Dow Jones Industrial Average and Reebok International closing price, 8 September to 4 December 1987. Reebok diverges downward in week three; both collapse on Black Monday, 19 October.">
+  <line x1="86" y1="338.7" x2="914" y2="338.7" stroke="var(--mist)" stroke-width=".9" opacity=".55"/>
+  <text class="t-sm" x="75" y="341.7" text-anchor="end">1,800</text>
+  <line x1="86" y1="255.7" x2="914" y2="255.7" stroke="var(--mist)" stroke-width=".9" opacity=".55"/>
+  <text class="t-sm" x="75" y="258.7" text-anchor="end">2,100</text>
+  <line x1="86" y1="172.7" x2="914" y2="172.7" stroke="var(--mist)" stroke-width=".9" opacity=".55"/>
+  <text class="t-sm" x="75" y="175.7" text-anchor="end">2,400</text>
+  <line x1="86" y1="89.7" x2="914" y2="89.7" stroke="var(--mist)" stroke-width=".9" opacity=".55"/>
+  <text class="t-sm" x="75" y="92.7" text-anchor="end">2,700</text>
+  <text class="t-sm" x="925" y="328.6" fill="var(--sierra)">$10</text>
+  <text class="t-sm" x="925" y="231.0" fill="var(--sierra)">$15</text>
+  <text class="t-sm" x="925" y="133.4" fill="var(--sierra)">$20</text>
+  <text class="t-sm" x="75" y="48" text-anchor="end" letter-spacing=".1em">DOW</text>
+  <text class="t-sm" x="925" y="48" fill="var(--sierra)" letter-spacing=".1em">REEBOK</text>
+  <text class="t-sm" x="86.0" y="414" text-anchor="middle">SEP</text>
+  <text class="t-sm" x="304.9" y="414" text-anchor="middle">OCT</text>
+  <text class="t-sm" x="609.4" y="414" text-anchor="middle">NOV</text>
+  <text class="t-sm" x="885.4" y="414" text-anchor="middle">DEC</text>
   
-  <polyline points="64.0,94.7 74.0,93.5 84.0,85.6 94.1,75.9 124.1,74.6 134.2,88.4 144.2,99.1 154.2,99.8 164.2,100.8 194.3,110.2 204.3,87.9 214.3,82.7 224.4,88.4 234.4,87.3 264.5,78.0 274.5,81.2 284.5,79.6 294.5,66.8 304.6,66.3 334.6,66.5 344.6,93.7 354.7,93.0 364.7,103.2 374.7,113.4 404.8,116.6 414.8,105.7 424.8,134.0 434.9,151.0 444.9,183.2 474.9,333.8 485.0,303.4 495.0,248.0 505.0,271.0 515.0,270.9 545.1,317.3 555.1,301.8 565.1,301.7 575.2,274.5 585.2,258.2 615.3,252.1 625.3,267.1 635.3,272.5 645.3,260.6 655.4,268.4 685.4,285.8 695.4,292.4 705.5,286.1 715.5,268.1 725.5,275.5 755.6,271.4 765.6,279.3 775.6,274.3 785.7,305.1 795.7,299.7 825.7,279.1 835.8,267.1 845.8,272.0 865.8,282.8 895.9,305.6 905.9,303.0 916.0,301.0 926.0,322.5 936.0,325.6" fill="none" stroke="var(--rust)" stroke-width="1.7" stroke-linejoin="round"/>
-  <polyline points="64.0,92.6 74.0,95.1 84.0,95.1 94.1,95.1 124.1,105.3 144.2,100.2 154.2,105.3 164.2,113.0 194.3,135.9 204.3,156.2 214.3,146.1 224.4,153.7 234.4,184.3 264.5,166.4 284.5,161.3 294.5,143.5 304.6,120.6 334.6,123.1 344.6,135.9 354.7,156.2 364.7,156.2 374.7,171.5 404.8,171.5 414.8,163.9 424.8,151.2 434.9,169.0 444.9,176.6 474.9,191.9 485.0,291.2 495.0,278.5 505.0,240.3 515.0,258.1 545.1,276.0 555.1,304.0 565.1,301.4 575.2,288.7 585.2,270.9 625.3,263.2 635.3,268.3 645.3,260.7 655.4,258.1 695.4,283.6 705.5,288.7 715.5,278.5 725.5,281.0 755.6,281.0 765.6,283.6 775.6,281.0 785.7,291.2 795.7,288.7 825.7,283.6 835.8,283.6 845.8,283.6 865.8,291.2 895.9,298.9 905.9,309.1 916.0,309.1 926.0,304.0 936.0,319.2" fill="none" stroke="var(--sierra)" stroke-width="1.7" stroke-linejoin="round"/>
-
-  <text class="t-sm" x="68.0" y="85.7" fill="var(--rust)">DOW</text>
-  <text class="t-sm" x="68.0" y="106.6" fill="var(--sierra)">REEBOK</text>
-
-  <circle cx="474.9" cy="333.8" r="3.4" fill="var(--rust)"/>
-  <text class="t-sm" x="482.9" y="337.8" fill="var(--rust)">Black Monday</text>
-
-  <circle cx="234.4" cy="184.3" r="3.4" fill="var(--sierra)"/>
-  <text class="t-sm" x="242.4" y="188.3" fill="var(--sierra)">Reebok breaks away</text>
+  <polyline points="86.0,132.5 95.5,131.4 105.0,124.0 114.6,114.9 143.1,113.7 152.6,126.6 162.1,136.6 171.7,137.3 181.2,138.2 209.7,147.0 219.2,126.2 228.8,121.3 238.3,126.6 247.8,125.6 276.3,116.9 285.9,119.9 295.4,118.4 304.9,106.5 314.4,106.0 343.0,106.2 352.5,131.5 362.0,130.9 371.5,140.4 381.0,149.9 409.6,152.9 419.1,142.7 428.6,169.2 438.1,185.1 447.7,215.1 476.2,355.7 485.7,327.3 495.2,275.6 504.8,297.0 514.3,297.0 542.8,340.3 552.3,325.8 561.9,325.7 571.4,300.4 580.9,285.1 609.4,279.4 619.0,293.4 628.5,298.5 638.0,287.4 647.5,294.7 676.1,310.9 685.6,317.0 695.1,311.2 704.6,294.3 714.1,301.3 742.7,297.4 752.2,304.8 761.7,300.2 771.2,328.9 780.8,323.8 809.3,304.6 818.8,293.4 828.3,298.0 847.4,308.1 875.9,329.4 885.4,327.0 895.0,325.1 904.5,345.2 914.0,348.1" fill="none" stroke="var(--rust)" stroke-width="1.8" stroke-linejoin="round"/>
+  <polyline points="86.0,127.9 95.5,130.4 105.0,130.4 114.6,130.4 143.1,140.1 162.1,135.2 171.7,140.1 181.2,147.4 209.7,169.4 219.2,188.9 228.8,179.2 238.3,186.5 247.8,215.8 276.3,198.7 295.4,193.8 304.9,176.7 314.4,154.8 343.0,157.2 352.5,169.4 362.0,188.9 371.5,188.9 381.0,203.6 409.6,203.6 419.1,196.3 428.6,184.1 438.1,201.1 447.7,208.5 476.2,223.1 485.7,318.3 495.2,306.1 504.8,269.5 514.3,286.6 542.8,303.7 552.3,330.5 561.9,328.1 571.4,315.9 580.9,298.8 619.0,291.5 628.5,296.4 638.0,289.0 647.5,286.6 685.6,311.0 695.1,315.9 704.6,306.1 714.1,308.6 742.7,308.6 752.2,311.0 761.7,308.6 771.2,318.3 780.8,315.9 809.3,311.0 818.8,311.0 828.3,311.0 847.4,318.3 875.9,325.6 885.4,335.4 895.0,335.4 904.5,330.5 914.0,345.2" fill="none" stroke="var(--sierra)" stroke-width="1.8" stroke-linejoin="round"/>
+  <line x1="728" y1="68" x2="750" y2="68" stroke="var(--rust)" stroke-width="1.9"/>
+  <text class="t-sm" x="757" y="71.5">Dow Jones Industrial Average</text>
+  <line x1="728" y1="84" x2="750" y2="84" stroke="var(--sierra)" stroke-width="1.9"/>
+  <text class="t-sm" x="757" y="87.5">Reebok International</text>
+  <circle cx="476.2" cy="355.7" r="3.6" fill="var(--rust)"/>
+  <line x1="481.2" y1="355.7" x2="502.2" y2="355.7" stroke="var(--rust)" stroke-width=".9"/>
+  <text class="t-sm" x="508.2" y="353.7" fill="var(--rust)">Black Monday</text>
+  <text class="t-sm" x="508.2" y="365.7" fill="var(--stone)">&#8722;508.32 &#183; &#8722;22.6%</text>
+  <circle cx="247.8" cy="215.8" r="3.6" fill="var(--sierra)"/>
+  <line x1="242.8" y1="215.8" x2="223.8" y2="215.8" stroke="var(--sierra)" stroke-width=".9"/>
+  <text class="t-sm" x="217.8" y="213.8" text-anchor="end" fill="var(--sierra)">Reebok breaks away</text>
+  <text class="t-sm" x="217.8" y="225.8" text-anchor="end" fill="var(--stone)">week three</text>
+  
 </svg>
       </div>
       <figcaption>Redrawn from his hand-copied data, sixty-three trading days, 8 September to 4 December 1987. The Dow in rust, Reebok in green. Reebok breaks away downward in week three &mdash; the South Korea concentration risk he kept getting marked <em>fragment</em> for &mdash; and never recovers. Both collapse on 19 October: &minus;508.32 points, &minus;22.6 per cent, still the largest one-day fall in the index&rsquo;s history. By the last day of the assignment the Dow is at 1,766 and Reebok at $9.</figcaption>
@@ -838,5 +878,43 @@ A Simulated Professional Comparison:<br>By<br>Brooks Groves</blockquote>
     <p style="font-family:'DM Mono',monospace;font-size:0.52rem;color:var(--stone);width:100%;padding-top:1rem;border-top:1px solid #2a2a26;">&copy; 2026 Brooks Groves &middot; Lakewood, WA</p>
   </div>
 </footer>
+
+<script>
+/* Click-to-enlarge for the chart and the stock-table facsimile. The overlay
+   stage carries the article-body class because the SVG styling is scoped to
+   .article-body — without it a cloned graphic renders unstyled. */
+(function(){
+  var targets = document.querySelectorAll('.article-body .card svg');
+  if (!targets.length) return;
+  var ov = document.createElement('div');
+  ov.className = 'zoom-overlay';
+  ov.innerHTML = '<button class="zoom-close" aria-label="Close">&#10005;</button>'
+               + '<div class="zoom-stage article-body"></div>';
+  document.body.appendChild(ov);
+  var stage = ov.querySelector('.zoom-stage');
+  function open(el){
+    stage.innerHTML = '';
+    var c = el.cloneNode(true); c.style.cursor='default';
+    stage.appendChild(c);
+    ov.classList.add('open'); document.body.style.overflow='hidden';
+  }
+  function close(){ ov.classList.remove('open'); stage.innerHTML=''; document.body.style.overflow=''; }
+  targets.forEach(function(t){
+    t.addEventListener('click', function(){ open(t); });
+    var host = t.closest('.card');
+    if (host && !host.querySelector('.zoom-hint')) {
+      var h = document.createElement('p');
+      h.className = 'zoom-hint'; h.textContent = 'Click to enlarge';
+      host.appendChild(h);
+    }
+  });
+  ov.addEventListener('click', function(e){
+    if (e.target === ov || e.target.classList.contains('zoom-close')) close();
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && ov.classList.contains('open')) close();
+  });
+})();
+</script>
 </body>
 </html>
